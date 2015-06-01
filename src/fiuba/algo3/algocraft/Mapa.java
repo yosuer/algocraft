@@ -11,10 +11,10 @@ public class Mapa {
 		this.ancho = 100;
 		this.alto = 100;
 		
-		casillero = new Casillero[this.ancho][this.alto];
+		casillero = new Casillero[this.ancho+1][this.alto+1];
 		
-		for (int x = 0; x < this.ancho; x++){
-			for (int y = 0; y < this.alto; y++){
+		for (int x = 1; x <= this.ancho; x++){
+			for (int y = 1; y <= this.alto; y++){
 				casillero[x][y] = new Casillero();
 			}
 		}
