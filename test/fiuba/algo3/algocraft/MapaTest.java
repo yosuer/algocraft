@@ -22,7 +22,7 @@ public class MapaTest {
 	@Test
 	public void test02_DefinirMineralesEnUnaPosicionDelMapa(){
 		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(new Posicion(1,1));
+		Elemento mineral = new Mineral(new Posicion(1,1));
 		
 		mapa.agregar(mineral);
 		
@@ -32,7 +32,7 @@ public class MapaTest {
 	@Test
 	public void test03_DefinirVespenoEnUnaPosicionDelMapa(){
 		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		Elemento vespeno = new Vespeno(new Posicion(1,1));
 		
 		mapa.agregar(vespeno);
 		
@@ -53,8 +53,8 @@ public class MapaTest {
 	@Test
 	public void test05_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorOtroRecurso(){
 		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		Recurso mineral = new Mineral(new Posicion(1,1));
+		Elemento vespeno = new Vespeno(new Posicion(1,1));
+		Elemento mineral = new Mineral(new Posicion(1,1));
 		
 		mapa.agregar(vespeno);
 		mapa.agregar(mineral);
@@ -62,13 +62,14 @@ public class MapaTest {
 		Assert.assertEquals(mapa.elemento(new Posicion(1,1)),vespeno);
 	}
 	
+	
 	@Test
 	public void test06_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorObstaculoTerrestre(){
 		Mapa mapa = new Mapa();
 		
 		ObstaculoTerrestre obstaculoTerrestre = new ObstaculoTerrestre(new Posicion(1,1));
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		Recurso mineral = new Mineral(new Posicion(1,1));
+		Elemento vespeno = new Vespeno(new Posicion(1,1));
+		Elemento mineral = new Mineral(new Posicion(1,1));
 		
 		mapa.agregar(obstaculoTerrestre);
 		mapa.agregar(vespeno);
@@ -78,24 +79,25 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void test07_CrearEdificio(){
+	public void test07_AgregarFabricasUnidadesBasicasAlMapa(){
 		Mapa mapa = new Mapa();
+		FabricaDeElementos fabricaProtoss = new FabricaProtoss();
 		FabricaDeElementos fabricaTerran = new FabricaTerran();
-		
 		FabricaUnidadesBasicas barraca = fabricaTerran.crearFabricaUnidadesBasicas(new Posicion(1,1));
-		
+		FabricaUnidadesBasicas acceso = fabricaProtoss.crearFabricaUnidadesBasicas(new Posicion(1,2));
 		mapa.agregar(barraca);
+		mapa.agregar(acceso);
 		
 		Assert.assertEquals(mapa.elemento(new Posicion(1,1)),barraca);
+		Assert.assertEquals(mapa.elemento(new Posicion(1,2)),acceso);
 	}
 	
 	
-	
-	
+	/*
 	@Test
-	public void testXX_IngresarJugadorEnMapa(){	
+	public void testxx_IngresarJugadorEnMapa(){
 		
-		//Interface elemento como cualquier objeto que sea parte del mapa del juego
+		
 	}
-
+	*/
 }

@@ -1,9 +1,6 @@
 package fiuba.algo3.algocraft;
 
-public abstract class Recurso extends Elemento {
+public interface Recurso {
 	
-	public Recurso(Posicion posicion) {
-		super(posicion);
-	}
-	
+	public int reservaDisponible();
 }
