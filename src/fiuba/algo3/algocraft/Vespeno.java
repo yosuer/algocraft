@@ -7,7 +7,7 @@ public class Vespeno extends Elemento implements Recurso {
 
 	public Vespeno(Posicion posicion) {
 		super(posicion);
-		this.reserva = 1000;
+		this.reserva = 5000;
 	}
 
 	@Override
