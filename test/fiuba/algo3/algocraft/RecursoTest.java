@@ -14,4 +14,13 @@ public class RecursoTest {
 		Assert.assertEquals(mineral.reservaDisponible(), 1000);
 	}
 	
+	@Test
+	public void test02_crearNodoDeMineralConReservaInicialEn1000()
+	{
+		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		Assert.assertEquals(vespeno.reservaDisponible(), 5000);
+	}
+	
+	
+	
 }
