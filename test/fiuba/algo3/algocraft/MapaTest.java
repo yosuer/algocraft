@@ -77,16 +77,20 @@ public class MapaTest {
 		Assert.assertEquals(mapa.elemento(new Posicion(1,1)),obstaculoTerrestre);
 	}
 	
-//	@Test
-//	public void test07_CrearEdificio(){
-//		Mapa mapa = new Mapa();
-//		FabricaDeEdificios fabricaTerran = new FabricaTerran();
-//		FabricaUnidadesBasicas barraca = fabricaTerran.crearFabricaUnidadesBasicas(new Posicion(1,1));
-//		
-//		mapa.agregar(barraca);
-//		
-//		assertEquals(mapa.elemento(new Posicion(1,1)),barraca);
-//	}
+	@Test
+	public void test07_CrearEdificio(){
+		Mapa mapa = new Mapa();
+		FabricaDeElementos fabricaTerran = new FabricaTerran();
+		
+		FabricaUnidadesBasicas barraca = fabricaTerran.crearFabricaUnidadesBasicas(new Posicion(1,1));
+		
+		mapa.agregar(barraca);
+		
+		Assert.assertEquals(mapa.elemento(new Posicion(1,1)),barraca);
+	}
+	
+	
+	
 	
 	@Test
 	public void testXX_IngresarJugadorEnMapa(){	

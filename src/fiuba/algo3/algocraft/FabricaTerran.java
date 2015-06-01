@@ -1,9 +1,8 @@
 package fiuba.algo3.algocraft;
 
-public class FabricaTerran extends FabricaDeEdificios{
+public class FabricaTerran implements FabricaDeElementos{
 
-	public FabricaTerran(Posicion posicion) {
-		super(posicion);
+	public FabricaTerran() {
 	}
 
 	@Override
