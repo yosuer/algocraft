@@ -9,6 +9,12 @@ public class MapaTest {
 	public void test01_CrearMapaDe100X100(){
 		Mapa nuevoMapa = new Mapa();
 		
+		//Probar bordes
+		Assert.assertEquals(nuevoMapa.elemento(new Posicion(1,1)),null);
+		Assert.assertEquals(nuevoMapa.elemento(new Posicion(1,100)),null);
+		Assert.assertEquals(nuevoMapa.elemento(new Posicion(100,1)),null);
+		Assert.assertEquals(nuevoMapa.elemento(new Posicion(100,100)),null);
+		
 		Assert.assertEquals(nuevoMapa.ancho(), 100);
 		Assert.assertEquals(nuevoMapa.alto(), 100);	
 	}
@@ -74,7 +80,7 @@ public class MapaTest {
 //	@Test
 //	public void test07_CrearEdificio(){
 //		Mapa mapa = new Mapa();
-//		FabricaTerran fabricaTerran;
+//		FabricaDeEdificios fabricaTerran = new FabricaTerran();
 //		FabricaUnidadesBasicas barraca = fabricaTerran.crearFabricaUnidadesBasicas(new Posicion(1,1));
 //		
 //		mapa.agregar(barraca);
