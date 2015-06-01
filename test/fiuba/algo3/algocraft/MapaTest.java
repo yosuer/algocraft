@@ -1,7 +1,6 @@
 package fiuba.algo3.algocraft;
 
-import static org.junit.Assert.*;
-
+import org.junit.Assert;
 import org.junit.Test;
 
 public class MapaTest {
@@ -9,8 +8,9 @@ public class MapaTest {
 	@Test
 	public void test01_CrearMapaDe100X100(){
 		Mapa nuevoMapa = new Mapa();
-		assertEquals(nuevoMapa.ancho(), 100);
-		assertEquals(nuevoMapa.alto(), 100);	
+		
+		Assert.assertEquals(nuevoMapa.ancho(), 100);
+		Assert.assertEquals(nuevoMapa.alto(), 100);	
 	}
 	
 	@Test
@@ -20,7 +20,7 @@ public class MapaTest {
 		
 		mapa.agregar(mineral);
 		
-		assertEquals(mapa.elemento(new Posicion(1,1)),mineral);	
+		Assert.assertEquals(mapa.elemento(new Posicion(1,1)),mineral);	
 	}
 	
 	@Test
@@ -30,7 +30,7 @@ public class MapaTest {
 		
 		mapa.agregar(vespeno);
 		
-		assertEquals(mapa.elemento(new Posicion(1,1)),vespeno);	
+		Assert.assertEquals(mapa.elemento(new Posicion(1,1)),vespeno);	
 	}
 	
 	@Test
@@ -40,7 +40,7 @@ public class MapaTest {
 		
 		mapa.agregar(obstaculoTerrestre);
 		
-		assertEquals(mapa.elemento(new Posicion(1,1)),obstaculoTerrestre);
+		Assert.assertEquals(mapa.elemento(new Posicion(1,1)),obstaculoTerrestre);
 	}
 	
 	
@@ -53,7 +53,7 @@ public class MapaTest {
 		mapa.agregar(vespeno);
 		mapa.agregar(mineral);
 		
-		assertEquals(mapa.elemento(new Posicion(1,1)),vespeno);
+		Assert.assertEquals(mapa.elemento(new Posicion(1,1)),vespeno);
 	}
 	
 	@Test
@@ -68,7 +68,7 @@ public class MapaTest {
 		mapa.agregar(vespeno);
 		mapa.agregar(mineral);
 		
-		assertEquals(mapa.elemento(new Posicion(1,1)),obstaculoTerrestre);
+		Assert.assertEquals(mapa.elemento(new Posicion(1,1)),obstaculoTerrestre);
 	}
 	
 //	@Test
