@@ -33,7 +33,7 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void test04_noSePermiteAgregarDosJugadoresConDistintoNombre(){
+	public void test04_noSePermiteAgregarDosJugadoresConMismoNombre(){
 		Juego algoCraft = new Juego();
 		Jugador jugador1 = new Jugador("Martin");
 		algoCraft.agregarJugador(jugador1);
