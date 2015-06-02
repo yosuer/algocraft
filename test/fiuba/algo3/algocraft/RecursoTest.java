@@ -21,6 +21,11 @@ public class RecursoTest {
 		Assert.assertEquals(vespeno.reservaDisponible(), 5000);
 	}
 	
-	
-	
+	@Test
+	public void test03_ExtraerMineralDeUnNodoReduceEn10()
+	{
+		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		Assert.assertEquals(vespeno.reservaDisponible(), 5000);
+	}
+
 }
