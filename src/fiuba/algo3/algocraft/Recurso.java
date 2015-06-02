@@ -5,4 +5,6 @@ public interface Recurso {
 	public int reservaDisponible();
 
 	public int extraer();
+
+	public void asignarExtractor(ExtractorDeMineral extractor);
 }

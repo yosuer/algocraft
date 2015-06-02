@@ -54,10 +54,12 @@ public class RecursoTest {
 	}
 
 	@Test
-	public void test05_AUnMineralSoloSeLePuedeAsignarUnExtractorQueSeEncuentreEnLaMismaPosicion()
+	public void test06_AUnMineralSoloSeLePuedeAsignarUnExtractorQueSeEncuentreEnLaMismaPosicion()
 	{
 		Recurso mineral = new Mineral(new Posicion(1,1));
-		mineral.asignarExtractor(new CentroDeMineral(new Posicion(2,2)));
+		ExtractorDeMineral extractor = new CentroDeMineral(new Posicion(1,1));
+		
+		mineral.asignarExtractor(extractor);
 	}
 
 	

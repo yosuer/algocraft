@@ -4,6 +4,7 @@ public class Vespeno extends Elemento implements Recurso {
 
 	private Posicion posicion;
 	private int reserva;
+	private ExtractorDeGasVespeno extractor;
 
 	public Vespeno(Posicion posicion) {
 		super(posicion);
@@ -18,6 +19,10 @@ public class Vespeno extends Elemento implements Recurso {
 	@Override
 	public int extraer() {
 		return 0;
+	}
+
+	@Override
+	public void asignarExtractor(ExtractorDeMineral extractor) {
 	}
 	
 }

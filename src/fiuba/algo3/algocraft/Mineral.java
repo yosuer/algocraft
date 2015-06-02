@@ -5,6 +5,7 @@ public class Mineral extends Elemento implements Recurso {
 	
 	private Posicion posicion;
 	private int reserva;
+	private ExtractorDeMineral extractor;
 
 	public Mineral(Posicion posicion) {
 		super(posicion);
@@ -23,6 +24,13 @@ public class Mineral extends Elemento implements Recurso {
 			return 10;
 		}
 		else return 0;
+	}
+
+	@Override
+	public void asignarExtractor(ExtractorDeMineral ext) {
+		if (this.obtenerPosicion() == ext.obtenerPosicion()){
+			this.extractor = ext;
+		}
 	}
 	
 
