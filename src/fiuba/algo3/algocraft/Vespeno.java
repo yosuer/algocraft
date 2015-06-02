@@ -14,5 +14,10 @@ public class Vespeno extends Elemento implements Recurso {
 	public int reservaDisponible() {
 		return this.reserva;
 	}
+
+	@Override
+	public int extraer() {
+		return 0;
+	}
 	
 }

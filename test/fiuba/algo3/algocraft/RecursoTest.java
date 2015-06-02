@@ -22,10 +22,43 @@ public class RecursoTest {
 	}
 	
 	@Test
-	public void test03_ExtraerMineralDeUnNodoReduceEn10()
+	public void test03_CadaExtraccionDeUnMineralDevuelve10DeMineralYReduceEn10LaReservaDisponibleDelMineral()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		Assert.assertEquals(vespeno.reservaDisponible(), 5000);
+		Recurso mineral = new Mineral(new Posicion(1,1));
+		int cantidad = mineral.extraer();
+		
+		Assert.assertEquals(990, mineral.reservaDisponible());
+		Assert.assertEquals(cantidad,10);
+		
+		cantidad = mineral.extraer();
+		Assert.assertEquals(980, mineral.reservaDisponible());
+		Assert.assertEquals(cantidad,10);
+	}
+	
+	@Test
+	public void test04_LuegoDeAgotarseLaReservaDeUnMineralEntrega0DeMineral()
+	{
+		Recurso mineral = new Mineral(new Posicion(1,1));
+		int cantidad = 0;
+		
+		for (int i = 0; i < 101; i++){
+			cantidad = mineral.extraer();
+		}
+		Assert.assertEquals(mineral.reservaDisponible(), 0);
+		Assert.assertEquals(cantidad, 0);
+	}
+	
+	@Test
+	public void test05_ElMineralCambiaAEstadoADefinirLuegoDeAgotarseSuReserva()
+	{
 	}
 
+	@Test
+	public void test05_AUnMineralSoloSeLePuedeAsignarUnExtractorQueSeEncuentreEnLaMismaPosicion()
+	{
+		Recurso mineral = new Mineral(new Posicion(1,1));
+		mineral.asignarExtractor(new CentroDeMineral(new Posicion(2,2)));
+	}
+
+	
 }

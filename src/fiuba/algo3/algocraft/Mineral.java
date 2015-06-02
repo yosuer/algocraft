@@ -15,6 +15,15 @@ public class Mineral extends Elemento implements Recurso {
 	public int reservaDisponible() {
 		return this.reserva;
 	}
+
+	@Override
+	public int extraer() {
+		if (this.reserva > 0) {
+			this.reserva-=10;
+			return 10;
+		}
+		else return 0;
+	}
 	
 
 }
