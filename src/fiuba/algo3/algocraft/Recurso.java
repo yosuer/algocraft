@@ -7,4 +7,6 @@ public interface Recurso {
 	public int extraer();
 
 	public void asignarExtractor(ExtractorDeMineral extractor);
+
+	public ExtractorDeMineral getExtractor();
 }

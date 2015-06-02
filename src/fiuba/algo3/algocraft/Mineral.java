@@ -32,6 +32,11 @@ public class Mineral extends Elemento implements Recurso {
 			this.extractor = ext;
 		}
 	}
+
+	@Override
+	public ExtractorDeMineral getExtractor() {
+		return this.extractor;
+	}
 	
 
 }

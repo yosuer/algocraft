@@ -24,5 +24,10 @@ public class Vespeno extends Elemento implements Recurso {
 	@Override
 	public void asignarExtractor(ExtractorDeMineral extractor) {
 	}
+
+	@Override
+	public ExtractorDeMineral getExtractor() {
+		return new CentroDeMineral(posicion);
+	}
 	
 }
