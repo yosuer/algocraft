@@ -28,7 +28,7 @@ public class Mineral extends Elemento implements Recurso {
 
 	@Override
 	public void asignarExtractor(ExtractorDeMineral ext) {
-		if (this.obtenerPosicion() == ext.obtenerPosicion()){
+		if (this.getPosicion() == ext.getPosicion()){
 			this.extractor = ext;
 		}
 	}

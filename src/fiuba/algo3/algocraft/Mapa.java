@@ -30,8 +30,8 @@ public class Mapa {
 
 	public void agregar(Elemento elemento) {
 		
-		if ( !this.casillero[elemento.obtenerPosicion().posX()][elemento.obtenerPosicion().posY()].hayElemento() )
-			this.casillero[elemento.obtenerPosicion().posX()][elemento.obtenerPosicion().posY()].agregar(elemento);
+		if ( !this.casillero[elemento.getPosicion().posX()][elemento.getPosicion().posY()].hayElemento() )
+			this.casillero[elemento.getPosicion().posX()][elemento.getPosicion().posY()].agregar(elemento);
 	}
 
 	public Elemento elemento(Posicion pos) {

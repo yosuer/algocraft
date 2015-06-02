@@ -8,7 +8,7 @@ public abstract class Elemento {
 		this.posicion = posicion;
 	}
 
-	public Posicion obtenerPosicion() {
+	public Posicion getPosicion() {
 		return this.posicion;
 	}
 
