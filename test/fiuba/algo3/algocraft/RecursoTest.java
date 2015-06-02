@@ -15,7 +15,7 @@ public class RecursoTest {
 	}
 	
 	@Test
-	public void test02_crearNodoDeMineralConReservaInicialEn1000()
+	public void test02_crearGasVespenoConReservaInicialEn5000()
 	{
 		Recurso vespeno = new Vespeno(new Posicion(1,1));
 		Assert.assertEquals(vespeno.reservaDisponible(), 5000);
