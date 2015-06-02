@@ -1,5 +1,9 @@
 package fiuba.algo3.algocraft;
 
-public interface Extractor {
+public class Extractor extends ExtractorDeGasVespeno {
+
+	public Extractor(Posicion posicion) {
+		super(posicion);
+	}
 
 }
