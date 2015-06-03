@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft;
 
 public class Mineral extends Elemento implements Recurso {
 
-	
 	private Posicion posicion;
 	private int reserva;
 	private ExtractorDeMineral extractor;
@@ -27,14 +26,14 @@ public class Mineral extends Elemento implements Recurso {
 	}
 
 	@Override
-	public void asignarExtractor(ExtractorDeMineral ext) {
+	public void asignarExtractor(ExtractorDeRecursos ext) {
 		if (this.getPosicion() == ext.getPosicion()){
 			this.extractor = ext;
 		}
 	}
 
 	@Override
-	public ExtractorDeMineral getExtractor() {
+	public ExtractorDeRecursos getExtractor() {
 		return this.extractor;
 	}
 	
