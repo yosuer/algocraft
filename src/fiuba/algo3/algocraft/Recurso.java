@@ -9,4 +9,5 @@ public interface Recurso {
 	public void asignarExtractor(ExtractorDeRecursos extractor);
 
 	public ExtractorDeRecursos getExtractor();
+
 }
