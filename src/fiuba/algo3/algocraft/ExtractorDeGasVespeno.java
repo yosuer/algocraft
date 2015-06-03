@@ -4,7 +4,6 @@ public abstract class ExtractorDeGasVespeno extends Edificio implements Extracto
 
 	public ExtractorDeGasVespeno(Posicion posicion) {
 		super(posicion);
-		// TODO Auto-generated constructor stub
 	}
 
 }

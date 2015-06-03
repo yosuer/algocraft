@@ -73,6 +73,15 @@ public class RecursoTest {
 		
 		mineral.asignarExtractor(extractor);
 	}
+	
+	@Test
+	public void test08_AUnMineralSoloSeLePuedeAsignar()
+	{
+		Recurso mineral = new Mineral(new Posicion(1,1));
+		ExtractorDeMineral extractor = new CentroDeMineral(new Posicion(2,2));
+		
+		mineral.asignarExtractor(extractor);
+	}
 
 	
 }
