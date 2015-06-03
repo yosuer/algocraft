@@ -1,9 +1,10 @@
 package fiuba.algo3.algocraft;
 
-
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.excepciones.ErrorNombreDeJugadorInvalido;
 
 public class RecursoTest {
 
@@ -84,6 +85,15 @@ public class RecursoTest {
 		
 		mineral.asignarExtractor(extractor);
 	}
-
+	
+	@Test(expected = ErrorExtractorDeRecursosIncompatible.class)
+	public void test09_AUnMineralSoloSeLePuedeAsignarUnExtractorDeMineral()
+	{
+		Posicion pos = new Posicion(1,1);
+		Recurso mineral = new Mineral(pos);
+		ExtractorDeGasVespeno extractor = new Refineria(pos);
+		
+		mineral.asignarExtractor(extractor);
+	}
 	
 }
