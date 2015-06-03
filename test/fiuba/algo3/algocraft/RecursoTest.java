@@ -72,6 +72,8 @@ public class RecursoTest {
 		ExtractorDeMineral extractor = new CentroDeMineral(new Posicion(2,2));
 		
 		mineral.asignarExtractor(extractor);
+		
+		Assert.assertNull(mineral.getExtractor());
 	}
 	
 	@Test
