@@ -18,7 +18,11 @@ public class Vespeno extends Elemento implements Recurso {
 
 	@Override
 	public int extraer() {
-		return 0;
+		if (this.reserva > 0) {
+			this.reserva-=10;
+			return 10;
+		}
+		else return 0;
 	}
 
 	@Override
