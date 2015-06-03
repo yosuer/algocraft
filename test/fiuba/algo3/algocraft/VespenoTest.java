@@ -42,7 +42,7 @@ public class VespenoTest {
 	}
 	
 	@Test
-	public void test04_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoEnLaMismaPosicionDaOK()
+	public void test04_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoTerranEnLaMismaPosicionDaOK()
 	{
 		Recurso vespeno = new Vespeno(new Posicion(1,1));
 		ExtractorDeGasVespeno extractor = new Refineria(new Posicion(1,1));
@@ -53,7 +53,7 @@ public class VespenoTest {
 	}
 	
 	@Test
-	public void test05_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoDeDistintaPosicion()
+	public void test05_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoTerranDeDistintaPosicion()
 	{
 		Recurso vespeno = new Vespeno(new Posicion(1,1));
 		ExtractorDeGasVespeno extractor = new Refineria(new Posicion(2,5));;
@@ -85,4 +85,47 @@ public class VespenoTest {
 		Assert.assertNull(vespeno.getExtractor());
 	}
 	
+	@Test
+	public void test08_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoProtossEnLaMismaPosicionDaOK()
+	{
+		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		ExtractorDeGasVespeno extractor = new Asimilador(new Posicion(1,1));
+		
+		vespeno.asignarExtractor(extractor);
+		
+		Assert.assertEquals(vespeno.getExtractor(), extractor);
+	}
+	
+	@Test
+	public void test09_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoProtossDeDistintaPosicion()
+	{
+		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		ExtractorDeGasVespeno extractor = new Asimilador(new Posicion(2,5));;
+		
+		vespeno.asignarExtractor(extractor);
+		
+		Assert.assertNull(vespeno.getExtractor());
+	}
+	
+	@Test
+	public void test10_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoZergEnLaMismaPosicionDaOK()
+	{
+		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		ExtractorDeGasVespeno extractor = new Extractor(new Posicion(1,1));
+		
+		vespeno.asignarExtractor(extractor);
+		
+		Assert.assertEquals(vespeno.getExtractor(), extractor);
+	}
+	
+	@Test
+	public void test11_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoZergDeDistintaPosicion()
+	{
+		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		ExtractorDeGasVespeno extractor = new Extractor(new Posicion(2,5));;
+		
+		vespeno.asignarExtractor(extractor);
+		
+		Assert.assertNull(vespeno.getExtractor());
+	}
 }

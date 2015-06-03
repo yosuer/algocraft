@@ -42,7 +42,7 @@ public class MineralTest {
 	}
 
 	@Test
-	public void test04_SiAUnMineralSeLeAsignaUnExtractorMineralEnLaMismaPosicionDaOK()
+	public void test04_SiAUnMineralSeLeAsignaUnExtractorMineralTerranEnLaMismaPosicionDaOK()
 	{
 		Recurso mineral = new Mineral(new Posicion(1,1));
 		ExtractorDeMineral extractor = new CentroDeMineral(new Posicion(1,1));
@@ -53,7 +53,7 @@ public class MineralTest {
 	}
 	
 	@Test
-	public void test05_AUnMineralNoSeLePuedeAsignarUnExtractorMineralDeDistintaPosicion()
+	public void test05_AUnMineralNoSeLePuedeAsignarUnExtractorMineralTerranDeDistintaPosicion()
 	{
 		Recurso mineral = new Mineral(new Posicion(1,1));
 		ExtractorDeMineral extractor = new CentroDeMineral(new Posicion(2,2));
@@ -85,6 +85,27 @@ public class MineralTest {
 		Assert.assertNull(mineral.getExtractor());
 	}
 	
+	@Test
+	public void test08_SiAUnMineralSeLeAsignaUnExtractorMineralProtossEnLaMismaPosicionDaOK()
+	{
+		Recurso mineral = new Mineral(new Posicion(1,1));
+		ExtractorDeMineral extractor = new NexoMineral(new Posicion(1,1));
+		
+		mineral.asignarExtractor(extractor);
+		
+		Assert.assertEquals(mineral.getExtractor(), extractor);
+	}
+	
+	@Test
+	public void test09_AUnMineralNoSeLePuedeAsignarUnExtractorMineralProtossnDeDistintaPosicion()
+	{
+		Recurso mineral = new Mineral(new Posicion(1,1));
+		ExtractorDeMineral extractor = new NexoMineral(new Posicion(2,2));
+		
+		mineral.asignarExtractor(extractor);
+		
+		Assert.assertNull(mineral.getExtractor());
+	}
 	
 	@Test
 	public void testXX_ElRecursoCambiaAEstadoADefinirLuegoDeAgotarseSuReserva()
