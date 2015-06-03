@@ -4,7 +4,7 @@ public class Mineral extends Elemento implements Recurso {
 
 	private Posicion posicion;
 	private int reserva;
-	private ExtractorDeRecursos extractor;
+	private ExtractorDeMineral extractor;
 
 	public Mineral(Posicion posicion) {
 		super(posicion);

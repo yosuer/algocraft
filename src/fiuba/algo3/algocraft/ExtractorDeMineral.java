@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft;
 
-public abstract class ExtractorDeMineral extends ExtractorDeRecursos{
+public abstract class ExtractorDeMineral extends Edificio implements ExtractorDeRecursos{
 
 	public ExtractorDeMineral(Posicion posicion) {
 		super(posicion);

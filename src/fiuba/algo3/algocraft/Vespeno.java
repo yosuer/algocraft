@@ -22,7 +22,7 @@ public class Vespeno extends Elemento implements Recurso {
 	}
 
 	@Override
-	public void asignarExtractor(ExtractorDeMineral extractor) {
+	public void asignarExtractor(ExtractorDeRecursos extractor) {
 	}
 
 	@Override
