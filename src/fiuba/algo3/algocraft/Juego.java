@@ -20,7 +20,6 @@ public class Juego {
 
 	
 	public void agregarJugador(Jugador jugador) {
-		
 		if(! jugadores.contains(jugador)) jugadores.add(jugador);
 	}
 

@@ -3,6 +3,8 @@ package fiuba.algo3.algocraft;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.ErrorNombreDeJugadorInvalido;
+
 public class JugadorTest {
 
 	@Test
@@ -10,6 +12,11 @@ public class JugadorTest {
 		Jugador jugador = new Jugador("jugador");
 		
 		Assert.assertEquals("jugador", jugador.nombre());
+	}
+	
+	@Test(expected = ErrorNombreDeJugadorInvalido.class)
+	public void test0X_JugadorSiempreTieneNombreConMasDe4Digitos(){
+		Jugador jugador = new Jugador("jug");
 	}
 	
 	@Test

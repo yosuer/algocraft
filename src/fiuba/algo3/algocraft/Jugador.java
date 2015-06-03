@@ -1,17 +1,19 @@
 package fiuba.algo3.algocraft;
 
+import fiuba.algo3.algocraft.excepciones.ErrorNombreDeJugadorInvalido;
+
 public class Jugador {
 
 	private String nombre;
 	private Raza raza;
 	
 	public Jugador(String nombre) {
-		this.validarCantidadDeCaracteres(nombre);
+		this.validarNombre(nombre);
 	}
 
-	private void validarCantidadDeCaracteres(String nombre) {
+	private void validarNombre(String nombre) {
 		if (nombre.length() >= 4) this.nombre = nombre;
-		//else TIRAR EXCEPCION
+		else throw new ErrorNombreDeJugadorInvalido();
 	}
 
 	public String nombre() {
