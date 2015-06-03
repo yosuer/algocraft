@@ -8,10 +8,10 @@ import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 public class MineralTest {
 
 	@Test
-	public void test01_crearNodoDeMineralConReservaInicialEn1000()
+	public void test01_crearNodoDeMineralConReservaInicialEn200()
 	{
 		Recurso mineral = new Mineral(new Posicion(1,1));
-		Assert.assertEquals(mineral.reservaDisponible(), 1000);
+		Assert.assertEquals(mineral.reservaDisponible(), 200);
 	}
 	
 	@Test
@@ -20,11 +20,11 @@ public class MineralTest {
 		Recurso mineral = new Mineral(new Posicion(1,1));
 		int cantidad = mineral.extraer();
 		
-		Assert.assertEquals(990, mineral.reservaDisponible());
+		Assert.assertEquals(190, mineral.reservaDisponible());
 		Assert.assertEquals(cantidad,10);
 		
 		cantidad = mineral.extraer();
-		Assert.assertEquals(980, mineral.reservaDisponible());
+		Assert.assertEquals(180, mineral.reservaDisponible());
 		Assert.assertEquals(cantidad,10);
 	}
 	
