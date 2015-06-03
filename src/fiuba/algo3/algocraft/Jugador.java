@@ -6,7 +6,12 @@ public class Jugador {
 	private Raza raza;
 	
 	public Jugador(String nombre) {
-		this.nombre = nombre;
+		this.validarCantidadDeCaracteres(nombre);
+	}
+
+	private void validarCantidadDeCaracteres(String nombre) {
+		if (nombre.length() >= 4) this.nombre = nombre;
+		//else TIRAR EXCEPCION
 	}
 
 	public String nombre() {

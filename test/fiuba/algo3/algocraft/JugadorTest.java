@@ -7,28 +7,47 @@ public class JugadorTest {
 
 	@Test
 	public void test01_crearJugadorConNombre(){
-		Jugador jugador = new Jugador("algo3");
+		Jugador jugador = new Jugador("jugador");
 		
-		Assert.assertEquals("algo3", jugador.nombre());
+		Assert.assertEquals("jugador", jugador.nombre());
 	}
 	
 	@Test
-	public void test02_AsignarRazaAJugador(){
-		Jugador jugador = new Jugador("algo3");
+	public void test02_asignarRazaTerranAJugador(){
+		Jugador jugador = new Jugador("jugador");
 
 		jugador.asignarRaza(new Terran());
 		
 		//Assert.assertEquals(new Terran(), jugador.raza());
 	}
+	
 	@Test
-	public void test03_dosJugadoresConDistintosNombresNoSonIguales()
+	public void test03_asignarRazaProtossAJugador(){
+		Jugador jugador = new Jugador("jugador");
+		
+		jugador.asignarRaza(new Protoss());
+		
+		//Assert.assertEquals(new Protoss(), jugador.raza());
+	}
+	
+	@Test
+	public void test04_asignarRazaZergAJugador() {
+		Jugador jugador = new Jugador("jugador");
+		
+		jugador.asignarRaza(new Zerg());
+		
+		//Assert.assertEquals(new Zerg(), jugador.raza());
+	}
+	
+	@Test
+	public void test05_dosJugadoresConDistintosNombresNoSonIguales()
 	{
 		Jugador jugador1 = new Jugador("Juan");
 		Jugador jugador2 = new Jugador("Martin");
 		Assert.assertNotEquals(jugador1,jugador2);
 	}
 	@Test
-	public void test04_dosJugadoresConMismoNombreSonIguales()
+	public void test06_dosJugadoresConMismoNombreSonIguales()
 	{
 		Jugador jugador1 = new Jugador("Juan");
 		Jugador jugador2 = new Jugador("Juan");
