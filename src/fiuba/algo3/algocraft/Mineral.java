@@ -4,7 +4,6 @@ import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 
 public class Mineral extends Elemento implements Recurso {
 
-	private Posicion posicion;
 	private int reserva;
 	private ExtractorDeMineral extractor;
 
@@ -29,10 +28,9 @@ public class Mineral extends Elemento implements Recurso {
 
 	@Override
 	public void asignarExtractor(ExtractorDeRecursos ext) {
-			if ( this.getPosicion().equals(ext.getPosicion()) ){
+			if ( this.posicion.equals(ext.getPosicion()) ){
 				try {
 				this.extractor = (ExtractorDeMineral)ext;
-				System.out.print("se asigna extractor");
 				} catch (ClassCastException e){
 					throw new ErrorExtractorDeRecursosIncompatible();
 				}

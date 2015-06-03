@@ -1,8 +1,9 @@
 package fiuba.algo3.algocraft;
 
+import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+
 public class Vespeno extends Elemento implements Recurso {
 
-	private Posicion posicion;
 	private int reserva;
 	private ExtractorDeGasVespeno extractor;
 
@@ -26,12 +27,19 @@ public class Vespeno extends Elemento implements Recurso {
 	}
 
 	@Override
-	public void asignarExtractor(ExtractorDeRecursos extractor) {
+	public void asignarExtractor(ExtractorDeRecursos ext) {
+		if ( this.posicion.equals(ext.getPosicion()) ){
+			try {
+				this.extractor = (ExtractorDeGasVespeno)ext;
+			} catch (ClassCastException e){
+				throw new ErrorExtractorDeRecursosIncompatible();
+			}
+		}
 	}
 
 	@Override
-	public ExtractorDeMineral getExtractor() {
-		return new CentroDeMineral(posicion);
+	public ExtractorDeRecursos getExtractor() {
+		return this.extractor;
 	}
 	
 }

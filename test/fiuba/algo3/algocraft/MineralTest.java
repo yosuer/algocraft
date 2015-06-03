@@ -76,7 +76,7 @@ public class MineralTest {
 	public void test07_AUnMineralSoloSeLePuedeAsignarUnExtractorDeMineral()
 	{
 		Recurso mineral = new Mineral(new Posicion(1,1));
-		ExtractorDeGasVespeno extractor = new Refineria(new Posicion(1,1));
+		ExtractorDeRecursos extractor = new Refineria(new Posicion(1,1));
 		try {
 			mineral.asignarExtractor(extractor);
 		}catch (ErrorExtractorDeRecursosIncompatible e) {

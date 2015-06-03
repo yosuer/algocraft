@@ -41,14 +41,48 @@ public class VespenoTest {
 		Assert.assertEquals(cantidad, 0);
 	}
 	
-	@Test(expected = ErrorExtractorDeRecursosIncompatible.class)
-	public void test10_AUnGasVespenoNoSeLePuedeAsignarUnExtractorDeDistintaPosicion()
+	@Test
+	public void test04_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoEnLaMismaPosicionDaOK()
 	{
-		Posicion pos = new Posicion(1,1);
-		Recurso mineral = new Mineral(pos);
-		ExtractorDeGasVespeno extractor = new Refineria(pos);
+		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		ExtractorDeGasVespeno extractor = new Refineria(new Posicion(1,1));
 		
-		mineral.asignarExtractor(extractor);
+		vespeno.asignarExtractor(extractor);
+		
+		Assert.assertEquals(vespeno.getExtractor(), extractor);
+	}
+	
+	@Test
+	public void test05_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoDeDistintaPosicion()
+	{
+		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		ExtractorDeGasVespeno extractor = new Refineria(new Posicion(2,5));;
+		
+		vespeno.asignarExtractor(extractor);
+		
+		Assert.assertNull(vespeno.getExtractor());
+	}
+	
+	@Test(expected = ErrorExtractorDeRecursosIncompatible.class)
+	public void test06_AUnVespenoSoloSeLePuedeAsignarUnExtractorDeVespeno()
+	{
+		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		ExtractorDeMineral extractor = new CentroDeMineral(new Posicion(1,1));
+		
+		vespeno.asignarExtractor(extractor);
+	}
+	
+	@Test
+	public void test07_AUnVespenoSoloSeLePuedeAsignarUnExtractorDeVespeno()
+	{
+		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		ExtractorDeRecursos extractor = new CentroDeMineral(new Posicion(1,1));
+		try {
+			vespeno.asignarExtractor(extractor);
+		}catch (ErrorExtractorDeRecursosIncompatible e) {
+		}
+		
+		Assert.assertNull(vespeno.getExtractor());
 	}
 	
 }

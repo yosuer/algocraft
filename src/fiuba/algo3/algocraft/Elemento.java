@@ -2,7 +2,7 @@ package fiuba.algo3.algocraft;
 
 public abstract class Elemento {
 	
-	private Posicion posicion;
+	protected Posicion posicion;
 	
 	public Elemento(Posicion posicion) {
 		this.posicion = posicion;
