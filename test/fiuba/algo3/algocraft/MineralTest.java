@@ -4,9 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
-import fiuba.algo3.algocraft.excepciones.ErrorNombreDeJugadorInvalido;
 
-public class RecursoTest {
+public class MineralTest {
 
 	@Test
 	public void test01_crearNodoDeMineralConReservaInicialEn1000()
@@ -16,14 +15,7 @@ public class RecursoTest {
 	}
 	
 	@Test
-	public void test02_crearGasVespenoConReservaInicialEn5000()
-	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		Assert.assertEquals(vespeno.reservaDisponible(), 5000);
-	}
-	
-	@Test
-	public void test03_CadaExtraccionDeUnMineralDevuelve10DeMineralYReduceEn10LaReservaDisponibleDelMineral()
+	public void test02_CadaExtraccionDeUnMineralDevuelve10DeMineralYReduceEn10LaReservaDisponibleDelMineral()
 	{
 		Recurso mineral = new Mineral(new Posicion(1,1));
 		int cantidad = mineral.extraer();
@@ -37,7 +29,7 @@ public class RecursoTest {
 	}
 	
 	@Test
-	public void test04_LuegoDeAgotarseLaReservaDeUnMineralEntrega0DeMineral()
+	public void test03_LuegoDeAgotarseLaReservaDeUnMineralEntrega0DeMineral()
 	{
 		Recurso mineral = new Mineral(new Posicion(1,1));
 		int cantidad = 0;
@@ -48,18 +40,12 @@ public class RecursoTest {
 		Assert.assertEquals(mineral.reservaDisponible(), 0);
 		Assert.assertEquals(cantidad, 0);
 	}
-	
-	@Test
-	public void test05_ElMineralCambiaAEstadoADefinirLuegoDeAgotarseSuReserva()
-	{
-	}
 
 	@Test
-	public void test06_SiAUnMineralSeLeAsignaUnExtractorEnLaMismaPosicionDaOK()
+	public void test04_SiAUnMineralSeLeAsignaUnExtractorMineralEnLaMismaPosicionDaOK()
 	{
-		Posicion pos = new Posicion(1,1);
-		Recurso mineral = new Mineral(pos);
-		ExtractorDeMineral extractor = new CentroDeMineral(pos);
+		Recurso mineral = new Mineral(new Posicion(1,1));
+		ExtractorDeMineral extractor = new CentroDeMineral(new Posicion(1,1));
 		
 		mineral.asignarExtractor(extractor);
 		
@@ -67,7 +53,7 @@ public class RecursoTest {
 	}
 	
 	@Test
-	public void test07_AUnRecursoNoSeLePuedeAsignarUnExtractorDeDistintaPosicion()
+	public void test05_AUnMineralNoSeLePuedeAsignarUnExtractorMineralDeDistintaPosicion()
 	{
 		Recurso mineral = new Mineral(new Posicion(1,1));
 		ExtractorDeMineral extractor = new CentroDeMineral(new Posicion(2,2));
@@ -77,23 +63,32 @@ public class RecursoTest {
 		Assert.assertNull(mineral.getExtractor());
 	}
 	
-	@Test
-	public void test08_AUnMineralSoloSeLePuedeAsignar()
+	@Test(expected = ErrorExtractorDeRecursosIncompatible.class)
+	public void test06_AUnMineralSoloSeLePuedeAsignarUnExtractorDeMineral()
 	{
 		Recurso mineral = new Mineral(new Posicion(1,1));
-		ExtractorDeMineral extractor = new CentroDeMineral(new Posicion(2,2));
+		ExtractorDeGasVespeno extractor = new Refineria(new Posicion(1,1));
 		
 		mineral.asignarExtractor(extractor);
 	}
 	
-	@Test(expected = ErrorExtractorDeRecursosIncompatible.class)
-	public void test09_AUnMineralSoloSeLePuedeAsignarUnExtractorDeMineral()
+	@Test
+	public void test07_AUnMineralSoloSeLePuedeAsignarUnExtractorDeMineral()
 	{
-		Posicion pos = new Posicion(1,1);
-		Recurso mineral = new Mineral(pos);
-		ExtractorDeGasVespeno extractor = new Refineria(pos);
+		Recurso mineral = new Mineral(new Posicion(1,1));
+		ExtractorDeGasVespeno extractor = new Refineria(new Posicion(1,1));
+		try {
+			mineral.asignarExtractor(extractor);
+		}catch (ErrorExtractorDeRecursosIncompatible e) {
+		}
 		
-		mineral.asignarExtractor(extractor);
+		Assert.assertNull(mineral.getExtractor());
+	}
+	
+	
+	@Test
+	public void testXX_ElRecursoCambiaAEstadoADefinirLuegoDeAgotarseSuReserva()
+	{
 	}
 	
 }

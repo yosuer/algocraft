@@ -29,13 +29,14 @@ public class Mineral extends Elemento implements Recurso {
 
 	@Override
 	public void asignarExtractor(ExtractorDeRecursos ext) {
-		try {
-			if (this.getPosicion() == ext.getPosicion()){
+			if ( this.getPosicion().equals(ext.getPosicion()) ){
+				try {
 				this.extractor = (ExtractorDeMineral)ext;
+				System.out.print("se asigna extractor");
+				} catch (ClassCastException e){
+					throw new ErrorExtractorDeRecursosIncompatible();
+				}
 			}
-		} catch (ClassCastException e) {
-			throw new ErrorExtractorDeRecursosIncompatible();
-		}
 	}
 
 	@Override

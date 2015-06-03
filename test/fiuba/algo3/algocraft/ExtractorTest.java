@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ExtractoresTest {
+public class ExtractorTest {
 	
 	@Test
 	public void test01_soloSePuedeAgregarExtractorDeMineralSobreMineral()
