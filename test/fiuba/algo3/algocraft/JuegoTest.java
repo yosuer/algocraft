@@ -10,12 +10,14 @@ public class JuegoTest {
 	@Test
 	public void test01_crearJuego()
 	{
+		Juego.resetInstance();
 		Juego algoCraft = Juego.getInstance();
 	}
 	
 	@Test
 	public void test02_agregarJugador()
 	{
+		Juego.resetInstance();
 		Juego algoCraft = Juego.getInstance();
 		Jugador jugador = new Jugador("Martin");
 		algoCraft.agregarJugador(jugador);
@@ -25,6 +27,7 @@ public class JuegoTest {
 	
 	@Test
 	public void test03_sePermiteAgregarDosJugadoresConDistintoNombre(){
+		Juego.resetInstance();
 		Juego algoCraft = Juego.getInstance();
 		Jugador jugador1 = new Jugador("Martin");
 		algoCraft.agregarJugador(jugador1);
@@ -36,6 +39,7 @@ public class JuegoTest {
 	
 	@Test
 	public void test04_noSePermiteAgregarDosJugadoresConMismoNombre(){
+		Juego.resetInstance();
 		Juego algoCraft = Juego.getInstance();
 		Jugador jugador1 = new Jugador("Martin");
 		algoCraft.agregarJugador(jugador1);
