@@ -20,11 +20,28 @@ public class ExtractorTest {
 		Recurso mineral = new Mineral(new Posicion(1,1));
 		ExtractorDeMineral centroDeMineral = new CentroDeMineral(new Posicion(1,1));
 		
+Assert.assertEquals(centroDeMineral.getRecoleccion(),0);//otro test
+
 		mineral.asignarExtractor(centroDeMineral);
 		
 		centroDeMineral.realizarExtraccion();
 		
 		Assert.assertEquals(centroDeMineral.getRecoleccion(),10);
+	}
+
+	
+	@Test
+	public void testxxx()
+	{
+		Recurso mineral = new Mineral(new Posicion(1,1));
+		ExtractorDeMineral centroDeMineral = new CentroDeMineral(new Posicion(1,1));
+		
+		mineral.asignarExtractor(centroDeMineral);
+		
+   for (int i =0; i<500; i++) {
+		   centroDeMineral.realizarExtraccion();
+		}
+		Assert.assertEquals(centroDeMineral.getRecoleccion(),1000);
 	}
 	
 	

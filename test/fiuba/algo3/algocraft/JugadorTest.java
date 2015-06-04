@@ -13,7 +13,22 @@ public class JugadorTest {
 		
 		Assert.assertEquals("jugador", jugador.nombre());
 	}
-	
+
+@Test
+	public void testx(){
+		Jugador j = new Jugador("jugador");
+		
+		Assert.assertEquals(j.mineral(), 500);
+   Assert.assertEquals(j.vespeno(), 100);
+	}
+
+@Test
+	public void testxx(){
+		Jugador j = new Jugador("jugador");
+		
+		Assert.assertEquals(j.poblacion(), 10);
+	}
+
 	@Test(expected = ErrorNombreDeJugadorInvalido.class)
 	public void test0X_JugadorSiempreTieneNombreConMasDe4Digitos(){
 		Jugador jugador = new Jugador("jug");
