@@ -34,8 +34,39 @@ public class Mapa {
 			this.casillero[elemento.getPosicion().posX()][elemento.getPosicion().posY()].agregar(elemento);
 	}
 
-	public Elemento elemento(Posicion pos) {
+	public Elemento getElemento(Posicion pos) {
 		return this.casillero[pos.posX()][pos.posY()].obtenerElemento();
+	}
+	
+	public void inicializarMapa() {
+		//Jugador1
+		this.agregar(new Mineral(new Posicion (2,2)));
+		this.agregar(new Mineral(new Posicion (2,3)));
+		this.agregar(new Mineral(new Posicion (2,4)));
+		this.agregar(new Mineral(new Posicion (2,5)));
+		this.agregar(new Mineral(new Posicion (2,6)));
+		this.agregar(new Mineral(new Posicion (3,2)));
+		this.agregar(new Mineral(new Posicion (4,2)));
+		this.agregar(new Mineral(new Posicion (5,2)));
+		this.agregar(new Mineral(new Posicion (6,2)));
+		
+		this.agregar(new Vespeno(new Posicion(4,6)));
+		
+		//this.agregar(new CentroDeMando());
+		
+		//Jugador2
+		this.agregar(new Mineral(new Posicion (99,99)));
+		this.agregar(new Mineral(new Posicion (98,99)));
+		this.agregar(new Mineral(new Posicion (97,99)));
+		this.agregar(new Mineral(new Posicion (96,99)));
+		this.agregar(new Mineral(new Posicion (95,99)));
+		this.agregar(new Mineral(new Posicion (99,98)));
+		this.agregar(new Mineral(new Posicion (99,97)));
+		this.agregar(new Mineral(new Posicion (99,96)));
+		this.agregar(new Mineral(new Posicion (99,95)));
+
+		this.agregar(new Vespeno(new Posicion(95,97)));
+
 	}
 
 }

@@ -1,25 +1,28 @@
 package fiuba.algo3.algocraft;
 
-public class FabricaProtoss implements FabricaDeElementos {
+public class FabricaZerg implements FabricaDeElementos{
 
+	public FabricaZerg(){
+	}
+	
 	@Override
 	public FabricaUnidadesBasicas crearFabricaUnidadesBasicas(Posicion pos) {
-		return (new Acceso(pos));
+		return (new ReservaDeReproduccion(pos));
 	}
 
 	@Override
 	public ExtractorDeGasVespeno crearExtractorDeGasVespeno(Posicion pos) {
-		return (new Asimilador(pos));
+		return (new Extractor(pos));
 	}
 
 	@Override
 	public BasePrincipal crearBase(Posicion pos) {
-		return (new Nexo(pos));
+		return (new Criadero(pos));
 	}
 
 	@Override
 	public ExtractorDeMineral crearExtractorDeMineral(Posicion pos) {
-		return (new NexoMineral(pos));
+		return (new ZergMineral(pos));
 	}
 
 }

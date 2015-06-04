@@ -23,27 +23,27 @@ public class JugadorTest {
 	public void test02_asignarRazaTerranAJugador(){
 		Jugador jugador = new Jugador("jugador");
 
-		jugador.asignarRaza(new Terran());
+		jugador.asignarRaza(Terran.getInstance());
 		
-		//Assert.assertEquals(new Terran(), jugador.raza());
+		Assert.assertEquals(Terran.getInstance(), jugador.raza());
 	}
 	
 	@Test
 	public void test03_asignarRazaProtossAJugador(){
 		Jugador jugador = new Jugador("jugador");
 		
-		jugador.asignarRaza(new Protoss());
+		jugador.asignarRaza(Protoss.getInstance());
 		
-		//Assert.assertEquals(new Protoss(), jugador.raza());
+		Assert.assertEquals(Protoss.getInstance(), jugador.raza());
 	}
 	
 	@Test
 	public void test04_asignarRazaZergAJugador() {
 		Jugador jugador = new Jugador("jugador");
 		
-		jugador.asignarRaza(new Zerg());
+		jugador.asignarRaza(Zerg.getInstance());
 		
-		//Assert.assertEquals(new Zerg(), jugador.raza());
+		Assert.assertEquals(Zerg.getInstance(), jugador.raza());
 	}
 	
 	@Test
@@ -59,5 +59,14 @@ public class JugadorTest {
 		Jugador jugador1 = new Jugador("Juan");
 		Jugador jugador2 = new Jugador("Juan");
 		Assert.assertEquals(jugador1,jugador2);
+	}
+	
+	@Test
+	public void test07_ElJugadorDevuelveSuFabricaSegunSuRaza() {
+		Jugador jugador = new Jugador("jugador");
+		jugador.asignarRaza(Terran.getInstance());
+		
+		Assert.assertNotNull(jugador.getFabrica());
+		Assert.assertNotNull(jugador.getFabrica());
 	}
 }

@@ -6,4 +6,8 @@ public abstract class ExtractorDeMineral extends Edificio implements ExtractorDe
 		super(posicion);
 	}
 
+	abstract public void realizarExtraccion();
+
+	abstract public int getRecoleccion();
+	
 }

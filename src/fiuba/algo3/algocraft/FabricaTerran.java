@@ -15,4 +15,14 @@ public class FabricaTerran implements FabricaDeElementos{
 		return (new Refineria(pos));
 	}
 
+	@Override
+	public BasePrincipal crearBase(Posicion pos) {
+		return (new CentroDeMando(pos));
+	}
+
+	@Override
+	public ExtractorDeMineral crearExtractorDeMineral(Posicion pos) {
+		return (new CentroDeMineral(pos));
+	}
+
 }

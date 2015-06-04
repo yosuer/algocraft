@@ -39,4 +39,19 @@ public class Jugador {
 		
 	}
 
+	public FabricaDeElementos getFabrica() {
+		return this.raza.getFabrica();
+	}
+
+	public ExtractorDeMineral getExtractorDeMineral(Posicion posicion) {
+		return this.raza.getFabrica().crearExtractorDeMineral(posicion);
+	}
+
+	public BasePrincipal crearBasePrincipal(Posicion posicion) {
+		FabricaDeElementos fabrica = this.raza.getFabrica();
+		BasePrincipal base = fabrica.crearBase(posicion);
+		return base;
+	}
+	
+
 }

@@ -11,5 +11,8 @@ public abstract class Elemento {
 	public Posicion getPosicion() {
 		return this.posicion;
 	}
+	
+	public void adherirEn(Elemento otroElemento) {
+	}
 
 }

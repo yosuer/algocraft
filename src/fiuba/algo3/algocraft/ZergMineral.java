@@ -1,8 +1,8 @@
 package fiuba.algo3.algocraft;
 
-public class NexoMineral extends ExtractorDeMineral {
+public class ZergMineral extends ExtractorDeMineral {
 
-	public NexoMineral(Posicion posicion) {
+	public ZergMineral(Posicion posicion) {
 		super(posicion);
 	}
 
