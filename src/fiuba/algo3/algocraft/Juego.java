@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.algocraft.excepciones.ErrorCantidadDeJugadoresInvalida;
 import fiuba.algo3.algocraft.modelo.Elemento;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
@@ -17,7 +18,7 @@ public class Juego {
 	{
 		jugadores = new ArrayList<Jugador>();
 		campoDeBatalla = new Mapa();
-	}	
+	}
 	
 	static public Juego getInstance() {
 		if(instance == null) {
@@ -40,15 +41,19 @@ public class Juego {
 	}
 
 
-	public void agregarMapa(Mapa mapa) {
+	public void asignarMapa(Mapa mapa) {
 		this.campoDeBatalla = mapa;
 	}
 
 
 	public void iniciarJuego() {
 		campoDeBatalla.inicializarMapa();
-		campoDeBatalla.agregar(jugadores.get(0).crearBasePrincipal(new Posicion(97,97)));
-		campoDeBatalla.agregar(jugadores.get(1).crearBasePrincipal(new Posicion(4,4)));
+		try{
+			campoDeBatalla.agregar(jugadores.get(0).crearBasePrincipal(new Posicion(97,97)));
+			campoDeBatalla.agregar(jugadores.get(1).crearBasePrincipal(new Posicion(4,4)));
+		} catch (NullPointerException e){
+			throw new ErrorCantidadDeJugadoresInvalida();
+		}
 	}
 
 	public void agregarEdificioAlMapa(Edificio edificio) {

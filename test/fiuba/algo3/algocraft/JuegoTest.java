@@ -3,6 +3,8 @@ package fiuba.algo3.algocraft;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.ErrorCantidadDeJugadoresInvalida;
+import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.modelo.Mapa;
 
 public class JuegoTest {
@@ -49,11 +51,15 @@ public class JuegoTest {
 		Assert.assertEquals(algoCraft.cantidadDeJugadores(),1);
 	}
 	
-	@Test
-	public void test05_agregarMapaAlJuego() {
-		Juego algoCraft = Juego.getInstance();
-		algoCraft.agregarMapa(new Mapa());
-		
-	}
+//	@Test
+//	public void test05_agregarMapaAlJuego() {
+//		Juego algoCraft = Juego.getInstance();
+//		algoCraft.asignarMapa(new Mapa());
+//	}
 
+	@Test(expected = ErrorCantidadDeJugadoresInvalida.class)
+	public void test06_NoSePuedeIniciarElJuegoConMenosDe2Jugadores() {
+		Juego algoCraft = Juego.getInstance();
+		algoCraft.iniciarJuego();
+	}
 }
