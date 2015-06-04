@@ -1,4 +1,5 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo;
+
 
 public abstract class Elemento {
 	
@@ -14,5 +15,4 @@ public abstract class Elemento {
 	
 	public void adherirEn(Elemento otroElemento) {
 	}
-
 }

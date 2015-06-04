@@ -4,6 +4,13 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
+import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeGasVespeno;
+import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeMineral;
+import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeRecursos;
+import fiuba.algo3.algocraft.modelo.edificios.NexoMineral;
+import fiuba.algo3.algocraft.modelo.edificios.Refineria;
 
 public class MineralTest {
 
@@ -11,7 +18,7 @@ public class MineralTest {
 	public void test01_crearNodoDeMineralConReservaInicialEn200()
 	{
 		Recurso mineral = new Mineral(new Posicion(1,1));
-		Assert.assertEquals(mineral.reservaDisponible(), 200);
+		Assert.assertEquals(mineral.reservaDisponible(), 1000);
 	}
 	
 	@Test
@@ -20,11 +27,11 @@ public class MineralTest {
 		Recurso mineral = new Mineral(new Posicion(1,1));
 		int cantidad = mineral.extraer();
 		
-		Assert.assertEquals(190, mineral.reservaDisponible());
+		Assert.assertEquals(990, mineral.reservaDisponible());
 		Assert.assertEquals(cantidad,10);
 		
 		cantidad = mineral.extraer();
-		Assert.assertEquals(180, mineral.reservaDisponible());
+		Assert.assertEquals(980, mineral.reservaDisponible());
 		Assert.assertEquals(cantidad,10);
 	}
 	

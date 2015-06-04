@@ -1,6 +1,10 @@
 package fiuba.algo3.algocraft;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.modelo.Elemento;
+import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeGasVespeno;
+import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeRecursos;
 
 public class Vespeno extends Elemento implements Recurso {
 

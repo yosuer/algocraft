@@ -2,6 +2,11 @@ package fiuba.algo3.algocraft;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.algocraft.modelo.Elemento;
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.edificios.Edificio;
+
 public class Juego {
 	
 	static Juego instance = null;
@@ -42,20 +47,19 @@ public class Juego {
 
 	public void iniciarJuego() {
 		campoDeBatalla.inicializarMapa();
-		
-		Jugador j1 = jugadores.get(0);
-		Jugador j2 = jugadores.get(1);
-		Elemento e1 = j1.crearBasePrincipal(new Posicion(97,97));
-		Elemento e2 = j2.crearBasePrincipal(new Posicion(4,4));
-		campoDeBatalla.agregar(e1);
-		campoDeBatalla.agregar(e2);
-		
+		campoDeBatalla.agregar(jugadores.get(0).crearBasePrincipal(new Posicion(97,97)));
+		campoDeBatalla.agregar(jugadores.get(1).crearBasePrincipal(new Posicion(4,4)));
 	}
 
-	public void agregarElementoAlMapa(Elemento elemento) {
-		Posicion pos = elemento.getPosicion();
-		Elemento e = campoDeBatalla.getElemento(pos) ;
-		if (e == null) campoDeBatalla.agregar(e);
-		else e.adherirEn(elemento);
+	public void agregarEdificioAlMapa(Edificio edificio) {
+		if (edificio.validarCostos()) {
+			Elemento elementoEnPosicion = campoDeBatalla.getElemento(edificio.getPosicion()) ;
+			try{
+				if (elementoEnPosicion == null) campoDeBatalla.agregar(edificio);
+				else elementoEnPosicion.adherirEn(edificio);
+				edificio.cobrarCostos();
+			} catch(RuntimeException e) {
+			}
+		}
 	}
 }

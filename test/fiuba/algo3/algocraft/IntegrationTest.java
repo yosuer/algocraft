@@ -1,28 +1,55 @@
 package fiuba.algo3.algocraft;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.modelo.Posicion;
+
 public class IntegrationTest {
-	
+
 	@Test
-	public void test_CrearUnMapaConRecursosPredeterminados(){
+	public void test_JuegoCompletoInicial() {
 		Juego.resetInstance();
 		Juego starcraft = Juego.getInstance();
-		
-		//Creacion de jugadores
+
+		// Creacion de jugadores
 		Jugador juan = new Jugador("Juan");
 		juan.asignarRaza(Terran.getInstance());
 		starcraft.agregarJugador(juan);
-		
+
 		Jugador pedro = new Jugador("Pedro");
 		pedro.asignarRaza(Protoss.getInstance());
 		starcraft.agregarJugador(pedro);
-		
+
 		starcraft.iniciarJuego();
+
+		starcraft.agregarEdificioAlMapa(juan
+				.getExtractorDeMineral(new Posicion(2, 4)));
+
+	}
+
+	@Test
+	public void test02_CrearUnExtractorDeMineralReduceEn50ElMineralDelJugador() {
+		Juego.resetInstance();
+		Juego starcraft = Juego.getInstance();
+
+		// Creacion de jugadores
+		Jugador juan = new Jugador("Juan");
+		juan.asignarRaza(Terran.getInstance());
+		starcraft.agregarJugador(juan);
+
+		Jugador pedro = new Jugador("Pedro");
+		pedro.asignarRaza(Protoss.getInstance());
+		starcraft.agregarJugador(pedro);
+
+		starcraft.iniciarJuego();
+
+		Assert.assertEquals(200, juan.mineral());
+		Assert.assertEquals(200, pedro.mineral());
 		
-		starcraft.agregarElementoAlMapa(juan.getExtractorDeMineral(new Posicion(2,4)));
-		
-		}
+		starcraft.agregarEdificioAlMapa(juan.getExtractorDeMineral(new Posicion(2, 4)));
+
+		Assert.assertEquals(150, juan.mineral());
+		Assert.assertEquals(200, pedro.mineral());
+	}
 }

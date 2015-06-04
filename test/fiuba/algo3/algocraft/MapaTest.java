@@ -3,6 +3,11 @@ package fiuba.algo3.algocraft;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.modelo.Elemento;
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.edificios.EdificioUnidadesBasicas;
+
 public class MapaTest {
 	
 	@Test
@@ -83,8 +88,8 @@ public class MapaTest {
 		Mapa mapa = new Mapa();
 		FabricaDeElementos fabricaProtoss = new FabricaProtoss();
 		FabricaDeElementos fabricaTerran = new FabricaTerran();
-		FabricaUnidadesBasicas barraca = fabricaTerran.crearFabricaUnidadesBasicas(new Posicion(1,1));
-		FabricaUnidadesBasicas acceso = fabricaProtoss.crearFabricaUnidadesBasicas(new Posicion(1,2));
+		EdificioUnidadesBasicas barraca = fabricaTerran.crearFabricaUnidadesBasicas(new Posicion(1,1));
+		EdificioUnidadesBasicas acceso = fabricaProtoss.crearFabricaUnidadesBasicas(new Posicion(1,2));
 		mapa.agregar(barraca);
 		mapa.agregar(acceso);
 		

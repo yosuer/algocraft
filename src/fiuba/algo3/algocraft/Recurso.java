@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft;
 
+import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeRecursos;
+
 public interface Recurso {
 	
 	public int reservaDisponible();

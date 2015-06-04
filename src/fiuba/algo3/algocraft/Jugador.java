@@ -1,14 +1,23 @@
 package fiuba.algo3.algocraft;
 
 import fiuba.algo3.algocraft.excepciones.ErrorNombreDeJugadorInvalido;
+import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.edificios.BasePrincipal;
+import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeMineral;
 
 public class Jugador {
 
 	private String nombre;
 	private Raza raza;
+	private int mineral;
+	private int vespeno;
+	private int poblacion;
 	
 	public Jugador(String nombre) {
 		this.validarNombre(nombre);
+		this.mineral = 200;
+		this.vespeno = 0;
+		this.poblacion = 5;
 	}
 
 	private void validarNombre(String nombre) {
@@ -44,14 +53,32 @@ public class Jugador {
 	}
 
 	public ExtractorDeMineral getExtractorDeMineral(Posicion posicion) {
-		return this.raza.getFabrica().crearExtractorDeMineral(posicion);
+		ExtractorDeMineral extractor = this.raza.getFabrica().crearExtractorDeMineral(posicion);
+		extractor.setJugador(this);
+		return extractor;
 	}
 
 	public BasePrincipal crearBasePrincipal(Posicion posicion) {
-		FabricaDeElementos fabrica = this.raza.getFabrica();
-		BasePrincipal base = fabrica.crearBase(posicion);
+		BasePrincipal base = this.raza.getFabrica().crearBase(posicion);
+		base.setJugador(this);
 		return base;
 	}
-	
 
+	public int mineral() {
+		return this.mineral;
+	}
+
+	public int vespeno() {
+		return this.vespeno;
+	}
+
+	public int poblacion() {
+		return this.poblacion;
+	}
+
+	public void cobrar(int costoMineral, int costoVespeno) {
+		this.mineral -= costoMineral;
+		this.vespeno -= costoVespeno;
+	}
+	
 }
