@@ -35,21 +35,21 @@ public class ExtractorTest {
 	}
 
 	@Test
-	public void testxxx() {
+	public void test03_SiSeExtraeSeisVecesSeTiene60DeMineralRecolectado() {
 		Recurso mineral = new Mineral(new Posicion(1, 1));
 		ExtractorDeMineral centroDeMineral = new CentroDeMineral(new Posicion(
 				1, 1));
 
 		mineral.asignarExtractor(centroDeMineral);
 
-		for (int i = 0; i < 500; i++) {
+		for (int i = 0; i < 6; i++) {
 			centroDeMineral.realizarExtraccion();
 		}
-		Assert.assertEquals(1000, centroDeMineral.getRecoleccion());
+		Assert.assertEquals(60, centroDeMineral.getRecoleccion());
 	}
 	
 	@Test
-	public void testXXXXUnCentroDeMineralTieneCostoMineral50YCostoVespeno0(){
+	public void test04_UnCentroDeMineralTieneCostoMinera50YCostoVespeno0(){
 		ExtractorDeMineral extractor = new CentroDeMineral(new Posicion(1,1));
 		
 		Assert.assertEquals(50,extractor.getCostoMineral());
