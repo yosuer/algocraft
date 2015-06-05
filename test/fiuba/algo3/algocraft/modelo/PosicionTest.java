@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo;
 
 import org.junit.Assert;
 import org.junit.Test;

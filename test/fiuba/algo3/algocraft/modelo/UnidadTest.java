@@ -1,9 +1,10 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.modelo.ElementoCreador;
+import fiuba.algo3.algocraft.Unidad;
+import fiuba.algo3.algocraft.modelo.CreadorDeUnidades;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.edificios.*;
 import fiuba.algo3.algocraft.modelo.unidades.*;
@@ -17,22 +18,22 @@ public class UnidadTest {
 	
 	@Test
 	public void test02_CrearUnMarinoDesdeUnaBarraca(){
-		Barraca creador = new Barraca(new Posicion(1,1));
+		Barraca barraca = new Barraca(new Posicion(1,1));
 		
-		Assert.assertEquals(creador.crearElemento().getClass(),Marine.class);
+		Assert.assertEquals(barraca.crearUnidad().getClass(), Marine.class);
 	}
 	
 	@Test
 	public void test03_CrearUnZealotDesdeUnaAcceso(){
-		Acceso creador = new Acceso(new Posicion(1,1));
+		Acceso acceso = new Acceso(new Posicion(1,1));
 		
-		Assert.assertEquals(creador.crearElemento().getClass(),Zealot.class);
+		Assert.assertEquals(acceso.crearUnidad().getClass(),Zealot.class);
 	}
 	
 	@Test
 	public void test04_CrearUnZerlingDesdeUnaReservaDeReproduccion(){
 		ReservaDeReproduccion creador = new ReservaDeReproduccion(new Posicion(1,1));
 		
-		Zerling zerling = (Zerling) creador.crearElemento();
+		Unidad zerling = creador.crearUnidad();
 	}
 }

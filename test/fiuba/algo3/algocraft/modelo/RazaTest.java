@@ -1,6 +1,12 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo;
 
 import org.junit.Test;
+
+import fiuba.algo3.algocraft.FabricaDeElementos;
+import fiuba.algo3.algocraft.Protoss;
+import fiuba.algo3.algocraft.Raza;
+import fiuba.algo3.algocraft.Terran;
+import fiuba.algo3.algocraft.Zerg;
 
 public class RazaTest {
 

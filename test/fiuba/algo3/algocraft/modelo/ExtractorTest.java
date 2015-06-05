@@ -1,8 +1,10 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.Mineral;
+import fiuba.algo3.algocraft.Recurso;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
 import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeMineral;
@@ -12,8 +14,7 @@ public class ExtractorTest {
 	@Test
 	public void test01_soloSePuedeAgregarExtractorDeMineralSobreMineral() {
 		Recurso mineral = new Mineral(new Posicion(1, 1));
-		ExtractorDeMineral centroDeMineral = new CentroDeMineral(new Posicion(
-				1, 1));
+		ExtractorDeMineral centroDeMineral = new CentroDeMineral(new Posicion(1, 1));
 
 		mineral.asignarExtractor(centroDeMineral);
 	}

@@ -1,8 +1,12 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.Jugador;
+import fiuba.algo3.algocraft.Protoss;
+import fiuba.algo3.algocraft.Terran;
+import fiuba.algo3.algocraft.Zerg;
 import fiuba.algo3.algocraft.excepciones.ErrorNombreDeJugadorInvalido;
 
 public class JugadorTest {

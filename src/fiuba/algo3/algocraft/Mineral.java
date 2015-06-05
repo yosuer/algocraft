@@ -14,6 +14,7 @@ public class Mineral extends Elemento implements Recurso {
 	public Mineral(Posicion posicion) {
 		super(posicion);
 		this.reserva = 1000;
+		this.capa = 1;
 	}
 
 	@Override

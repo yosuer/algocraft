@@ -10,14 +10,4 @@ public class CentroDeMineral extends ExtractorDeMineral {
 		this.costoMineral = 50;
 		this.costoVespeno = 0;
 	}
-	
-	public boolean validarCostos() {
-		return jugador.mineral() >= costoMineral & 
-				jugador.vespeno() >= costoVespeno;
-	}
-	
-	public void cobrarCostos() {
-		jugador.cobrar(this.costoMineral,this.costoVespeno);
-	}
-
 }

@@ -1,8 +1,10 @@
-package fiuba.algo3.algocraft;
+package fiuba.algo3.algocraft.modelo;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.Recurso;
+import fiuba.algo3.algocraft.Vespeno;
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.edificios.Asimilador;

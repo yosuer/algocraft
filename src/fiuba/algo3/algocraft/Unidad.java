@@ -1,15 +1,13 @@
 package fiuba.algo3.algocraft;
 
-import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.Elemento;
+import fiuba.algo3.algocraft.modelo.Posicion;
 
-public class Unidad {
-	
-	Mapa mapa;
-	
-	public Unidad(Mapa m){
-		this.mapa = m;
+public class Unidad extends Elemento {
+
+	public Unidad(Posicion posicion) {
+		super(posicion);
 	}
-	public void disparar(){
-		
-	}
+	
+	
 }

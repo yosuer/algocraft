@@ -8,17 +8,17 @@ public class Mapa {
 	private int ancho;
 	private int alto;
 
-	private Casillero[][] casillero;
+	private Casillero[][] casilleros;
 
 	public Mapa() {
 		this.ancho = 100;
 		this.alto = 100;
 		
-		casillero = new Casillero[this.ancho+1][this.alto+1];
+		casilleros = new Casillero[this.ancho+1][this.alto+1];
 		
 		for (int x = 1; x <= this.ancho; x++){
 			for (int y = 1; y <= this.alto; y++){
-				casillero[x][y] = new Casillero();
+				casilleros[x][y] = new Casillero();
 			}
 		}
 	}
@@ -33,12 +33,12 @@ public class Mapa {
 
 	public void agregar(Elemento elemento) {
 		
-		if ( !this.casillero[elemento.getPosicion().posX()][elemento.getPosicion().posY()].hayElemento() )
-			this.casillero[elemento.getPosicion().posX()][elemento.getPosicion().posY()].agregar(elemento);
+		if ( !this.casilleros[elemento.getPosicion().posX()][elemento.getPosicion().posY()].hayElemento() )
+			this.casilleros[elemento.getPosicion().posX()][elemento.getPosicion().posY()].agregar(elemento);
 	}
 
 	public Elemento getElemento(Posicion pos) {
-		return this.casillero[pos.posX()][pos.posY()].obtenerElemento();
+		return this.casilleros[pos.posX()][pos.posY()].obtenerElemento();
 	}
 	
 	public void inicializarMapa() {
