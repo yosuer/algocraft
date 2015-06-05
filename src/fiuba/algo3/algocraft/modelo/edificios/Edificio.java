@@ -6,14 +6,14 @@ import fiuba.algo3.algocraft.modelo.Posicion;
 
 public abstract class Edificio extends Elemento{
 
-	Jugador dueño;
+	Jugador jug;
 	
 	public Edificio(Posicion posicion) {
 		super(posicion);
 	}
 	
-	public void setJugador(Jugador dueño){
-		this.dueño = dueño;
+	public void setJugador(Jugador jug){
+		this.jug = jug;
 	}
 	
 	public int getCostoMineral() {

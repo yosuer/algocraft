@@ -55,8 +55,6 @@ public class Mapa {
 		
 		this.agregar(new Vespeno(new Posicion(4,6)));
 		
-		//this.agregar(new CentroDeMando());
-		
 		//Jugador2
 		this.agregar(new Mineral(new Posicion (99,99)));
 		this.agregar(new Mineral(new Posicion (98,99)));
