@@ -10,26 +10,15 @@ import fiuba.algo3.algocraft.modelo.edificios.Edificio;
 
 public class Juego {
 	
-	static Juego instance = null;
 	private ArrayList<Jugador> jugadores;
 	private Mapa campoDeBatalla;
 	private Jugador jugadorActual;
+	
 
-	private Juego()
+	public Juego()
 	{
 		jugadores = new ArrayList<Jugador>();
 		campoDeBatalla = new Mapa();
-	}
-	
-	static public Juego getInstance() {
-		if(instance == null) {
-	         instance = new Juego();
-	      }
-	     return instance;
-	}
-	
-	public static void resetInstance() {
-		instance = null;
 	}
 	
 	public int cantidadDeJugadores() {
