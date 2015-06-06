@@ -35,7 +35,7 @@ public class Mapa {
 			this.casilleros[elemento.getPosicion().posX()][elemento.getPosicion().posY()].agregar(elemento);
 	}
 
-	public Elemento getElemento(Posicion pos) {
+	public Elemento getElemento(Posicion pos, int nivel) {
 		return this.casilleros[pos.posX()][pos.posY()].obtenerElemento();
 	}
 	

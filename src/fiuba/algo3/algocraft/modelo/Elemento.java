@@ -14,7 +14,7 @@ public abstract class Elemento {
 		return this.posicion;
 	}
 	
-	public void adherirEn(Elemento otroElemento) {
+	public void agregarSobre(Elemento otroElemento) {
 	}
 	
 	public int capa(){

@@ -4,24 +4,23 @@ import java.util.ArrayList;
 
 public class Casillero {
 
-	private Elemento elemento;
-	private int[] niveles;
+	private Elemento[] niveles;
 	
 	public Casillero(){
-		this.elemento = null;
-		this.niveles = new int[2];
+		this.niveles = new Elemento[1];
 	}
 	
 	public void agregar(Elemento elemento) {
-		this.elemento = elemento;
+		if (!this.hayElemento(elemento.getNivel())) 
+					niveles[elemento.getNivel()] = elemento;
 	}
 
-	public Elemento obtenerElemento() {
-		return this.elemento;
+	public Elemento obtenerElemento(int nivel) {
+		return niveles[nivel];
 	}
 	
-	public boolean hayElemento() {
-		return this.elemento != null;
+	public boolean hayElemento(int nivel) {
+		return niveles[nivel] != null;
 	}
 	
 	public boolean disponibleEnNivel(int capa){
