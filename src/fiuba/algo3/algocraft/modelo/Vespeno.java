@@ -42,5 +42,10 @@ public class Vespeno extends Elemento implements Recurso {
 	public ExtractorDeRecursos getExtractor() {
 		return this.extractor;
 	}
+
+	@Override
+	public int getNivel() {
+		return 0;
+	}
 	
 }

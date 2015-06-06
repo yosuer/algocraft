@@ -8,4 +8,9 @@ public class Asimilador extends ExtractorDeGasVespeno {
 		
 	}
 
+	@Override
+	public int getNivel() {
+		return 0;
+	}
+
 }

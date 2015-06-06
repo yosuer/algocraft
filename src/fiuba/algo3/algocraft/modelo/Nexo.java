@@ -7,4 +7,9 @@ public class Nexo extends BasePrincipal {
 		super(posicion);
 	}
 
+	@Override
+	public int getNivel() {
+		return 0;
+	}
+
 }

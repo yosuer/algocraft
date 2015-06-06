@@ -13,4 +13,9 @@ public class Barraca extends EdificioUnidadesBasicas {
 		return new Marine(posElementoCreado);
 	}
 
+	@Override
+	public int getNivel() {
+		return 0;
+	}
+
 }

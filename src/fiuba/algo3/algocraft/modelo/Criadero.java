@@ -7,4 +7,9 @@ public class Criadero extends BasePrincipal {
 		super(posicion);
 	}
 
+	@Override
+	public int getNivel() {
+		return 0;
+	}
+
 }

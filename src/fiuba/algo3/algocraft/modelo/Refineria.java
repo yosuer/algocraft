@@ -7,4 +7,9 @@ public class Refineria extends ExtractorDeGasVespeno {
 		super(posicion);
 	}
 
+	@Override
+	public int getNivel() {
+		return 0;
+	}
+
 }

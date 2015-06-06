@@ -15,4 +15,9 @@ public class Extractor extends ExtractorDeGasVespeno {
 		this.recurso = (Vespeno)recurso;
 	}
 
+	@Override
+	public int getNivel() {
+		return 0;
+	}
+
 }

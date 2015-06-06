@@ -9,4 +9,9 @@ public class CentroDeMineral extends ExtractorDeMineral {
 		this.costoMineral = 50;
 		this.costoVespeno = 0;
 	}
+
+	@Override
+	public int getNivel() {
+		return 0;
+	}
 }

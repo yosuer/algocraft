@@ -8,4 +8,9 @@ public class ZergMineral extends ExtractorDeMineral {
 		this.recolectado = 0;
 	}
 
+	@Override
+	public int getNivel() {
+		return 0;
+	}
+
 }

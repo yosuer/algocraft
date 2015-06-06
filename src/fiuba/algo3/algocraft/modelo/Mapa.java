@@ -29,14 +29,14 @@ public class Mapa {
 		return this.alto;
 	}
 
-	public void agregar(Elemento elemento) {
+	public void agregar(Elemento elemento, int nivel) {
 		
-		if ( !this.casilleros[elemento.getPosicion().posX()][elemento.getPosicion().posY()].hayElemento() )
+		if ( !this.casilleros[elemento.getPosicion().posX()][elemento.getPosicion().posY()].hayElemento(nivel) )
 			this.casilleros[elemento.getPosicion().posX()][elemento.getPosicion().posY()].agregar(elemento);
 	}
 
 	public Elemento getElemento(Posicion pos, int nivel) {
-		return this.casilleros[pos.posX()][pos.posY()].obtenerElemento();
+		return this.casilleros[pos.posX()][pos.posY()].obtenerElemento(nivel);
 	}
 	
 	public void inicializarMapa() {

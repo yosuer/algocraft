@@ -13,4 +13,9 @@ public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
 		return new Zerling(posElementoCreado);
 	}
 
+	@Override
+	public int getNivel() {
+		return 0;
+	}
+
 }
