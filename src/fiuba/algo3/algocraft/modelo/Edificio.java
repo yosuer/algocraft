@@ -1,27 +1,38 @@
 package fiuba.algo3.algocraft.modelo;
 
 
-public abstract class Edificio extends Elemento{
+public abstract class Edificio implements IElemento{
 	
-	public Edificio(Posicion posicion) {
-		super(posicion);
+	protected int vida;
+	protected int tiempoDeConstruccion;
+	protected Posicion posicion;
+	protected int costoMineral;
+	protected int costoVespeno;
+	protected Mapa mapa;
+	protected int nivel = 0;
+	
+	public Edificio(Mapa mapa){
+		this.mapa = mapa;
+		this.nivel = 0;
+	}
+
+	public void setPosicion(Posicion posicion){
+		this.posicion = posicion;
 	}
 	
+	public Posicion getPosicion(){
+		return this.posicion;
+	}
+	
+	public abstract int vidaActual();
+	
 	public int getCostoMineral() {
-		return 0;
+		return this.costoMineral;
 	}
 	
 	public int getCostoVespeno() {
-		return 0;
+		return this.costoVespeno;
 	}
 
-//	public boolean validarCostos(Jugador jugador){
-//		return jugador.mineral() >= this.getCostoMineral() & 
-//				jugador.vespeno() >= this.getCostoVespeno();
-//	}
-
-//	public void cobrarCostos(Jugador jugador) {
-//		jugador.cobrar(this.getCostoMineral(),this.getCostoVespeno());
-//	}
 
 }

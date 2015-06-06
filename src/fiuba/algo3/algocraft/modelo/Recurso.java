@@ -1,14 +1,23 @@
 package fiuba.algo3.algocraft.modelo;
 
 
-public interface Recurso {
+public abstract class Recurso {
 	
-	public int reservaDisponible();
+	protected Mapa mapa;
+	protected int reserva;
+	protected Posicion posicion;
+	protected int nivel = 0;
+	
+	public Recurso(Mapa mapa){
+		this.mapa = mapa;
+	}
+	
+	public abstract int reservaDisponible();
 
-	public int extraer();
+	public abstract int extraer();
 
-	public void asignarExtractor(ExtractorDeRecursos extractor);
+	public abstract void asignarExtractor(ExtractorDeRecursos extractor);
 
-	public ExtractorDeRecursos getExtractor();
+	public abstract ExtractorDeRecursos getExtractor();
 
 }

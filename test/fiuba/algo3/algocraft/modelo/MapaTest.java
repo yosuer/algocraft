@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.modelo.Elemento;
+import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
 
@@ -13,57 +13,53 @@ public class MapaTest {
 	public void test01_CrearMapaDe100X100(){
 		Mapa nuevoMapa = new Mapa();
 		
-		//Probar bordes
-		Assert.assertEquals(nuevoMapa.getElemento(new Posicion(1,1), 0),null);
-		Assert.assertEquals(nuevoMapa.getElemento(new Posicion(1,100), 0),null);
-		Assert.assertEquals(nuevoMapa.getElemento(new Posicion(100,1), 0),null);
-		Assert.assertEquals(nuevoMapa.getElemento(new Posicion(100,100), 0),null);
-		
 		Assert.assertEquals(nuevoMapa.ancho(), 100);
-		Assert.assertEquals(nuevoMapa.alto(), 100);	
+		Assert.assertEquals(nuevoMapa.largo(), 100);	
+		Assert.assertEquals(nuevoMapa.alto(), 2);	
 	}
 	
 	@Test
 	public void test02_DefinirMineralesEnUnaPosicionDelMapa(){
 		Mapa mapa = new Mapa();
-		Elemento mineral = new Mineral(new Posicion(1,1));
+		IElemento mineral = new Mineral(mapa);
 		
-		mapa.agregar(mineral);
+		mapa.agregarElemento(1,1,mineral);
 		
-		Assert.assertEquals(mapa.getElemento(new Posicion(1,1),0),mineral);	
+		Assert.assertEquals(mapa.getElemento(1,1,0),mineral);	
 	}
 	
 	@Test
 	public void test03_DefinirVespenoEnUnaPosicionDelMapa(){
 		Mapa mapa = new Mapa();
-		Elemento vespeno = new Vespeno(new Posicion(1,1));
+		IElemento vespeno = new Vespeno(mapa);
 		
-		mapa.agregar(vespeno);
+		mapa.agregarElemento(1,1,vespeno);
 		
-		Assert.assertEquals(mapa.getElemento(new Posicion(1,1), 0),vespeno);	
+		Assert.assertEquals(mapa.getElemento(1,1,0),vespeno);	
 	}
 	
 	@Test
 	public void test04_DefinirEspaciosVaciosEnElMapa(){
 		Mapa mapa = new Mapa();
-		ObstaculoTerrestre obstaculoTerrestre = new ObstaculoTerrestre(new Posicion(1,1));
+		ObstaculoTerrestre obstaculoTerrestre = 
+									new ObstaculoTerrestre();
 		
-		mapa.agregar(obstaculoTerrestre);
+		mapa.agregarElemento(2,2,obstaculoTerrestre);
 		
-		Assert.assertEquals(mapa.getElemento(new Posicion(1,1), 0),obstaculoTerrestre);
+		Assert.assertEquals(mapa.getElemento(2,2,0),obstaculoTerrestre);
 	}
 	
 	
 	@Test
 	public void test05_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorOtroRecurso(){
 		Mapa mapa = new Mapa();
-		Elemento vespeno = new Vespeno(new Posicion(1,1));
-		Elemento mineral = new Mineral(new Posicion(1,1));
+		IElemento vespeno = new Vespeno(mapa);
+		IElemento mineral = new Mineral(mapa);
 		
-		mapa.agregar(vespeno);
-		mapa.agregar(mineral);
+		mapa.agregarElemento(1,1,vespeno);
+		mapa.agregarElemento(1,1,mineral);
 		
-		Assert.assertEquals(mapa.getElemento(new Posicion(1,1), 0),vespeno);
+		Assert.assertEquals(mapa.getElemento(1,1,0),vespeno);
 	}
 	
 	
@@ -71,15 +67,16 @@ public class MapaTest {
 	public void test06_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorObstaculoTerrestre(){
 		Mapa mapa = new Mapa();
 		
-		ObstaculoTerrestre obstaculoTerrestre = new ObstaculoTerrestre(new Posicion(1,1));
-		Elemento vespeno = new Vespeno(new Posicion(1,1));
-		Elemento mineral = new Mineral(new Posicion(1,1));
+		ObstaculoTerrestre obstaculo = 
+				new ObstaculoTerrestre();
+		IElemento vespeno = new Vespeno(mapa);
+		IElemento mineral = new Mineral(mapa);
 		
-		mapa.agregar(obstaculoTerrestre);
-		mapa.agregar(vespeno);
-		mapa.agregar(mineral);
+		mapa.agregarElemento(4,4,obstaculo);
+		mapa.agregarElemento(4,4,vespeno);
+		mapa.agregarElemento(4,4,mineral);
 		
-		Assert.assertEquals(mapa.getElemento(new Posicion(1,1), 0),obstaculoTerrestre);
+		Assert.assertEquals(mapa.getElemento(4,4,0),obstaculo);
 	}
 	
 	@Test
@@ -87,13 +84,14 @@ public class MapaTest {
 		Mapa mapa = new Mapa();
 		FabricaDeElementos fabricaProtoss = new FabricaProtoss();
 		FabricaDeElementos fabricaTerran = new FabricaTerran();
-		EdificioUnidadesBasicas barraca = fabricaTerran.crearFabricaUnidadesBasicas(new Posicion(1,1));
-		EdificioUnidadesBasicas acceso = fabricaProtoss.crearFabricaUnidadesBasicas(new Posicion(1,2));
-		mapa.agregar(barraca);
-		mapa.agregar(acceso);
+		EdificioUnidadesBasicas barraca = 
+					fabricaTerran.crearFabricaUnidadesBasicas();
+		EdificioUnidadesBasicas acceso = fabricaProtoss.crearFabricaUnidadesBasicas();
+		mapa.agregarElemento(1,1,barraca);
+		mapa.agregarElemento(1,2,acceso);
 		
-		Assert.assertEquals(mapa.getElemento(new Posicion(1,1), 0),barraca);
-		Assert.assertEquals(mapa.getElemento(new Posicion(1,2), 0),acceso);
+		Assert.assertEquals(mapa.getElemento(1,1,0),barraca);
+		Assert.assertEquals(mapa.getElemento(1,2,0),acceso);
 	}
 	
 	@Test
@@ -101,21 +99,21 @@ public class MapaTest {
 		Mapa mapa = new Mapa();
 		mapa.inicializarMapa();
 		
-		Assert.assertTrue(mapa.getElemento(new Posicion(2,6), 0).getClass() ==	Mineral.class);
-		Assert.assertTrue(mapa.getElemento(new Posicion(2,2), 0).getClass() ==	Mineral.class);
-		Assert.assertTrue(mapa.getElemento(new Posicion(6,2), 0).getClass() ==	Mineral.class);
+		Assert.assertTrue(mapa.getElemento(2,6, 0).getClass() ==	Mineral.class);
+		Assert.assertTrue(mapa.getElemento(2,2, 0).getClass() ==	Mineral.class);
+		Assert.assertTrue(mapa.getElemento(6,2, 0).getClass() ==	Mineral.class);
 		
-		Assert.assertNull(mapa.getElemento(new Posicion(3,3), 0));
+		Assert.assertNull(mapa.getElemento(3,3, 0));
 
-		Assert.assertTrue(mapa.getElemento(new Posicion(4,6), 0).getClass() == Vespeno.class);
+		Assert.assertTrue(mapa.getElemento(4,6, 0).getClass() == Vespeno.class);
 		
-		Assert.assertTrue(mapa.getElemento(new Posicion(99,99), 0).getClass() ==	Mineral.class);
-		Assert.assertTrue(mapa.getElemento(new Posicion(95,99), 0).getClass() ==	Mineral.class);
-		Assert.assertTrue(mapa.getElemento(new Posicion(99,95), 0).getClass() ==	Mineral.class);
+		Assert.assertTrue(mapa.getElemento(99,99,0).getClass() ==	Mineral.class);
+		Assert.assertTrue(mapa.getElemento(95,99,0).getClass() ==	Mineral.class);
+		Assert.assertTrue(mapa.getElemento(99,95,0).getClass() ==	Mineral.class);
 		
-		Assert.assertNull(mapa.getElemento(new Posicion(97,97), 0));
+		Assert.assertNull(mapa.getElemento(97,97,0));
 
-		Assert.assertTrue(mapa.getElemento(new Posicion(95,97), 0).getClass() == Vespeno.class);
+		Assert.assertTrue(mapa.getElemento(95,97,0).getClass() == Vespeno.class);
 	}
 	
 	/*

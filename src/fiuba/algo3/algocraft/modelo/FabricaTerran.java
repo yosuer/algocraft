@@ -8,7 +8,7 @@ public class FabricaTerran implements FabricaDeElementos{
 
 	@Override
 	public EdificioUnidadesBasicas crearFabricaUnidadesBasicas(Posicion pos) {
-		return (new Barraca(pos));
+		return new Barraca();
 	}
 
 	@Override

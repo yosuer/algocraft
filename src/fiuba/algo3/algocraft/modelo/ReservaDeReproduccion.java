@@ -3,19 +3,33 @@ package fiuba.algo3.algocraft.modelo;
 
 public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
 
-	public ReservaDeReproduccion(Posicion posicion) {
-		super(posicion);
+	public ReservaDeReproduccion(Mapa mapa) {
+		super(mapa);
+		this.vida = 1000;
+		this.costoMineral = 150;
+		this.costoVespeno = 0;
+		this.tiempoDeConstruccion = 10;
 	}
 
 	@Override
 	public Unidad crearUnidad() {
-		Posicion posElementoCreado = new Posicion(posicion.posX()+1,posicion.posY()+1);
-		return new Zerling(posElementoCreado);
+		return new Zerling();
 	}
 
 	@Override
 	public int getNivel() {
-		return 0;
+		return this.nivel;
+	}
+
+	@Override
+	public void agregarSobre(IElemento otroElemento) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int vidaActual() {
+		return this.vida;
 	}
 
 }

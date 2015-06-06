@@ -2,16 +2,16 @@ package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 
-public class Mineral extends Elemento implements Recurso {
+public class Mineral extends Recurso implements IElemento {
 
-	private int reserva;
+	public Mineral(Mapa mapa) {
+		super(mapa);
+		this.reserva = 200;
+	}
+
+	private int nivel;
 	private ExtractorDeMineral extractor;
 
-	public Mineral(Posicion posicion) {
-		super(posicion);
-		this.reserva = 200;
-		this.capa = 1;
-	}
 
 	@Override
 	public int reservaDisponible() {
@@ -46,7 +46,22 @@ public class Mineral extends Elemento implements Recurso {
 
 	@Override
 	public int getNivel() {
-		return 0;
+		return this.nivel;
+	}
+
+	@Override
+	public Posicion getPosicion() {
+		return this.posicion;
+	}
+
+	@Override
+	public void setPosicion(Posicion posicion) {
+		this.posicion = posicion;
+	}
+
+	@Override
+	public void agregarSobre(IElemento otroElemento) {
+		
 	}
 	
 

@@ -1,35 +1,18 @@
 package fiuba.algo3.algocraft.modelo;
 
-import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.modelo.Posicion;
-
 public class UnidadTest {
-	
+
 	@Test
-	public void test01_CrearUnidadesYVerificarPropiedasBasicas(){
+	public void CrearMarine() {
+		Mapa mapa = new Mapa();
 		
-	}
-	
-	@Test
-	public void test02_CrearUnMarinoDesdeUnaBarraca(){
-		Barraca barraca = new Barraca(new Posicion(1,1));
+		Barraca barraca = new Barraca(mapa);
+		Marine marine= barraca.crearUnidad();
 		
-		Assert.assertEquals(barraca.crearUnidad().getClass(), Marine.class);
+		Assert.assertEquals(marine.vida(),40);
+		Assert.assertEquals(marine.(),40);
 	}
-	
-	@Test
-	public void test03_CrearUnZealotDesdeUnaAcceso(){
-		Acceso acceso = new Acceso(new Posicion(1,1));
-		
-		Assert.assertEquals(acceso.crearUnidad().getClass(),Zealot.class);
-	}
-	
-	@Test
-	public void test04_CrearUnZerlingDesdeUnaReservaDeReproduccion(){
-		ReservaDeReproduccion creador = new ReservaDeReproduccion(new Posicion(1,1));
-		
-		Unidad zerling = creador.crearUnidad();
-	}
+
 }

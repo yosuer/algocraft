@@ -3,19 +3,32 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Barraca extends EdificioUnidadesBasicas {
 
-	public Barraca(Posicion posicion) {
-		super(posicion);
+	public Barraca(Mapa mapa) {
+		super(mapa);
+		this.vida = 1000;
+		this.costoMineral = 150;
+		this.costoVespeno = 0;
+		this.tiempoDeConstruccion = 12;
 	}
 
 	@Override
 	public Unidad crearUnidad() {
-		Posicion posElementoCreado = new Posicion(posicion.posX()+1,posicion.posY()+1);
-		return new Marine(posElementoCreado);
+		return new Marine();
 	}
 
 	@Override
 	public int getNivel() {
-		return 0;
+		return this.nivel;
+	}
+
+	@Override
+	public void agregarSobre(IElemento otroElemento) {
+		
+	}
+
+	@Override
+	public int vidaActual() {
+		return this.vida;
 	}
 
 }

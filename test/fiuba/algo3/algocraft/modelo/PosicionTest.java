@@ -11,8 +11,8 @@ public class PosicionTest {
 	public void test01_CrearUnaPosicionConCoordenadasXYyObtenerLasCoordenadas(){
 		Posicion pos = new Posicion(5,5);
 		
-		Assert.assertEquals(5,pos.posX());
-		Assert.assertEquals(5,pos.posY());
+		Assert.assertEquals(5,pos.x());
+		Assert.assertEquals(5,pos.y());
 	}
 	
 	@Test
