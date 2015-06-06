@@ -1,7 +1,5 @@
 package fiuba.algo3.algocraft.modelo;
 
-import fiuba.algo3.algocraft.Mineral;
-import fiuba.algo3.algocraft.Vespeno;
 
 public class Mapa {
 

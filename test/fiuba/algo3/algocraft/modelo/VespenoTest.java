@@ -3,17 +3,8 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.Recurso;
-import fiuba.algo3.algocraft.Vespeno;
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.modelo.Posicion;
-import fiuba.algo3.algocraft.modelo.edificios.Asimilador;
-import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
-import fiuba.algo3.algocraft.modelo.edificios.Extractor;
-import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeGasVespeno;
-import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeMineral;
-import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeRecursos;
-import fiuba.algo3.algocraft.modelo.edificios.Refineria;
 
 public class VespenoTest {
 

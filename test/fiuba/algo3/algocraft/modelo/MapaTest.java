@@ -3,16 +3,9 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.FabricaDeElementos;
-import fiuba.algo3.algocraft.FabricaProtoss;
-import fiuba.algo3.algocraft.FabricaTerran;
-import fiuba.algo3.algocraft.Mineral;
-import fiuba.algo3.algocraft.ObstaculoTerrestre;
-import fiuba.algo3.algocraft.Vespeno;
 import fiuba.algo3.algocraft.modelo.Elemento;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
-import fiuba.algo3.algocraft.modelo.edificios.EdificioUnidadesBasicas;
 
 public class MapaTest {
 	

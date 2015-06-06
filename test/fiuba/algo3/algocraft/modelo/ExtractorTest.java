@@ -3,11 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.Mineral;
-import fiuba.algo3.algocraft.Recurso;
 import fiuba.algo3.algocraft.modelo.Posicion;
-import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
-import fiuba.algo3.algocraft.modelo.edificios.ExtractorDeMineral;
 
 public class ExtractorTest {
 

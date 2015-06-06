@@ -3,10 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.Unidad;
 import fiuba.algo3.algocraft.modelo.Posicion;
-import fiuba.algo3.algocraft.modelo.edificios.*;
-import fiuba.algo3.algocraft.modelo.unidades.*;
 
 public class UnidadTest {
 	
