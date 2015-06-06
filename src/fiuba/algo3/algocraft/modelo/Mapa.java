@@ -41,30 +41,30 @@ public class Mapa {
 	
 	public void inicializarMapa() {
 		//Jugador1
-		this.agregar(new Mineral(new Posicion (2,2)));
-		this.agregar(new Mineral(new Posicion (2,3)));
-		this.agregar(new Mineral(new Posicion (2,4)));
-		this.agregar(new Mineral(new Posicion (2,5)));
-		this.agregar(new Mineral(new Posicion (2,6)));
-		this.agregar(new Mineral(new Posicion (3,2)));
-		this.agregar(new Mineral(new Posicion (4,2)));
-		this.agregar(new Mineral(new Posicion (5,2)));
-		this.agregar(new Mineral(new Posicion (6,2)));
+		this.agregar(new Mineral(new Posicion (2,2)), 0);
+		this.agregar(new Mineral(new Posicion (2,3)), 0);
+		this.agregar(new Mineral(new Posicion (2,4)), 0);
+		this.agregar(new Mineral(new Posicion (2,5)), 0);
+		this.agregar(new Mineral(new Posicion (2,6)), 0);
+		this.agregar(new Mineral(new Posicion (3,2)), 0);
+		this.agregar(new Mineral(new Posicion (4,2)), 0);
+		this.agregar(new Mineral(new Posicion (5,2)), 0);
+		this.agregar(new Mineral(new Posicion (6,2)), 0);
 		
-		this.agregar(new Vespeno(new Posicion(4,6)));
+		this.agregar(new Vespeno(new Posicion(4,6)), 0);
 		
 		//Jugador2
-		this.agregar(new Mineral(new Posicion (99,99)));
-		this.agregar(new Mineral(new Posicion (98,99)));
-		this.agregar(new Mineral(new Posicion (97,99)));
-		this.agregar(new Mineral(new Posicion (96,99)));
-		this.agregar(new Mineral(new Posicion (95,99)));
-		this.agregar(new Mineral(new Posicion (99,98)));
-		this.agregar(new Mineral(new Posicion (99,97)));
-		this.agregar(new Mineral(new Posicion (99,96)));
-		this.agregar(new Mineral(new Posicion (99,95)));
+		this.agregar(new Mineral(new Posicion (99,99)), 0);
+		this.agregar(new Mineral(new Posicion (98,99)), 0);
+		this.agregar(new Mineral(new Posicion (97,99)), 0);
+		this.agregar(new Mineral(new Posicion (96,99)), 0);
+		this.agregar(new Mineral(new Posicion (95,99)), 0);
+		this.agregar(new Mineral(new Posicion (99,98)), 0);
+		this.agregar(new Mineral(new Posicion (99,97)), 0);
+		this.agregar(new Mineral(new Posicion (99,96)), 0);
+		this.agregar(new Mineral(new Posicion (99,95)), 0);
 
-		this.agregar(new Vespeno(new Posicion(95,97)));
+		this.agregar(new Vespeno(new Posicion(95,97)), 0);
 
 	}
 
