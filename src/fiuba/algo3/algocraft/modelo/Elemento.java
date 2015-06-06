@@ -20,4 +20,6 @@ public abstract class Elemento {
 	public int capa(){
 		return capa;
 	}
+	
+	abstract public int getNivel();
 }

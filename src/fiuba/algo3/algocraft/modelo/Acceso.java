@@ -13,4 +13,9 @@ public class Acceso extends EdificioUnidadesBasicas {
 		return new Zealot(posElementoCreado);
 	}
 
+	@Override
+	public int getNivel() {
+		return 0;
+	}
+
 }

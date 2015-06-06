@@ -7,4 +7,9 @@ public class ObstaculoTerrestre extends Elemento {
 		super(posicion);
 	}
 
+	@Override
+	public int getNivel() {
+		return 0;
+	}
+
 }

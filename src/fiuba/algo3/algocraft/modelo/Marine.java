@@ -7,4 +7,9 @@ public class Marine extends Unidad {
 		super(posicion);
 	}
 
+	@Override
+	public int getNivel() {
+		return 0;
+	}
+
 }
