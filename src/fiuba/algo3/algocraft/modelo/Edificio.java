@@ -33,6 +33,9 @@ public abstract class Edificio implements IElemento{
 	public int getCostoVespeno() {
 		return this.costoVespeno;
 	}
-
+	
+	public boolean moverseA(Posicion posicion){
+		return false;
+	}
 
 }

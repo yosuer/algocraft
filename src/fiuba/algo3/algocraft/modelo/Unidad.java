@@ -34,5 +34,15 @@ public abstract class Unidad implements IElemento {
 		return this.costoVespeno;
 	}
 	
+	public boolean moverseA(Posicion nuevaPos){
+		
+		if (!mapa.estaOcupado(nuevaPos.x(), nuevaPos.y(), nuevaPos.z())){
+			mapa.agregarElemento(nuevaPos.x(), nuevaPos.y(), this);
+			return true;
+		}
+		
+		return false;
+	}
+	
 	
 }

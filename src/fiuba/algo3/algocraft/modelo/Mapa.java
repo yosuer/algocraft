@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
+import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+
 
 public class Mapa {
 
@@ -48,7 +50,6 @@ public class Mapa {
 		elemento.setPosicion(pos); //elemento verifica la coord z segun su nivel
 		if (!estaOcupado(pos.x(),pos.y(),pos.z()))
 			elementos[pos.x()][pos.y()][pos.z()] = elemento;
-
 	}
 	
 	public IElemento getElemento(int x, int y, int z) {
@@ -84,10 +85,12 @@ public class Mapa {
 
 	}
 
+	public void moverElemento(IElemento elemento, int x, int y) {
 
-
-
-
-
+		Posicion posAnt = elemento.getPosicion();
+		
+		if (elemento.moverseA( new Posicion(x,y,elemento.getNivel())) ) 
+			elementos[posAnt.x()][posAnt.y()][posAnt.z()] = null;
+	}
 
 }

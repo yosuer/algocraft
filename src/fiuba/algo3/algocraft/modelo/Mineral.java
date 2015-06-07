@@ -63,6 +63,5 @@ public class Mineral extends Recurso implements IElemento {
 	public void agregarSobre(IElemento otroElemento) {
 		
 	}
-	
 
 }

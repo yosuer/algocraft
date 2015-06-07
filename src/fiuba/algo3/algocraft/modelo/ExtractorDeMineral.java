@@ -1,15 +1,16 @@
 package fiuba.algo3.algocraft.modelo;
 
 
-public abstract class ExtractorDeMineral extends Edificio implements ExtractorDeRecursos{
+public abstract class ExtractorDeMineral extends Edificio 
+										implements ExtractorDeRecursos{
 
 	protected Mineral recurso;
 	protected int recolectado;
 	protected int costoMineral;
 	protected int costoVespeno;
 	
-	public ExtractorDeMineral(Posicion posicion) {
-		super(posicion);
+	public ExtractorDeMineral(Mapa mapa) {
+		super(mapa);
 	}
 
 	public void realizarExtraccion(){

@@ -10,7 +10,7 @@ import fiuba.algo3.algocraft.modelo.Posicion;
 public class MapaTest {
 	
 	@Test
-	public void test01_CrearMapaDe100X100(){
+	public void test01_CrearMapaConTierraDe100X100(){
 		Mapa nuevoMapa = new Mapa();
 		
 		Assert.assertEquals(nuevoMapa.ancho(), 100);
@@ -79,20 +79,20 @@ public class MapaTest {
 		Assert.assertEquals(mapa.getElemento(4,4,0),obstaculo);
 	}
 	
-	@Test
-	public void test07_AgregarFabricasUnidadesBasicasAlMapa(){
-		Mapa mapa = new Mapa();
-		FabricaDeElementos fabricaProtoss = new FabricaProtoss();
-		FabricaDeElementos fabricaTerran = new FabricaTerran();
-		EdificioUnidadesBasicas barraca = 
-					fabricaTerran.crearFabricaUnidadesBasicas();
-		EdificioUnidadesBasicas acceso = fabricaProtoss.crearFabricaUnidadesBasicas();
-		mapa.agregarElemento(1,1,barraca);
-		mapa.agregarElemento(1,2,acceso);
-		
-		Assert.assertEquals(mapa.getElemento(1,1,0),barraca);
-		Assert.assertEquals(mapa.getElemento(1,2,0),acceso);
-	}
+//	@Test
+//	public void test07_AgregarFabricasUnidadesBasicasAlMapa(){
+//		Mapa mapa = new Mapa();
+//		FabricaDeElementos fabricaProtoss = new FabricaProtoss();
+//		FabricaDeElementos fabricaTerran = new FabricaTerran();
+//		EdificioUnidadesBasicas barraca = 
+//					fabricaTerran.crearFabricaUnidadesBasicas();
+//		EdificioUnidadesBasicas acceso = fabricaProtoss.crearFabricaUnidadesBasicas();
+//		mapa.agregarElemento(1,1,barraca);
+//		mapa.agregarElemento(1,2,acceso);
+//		
+//		Assert.assertEquals(mapa.getElemento(1,1,0),barraca);
+//		Assert.assertEquals(mapa.getElemento(1,2,0),acceso);
+//	}
 	
 	@Test
 	public void test08_CrearUnMapaConRecursosPredeterminados(){
@@ -114,6 +114,34 @@ public class MapaTest {
 		Assert.assertNull(mapa.getElemento(97,97,0));
 
 		Assert.assertTrue(mapa.getElemento(95,97,0).getClass() == Vespeno.class);
+	}
+	
+	@Test
+	public void testMoverUnaUnidad(){
+		Mapa mapa = new Mapa();
+		Barraca barraca = new Barraca(mapa);
+		Unidad marine= barraca.crearUnidad();
+		mapa.agregarElemento(4, 4, barraca);
+		mapa.agregarElemento(5, 5, marine);
+
+		Assert.assertEquals(mapa.getElemento(5,5,0),marine);
+		
+		mapa.moverElemento(marine,6,6);
+		
+		Assert.assertEquals(mapa.getElemento(6,6,0),marine);
+		Assert.assertEquals(mapa.getElemento(5,5,0),null);
+	}
+	
+	@Test
+	public void testNoSePuedeMoverUnEdificio(){
+		Mapa mapa = new Mapa();
+		Barraca barraca = new Barraca(mapa);
+		mapa.agregarElemento(4, 4, barraca);
+		
+		mapa.moverElemento(barraca,7,7);
+		
+		Assert.assertEquals(mapa.getElemento(4,4,0),barraca);
+		Assert.assertEquals(mapa.getElemento(7,7,0),null);
 	}
 	
 	/*

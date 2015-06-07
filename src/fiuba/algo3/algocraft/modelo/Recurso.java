@@ -19,5 +19,9 @@ public abstract class Recurso {
 	public abstract void asignarExtractor(ExtractorDeRecursos extractor);
 
 	public abstract ExtractorDeRecursos getExtractor();
+	
+	public boolean moverseA(Posicion posicion){
+		return false;
+	}
 
 }

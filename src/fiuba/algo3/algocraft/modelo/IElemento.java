@@ -10,4 +10,6 @@ public interface IElemento {
 	public void agregarSobre(IElemento otroElemento);
 	
 	public int getNivel();
+	
+	public boolean moverseA(Posicion posicion);
 }
