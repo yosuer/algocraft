@@ -10,9 +10,9 @@ public class UnidadTest {
 		Mapa mapa = new Mapa();
 		
 		Barraca barraca = new Barraca(mapa);
-		Unidad marine= barraca.crearUnidad();
+		Unidad marine = barraca.crearUnidad();
 		
-//		Assert.assertEquals(marine.vidaActual(),40);
+		Assert.assertEquals(marine.vidaActual(),40);
 	}
 
 }

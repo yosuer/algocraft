@@ -5,6 +5,7 @@ public class Marine extends Unidad {
 
 	public Marine(Mapa mapa) {
 		super(mapa);
+		this.vida = 40;
 	}
 
 	@Override

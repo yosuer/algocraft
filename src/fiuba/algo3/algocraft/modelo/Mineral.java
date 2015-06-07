@@ -2,7 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 
-public class Mineral extends Recurso implements IElemento {
+public class Mineral extends Recurso {
 
 	public Mineral(Mapa mapa) {
 		super(mapa);
