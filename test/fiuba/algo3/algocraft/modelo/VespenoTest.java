@@ -52,6 +52,10 @@ public class VespenoTest {
 		Recurso vespeno = new Vespeno(mapa);
 		ExtractorDeGasVespeno extractor = new Refineria(mapa);
 		
+		Posicion pos = new Posicion(2,5,0);
+		vespeno.setPosicion(pos);
+		extractor.setPosicion(pos);
+		
 		vespeno.asignarExtractor(extractor);
 		
 		Assert.assertEquals(vespeno.getExtractor(), extractor);
@@ -62,7 +66,12 @@ public class VespenoTest {
 	{
 		Mapa mapa = new Mapa();
 		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeGasVespeno extractor = new Refineria(mapa);;
+		ExtractorDeGasVespeno extractor = new Refineria(mapa);
+		
+		Posicion posVespeno = new Posicion(2,2,0);
+		vespeno.setPosicion(posVespeno);
+		Posicion posExtractor = new Posicion(3,2,0);
+		extractor.setPosicion(posExtractor);
 		
 		vespeno.asignarExtractor(extractor);
 		
@@ -76,6 +85,10 @@ public class VespenoTest {
 		Recurso vespeno = new Vespeno(mapa);
 		ExtractorDeMineral extractor = new CentroDeMineral(mapa);
 		
+		Posicion pos = new Posicion(1,2,0);
+		vespeno.setPosicion(pos);
+		extractor.setPosicion(pos);
+		
 		vespeno.asignarExtractor(extractor);
 	}
 	
@@ -84,7 +97,12 @@ public class VespenoTest {
 	{
 		Mapa mapa = new Mapa();
 		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeRecursos extractor = new CentroDeMineral(mapa);
+		ExtractorDeMineral extractor = new CentroDeMineral(mapa);
+		
+		Posicion pos = new Posicion(5,2,0);
+		vespeno.setPosicion(pos);
+		extractor.setPosicion(pos);
+		
 		try {
 			vespeno.asignarExtractor(extractor);
 		}catch (ErrorExtractorDeRecursosIncompatible e) {
@@ -100,6 +118,10 @@ public class VespenoTest {
 		Recurso vespeno = new Vespeno(mapa);
 		ExtractorDeGasVespeno extractor = new Asimilador(mapa);
 		
+		Posicion pos = new Posicion(3,7,0);
+		vespeno.setPosicion(pos);
+		extractor.setPosicion(pos);
+		
 		vespeno.asignarExtractor(extractor);
 		
 		Assert.assertEquals(vespeno.getExtractor(), extractor);
@@ -110,7 +132,12 @@ public class VespenoTest {
 	{
 		Mapa mapa = new Mapa();
 		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeGasVespeno extractor = new Asimilador(mapa);;
+		ExtractorDeGasVespeno extractor = new Asimilador(mapa);
+		
+		Posicion posVespeno = new Posicion(4,1,0);
+		vespeno.setPosicion(posVespeno);
+		Posicion posExtractor = new Posicion(1,4,0);
+		extractor.setPosicion(posExtractor);
 		
 		vespeno.asignarExtractor(extractor);
 		
@@ -124,6 +151,10 @@ public class VespenoTest {
 		Recurso vespeno = new Vespeno(mapa);
 		ExtractorDeGasVespeno extractor = new Extractor(mapa);
 		
+		Posicion pos = new Posicion(3,3,0);
+		vespeno.setPosicion(pos);
+		extractor.setPosicion(pos);
+		
 		vespeno.asignarExtractor(extractor);
 		
 		Assert.assertEquals(vespeno.getExtractor(), extractor);
@@ -134,7 +165,12 @@ public class VespenoTest {
 	{
 		Mapa mapa = new Mapa();
 		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeGasVespeno extractor = new Extractor(mapa);;
+		ExtractorDeGasVespeno extractor = new Extractor(mapa);
+		
+		Posicion posVespeno = new Posicion(2,3,0);
+		vespeno.setPosicion(posVespeno);
+		Posicion posExtractor = new Posicion(4,1,0);
+		extractor.setPosicion(posExtractor);
 		
 		vespeno.asignarExtractor(extractor);
 		

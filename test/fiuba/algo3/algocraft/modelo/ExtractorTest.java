@@ -12,6 +12,10 @@ public class ExtractorTest {
 		Mapa mapa = new Mapa();
 		Recurso mineral = new Mineral(mapa);
 		ExtractorDeMineral centroDeMineral = new CentroDeMineral(mapa);
+		
+		Posicion pos = new Posicion(4,3,0);
+		mineral.setPosicion(pos);
+		centroDeMineral.setPosicion(pos);
 
 		mineral.asignarExtractor(centroDeMineral);
 	}
@@ -23,6 +27,10 @@ public class ExtractorTest {
 		ExtractorDeMineral centroDeMineral = new CentroDeMineral(mapa);
 
 		Assert.assertEquals(centroDeMineral.getRecoleccion(), 0);// otro test
+		
+		Posicion pos = new Posicion(3,2,0);
+		mineral.setPosicion(pos);
+		centroDeMineral.setPosicion(pos);
 
 		mineral.asignarExtractor(centroDeMineral);
 
@@ -36,6 +44,10 @@ public class ExtractorTest {
 		Mapa mapa = new Mapa();
 		Recurso mineral = new Mineral(mapa);
 		ExtractorDeMineral centroDeMineral = new CentroDeMineral(mapa);
+		
+		Posicion pos = new Posicion(9,2,0);
+		mineral.setPosicion(pos);
+		centroDeMineral.setPosicion(pos);
 
 		mineral.asignarExtractor(centroDeMineral);
 

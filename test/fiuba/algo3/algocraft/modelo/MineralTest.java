@@ -52,6 +52,10 @@ public class MineralTest {
 		Recurso mineral = new Mineral(mapa);
 		ExtractorDeMineral extractor = new CentroDeMineral(mapa);
 		
+		Posicion pos = new Posicion(3,2,0);
+		mineral.setPosicion(pos);
+		extractor.setPosicion(pos);
+		
 		mineral.asignarExtractor(extractor);
 		
 		Assert.assertEquals(mineral.getExtractor(), extractor);
@@ -63,6 +67,12 @@ public class MineralTest {
 		Mapa mapa = new Mapa();
 		Recurso mineral = new Mineral(mapa);
 		ExtractorDeMineral extractor = new CentroDeMineral(mapa);
+		
+		Posicion posMineral = new Posicion(5,5,0);
+		mineral.setPosicion(posMineral);
+		
+		Posicion posExtractor = new Posicion(4,4,0);
+		extractor.setPosicion(posExtractor);
 		
 		mineral.asignarExtractor(extractor);
 		
@@ -76,6 +86,10 @@ public class MineralTest {
 		Recurso mineral = new Mineral(mapa);
 		ExtractorDeGasVespeno extractor = new Refineria(mapa);
 		
+		Posicion pos = new Posicion(2,3,0);
+		mineral.setPosicion(pos);
+		extractor.setPosicion(pos);
+		
 		mineral.asignarExtractor(extractor);
 	}
 	
@@ -84,7 +98,12 @@ public class MineralTest {
 	{
 		Mapa mapa = new Mapa();
 		Recurso mineral = new Mineral(mapa);
-		ExtractorDeRecursos extractor = new Refineria(mapa);
+		ExtractorDeGasVespeno extractor = new Refineria(mapa);
+		
+		Posicion pos = new Posicion(3,2,0);
+		mineral.setPosicion(pos);
+		extractor.setPosicion(pos);
+		
 		try {
 			mineral.asignarExtractor(extractor);
 		}catch (ErrorExtractorDeRecursosIncompatible e) {
@@ -100,6 +119,10 @@ public class MineralTest {
 		Recurso mineral = new Mineral(mapa);
 		ExtractorDeMineral extractor = new NexoMineral(mapa);
 		
+		Posicion pos = new Posicion(1,1,0);
+		mineral.setPosicion(pos);
+		extractor.setPosicion(pos);
+		
 		mineral.asignarExtractor(extractor);
 		
 		Assert.assertEquals(mineral.getExtractor(), extractor);
@@ -111,6 +134,12 @@ public class MineralTest {
 		Mapa mapa = new Mapa();
 		Recurso mineral = new Mineral(mapa);
 		ExtractorDeMineral extractor = new NexoMineral(mapa);
+		
+		Posicion posMineral = new Posicion(1,3,0);
+		mineral.setPosicion(posMineral);
+		
+		Posicion posExtractor = new Posicion(6,1,0);
+		extractor.setPosicion(posExtractor);
 		
 		mineral.asignarExtractor(extractor);
 		

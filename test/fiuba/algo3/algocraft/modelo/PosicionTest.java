@@ -8,7 +8,7 @@ import fiuba.algo3.algocraft.modelo.Posicion;
 public class PosicionTest {
 
 	@Test
-	public void test01_CrearUnaPosicionConCoordenadasXYyObtenerLasCoordenadas(){
+	public void test01_CrearUnaPosicionConCoordenadasXYZyObtenerLasCoordenadas(){
 		Posicion pos = new Posicion(5,5,5);
 		
 		Assert.assertEquals(5,pos.x());

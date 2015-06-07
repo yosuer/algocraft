@@ -1,7 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
 
-public abstract class Recurso {
+public abstract class Recurso implements IElemento{
 	
 	protected Mapa mapa;
 	protected int reserva;
