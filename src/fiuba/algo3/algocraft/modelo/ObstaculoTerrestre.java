@@ -29,4 +29,10 @@ public class ObstaculoTerrestre implements IElemento {
 		return nivel;
 	}
 
+	@Override
+	public boolean moverseA(Posicion posicion) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
