@@ -5,12 +5,15 @@ public class Asimilador extends ExtractorDeGasVespeno {
 
 	public Asimilador(Mapa mapa) {
 		super(mapa);
-		
+		this.vida = 1000;
+		this.costoMineral = 150;
+		this.costoVespeno = 0;
+		this.tiempoDeConstruccion = 12;
 	}
 
 	@Override
 	public int getNivel() {
-		return 0;
+		return this.nivel;
 	}
 
 	@Override
@@ -21,8 +24,7 @@ public class Asimilador extends ExtractorDeGasVespeno {
 
 	@Override
 	public int vidaActual() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.vida;
 	}
 
 }

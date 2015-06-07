@@ -8,6 +8,10 @@ public class Extractor extends ExtractorDeGasVespeno {
 
 	public Extractor(Mapa mapa) {
 		super(mapa);
+		this.vida = 900;
+		this.costoMineral = 100;
+		this.costoVespeno = 0;
+		this.tiempoDeConstruccion = 7;
 	}
 
 	@Override
@@ -17,7 +21,7 @@ public class Extractor extends ExtractorDeGasVespeno {
 
 	@Override
 	public int getNivel() {
-		return 0;
+		return this.nivel;
 	}
 
 	@Override
@@ -28,8 +32,7 @@ public class Extractor extends ExtractorDeGasVespeno {
 
 	@Override
 	public int vidaActual() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.vida;
 	}
 
 }

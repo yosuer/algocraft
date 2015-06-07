@@ -5,11 +5,15 @@ public class Refineria extends ExtractorDeGasVespeno {
 
 	public Refineria(Mapa mapa) {
 		super(mapa);
+		this.vida = 750;
+		this.costoMineral = 100;
+		this.costoVespeno = 0;
+		this.tiempoDeConstruccion = 6;
 	}
 
 	@Override
 	public int getNivel() {
-		return 0;
+		return this.nivel;
 	}
 
 	@Override
@@ -20,8 +24,7 @@ public class Refineria extends ExtractorDeGasVespeno {
 
 	@Override
 	public int vidaActual() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.vida;
 	}
 
 }
