@@ -11,14 +11,16 @@ public class VespenoTest {
 	@Test
 	public void test01_crearGasVespenoConReservaInicialEn5000()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno(mapa);
 		Assert.assertEquals(vespeno.reservaDisponible(), 5000);
 	}
 	
 	@Test
 	public void test02_CadaExtraccionDeVespenoDevuelve10DeVespenoYReduceEn10LaReservaDisponibleDelVespeno()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno(mapa);
 		int cantidad = vespeno.extraer();
 		
 		Assert.assertEquals(4990, vespeno.reservaDisponible());
@@ -32,7 +34,8 @@ public class VespenoTest {
 	@Test
 	public void test03_LuegoDeAgotarseLaReservaDeVespenoEntrega0DeVespeno()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno(mapa);
 		int cantidad = 0;
 		
 		for (int i = 0; i < 501; i++){
@@ -45,8 +48,9 @@ public class VespenoTest {
 	@Test
 	public void test04_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoTerranEnLaMismaPosicionDaOK()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		ExtractorDeGasVespeno extractor = new Refineria(new Posicion(1,1));
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno(mapa);
+		ExtractorDeGasVespeno extractor = new Refineria(mapa);
 		
 		vespeno.asignarExtractor(extractor);
 		
@@ -56,8 +60,9 @@ public class VespenoTest {
 	@Test
 	public void test05_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoTerranDeDistintaPosicion()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		ExtractorDeGasVespeno extractor = new Refineria(new Posicion(2,5));;
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno(mapa);
+		ExtractorDeGasVespeno extractor = new Refineria(mapa);;
 		
 		vespeno.asignarExtractor(extractor);
 		
@@ -67,8 +72,9 @@ public class VespenoTest {
 	@Test(expected = ErrorExtractorDeRecursosIncompatible.class)
 	public void test06_AUnVespenoSoloSeLePuedeAsignarUnExtractorDeVespeno()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		ExtractorDeMineral extractor = new CentroDeMineral(new Posicion(1,1));
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno(mapa);
+		ExtractorDeMineral extractor = new CentroDeMineral(mapa);
 		
 		vespeno.asignarExtractor(extractor);
 	}
@@ -76,8 +82,9 @@ public class VespenoTest {
 	@Test
 	public void test07_AUnVespenoSoloSeLePuedeAsignarUnExtractorDeVespeno()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		ExtractorDeRecursos extractor = new CentroDeMineral(new Posicion(1,1));
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno(mapa);
+		ExtractorDeRecursos extractor = new CentroDeMineral(mapa);
 		try {
 			vespeno.asignarExtractor(extractor);
 		}catch (ErrorExtractorDeRecursosIncompatible e) {
@@ -89,8 +96,9 @@ public class VespenoTest {
 	@Test
 	public void test08_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoProtossEnLaMismaPosicionDaOK()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		ExtractorDeGasVespeno extractor = new Asimilador(new Posicion(1,1));
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno(mapa);
+		ExtractorDeGasVespeno extractor = new Asimilador(mapa);
 		
 		vespeno.asignarExtractor(extractor);
 		
@@ -100,8 +108,9 @@ public class VespenoTest {
 	@Test
 	public void test09_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoProtossDeDistintaPosicion()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		ExtractorDeGasVespeno extractor = new Asimilador(new Posicion(2,5));;
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno(mapa);
+		ExtractorDeGasVespeno extractor = new Asimilador(mapa);;
 		
 		vespeno.asignarExtractor(extractor);
 		
@@ -111,8 +120,9 @@ public class VespenoTest {
 	@Test
 	public void test10_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoZergEnLaMismaPosicionDaOK()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		ExtractorDeGasVespeno extractor = new Extractor(new Posicion(1,1));
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno(mapa);
+		ExtractorDeGasVespeno extractor = new Extractor(mapa);
 		
 		vespeno.asignarExtractor(extractor);
 		
@@ -122,8 +132,9 @@ public class VespenoTest {
 	@Test
 	public void test11_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoZergDeDistintaPosicion()
 	{
-		Recurso vespeno = new Vespeno(new Posicion(1,1));
-		ExtractorDeGasVespeno extractor = new Extractor(new Posicion(2,5));;
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno(mapa);
+		ExtractorDeGasVespeno extractor = new Extractor(mapa);;
 		
 		vespeno.asignarExtractor(extractor);
 		
