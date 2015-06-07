@@ -14,7 +14,7 @@ public class ZergMineral extends ExtractorDeMineral {
 
 	@Override
 	public int getNivel() {
-		return 0;
+		return this.nivel;
 	}
 
 	@Override
@@ -25,8 +25,7 @@ public class ZergMineral extends ExtractorDeMineral {
 
 	@Override
 	public int vidaActual() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.vida;
 	}
 
 }
