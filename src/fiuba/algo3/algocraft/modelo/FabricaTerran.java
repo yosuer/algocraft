@@ -7,23 +7,23 @@ public class FabricaTerran implements FabricaDeElementos{
 	}
 
 	@Override
-	public EdificioUnidadesBasicas crearFabricaUnidadesBasicas(Posicion pos) {
-		return new Barraca();
+	public EdificioUnidadesBasicas crearFabricaUnidadesBasicas(Mapa mapa) {
+		return new Barraca(mapa);
 	}
 
 	@Override
-	public ExtractorDeGasVespeno crearExtractorDeGasVespeno(Posicion pos) {
-		return (new Refineria(pos));
+	public ExtractorDeGasVespeno crearExtractorDeGasVespeno(Mapa mapa) {
+		return (new Refineria(mapa));
 	}
 
 	@Override
-	public BasePrincipal crearBase(Posicion pos) {
-		return (new CentroDeMando(pos));
+	public BasePrincipal crearBase(Mapa mapa) {
+		return (new CentroDeMando(mapa));
 	}
 
 	@Override
-	public ExtractorDeMineral crearExtractorDeMineral(Posicion pos) {
-		return (new CentroDeMineral(pos));
+	public ExtractorDeMineral crearExtractorDeMineral(Mapa mapa) {
+		return (new CentroDeMineral(mapa));
 	}
 
 }

@@ -13,7 +13,7 @@ public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
 
 	@Override
 	public Unidad crearUnidad() {
-		return new Zerling();
+		return new Zerling(this.mapa);
 	}
 
 	@Override

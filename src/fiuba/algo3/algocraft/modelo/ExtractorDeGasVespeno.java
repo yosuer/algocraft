@@ -6,8 +6,8 @@ public abstract class ExtractorDeGasVespeno extends Edificio implements Extracto
 	protected Vespeno recurso;
 	protected int recolectado;
 	
-	public ExtractorDeGasVespeno(Posicion posicion) {
-		super(posicion);
+	public ExtractorDeGasVespeno(Mapa mapa) {
+		super(mapa);
 	}
 
 	public void realizarExtraccion(){
