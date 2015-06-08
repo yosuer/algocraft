@@ -1,8 +1,8 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class CentroDeReproduccion extends EdificioUnidadesBasicas {
+public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
 
-	public CentroDeReproduccion(Mapa mapa) {
+	public ReservaDeReproduccion(Mapa mapa) {
 		super(mapa);
 		this.vida = 1000;
 		this.costoMineral = 150;

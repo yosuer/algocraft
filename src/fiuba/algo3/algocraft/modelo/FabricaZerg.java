@@ -8,7 +8,7 @@ public class FabricaZerg implements FabricaDeElementos{
 	
 	@Override
 	public EdificioUnidadesBasicas crearFabricaUnidadesBasicas(Mapa mapa) {
-		return (new CentroDeReproduccion(mapa));
+		return (new ReservaDeReproduccion(mapa));
 	}
 
 	@Override
