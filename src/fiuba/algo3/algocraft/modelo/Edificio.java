@@ -24,6 +24,10 @@ public abstract class Edificio implements IElemento{
 		return this.posicion;
 	}
 	
+	public int getNivel() {
+		return this.nivel;
+	}
+	
 	public abstract int vidaActual();
 	
 	public int getCostoMineral() {
