@@ -11,10 +11,10 @@ public class EdificioTest {
 	@Test
 	public void IgualdadDeEdificios() {
 		Mapa mapa = new Mapa();
-		Edificio barraca1 = new Barraca(mapa);
-		Edificio barraca2 = new Barraca(mapa);
-		Edificio acceso1 = new Acceso(mapa);
-		Edificio acceso2 = new Acceso(mapa);
+		Edificio barraca1 = new Barraca();
+		Edificio barraca2 = new Barraca();
+		Edificio acceso1 = new Acceso();
+		Edificio acceso2 = new Acceso();
 		
 		Assert.assertEquals(barraca1, barraca2);
 		Assert.assertNotEquals(barraca1, acceso1);
@@ -25,12 +25,12 @@ public class EdificioTest {
 	@Test
 	public void IgualDeEdificiosConContainsAll() {
 		Mapa mapa = new Mapa();
-		Edificio barraca1 = new Barraca(mapa);
-		Edificio acceso1 = new Acceso(mapa);
-		Edificio reserva = new ReservaDeReproduccion(mapa);
+		Edificio barraca1 = new Barraca();
+		Edificio acceso1 = new Acceso();
+		Edificio reserva = new ReservaDeReproduccion();
 		
-		Edificio barraca2 = new Barraca(mapa);
-		Edificio acceso2 = new Acceso(mapa);
+		Edificio barraca2 = new Barraca();
+		Edificio acceso2 = new Acceso();
 		
 		Collection<Edificio> edificiosTotales = new ArrayList<Edificio>();
 		edificiosTotales.add(barraca1);
@@ -45,7 +45,7 @@ public class EdificioTest {
 		edificiosABuscar.add(reserva);
 		Assert.assertFalse(edificiosTotales.containsAll(edificiosABuscar));
 		
-		edificiosTotales.add(new ReservaDeReproduccion(mapa));
+		edificiosTotales.add(new ReservaDeReproduccion());
 		Assert.assertTrue(edificiosTotales.containsAll(edificiosABuscar));
 		
 		edificiosABuscar.clear();;

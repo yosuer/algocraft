@@ -14,8 +14,7 @@ public class EdificioUnidadesBasicasTest {
 	
 	@Test
 	public void test02_CrearUnaBarraca(){
-		Mapa mapa = new Mapa();
-		Barraca barraca = new Barraca(mapa);
+		Barraca barraca = new Barraca();
 		
 		Assert.assertEquals(barraca.vidaActual(), 1000);
 		Assert.assertEquals(barraca.getCostoMineral(), 150);
@@ -25,8 +24,7 @@ public class EdificioUnidadesBasicasTest {
 	
 	@Test
 	public void test03_CrearUnAcceso(){
-		Mapa mapa = new Mapa();
-		Acceso acceso = new Acceso(mapa);
+		Acceso acceso = new Acceso();
 		
 		Assert.assertEquals(acceso.vidaActual(), 1000);
 		//Assert.assertEquals(acceso.escudoActual(), 500);
@@ -37,8 +35,7 @@ public class EdificioUnidadesBasicasTest {
 	
 	@Test
 	public void test04_CrearUnaReservaDeReproduccion(){
-		Mapa mapa = new Mapa();
-		ReservaDeReproduccion reservaReprod = new ReservaDeReproduccion(mapa);
+		ReservaDeReproduccion reservaReprod = new ReservaDeReproduccion();
 		
 		Assert.assertEquals(reservaReprod.vidaActual(), 1000);
 		Assert.assertEquals(reservaReprod.getCostoMineral(), 150);

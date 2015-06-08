@@ -46,6 +46,7 @@ public class MineralTest {
 	@Test
 	public void test04_SiAUnMineralSeLeAsignaUnExtractorMineralTerranEnLaMismaPosicionDaOK()
 	{
+		Mapa mapa = new Mapa();
 		Recurso mineral = new Mineral();
 		ExtractorDeMineral extractor = new CentroDeMineral();
 		

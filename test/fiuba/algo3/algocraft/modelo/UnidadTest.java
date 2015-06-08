@@ -9,7 +9,7 @@ public class UnidadTest {
 	public void CrearMarine() {
 		Mapa mapa = new Mapa();
 		
-		Barraca barraca = new Barraca(mapa);
+		Barraca barraca = new Barraca();
 		Unidad marine = barraca.crearUnidad();
 		
 		Assert.assertEquals(marine.vidaActual(),40);
@@ -21,7 +21,7 @@ public class UnidadTest {
 	public void CrearZealot() {
 		Mapa mapa = new Mapa();
 		
-		Acceso acceso = new Acceso(mapa);
+		Acceso acceso = new Acceso();
 		Unidad zealot = acceso.crearUnidad();
 		
 		Assert.assertEquals(zealot.vidaActual(),100);
@@ -31,7 +31,7 @@ public class UnidadTest {
 	public void CrearZerling() {
 		Mapa mapa = new Mapa();
 		
-		ReservaDeReproduccion reserva = new ReservaDeReproduccion(mapa);
+		ReservaDeReproduccion reserva = new ReservaDeReproduccion();
 		Unidad zerling = reserva.crearUnidad();
 		
 		Assert.assertEquals(zerling.vidaActual(),35);

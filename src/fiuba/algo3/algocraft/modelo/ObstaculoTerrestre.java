@@ -3,23 +3,26 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
+
 
 public class ObstaculoTerrestre implements IElemento {
 	
-	Posicion pos;
+	Posicion posicion;
 	int nivel;
+	Mapa mapa;
 	
 	public ObstaculoTerrestre() {
 	}
 
 	@Override
 	public Posicion getPosicion() {
-		return pos;
+		return posicion;
 	}
 
 	@Override
 	public void setPosicion(Posicion posicion) {
-		this.pos = posicion;
+		this.posicion = posicion;
 	}
 
 	@Override
@@ -37,10 +40,10 @@ public class ObstaculoTerrestre implements IElemento {
 		return new ArrayList<IElemento>();
 	}
 
-	@Override
-	public void agregarseEn(Mapa mapa) {
-		// TODO Auto-generated method stub
-		
+	public void agregarseEn(Mapa mapa){
+		if ( mapa.estaOcupado(posicion.x(), posicion.y(), posicion.z()) )
+				throw new ErrorPosicionOcupada();
+		this.mapa = mapa;
 	}
 
 }

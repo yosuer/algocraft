@@ -17,11 +17,4 @@ public class Zerling extends Unidad {
 	public int vidaActual() {
 		return this.vida;
 	}
-
-	@Override
-	public void agregarseEn(Mapa mapa) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

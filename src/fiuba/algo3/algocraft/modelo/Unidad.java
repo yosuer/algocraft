@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
-import fiuba.algo3.algocraft.excepciones.PosicionOcupada;
+import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 
 public abstract class Unidad implements IElemento {
@@ -54,7 +54,7 @@ public abstract class Unidad implements IElemento {
 	
 	public void agregarseEn(Mapa mapa){
 		if ( mapa.estaOcupado(posicion.x(), posicion.y(), posicion.z()) )
-				throw new PosicionOcupada();
+				throw new ErrorPosicionOcupada();
 		this.mapa = mapa;
 	}
 

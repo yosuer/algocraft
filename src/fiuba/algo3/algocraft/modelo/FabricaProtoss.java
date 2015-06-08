@@ -4,12 +4,12 @@ package fiuba.algo3.algocraft.modelo;
 public class FabricaProtoss implements FabricaDeElementos {
 
 	@Override
-	public EdificioUnidadesBasicas crearFabricaUnidadesBasicas() {
+	public EdificioUnidadesBasicas crearFabricaUnidadesBasicas(Mapa mapa) {
 		return (new Acceso());
 	}
 
 	@Override
-	public ExtractorDeGasVespeno crearExtractorDeGasVespeno() {
+	public ExtractorDeGasVespeno crearExtractorDeGasVespeno(Mapa mapa) {
 		return (new Asimilador());
 	}
 
@@ -19,22 +19,22 @@ public class FabricaProtoss implements FabricaDeElementos {
 	}
 
 	@Override
-	public ExtractorDeMineral crearExtractorDeMineral() {
+	public ExtractorDeMineral crearExtractorDeMineral(Mapa mapa) {
 		return (new NexoMineral());
 	}
 
 	@Override
-	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves() {
+	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves(Mapa mapa) {
 		return (new PuertoEstelarProtoss());
 	}
 
 	@Override
-	public EdificioUnidadesAvanzadas crearEdificioUnidadesAvanzadas() {
+	public EdificioUnidadesAvanzadas crearEdificioUnidadesAvanzadas(Mapa mapa) {
 		return (new ArchivoTemplario());
 	}
 
 	@Override
-	public EdificioCasa crearEdificioCasa() {
+	public EdificioCasa crearEdificioCasa(Mapa mapa) {
 		return (new Pilon());
 	}
 

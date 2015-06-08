@@ -57,11 +57,5 @@ public class Mineral extends Recurso {
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;
 	}
-
-	@Override
-	public void agregarseEn(Mapa mapa) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }

@@ -2,7 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
-import fiuba.algo3.algocraft.excepciones.PosicionOcupada;
+import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 
 public abstract class ExtractorDeMineral extends Edificio 

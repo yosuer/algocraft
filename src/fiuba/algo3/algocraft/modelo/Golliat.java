@@ -15,10 +15,4 @@ public class Golliat extends Unidad {
 		return this.vida;
 	}
 
-	@Override
-	public void agregarseEn(Mapa mapa) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

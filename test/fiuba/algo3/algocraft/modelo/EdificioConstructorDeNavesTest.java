@@ -7,8 +7,7 @@ public class EdificioConstructorDeNavesTest {
 	
 	@Test
 	public void test01_CrearUnPuertoEstelarTerran(){
-		Mapa mapa = new Mapa();
-		PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran(mapa);
+		PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran();
 		
 		Assert.assertEquals(puertoEstelar.vidaActual(), 1300);
 		Assert.assertEquals(puertoEstelar.getCostoMineral(), 150);
@@ -18,8 +17,7 @@ public class EdificioConstructorDeNavesTest {
 	
 	@Test
 	public void test02_CrearUnPuertoEstelarProtoss(){
-		Mapa mapa = new Mapa();
-		PuertoEstelarProtoss puertoEstelar = new PuertoEstelarProtoss(mapa);
+		PuertoEstelarProtoss puertoEstelar = new PuertoEstelarProtoss();
 		
 		Assert.assertEquals(puertoEstelar.vidaActual(), 1200);
 		//Assert.assertEquals(acceso.escudoActual(), 600);
@@ -30,8 +28,7 @@ public class EdificioConstructorDeNavesTest {
 	
 	@Test
 	public void test03_CrearUnaReservaDeReproduccion(){
-		Mapa mapa = new Mapa();
-		Espiral espiral = new Espiral(mapa);
+		Espiral espiral = new Espiral();
 		
 		Assert.assertEquals(espiral.vidaActual(), 1200);
 		Assert.assertEquals(espiral.getCostoMineral(), 150);
