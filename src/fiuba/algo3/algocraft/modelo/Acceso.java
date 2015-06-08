@@ -6,10 +6,10 @@ public class Acceso extends EdificioUnidadesBasicas {
 	
 	public Acceso(Mapa mapa) {
 		super(mapa);
-		this.vida = 900;
-		this.costoMineral = 100;
+		this.vida = 1000;
+		this.costoMineral = 150;
 		this.costoVespeno = 0;
-		this.tiempoDeConstruccion = 6;
+		this.tiempoDeConstruccion = 8;
 	}
 
 	@Override
