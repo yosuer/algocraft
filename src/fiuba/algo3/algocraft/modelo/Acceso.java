@@ -4,8 +4,7 @@ package fiuba.algo3.algocraft.modelo;
 public class Acceso extends EdificioUnidadesBasicas {
 
 	
-	public Acceso(Mapa mapa) {
-		super(mapa);
+	public Acceso() {
 		this.vida = 1000;
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
