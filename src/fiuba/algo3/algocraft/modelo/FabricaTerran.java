@@ -35,6 +35,11 @@ public class FabricaTerran implements FabricaDeElementos{
 	public EdificioUnidadesAvanzadas crearEdificioUnidadesAvanzadas(Mapa mapa) {
 		return (new Fabrica(mapa));
 	}
+
+	@Override
+	public EdificioCasa crearEdificioCasa(Mapa mapa) {
+		return (new DepositoDeSuministros(mapa));
+	}
 	
 	
 	

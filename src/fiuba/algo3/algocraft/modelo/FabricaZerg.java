@@ -35,6 +35,11 @@ public class FabricaZerg implements FabricaDeElementos{
 	public EdificioUnidadesAvanzadas crearEdificioUnidadesAvanzadas(Mapa mapa) {
 		return (new GuaridaDeHidralisco(mapa));
 	}
+
+	@Override
+	public EdificioCasa crearEdificioCasa(Mapa mapa) {
+		return (new AmoSupremo(mapa));
+	}
 	
 
 }
