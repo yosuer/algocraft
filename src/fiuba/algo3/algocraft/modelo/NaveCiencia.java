@@ -11,12 +11,6 @@ public class NaveCiencia extends Unidad {
 	}
 
 	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public int getNivel() {
 		// TODO Auto-generated method stub
 		return 0;
@@ -26,6 +20,12 @@ public class NaveCiencia extends Unidad {
 	public int vidaActual() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void agregarseEn(Mapa mapa) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

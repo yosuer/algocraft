@@ -3,8 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Zealot extends Unidad {
 
-	public Zealot(Mapa mapa) {
-		super(mapa);
+	public Zealot() {
 		this.vida = 100;
 	}
 
@@ -16,6 +15,12 @@ public class Zealot extends Unidad {
 	@Override
 	public int vidaActual() {
 		return this.vida;
+	}
+
+	@Override
+	public void agregarseEn(Mapa mapa) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

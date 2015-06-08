@@ -21,7 +21,7 @@ public class MapaTest {
 	@Test
 	public void test02_DefinirMineralesEnUnaPosicionDelMapa(){
 		Mapa mapa = new Mapa();
-		IElemento mineral = new Mineral(mapa);
+		IElemento mineral = new Mineral();
 		
 		mapa.agregarElemento(1,1,mineral);
 		
@@ -31,7 +31,7 @@ public class MapaTest {
 	@Test
 	public void test03_DefinirVespenoEnUnaPosicionDelMapa(){
 		Mapa mapa = new Mapa();
-		IElemento vespeno = new Vespeno(mapa);
+		IElemento vespeno = new Vespeno();
 		
 		mapa.agregarElemento(1,1,vespeno);
 		
@@ -53,8 +53,8 @@ public class MapaTest {
 	@Test
 	public void test05_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorOtroRecurso(){
 		Mapa mapa = new Mapa();
-		IElemento vespeno = new Vespeno(mapa);
-		IElemento mineral = new Mineral(mapa);
+		IElemento vespeno = new Vespeno();
+		IElemento mineral = new Mineral();
 		
 		mapa.agregarElemento(1,1,vespeno);
 		mapa.agregarElemento(1,1,mineral);
@@ -69,8 +69,8 @@ public class MapaTest {
 		
 		ObstaculoTerrestre obstaculo = 
 				new ObstaculoTerrestre();
-		IElemento vespeno = new Vespeno(mapa);
-		IElemento mineral = new Mineral(mapa);
+		IElemento vespeno = new Vespeno();
+		IElemento mineral = new Mineral();
 		
 		mapa.agregarElemento(4,4,obstaculo);
 		mapa.agregarElemento(4,4,vespeno);

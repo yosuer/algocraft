@@ -3,8 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Marine extends Unidad {
 
-	public Marine(Mapa mapa) {
-		super(mapa);
+	public Marine() {
 		this.vida = 40;
 		this.costoMineral = 50;
 		this.costoVespeno = 0;
@@ -19,6 +18,12 @@ public class Marine extends Unidad {
 	@Override
 	public int vidaActual() {
 		return this.vida;
+	}
+
+	@Override
+	public void agregarseEn(Mapa mapa) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

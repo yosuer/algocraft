@@ -2,8 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Golliat extends Unidad {
 
-	public Golliat(Mapa mapa) {
-		super(mapa);
+	public Golliat() {
 	}
 
 	@Override
@@ -14,6 +13,12 @@ public class Golliat extends Unidad {
 	@Override
 	public int vidaActual() {
 		return this.vida;
+	}
+
+	@Override
+	public void agregarseEn(Mapa mapa) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

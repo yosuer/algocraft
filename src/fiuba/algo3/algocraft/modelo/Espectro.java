@@ -8,11 +8,6 @@ public class Espectro extends Unidad {
 	}
 
 	@Override
-	public void agregarSobre(IElemento otroElemento) {
-
-	}
-
-	@Override
 	public int getNivel() {
 		return this.nivel;
 	}
@@ -20,6 +15,12 @@ public class Espectro extends Unidad {
 	@Override
 	public int vidaActual() {
 		return this.vida;
+	}
+
+	@Override
+	public void agregarseEn(Mapa mapa) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

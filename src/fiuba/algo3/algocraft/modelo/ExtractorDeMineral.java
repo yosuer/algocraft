@@ -9,8 +9,7 @@ public abstract class ExtractorDeMineral extends Edificio
 	protected int costoMineral;
 	protected int costoVespeno;
 	
-	public ExtractorDeMineral(Mapa mapa){
-		super(mapa);
+	public ExtractorDeMineral(){
 	}
 
 	public void realizarExtraccion(){

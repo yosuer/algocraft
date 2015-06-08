@@ -14,9 +14,7 @@ public abstract class Unidad implements IElemento {
 	protected Mapa mapa;
 	protected int nivel = 0;
 	
-	public Unidad(Mapa mapa) {
-		this.mapa = mapa;
-		this.nivel = 0;
+	public Unidad(){
 	}
 	
 	public void setPosicion(Posicion posicion){

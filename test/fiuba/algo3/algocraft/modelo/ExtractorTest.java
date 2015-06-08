@@ -9,9 +9,8 @@ public class ExtractorTest {
 
 	@Test
 	public void test01_soloSePuedeAgregarExtractorDeMineralSobreMineral() {
-		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
-		ExtractorDeMineral centroDeMineral = new CentroDeMineral(mapa);
+		Recurso mineral = new Mineral();
+		ExtractorDeMineral centroDeMineral = new CentroDeMineral();
 		
 		Posicion pos = new Posicion(4,3,0);
 		mineral.setPosicion(pos);
@@ -22,9 +21,9 @@ public class ExtractorTest {
 
 	@Test
 	public void test02_CadaExtraccionDeMineralSuma10EnElDepositoDelExtractor() {
-		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
-		ExtractorDeMineral centroDeMineral = new CentroDeMineral(mapa);
+		
+		Recurso mineral = new Mineral();
+		ExtractorDeMineral centroDeMineral = new CentroDeMineral();
 
 		Assert.assertEquals(centroDeMineral.getRecoleccion(), 0);// otro test
 		
@@ -41,9 +40,8 @@ public class ExtractorTest {
 
 	@Test
 	public void test03_SiSeExtraeSeisVecesSeTiene60DeMineralRecolectado() {
-		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
-		ExtractorDeMineral centroDeMineral = new CentroDeMineral(mapa);
+		Recurso mineral = new Mineral();
+		ExtractorDeMineral centroDeMineral = new CentroDeMineral();
 		
 		Posicion pos = new Posicion(9,2,0);
 		mineral.setPosicion(pos);
@@ -59,8 +57,7 @@ public class ExtractorTest {
 	
 	@Test
 	public void test04_UnCentroDeMineralTieneCostoMinera50YCostoVespeno0(){
-		Mapa mapa = new Mapa();
-		ExtractorDeMineral extractor = new CentroDeMineral(mapa);
+		ExtractorDeMineral extractor = new CentroDeMineral();
 		
 		Assert.assertEquals(50,extractor.getCostoMineral());
 		Assert.assertEquals(0,extractor.getCostoVespeno());

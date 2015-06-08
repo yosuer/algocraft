@@ -11,8 +11,7 @@ public class MineralTest {
 	@Test
 	public void test01_crearNodoDeMineralConReservaInicialEn200()
 	{
-		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
+		Recurso mineral = new Mineral();
 		Assert.assertEquals(mineral.reservaDisponible(), 200);
 	}
 	
@@ -20,7 +19,7 @@ public class MineralTest {
 	public void test02_CadaExtraccionDeUnMineralDevuelve10DeMineralYReduceEn10LaReservaDisponibleDelMineral()
 	{
 		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
+		Recurso mineral = new Mineral();
 		int cantidad = mineral.extraer();
 		
 		Assert.assertEquals(190, mineral.reservaDisponible());
@@ -34,8 +33,7 @@ public class MineralTest {
 	@Test
 	public void test03_LuegoDeAgotarseLaReservaDeUnMineralEntrega0DeMineral()
 	{
-		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
+		Recurso mineral = new Mineral();
 		int cantidad = 0;
 		
 		for (int i = 0; i < 101; i++){
@@ -48,9 +46,8 @@ public class MineralTest {
 	@Test
 	public void test04_SiAUnMineralSeLeAsignaUnExtractorMineralTerranEnLaMismaPosicionDaOK()
 	{
-		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
-		ExtractorDeMineral extractor = new CentroDeMineral(mapa);
+		Recurso mineral = new Mineral();
+		ExtractorDeMineral extractor = new CentroDeMineral();
 		
 		mapa.agregarElemento(3, 2, mineral);
 		
@@ -64,9 +61,8 @@ public class MineralTest {
 	@Test
 	public void test05_AUnMineralNoSeLePuedeAsignarUnExtractorMineralTerranDeDistintaPosicion()
 	{
-		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
-		ExtractorDeMineral extractor = new CentroDeMineral(mapa);
+		Recurso mineral = new Mineral();
+		ExtractorDeMineral extractor = new CentroDeMineral();
 		
 		Posicion posMineral = new Posicion(5,5,0);
 		mineral.setPosicion(posMineral);
@@ -82,9 +78,9 @@ public class MineralTest {
 	@Test(expected = ErrorExtractorDeRecursosIncompatible.class)
 	public void test06_AUnMineralSoloSeLePuedeAsignarUnExtractorDeMineral()
 	{
-		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
-		ExtractorDeGasVespeno extractor = new Refineria(mapa);
+		
+		Recurso mineral = new Mineral();
+		ExtractorDeGasVespeno extractor = new Refineria();
 		
 		Posicion pos = new Posicion(2,3,0);
 		mineral.setPosicion(pos);
@@ -96,9 +92,8 @@ public class MineralTest {
 	@Test
 	public void test07_AUnMineralSoloSeLePuedeAsignarUnExtractorDeMineral()
 	{
-		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
-		ExtractorDeGasVespeno extractor = new Refineria(mapa);
+		Recurso mineral = new Mineral();
+		ExtractorDeGasVespeno extractor = new Refineria();
 		
 		Posicion pos = new Posicion(3,2,0);
 		mineral.setPosicion(pos);
@@ -115,9 +110,8 @@ public class MineralTest {
 	@Test
 	public void test08_SiAUnMineralSeLeAsignaUnExtractorMineralProtossEnLaMismaPosicionDaOK()
 	{
-		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
-		ExtractorDeMineral extractor = new NexoMineral(mapa);
+		Recurso mineral = new Mineral();
+		ExtractorDeMineral extractor = new NexoMineral();
 		
 		Posicion pos = new Posicion(1,1,0);
 		mineral.setPosicion(pos);
@@ -131,9 +125,9 @@ public class MineralTest {
 	@Test
 	public void test09_AUnMineralNoSeLePuedeAsignarUnExtractorMineralProtossnDeDistintaPosicion()
 	{
-		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral(mapa);
-		ExtractorDeMineral extractor = new NexoMineral(mapa);
+		
+		Recurso mineral = new Mineral();
+		ExtractorDeMineral extractor = new NexoMineral();
 		
 		Posicion posMineral = new Posicion(1,3,0);
 		mineral.setPosicion(posMineral);

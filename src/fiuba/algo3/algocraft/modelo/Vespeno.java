@@ -4,9 +4,9 @@ import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 
 public class Vespeno extends Recurso implements IElemento {
 
-	public Vespeno(Mapa mapa) {
-		super(mapa);
-		this.reserva = 5000;
+	public Vespeno() {
+		this.reserva = 1000;
+		this.nivel = 0;
 	}
 
 	private int reserva;
@@ -56,6 +56,12 @@ public class Vespeno extends Recurso implements IElemento {
 	@Override
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;
+	}
+
+	@Override
+	public void agregarseEn(Mapa mapa) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

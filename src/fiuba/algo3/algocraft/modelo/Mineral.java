@@ -4,8 +4,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 
 public class Mineral extends Recurso {
 
-	public Mineral(Mapa mapa) {
-		super(mapa);
+	public Mineral() {
 		this.reserva = 200;
 	}
 
@@ -57,6 +56,12 @@ public class Mineral extends Recurso {
 	@Override
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;
+	}
+
+	@Override
+	public void agregarseEn(Mapa mapa) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -37,4 +37,10 @@ public class ObstaculoTerrestre implements IElemento {
 		return new ArrayList<IElemento>();
 	}
 
+	@Override
+	public void agregarseEn(Mapa mapa) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

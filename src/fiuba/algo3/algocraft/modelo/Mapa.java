@@ -82,7 +82,7 @@ public class Mapa {
 		this.agregarElemento(5,2,new Mineral(this));
 		this.agregarElemento(6,2,new Mineral(this));
 		
-		this.agregarElemento(4,6,new Vespeno(this));
+		this.agregarElemento(4,6,new Vespeno());
 		
 		//Jugador2
 		this.agregarElemento(99,99,new Mineral(this));
@@ -95,7 +95,7 @@ public class Mapa {
 		this.agregarElemento(99,96,new Mineral(this));
 		this.agregarElemento(99,95,new Mineral(this));
 
-		this.agregarElemento(95,97,new Vespeno(this));
+		this.agregarElemento(95,97,new Vespeno());
 	}
 
 	public void moverElemento(IElemento elemento, int x, int y) {

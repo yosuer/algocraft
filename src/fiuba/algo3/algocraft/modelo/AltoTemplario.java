@@ -2,9 +2,6 @@ package fiuba.algo3.algocraft.modelo;
 
 public class AltoTemplario extends Unidad {
 
-	public AltoTemplario(Mapa mapa) {
-		super(mapa);
-	}
 
 	@Override
 	public int getNivel() {
@@ -14,6 +11,12 @@ public class AltoTemplario extends Unidad {
 	@Override
 	public int vidaActual() {
 		return this.vida;
+	}
+
+	@Override
+	public void agregarseEn(Mapa mapa) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -9,36 +9,34 @@ import fiuba.algo3.algocraft.modelo.Posicion;
 public class VespenoTest {
 
 	@Test
-	public void test01_crearGasVespenoConReservaInicialEn5000()
+	public void test01_crearGasVespenoConReservaInicialEn1000()
 	{
-		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(mapa);
-		Assert.assertEquals(vespeno.reservaDisponible(), 5000);
+		Recurso vespeno = new Vespeno();
+		Assert.assertEquals(vespeno.reservaDisponible(), 1000);
 	}
 	
 	@Test
 	public void test02_CadaExtraccionDeVespenoDevuelve10DeVespenoYReduceEn10LaReservaDisponibleDelVespeno()
 	{
-		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(mapa);
+		
+		Recurso vespeno = new Vespeno();
 		int cantidad = vespeno.extraer();
 		
-		Assert.assertEquals(4990, vespeno.reservaDisponible());
+		Assert.assertEquals(990, vespeno.reservaDisponible());
 		Assert.assertEquals(cantidad,10);
 		
 		cantidad = vespeno.extraer();
-		Assert.assertEquals(4980, vespeno.reservaDisponible());
+		Assert.assertEquals(980, vespeno.reservaDisponible());
 		Assert.assertEquals(cantidad,10);
 	}
 	
 	@Test
 	public void test03_LuegoDeAgotarseLaReservaDeVespenoEntrega0DeVespeno()
 	{
-		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(mapa);
+		Recurso vespeno = new Vespeno();
 		int cantidad = 0;
 		
-		for (int i = 0; i < 501; i++){
+		for (int i = 0; i < 101; i++){
 			cantidad = vespeno.extraer();
 		}
 		Assert.assertEquals(vespeno.reservaDisponible(), 0);
@@ -48,9 +46,8 @@ public class VespenoTest {
 	@Test
 	public void test04_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoTerranEnLaMismaPosicionDaOK()
 	{
-		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeGasVespeno extractor = new Refineria(mapa);
+		Recurso vespeno = new Vespeno();
+		ExtractorDeGasVespeno extractor = new Refineria();
 		
 		Posicion pos = new Posicion(2,5,0);
 		vespeno.setPosicion(pos);
@@ -64,9 +61,8 @@ public class VespenoTest {
 	@Test
 	public void test05_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoTerranDeDistintaPosicion()
 	{
-		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeGasVespeno extractor = new Refineria(mapa);
+		Recurso vespeno = new Vespeno();
+		ExtractorDeGasVespeno extractor = new Refineria();
 		
 		Posicion posVespeno = new Posicion(2,2,0);
 		vespeno.setPosicion(posVespeno);
@@ -81,9 +77,9 @@ public class VespenoTest {
 	@Test(expected = ErrorExtractorDeRecursosIncompatible.class)
 	public void test06_AUnVespenoSoloSeLePuedeAsignarUnExtractorDeVespeno()
 	{
-		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeMineral extractor = new CentroDeMineral(mapa);
+		
+		Recurso vespeno = new Vespeno();
+		ExtractorDeMineral extractor = new CentroDeMineral();
 		
 		Posicion pos = new Posicion(1,2,0);
 		vespeno.setPosicion(pos);
@@ -95,9 +91,9 @@ public class VespenoTest {
 	@Test
 	public void test07_AUnVespenoSoloSeLePuedeAsignarUnExtractorDeVespeno()
 	{
-		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeMineral extractor = new CentroDeMineral(mapa);
+		
+		Recurso vespeno = new Vespeno();
+		ExtractorDeMineral extractor = new CentroDeMineral();
 		
 		Posicion pos = new Posicion(5,2,0);
 		vespeno.setPosicion(pos);
@@ -114,9 +110,9 @@ public class VespenoTest {
 	@Test
 	public void test08_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoProtossEnLaMismaPosicionDaOK()
 	{
-		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeGasVespeno extractor = new Asimilador(mapa);
+		
+		Recurso vespeno = new Vespeno();
+		ExtractorDeGasVespeno extractor = new Asimilador();
 		
 		Posicion pos = new Posicion(3,7,0);
 		vespeno.setPosicion(pos);
@@ -131,8 +127,8 @@ public class VespenoTest {
 	public void test09_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoProtossDeDistintaPosicion()
 	{
 		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeGasVespeno extractor = new Asimilador(mapa);
+		Recurso vespeno = new Vespeno();
+		ExtractorDeGasVespeno extractor = new Asimilador();
 		
 		Posicion posVespeno = new Posicion(4,1,0);
 		vespeno.setPosicion(posVespeno);
@@ -147,9 +143,8 @@ public class VespenoTest {
 	@Test
 	public void test10_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoZergEnLaMismaPosicionDaOK()
 	{
-		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeGasVespeno extractor = new Extractor(mapa);
+		Recurso vespeno = new Vespeno();
+		ExtractorDeGasVespeno extractor = new Extractor();
 		
 		Posicion pos = new Posicion(3,3,0);
 		vespeno.setPosicion(pos);
@@ -163,9 +158,9 @@ public class VespenoTest {
 	@Test
 	public void test11_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoZergDeDistintaPosicion()
 	{
-		Mapa mapa = new Mapa();
-		Recurso vespeno = new Vespeno(mapa);
-		ExtractorDeGasVespeno extractor = new Extractor(mapa);
+		
+		Recurso vespeno = new Vespeno();
+		ExtractorDeGasVespeno extractor = new Extractor();
 		
 		Posicion posVespeno = new Posicion(2,3,0);
 		vespeno.setPosicion(posVespeno);
