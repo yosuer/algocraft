@@ -6,4 +6,5 @@ public interface FabricaDeElementos {
 	public ExtractorDeGasVespeno crearExtractorDeGasVespeno(Mapa mapa);
 	public BasePrincipal crearBase(Mapa mapa);
 	public ExtractorDeMineral crearExtractorDeMineral(Mapa mapa);
+	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves(Mapa mapa);
 }

@@ -1,14 +1,13 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class Barraca extends EdificioUnidadesBasicas {
+public class CentroDeReproduccion extends EdificioUnidadesBasicas {
 
-	public Barraca(Mapa mapa) {
+	public CentroDeReproduccion(Mapa mapa) {
 		super(mapa);
 		this.vida = 1000;
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
-		this.tiempoDeConstruccion = 12;
-	}
+		this.tiempoDeConstruccion = 12;	}
 
 	@Override
 	public Unidad crearUnidad() {

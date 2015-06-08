@@ -38,7 +38,7 @@ public class EdificioUnidadesBasicasTest {
 	@Test
 	public void test04_CrearUnaReservaDeReproduccion(){
 		Mapa mapa = new Mapa();
-		ReservaDeReproduccion reservaReprod = new ReservaDeReproduccion(mapa);
+		CentroDeReproduccion reservaReprod = new CentroDeReproduccion(mapa);
 		
 		Assert.assertEquals(reservaReprod.vidaActual(), 1000);
 		Assert.assertEquals(reservaReprod.getCostoMineral(), 150);

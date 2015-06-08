@@ -13,7 +13,7 @@ public class FabricaTerran implements FabricaDeElementos{
 
 	@Override
 	public ExtractorDeGasVespeno crearExtractorDeGasVespeno(Mapa mapa) {
-		return (new Refineria(mapa));
+		return new Refineria(mapa);
 	}
 
 	@Override
@@ -25,5 +25,13 @@ public class FabricaTerran implements FabricaDeElementos{
 	public ExtractorDeMineral crearExtractorDeMineral(Mapa mapa) {
 		return (new CentroDeMineral(mapa));
 	}
+
+	@Override
+	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves(Mapa mapa) {
+		return new PuertoEstelarTerran(mapa);
+	}
+	
+	
+	
 
 }

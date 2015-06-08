@@ -1,13 +1,13 @@
 package fiuba.algo3.algocraft.modelo;
 
 
-public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
+public class Espiral extends EdificioConstructorDeNaves {
 
-	public ReservaDeReproduccion(Mapa mapa) {
+	public Espiral(Mapa mapa) {
 		super(mapa);
-		this.vida = 1000;
+		this.vida = 1200;
 		this.costoMineral = 150;
-		this.costoVespeno = 0;
+		this.costoVespeno = 150;
 		this.tiempoDeConstruccion = 10;
 	}
 

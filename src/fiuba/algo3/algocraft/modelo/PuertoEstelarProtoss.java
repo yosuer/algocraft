@@ -1,25 +1,23 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class Barraca extends EdificioUnidadesBasicas {
+public class PuertoEstelarProtoss extends EdificioConstructorDeNaves {
 
-	public Barraca(Mapa mapa) {
+	public PuertoEstelarProtoss(Mapa mapa) {
 		super(mapa);
-		this.vida = 1000;
+		this.vida = 1200;
 		this.costoMineral = 150;
-		this.costoVespeno = 0;
-		this.tiempoDeConstruccion = 12;
+		this.costoVespeno = 150;
+		this.tiempoDeConstruccion = 10;
 	}
 
 	@Override
 	public Unidad crearUnidad() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -31,5 +29,6 @@ public class Barraca extends EdificioUnidadesBasicas {
 	public int vidaActual() {
 		return this.vida;
 	}
+
 
 }

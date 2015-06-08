@@ -1,14 +1,19 @@
 package fiuba.algo3.algocraft.modelo;
 
 
-public class Nexo extends BasePrincipal {
+public class PuertoEstelarTerran extends EdificioConstructorDeNaves {
 
-	public Nexo(Mapa mapa) {
+	public PuertoEstelarTerran(Mapa mapa) {
 		super(mapa);
-		this.vida = 1500;
-		this.costoMineral = 100;
+		this.vida = 1300;
+		this.costoMineral = 150;
 		this.costoVespeno = 100;
-		this.tiempoDeConstruccion = 9;
+		this.tiempoDeConstruccion = 10;
+	}
+
+	@Override
+	public Unidad crearUnidad() {
+		return new Marine(this.mapa);
 	}
 
 	@Override
@@ -18,13 +23,11 @@ public class Nexo extends BasePrincipal {
 
 	@Override
 	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public int vidaActual() {
-		// TODO Auto-generated method stub
 		return this.vida;
 	}
 

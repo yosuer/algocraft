@@ -9,7 +9,7 @@ public abstract class ExtractorDeMineral extends Edificio
 	protected int costoMineral;
 	protected int costoVespeno;
 	
-	public ExtractorDeMineral(Mapa mapa) {
+	public ExtractorDeMineral(Mapa mapa){
 		super(mapa);
 	}
 
@@ -24,7 +24,7 @@ public abstract class ExtractorDeMineral extends Edificio
 	public void asignarRecurso(Recurso recurso) {
 		this.recurso = (Mineral) recurso;
 	}
-	
+
 	public int getCostoMineral(){
 		return costoMineral;
 	}

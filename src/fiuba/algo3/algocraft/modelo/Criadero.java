@@ -5,11 +5,15 @@ public class Criadero extends BasePrincipal {
 
 	public Criadero(Mapa mapa) {
 		super(mapa);
+		this.vida = 1500;
+		this.costoMineral = 100;
+		this.costoVespeno = 100;
+		this.tiempoDeConstruccion = 10;
 	}
 
 	@Override
 	public int getNivel() {
-		return 0;
+		return this.nivel;
 	}
 
 	@Override
@@ -20,8 +24,7 @@ public class Criadero extends BasePrincipal {
 
 	@Override
 	public int vidaActual() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.vida;
 	}
 
 }

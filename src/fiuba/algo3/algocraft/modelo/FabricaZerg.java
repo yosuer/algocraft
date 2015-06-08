@@ -8,7 +8,7 @@ public class FabricaZerg implements FabricaDeElementos{
 	
 	@Override
 	public EdificioUnidadesBasicas crearFabricaUnidadesBasicas(Mapa mapa) {
-		return (new ReservaDeReproduccion(mapa));
+		return (new CentroDeReproduccion(mapa));
 	}
 
 	@Override
@@ -25,5 +25,11 @@ public class FabricaZerg implements FabricaDeElementos{
 	public ExtractorDeMineral crearExtractorDeMineral(Mapa mapa) {
 		return (new ZergMineral(mapa));
 	}
+
+	@Override
+	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves(Mapa mapa) {
+		return new Espiral(mapa);
+	}
+	
 
 }

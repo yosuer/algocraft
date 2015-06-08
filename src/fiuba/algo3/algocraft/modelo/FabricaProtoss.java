@@ -23,4 +23,9 @@ public class FabricaProtoss implements FabricaDeElementos {
 		return (new NexoMineral(mapa));
 	}
 
+	@Override
+	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves(Mapa mapa) {
+		return new PuertoEstelarProtoss(mapa);
+	}
+
 }
