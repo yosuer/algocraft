@@ -119,7 +119,7 @@ public class MapaTest {
 	@Test
 	public void testMoverUnaUnidad(){
 		Mapa mapa = new Mapa();
-		PuertoEstelarTerran barraca = new PuertoEstelarTerran(mapa);
+		Barraca barraca = new Barraca(mapa);
 		Unidad marine= barraca.crearUnidad();
 		mapa.agregarElemento(4, 4, barraca);
 		mapa.agregarElemento(5, 5, marine);
@@ -135,7 +135,7 @@ public class MapaTest {
 	@Test
 	public void testNoSePuedeMoverUnEdificio(){
 		Mapa mapa = new Mapa();
-		PuertoEstelarTerran barraca = new PuertoEstelarTerran(mapa);
+		Barraca barraca = new Barraca(mapa);
 		mapa.agregarElemento(4, 4, barraca);
 		
 		mapa.moverElemento(barraca,7,7);
