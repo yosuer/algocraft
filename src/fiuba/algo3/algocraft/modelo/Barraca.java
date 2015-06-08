@@ -11,7 +11,7 @@ public class Barraca extends EdificioUnidadesBasicas {
 	
 	@Override
 	public Unidad crearUnidad() {
-		return new Marine(this.mapa);
+		return new Marine();
 	}
 
 	@Override

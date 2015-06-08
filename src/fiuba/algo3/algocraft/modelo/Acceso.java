@@ -13,7 +13,7 @@ public class Acceso extends EdificioUnidadesBasicas {
 
 	@Override
 	public Unidad crearUnidad() {
-		return new Zealot(this.mapa);
+		return new Zealot();
 	}
 
 	@Override

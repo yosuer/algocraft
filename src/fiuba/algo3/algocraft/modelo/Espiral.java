@@ -12,7 +12,7 @@ public class Espiral extends EdificioConstructorDeNaves {
 
 	@Override
 	public Unidad crearUnidad() {
-		return new Zerling(this.mapa);
+		return new Zerling();
 	}
 
 	@Override

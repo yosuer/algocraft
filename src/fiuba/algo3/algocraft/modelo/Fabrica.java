@@ -7,7 +7,7 @@ public class Fabrica extends EdificioUnidadesAvanzadas {
 		this.costoMineral = 200;
 		this.costoVespeno = 100;
 		this.tiempoDeConstruccion = 12;
-		this.edificiosRequeridos.add(new Barraca(this.mapa));
+		this.edificiosRequeridos.add(new Barraca());
 	}
 
 	@Override
@@ -17,7 +17,7 @@ public class Fabrica extends EdificioUnidadesAvanzadas {
 
 	@Override
 	public Unidad crearUnidad() {
-		return new Golliat(this.mapa);
+		return new Golliat();
 	}
 
 	@Override
