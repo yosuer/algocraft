@@ -6,5 +6,5 @@ public interface ExtractorDeRecursos {
 	Posicion getPosicion();
 	
 	public void asignarRecurso(Recurso recurso);
-
+	
 }

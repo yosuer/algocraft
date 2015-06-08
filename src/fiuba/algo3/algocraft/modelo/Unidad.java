@@ -3,6 +3,9 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
+import fiuba.algo3.algocraft.excepciones.PosicionOcupada;
+
 
 public abstract class Unidad implements IElemento {
 
@@ -47,6 +50,12 @@ public abstract class Unidad implements IElemento {
 	
 	public Collection<IElemento> elementosRequeridos(){
 		return new ArrayList<IElemento>();
+	}
+	
+	public void agregarseEn(Mapa mapa){
+		if ( mapa.estaOcupado(posicion.x(), posicion.y(), posicion.z()) )
+				throw new PosicionOcupada();
+		this.mapa = mapa;
 	}
 
 }

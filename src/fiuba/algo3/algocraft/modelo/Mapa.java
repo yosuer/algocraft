@@ -3,6 +3,8 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
+
 public class Mapa {
 
 	private int ancho; //x
@@ -48,10 +50,15 @@ public class Mapa {
 	
 	public void agregarElemento(int x, int y, IElemento elemento) {
 		
-		elemento.setPosicion( new Posicion(x,y,elemento.getNivel()) ); //elemento verifica la coord z segun su nivel
-		elemento.agregarseEn(this);
+		Posicion pos = new Posicion(x,y,elemento.getNivel());
+		elemento.setPosicion(pos); //elemento verifica la coord z segun su nivel
 		
-		Posicion pos = elemento.getPosicion();
+		try {
+			elemento.agregarseEn(this);
+		} catch (ErrorAgregandoElementoAlMapa e){
+			//log de errores
+		}
+		
 		this.elementosActivos.add(elemento);
 		this.elementos[pos.x()][pos.y()][pos.z()] = elemento;
 	}

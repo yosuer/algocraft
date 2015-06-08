@@ -28,14 +28,14 @@ public class Mineral extends Recurso {
 
 	@Override
 	public void asignarExtractor(ExtractorDeRecursos ext) {
-			if ( this.posicion.equals(ext.getPosicion()) ){
-				try {
+		if ( this.posicion.equals(ext.getPosicion()) ){
+			try {
 				this.extractor = (ExtractorDeMineral)ext;
 				ext.asignarRecurso(this);
-				} catch (ClassCastException e){
-					throw new ErrorExtractorDeRecursosIncompatible();
-				}
+			} catch (ClassCastException e){
+				throw new ErrorExtractorDeRecursosIncompatible();
 			}
+		}
 	}
 
 	@Override

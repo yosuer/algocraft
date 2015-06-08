@@ -3,6 +3,10 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
+import fiuba.algo3.algocraft.excepciones.PosicionOcupada;
+
 
 public abstract class Edificio implements IElemento{
 	
@@ -46,9 +50,6 @@ public abstract class Edificio implements IElemento{
 		return false;
 	}
 	
-	public void agregarSobre(IElemento otroElemento) {
-	}
-	
 	public boolean equals(Object o)
 	{
 		if(this == o) return true;
@@ -62,10 +63,11 @@ public abstract class Edificio implements IElemento{
 	}
 	
 	public void agregarseEn(Mapa mapa){
-		if ( mapa.existenElementos(this.elementosRequeridos())
-			& !mapa.estaOcupado(posicion.x(), posicion.y(), posicion.z()) ){
-			mapa.agregar(this);
-		}
+		if ( mapa.existenElementos(this.elementosRequeridos()) )
+				throw new NoExistenLosEdificiosrequeridosParaConstruir();
+		if ( mapa.estaOcupado(posicion.x(), posicion.y(), posicion.z()) )
+				throw new PosicionOcupada();
+		this.mapa = mapa;
 	}
 
 }

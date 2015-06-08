@@ -1,5 +1,9 @@
 package fiuba.algo3.algocraft.modelo;
 
+import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
+import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
+import fiuba.algo3.algocraft.excepciones.PosicionOcupada;
+
 
 public abstract class ExtractorDeMineral extends Edificio 
 										implements ExtractorDeRecursos{
@@ -30,6 +34,18 @@ public abstract class ExtractorDeMineral extends Edificio
 	
 	public int getCostoVespeno(){
 		return costoVespeno;
+	}
+	
+	public void agregarseEn(Mapa mapa){
+		try {
+		Recurso mineral = 
+				(Recurso) mapa.getElemento(posicion.x(), posicion.y(), posicion.z());
+		mineral.asignarExtractor(this);
+		} catch (RuntimeException e) {
+			throw new ErrorAgregandoElementoAlMapa();
+		}
+
+		this.mapa = mapa;
 	}
 	
 }
