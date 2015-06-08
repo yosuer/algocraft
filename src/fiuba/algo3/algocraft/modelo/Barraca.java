@@ -9,7 +9,7 @@ public class Barraca extends EdificioUnidadesBasicas {
 		this.costoVespeno = 0;
 		this.tiempoDeConstruccion = 12;
 	}
-
+	
 	@Override
 	public Unidad crearUnidad() {
 		return new Marine(this.mapa);

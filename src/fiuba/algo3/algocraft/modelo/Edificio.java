@@ -15,8 +15,7 @@ public abstract class Edificio implements IElemento{
 	protected int nivel = 0;
 	protected Collection<IElemento> edificiosRequeridos;
 	
-	public Edificio(Mapa mapa){
-		this.mapa = mapa;
+	public Edificio(){
 		this.nivel = 0;
 		this.edificiosRequeridos = new ArrayList<IElemento>();
 	}

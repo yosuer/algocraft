@@ -13,7 +13,7 @@ public class PuertoEstelarTerran extends EdificioConstructorDeNaves {
 
 	@Override
 	public Unidad crearUnidad() {
-		return null;
+		return new Espectro(this.mapa);
 	}
 
 	@Override
