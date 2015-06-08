@@ -8,11 +8,6 @@ public class NaveTransporte extends Unidad{
 	}
 
 	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		
-	}
-
-	@Override
 	public int getNivel() {
 		return 0;
 	}
@@ -20,6 +15,12 @@ public class NaveTransporte extends Unidad{
 	@Override
 	public int vidaActual() {
 		return 0;
+	}
+
+	@Override
+	public void agregarseEn(Mapa mapa) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
