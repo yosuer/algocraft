@@ -28,7 +28,12 @@ public class FabricaTerran implements FabricaDeElementos{
 
 	@Override
 	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves(Mapa mapa) {
-		return new PuertoEstelarTerran(mapa);
+		return (new PuertoEstelarTerran(mapa));
+	}
+
+	@Override
+	public EdificioUnidadesAvanzadas crearEdificioUnidadesAvanzadas(Mapa mapa) {
+		return (new Fabrica(mapa));
 	}
 	
 	

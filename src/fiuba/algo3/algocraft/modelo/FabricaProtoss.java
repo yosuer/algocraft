@@ -25,7 +25,12 @@ public class FabricaProtoss implements FabricaDeElementos {
 
 	@Override
 	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves(Mapa mapa) {
-		return new PuertoEstelarProtoss(mapa);
+		return (new PuertoEstelarProtoss(mapa));
+	}
+
+	@Override
+	public EdificioUnidadesAvanzadas crearEdificioUnidadesAvanzadas(Mapa mapa) {
+		return (new ArchivoTemplario(mapa));
 	}
 
 }

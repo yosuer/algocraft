@@ -7,4 +7,5 @@ public interface FabricaDeElementos {
 	public BasePrincipal crearBase(Mapa mapa);
 	public ExtractorDeMineral crearExtractorDeMineral(Mapa mapa);
 	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves(Mapa mapa);
+	public EdificioUnidadesAvanzadas crearEdificioUnidadesAvanzadas(Mapa mapa);
 }
