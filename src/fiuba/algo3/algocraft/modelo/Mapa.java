@@ -47,14 +47,13 @@ public class Mapa {
 	}
 	
 	public void agregarElemento(int x, int y, IElemento elemento) {
-		Posicion pos = new Posicion(x,y,elemento.getNivel());
-		elemento.setPosicion(pos); //elemento verifica la coord z segun su nivel
 		
-		if (this.elementosActivos.containsAll(elemento.elementosRequeridos())
-					&&!estaOcupado(pos.x(),pos.y(),pos.z())){
-			elementos[pos.x()][pos.y()][pos.z()] = elemento;
-			this.elementosActivos.add(elemento);
-		}
+		elemento.setPosicion( new Posicion(x,y,elemento.getNivel()) ); //elemento verifica la coord z segun su nivel
+		elemento.agregarseEn(this);
+		
+		Posicion pos = elemento.getPosicion();
+		this.elementosActivos.add(elemento);
+		this.elementos[pos.x()][pos.y()][pos.z()] = elemento;
 	}
 	
 	public IElemento quitarElemento(int x, int y, int z) {
@@ -105,11 +104,6 @@ public class Mapa {
 		
 		if (elemento.moverseA( new Posicion(x,y,elemento.getNivel())) ) 
 			elementos[posAnt.x()][posAnt.y()][posAnt.z()] = null;
-	}
-	
-	public boolean contieneElementos(ArrayList<IElemento> element){
-		
-		return false;
 	}
 
 }

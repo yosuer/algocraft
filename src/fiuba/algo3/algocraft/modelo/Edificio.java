@@ -61,5 +61,12 @@ public abstract class Edificio implements IElemento{
 	public Collection<IElemento> elementosRequeridos(){
 		return this.edificiosRequeridos;
 	}
+	
+	public void agregarseEn(Mapa mapa){
+		if ( mapa.existenElementos(this.elementosRequeridos())
+			& !mapa.estaOcupado(posicion.x(), posicion.y(), posicion.z()) ){
+			mapa.agregar(this);
+		}
+	}
 
 }

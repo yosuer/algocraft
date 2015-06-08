@@ -9,7 +9,7 @@ public interface IElemento {
 	
 	public void setPosicion(Posicion posicion);
 	
-	//public void agregarSobre(IElemento otroElemento);
+	public void agregarseEn(Mapa mapa);
 	
 	public int getNivel();
 	
