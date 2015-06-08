@@ -2,8 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class ArchivoTemplario extends EdificioUnidadesAvanzadas {
 
-	public ArchivoTemplario(Mapa mapa) {
-		super(mapa);
+	public ArchivoTemplario() {
 		this.vida = 1000;
 		this.costoMineral = 150;
 		this.costoVespeno = 200;

@@ -3,8 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Espiral extends EdificioConstructorDeNaves {
 
-	public Espiral(Mapa mapa) {
-		super(mapa);
+	public Espiral() {
 		this.vida = 1200;
 		this.costoMineral = 150;
 		this.costoVespeno = 150;

@@ -3,8 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Nexo extends BasePrincipal {
 
-	public Nexo(Mapa mapa) {
-		super(mapa);
+	public Nexo() {
 		this.vida = 1500;
 		this.costoMineral = 100;
 		this.costoVespeno = 100;
@@ -18,7 +17,6 @@ public class Nexo extends BasePrincipal {
 
 	@Override
 	public int vidaActual() {
-		// TODO Auto-generated method stub
 		return this.vida;
 	}
 

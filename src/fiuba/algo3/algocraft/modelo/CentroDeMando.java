@@ -3,8 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class CentroDeMando extends BasePrincipal {
 
-	public CentroDeMando(Mapa mapa) {
-		super(mapa);
+	public CentroDeMando() {
 		this.vida = 1500;
 		this.costoMineral = 100;
 		this.costoVespeno = 100;

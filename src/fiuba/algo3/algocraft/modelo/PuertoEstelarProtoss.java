@@ -2,13 +2,12 @@ package fiuba.algo3.algocraft.modelo;
 
 public class PuertoEstelarProtoss extends EdificioConstructorDeNaves {
 
-	public PuertoEstelarProtoss(Mapa mapa) {
-		super(mapa);
+	public PuertoEstelarProtoss() {
 		this.vida = 1200;
 		this.costoMineral = 150;
 		this.costoVespeno = 150;
 		this.tiempoDeConstruccion = 10;
-		this.edificiosRequeridos.add(new Fabrica(this.mapa));
+		this.edificiosRequeridos.add(new Fabrica());
 	}
 
 	@Override

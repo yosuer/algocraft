@@ -7,38 +7,38 @@ public class FabricaZerg implements FabricaDeElementos{
 	}
 	
 	@Override
-	public EdificioUnidadesBasicas crearFabricaUnidadesBasicas(Mapa mapa) {
-		return (new ReservaDeReproduccion(mapa));
+	public EdificioUnidadesBasicas crearFabricaUnidadesBasicas() {
+		return (new ReservaDeReproduccion());
 	}
 
 	@Override
-	public ExtractorDeGasVespeno crearExtractorDeGasVespeno(Mapa mapa) {
-		return (new Extractor(mapa));
+	public ExtractorDeGasVespeno crearExtractorDeGasVespeno() {
+		return (new Extractor());
 	}
 
 	@Override
-	public BasePrincipal crearBase(Mapa mapa) {
-		return (new Criadero(mapa));
+	public BasePrincipal crearBase() {
+		return (new Criadero());
 	}
 
 	@Override
-	public ExtractorDeMineral crearExtractorDeMineral(Mapa mapa) {
-		return (new ZergMineral(mapa));
+	public ExtractorDeMineral crearExtractorDeMineral() {
+		return (new ZergMineral());
 	}
 
 	@Override
-	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves(Mapa mapa) {
-		return (new Espiral(mapa));
+	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves() {
+		return (new Espiral());
 	}
 
 	@Override
-	public EdificioUnidadesAvanzadas crearEdificioUnidadesAvanzadas(Mapa mapa) {
-		return (new GuaridaDeHidralisco(mapa));
+	public EdificioUnidadesAvanzadas crearEdificioUnidadesAvanzadas() {
+		return (new GuaridaDeHidralisco());
 	}
 
 	@Override
-	public EdificioCasa crearEdificioCasa(Mapa mapa) {
-		return (new AmoSupremo(mapa));
+	public EdificioCasa crearEdificioCasa() {
+		return (new AmoSupremo());
 	}
 	
 

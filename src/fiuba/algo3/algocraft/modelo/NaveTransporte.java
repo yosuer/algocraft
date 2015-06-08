@@ -2,8 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class NaveTransporte extends Unidad{
 
-	public NaveTransporte(Mapa mapa) {
-		super(mapa);
+	public NaveTransporte() {
 		this.nivel = 1;
 		this.vida = 150;
 	}

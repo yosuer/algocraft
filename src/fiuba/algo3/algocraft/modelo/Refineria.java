@@ -3,8 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Refineria extends ExtractorDeGasVespeno {
 
-	public Refineria(Mapa mapa) {
-		super(mapa);
+	public Refineria() {
 		this.vida = 750;
 		this.costoMineral = 100;
 		this.costoVespeno = 0;

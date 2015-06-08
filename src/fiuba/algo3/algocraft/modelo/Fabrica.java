@@ -2,8 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Fabrica extends EdificioUnidadesAvanzadas {
 
-	public Fabrica(Mapa mapa) {
-		super(mapa);
+	public Fabrica() {
 		this.vida = 1250;
 		this.costoMineral = 200;
 		this.costoVespeno = 100;

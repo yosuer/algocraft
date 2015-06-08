@@ -2,8 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class GuaridaDeHidralisco extends EdificioUnidadesAvanzadas {
 
-	public GuaridaDeHidralisco(Mapa mapa) {
-		super(mapa);
+	public GuaridaDeHidralisco() {
 		this.vida = 1100;
 		this.costoMineral = 150;
 		this.costoVespeno = 100;

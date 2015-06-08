@@ -3,8 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class PuertoEstelarTerran extends EdificioConstructorDeNaves {
 
-	public PuertoEstelarTerran(Mapa mapa) {
-		super(mapa);
+	public PuertoEstelarTerran() {
 		this.vida = 1300;
 		this.costoMineral = 150;
 		this.costoVespeno = 100;
@@ -13,7 +12,7 @@ public class PuertoEstelarTerran extends EdificioConstructorDeNaves {
 
 	@Override
 	public Unidad crearUnidad() {
-		return new Espectro(this.mapa);
+		return new Espectro();
 	}
 
 	@Override

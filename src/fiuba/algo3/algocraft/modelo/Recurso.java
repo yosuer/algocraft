@@ -11,8 +11,7 @@ public abstract class Recurso implements IElemento{
 	protected Posicion posicion;
 	protected int nivel = 0;
 	
-	public Recurso(Mapa mapa){
-		this.mapa = mapa;
+	public Recurso(){
 	}
 	
 	public abstract int reservaDisponible();

@@ -3,8 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Criadero extends BasePrincipal {
 
-	public Criadero(Mapa mapa) {
-		super(mapa);
+	public Criadero() {
 		this.vida = 1500;
 		this.costoMineral = 100;
 		this.costoVespeno = 100;

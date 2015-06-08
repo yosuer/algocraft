@@ -2,8 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Pilon extends EdificioCasa {
 
-	public Pilon(Mapa mapa) {
-		super(mapa);
+	public Pilon() {
 		this.vida = 600;
 		this.costoMineral = 100;
 		this.costoVespeno = 0;

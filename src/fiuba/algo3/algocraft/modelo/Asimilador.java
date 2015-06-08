@@ -3,8 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Asimilador extends ExtractorDeGasVespeno {
 
-	public Asimilador(Mapa mapa) {
-		super(mapa);
+	public Asimilador() {
 		this.vida = 1000;
 		this.costoMineral = 150;
 		this.costoVespeno = 0;

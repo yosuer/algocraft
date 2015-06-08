@@ -4,8 +4,7 @@ public class NaveCiencia extends Unidad {
 
 	private int cargaDeEnergia;
 	
-	public NaveCiencia(Mapa mapa) {
-		super(mapa);
+	public NaveCiencia() {
 		this.nivel = 1;
 		this.vida = 200;
 		this.cargaDeEnergia = 0;

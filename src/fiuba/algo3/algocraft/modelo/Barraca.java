@@ -2,8 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Barraca extends EdificioUnidadesBasicas {
 
-	public Barraca(Mapa mapa) {
-		super(mapa);
+	public Barraca() {
 		this.vida = 1000;
 		this.costoMineral = 150;
 		this.costoVespeno = 0;

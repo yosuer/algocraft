@@ -2,8 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class DepositoDeSuministros extends EdificioCasa {
 
-	public DepositoDeSuministros(Mapa mapa) {
-		super(mapa);
+	public DepositoDeSuministros() {
 		this.vida = 500;
 		this.costoMineral = 100;
 		this.costoVespeno = 0;

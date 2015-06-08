@@ -3,8 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class ZergMineral extends ExtractorDeMineral {
 
-	public ZergMineral(Mapa mapa) {
-		super(mapa);
+	public ZergMineral() {
 		this.recolectado = 0;
 		this.vida = 500;
 		this.costoMineral = 50;

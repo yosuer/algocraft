@@ -2,8 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Espectro extends Unidad {
 
-	public Espectro(Mapa mapa) {
-		super(mapa);
+	public Espectro() {
 		this.nivel = 1;
 		this.vida = 120;
 	}

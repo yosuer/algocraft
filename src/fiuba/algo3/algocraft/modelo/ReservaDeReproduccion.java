@@ -3,8 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
 
-	public ReservaDeReproduccion(Mapa mapa) {
-		super(mapa);
+	public ReservaDeReproduccion() {
 		this.vida = 1000;
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
@@ -13,7 +12,7 @@ public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
 
 	@Override
 	public Unidad crearUnidad() {
-		return new Zerling(this.mapa);
+		return new Zerling();
 	}
 
 	@Override
