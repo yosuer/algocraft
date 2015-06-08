@@ -45,5 +45,9 @@ public class ObstaculoTerrestre implements IElemento {
 				throw new ErrorPosicionOcupada();
 		this.mapa = mapa;
 	}
+	
+	@Override
+	public void pasarTurno() {
+	}
 
 }

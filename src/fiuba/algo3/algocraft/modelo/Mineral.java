@@ -10,8 +10,7 @@ public class Mineral extends Recurso {
 
 	private int nivel;
 	private ExtractorDeMineral extractor;
-
-
+	
 	@Override
 	public int reservaDisponible() {
 		return this.reserva;

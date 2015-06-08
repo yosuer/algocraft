@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
+import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+
 public class Barraca extends EdificioUnidadesBasicas {
 
 	public Barraca() {
@@ -11,6 +13,9 @@ public class Barraca extends EdificioUnidadesBasicas {
 	
 	@Override
 	public Unidad crearUnidad() {
+		if (this.tiempoDeConstruccion > 0)
+			throw new ErrorEdificioEnConstruccion();
+		
 		return new Marine();
 	}
 

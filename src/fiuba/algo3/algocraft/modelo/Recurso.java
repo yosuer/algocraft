@@ -39,5 +39,9 @@ public abstract class Recurso implements IElemento{
 				throw new ErrorPosicionOcupada();
 		this.mapa = mapa;
 	}
+	
+	@Override
+	public void pasarTurno() {
+	}
 
 }

@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
+import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
@@ -17,6 +18,8 @@ public abstract class ExtractorDeMineral extends Edificio
 	}
 
 	public void realizarExtraccion(){
+		if (this.tiempoDeConstruccion > 0)
+			throw new ErrorEdificioEnConstruccion();	
 		recolectado += recurso.extraer();
 	}
 
@@ -46,6 +49,13 @@ public abstract class ExtractorDeMineral extends Edificio
 		}
 
 		this.mapa = mapa;
+	}
+	
+	@Override
+	public void pasarTurno() {
+		if (this.tiempoDeConstruccion > 0) 
+			this.tiempoDeConstruccion--;
+		else this.realizarExtraccion();
 	}
 	
 }

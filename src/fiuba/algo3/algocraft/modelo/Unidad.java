@@ -57,5 +57,9 @@ public abstract class Unidad implements IElemento {
 				throw new ErrorPosicionOcupada();
 		this.mapa = mapa;
 	}
+	
+	@Override
+	public void pasarTurno() {
+	}
 
 }

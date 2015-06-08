@@ -16,4 +16,6 @@ public interface IElemento {
 	public boolean moverseA(Posicion posicion);
 
 	public Collection<IElemento> elementosRequeridos();
+	
+	public void pasarTurno();
 }

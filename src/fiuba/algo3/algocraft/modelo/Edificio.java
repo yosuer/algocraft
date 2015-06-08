@@ -69,5 +69,10 @@ public abstract class Edificio implements IElemento{
 				throw new ErrorPosicionOcupada();
 		this.mapa = mapa;
 	}
+	
+	public void pasarTurno() {
+		if (this.tiempoDeConstruccion > 0) 
+			this.tiempoDeConstruccion--;
+	}
 
 }

@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 
@@ -88,7 +89,6 @@ public class Mapa {
 		this.agregarElemento(4,2,new Mineral());
 		this.agregarElemento(5,2,new Mineral());
 		this.agregarElemento(6,2,new Mineral());
-		
 		this.agregarElemento(4,6,new Vespeno());
 		
 		//Jugador2
@@ -101,16 +101,22 @@ public class Mapa {
 		this.agregarElemento(99,97,new Mineral());
 		this.agregarElemento(99,96,new Mineral());
 		this.agregarElemento(99,95,new Mineral());
-
 		this.agregarElemento(95,97,new Vespeno());
 	}
 
 	public void moverElemento(IElemento elemento, int x, int y) {
-
 		Posicion posAnt = elemento.getPosicion();
 		
 		if (elemento.moverseA( new Posicion(x,y,elemento.getNivel())) ) 
 			elementos[posAnt.x()][posAnt.y()][posAnt.z()] = null;
+	}
+	
+	public void pasarTurno(){
+		Iterator<IElemento> it = elementosActivos.iterator();
+		
+		while (it.hasNext()){
+			it.next().pasarTurno();
+		}
 	}
 
 }

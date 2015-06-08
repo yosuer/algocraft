@@ -62,5 +62,14 @@ public class ExtractorTest {
 		Assert.assertEquals(50,extractor.getCostoMineral());
 		Assert.assertEquals(0,extractor.getCostoVespeno());
 	}
+	
+	@Test
+	public void test04_CentroDeMineralConTurnos(){
+		Mapa mapa = new Mapa();
+		CentroDeMineral centro = new CentroDeMineral();
+		
+		
+	}
+	
 
 }

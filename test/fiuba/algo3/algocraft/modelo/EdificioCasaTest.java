@@ -1,19 +1,35 @@
 package fiuba.algo3.algocraft.modelo;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+
 public class EdificioCasaTest {
 
-	@Test
-	public void test01_CrearUnidadesYVerificarPropiedasBasicas(){
+	@Test (expected = ErrorEdificioEnConstruccion.class)
+	public void test01_UnaBarracaNoPuedeCrearUnidadesSiNoTerminoDeConstruirse(){
+		Mapa mapa = new Mapa();
+		Barraca barraca = new Barraca();
+		mapa.agregarElemento(1, 1, barraca);
 		
+		Unidad marine = barraca.crearUnidad();
 	}
 	
 	@Test
-	public void test02_CrearUnDepositoDeSuministros(){
+	public void test02_UnaBarracaPuedeCrearUnidadesSiTerminoDeContruirse(){
+		Mapa mapa = new Mapa();
+		Barraca barraca = new Barraca();
+		mapa.agregarElemento(1, 1, barraca);
+		for (int i=1; i <=12; i++){
+			mapa.pasarTurno();
+		}
+		Unidad marine = barraca.crearUnidad();
+	}
+	
+	@Test
+	public void test03_CrearUnDepositoDeSuministros(){
 		DepositoDeSuministros deposito = new DepositoDeSuministros();
 		
 		Assert.assertEquals(deposito.vidaActual(), 500);
@@ -23,7 +39,7 @@ public class EdificioCasaTest {
 	}
 	
 	@Test
-	public void test03_CrearUnPilon(){
+	public void test04_CrearUnPilon(){
 		Pilon pilon = new Pilon();
 		
 		Assert.assertEquals(pilon.vidaActual(), 600);
@@ -34,7 +50,7 @@ public class EdificioCasaTest {
 	}
 	
 	@Test
-	public void test04_CrearUnAmoSupremo(){
+	public void test05_CrearUnAmoSupremo(){
 		AmoSupremo amo = new AmoSupremo();
 		
 		Assert.assertEquals(amo.vidaActual(), 700);
