@@ -8,16 +8,12 @@ public class PuertoEstelarProtoss extends EdificioConstructorDeNaves {
 		this.costoMineral = 150;
 		this.costoVespeno = 150;
 		this.tiempoDeConstruccion = 10;
+		this.edificiosRequeridos.add(new Fabrica(this.mapa));
 	}
 
 	@Override
 	public Unidad crearUnidad() {
 		return null;
-	}
-
-	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		
 	}
 
 	@Override

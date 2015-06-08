@@ -7,12 +7,6 @@ public class Golliat extends Unidad {
 	}
 
 	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public int getNivel() {
 		return this.nivel;
 	}

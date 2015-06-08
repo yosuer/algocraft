@@ -1,5 +1,8 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 
 public abstract class Recurso implements IElemento{
 	
@@ -22,6 +25,10 @@ public abstract class Recurso implements IElemento{
 	
 	public boolean moverseA(Posicion posicion){
 		return false;
+	}
+	
+	public Collection<IElemento> elementosRequeridos(){
+		return new ArrayList<IElemento>();
 	}
 
 }

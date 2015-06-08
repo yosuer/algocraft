@@ -17,12 +17,6 @@ public class Nexo extends BasePrincipal {
 	}
 
 	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public int vidaActual() {
 		// TODO Auto-generated method stub
 		return this.vida;

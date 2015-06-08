@@ -52,9 +52,9 @@ public class MineralTest {
 		Recurso mineral = new Mineral(mapa);
 		ExtractorDeMineral extractor = new CentroDeMineral(mapa);
 		
-		Posicion pos = new Posicion(3,2,0);
-		mineral.setPosicion(pos);
-		extractor.setPosicion(pos);
+		mapa.agregarElemento(3, 2, mineral);
+		
+		mapa.agregarElemento(3, 2, extractor);
 		
 		mineral.asignarExtractor(extractor);
 		

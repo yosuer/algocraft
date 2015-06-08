@@ -17,12 +17,6 @@ public class Criadero extends BasePrincipal {
 	}
 
 	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public int vidaActual() {
 		return this.vida;
 	}

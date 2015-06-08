@@ -5,6 +5,7 @@ public class Zealot extends Unidad {
 
 	public Zealot(Mapa mapa) {
 		super(mapa);
+		this.vida = 100;
 	}
 
 	@Override
@@ -13,15 +14,8 @@ public class Zealot extends Unidad {
 	}
 
 	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public int vidaActual() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.vida;
 	}
 
 }

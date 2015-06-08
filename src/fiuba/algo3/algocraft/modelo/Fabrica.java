@@ -8,12 +8,7 @@ public class Fabrica extends EdificioUnidadesAvanzadas {
 		this.costoMineral = 200;
 		this.costoVespeno = 100;
 		this.tiempoDeConstruccion = 12;
-	}
-
-	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
-		
+		this.edificiosRequeridos.add(new Barraca(this.mapa));
 	}
 
 	@Override

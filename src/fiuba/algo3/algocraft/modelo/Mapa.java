@@ -1,7 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
-import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
-
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class Mapa {
 
@@ -9,6 +9,7 @@ public class Mapa {
 	private int largo; //y
 	private int alto; //z
 	
+	private Collection<IElemento> elementosActivos;
 
 	private IElemento[][][] elementos;
 
@@ -16,6 +17,7 @@ public class Mapa {
 		this.ancho = 100;
 		this.largo = 100;
 		this.alto = 2;
+		this.elementosActivos = new ArrayList<IElemento>();
 		
 		elementos = new IElemento[this.ancho+1][this.largo+1][this.alto+1];
 		
@@ -46,14 +48,27 @@ public class Mapa {
 	
 	public void agregarElemento(int x, int y, IElemento elemento) {
 		Posicion pos = new Posicion(x,y,elemento.getNivel());
-		
 		elemento.setPosicion(pos); //elemento verifica la coord z segun su nivel
-		if (!estaOcupado(pos.x(),pos.y(),pos.z()))
+		
+		if (this.elementosActivos.containsAll(elemento.elementosRequeridos())
+					&&!estaOcupado(pos.x(),pos.y(),pos.z())){
 			elementos[pos.x()][pos.y()][pos.z()] = elemento;
+			this.elementosActivos.add(elemento);
+		}
+	}
+	
+	public IElemento quitarElemento(int x, int y, int z) {
+		IElemento elementoAQuitar = this.getElemento(x, y, z);
+		elementos[x][y][z] = null;
+		return elementoAQuitar;
 	}
 	
 	public IElemento getElemento(int x, int y, int z) {
 		return this.elementos[x][y][z];
+	}
+	
+	public boolean existenElementos(Collection<IElemento> aBuscar){
+		return this.elementosActivos.containsAll(aBuscar);
 	}
 	
 	public void inicializarMapa() {
@@ -82,7 +97,6 @@ public class Mapa {
 		this.agregarElemento(99,95,new Mineral(this));
 
 		this.agregarElemento(95,97,new Vespeno(this));
-
 	}
 
 	public void moverElemento(IElemento elemento, int x, int y) {
@@ -91,6 +105,11 @@ public class Mapa {
 		
 		if (elemento.moverseA( new Posicion(x,y,elemento.getNivel())) ) 
 			elementos[posAnt.x()][posAnt.y()][posAnt.z()] = null;
+	}
+	
+	public boolean contieneElementos(ArrayList<IElemento> element){
+		
+		return false;
 	}
 
 }

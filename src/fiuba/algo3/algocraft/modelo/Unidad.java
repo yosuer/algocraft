@@ -1,5 +1,8 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 
 public abstract class Unidad implements IElemento {
 
@@ -44,5 +47,8 @@ public abstract class Unidad implements IElemento {
 		return false;
 	}
 	
-	
+	public Collection<IElemento> elementosRequeridos(){
+		return new ArrayList<IElemento>();
+	}
+
 }

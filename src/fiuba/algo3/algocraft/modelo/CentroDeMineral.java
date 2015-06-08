@@ -15,13 +15,7 @@ public class CentroDeMineral extends ExtractorDeMineral {
 	public int getNivel() {
 		return this.nivel;
 	}
-
-	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public int vidaActual() {
 		return this.vida;

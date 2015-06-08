@@ -5,23 +5,17 @@ public class Zerling extends Unidad {
 
 	public Zerling(Mapa mapa) {
 		super(mapa);
+		this.vida = 35;
 	}
 
 	@Override
 	public int getNivel() {
 		return 0;
 	}
-
-	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public int vidaActual() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.vida;
 	}
 
 }

@@ -22,11 +22,6 @@ public class PuertoEstelarTerran extends EdificioConstructorDeNaves {
 	}
 
 	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		
-	}
-
-	@Override
 	public int vidaActual() {
 		return this.vida;
 	}

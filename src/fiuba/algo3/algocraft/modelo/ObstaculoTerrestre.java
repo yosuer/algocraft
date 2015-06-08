@@ -1,5 +1,8 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 
 public class ObstaculoTerrestre implements IElemento {
 	
@@ -20,11 +23,6 @@ public class ObstaculoTerrestre implements IElemento {
 	}
 
 	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		
-	}
-
-	@Override
 	public int getNivel() {
 		return nivel;
 	}
@@ -33,6 +31,10 @@ public class ObstaculoTerrestre implements IElemento {
 	public boolean moverseA(Posicion posicion) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public Collection<IElemento> elementosRequeridos(){
+		return new ArrayList<IElemento>();
 	}
 
 }

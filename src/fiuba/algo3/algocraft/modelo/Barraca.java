@@ -16,12 +16,6 @@ public class Barraca extends EdificioUnidadesBasicas {
 	}
 
 	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public int getNivel() {
 		return this.nivel;
 	}

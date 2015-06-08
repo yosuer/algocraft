@@ -18,12 +18,6 @@ public class ZergMineral extends ExtractorDeMineral {
 	}
 
 	@Override
-	public void agregarSobre(IElemento otroElemento) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public int vidaActual() {
 		return this.vida;
 	}
