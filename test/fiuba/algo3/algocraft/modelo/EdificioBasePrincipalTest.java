@@ -7,8 +7,7 @@ public class EdificioBasePrincipalTest {
 	
 	@Test
 	public void test01_CrearUnCentroDeMando(){
-		Mapa mapa = new Mapa();
-		CentroDeMando centroDeMando = new CentroDeMando(mapa);
+		CentroDeMando centroDeMando = new CentroDeMando();
 		
 		Assert.assertEquals(centroDeMando.vidaActual(), 1500);
 		Assert.assertEquals(centroDeMando.getCostoMineral(), 100);
@@ -18,8 +17,7 @@ public class EdificioBasePrincipalTest {
 	
 	@Test
 	public void test02_CrearUnNexo(){
-		Mapa mapa = new Mapa();
-		Nexo nexo = new Nexo(mapa);
+		Nexo nexo = new Nexo();
 		
 		Assert.assertEquals(nexo.vidaActual(), 1500);
 		//Assert.assertEquals(acceso.escudoActual(), 750);
@@ -30,8 +28,7 @@ public class EdificioBasePrincipalTest {
 	
 	@Test
 	public void test03_CrearUnCriadero(){
-		Mapa mapa = new Mapa();
-		Criadero criadero = new Criadero(mapa);
+		Criadero criadero = new Criadero();
 		
 		Assert.assertEquals(criadero.vidaActual(), 1500);
 		Assert.assertEquals(criadero.getCostoMineral(), 100);
