@@ -1,8 +1,14 @@
 package fiuba.algo3.algocraft.modelo;
 
-public abstract class EdificioUnidadesAvanzadas extends Edificio implements CreadorDeUnidades {
+import java.util.Collection;
 
-	public EdificioUnidadesAvanzadas() {
+public abstract class EdificioUnidadesAvanzadas extends Edificio 
+											implements CreadorDeUnidades {
+
+	Collection<Unidad> unidadesDisponibles;
+	
+	public Collection<Unidad> getUnidadesDisponibles(){
+		return this.unidadesDisponibles; 
 	}
 
 }

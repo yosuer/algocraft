@@ -11,7 +11,7 @@ public class PuertoEstelarProtoss extends EdificioConstructorDeNaves {
 	}
 
 	@Override
-	public Unidad crearUnidad() {
+	public Unidad crearUnidad(int i) {
 		return null;
 	}
 

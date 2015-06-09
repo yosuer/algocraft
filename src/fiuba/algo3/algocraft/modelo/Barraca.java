@@ -1,5 +1,8 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 
 public class Barraca extends EdificioUnidadesBasicas {
@@ -9,14 +12,15 @@ public class Barraca extends EdificioUnidadesBasicas {
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
 		this.tiempoDeConstruccion = 12;
+		this.unidadesDisponibles = new ArrayList<Unidad>();
+		this.unidadesDisponibles.add(new Marine());
 	}
 	
-	@Override
-	public Unidad crearUnidad() {
+	public Unidad crearMarine() {
 		if (this.tiempoDeConstruccion > 0)
 			throw new ErrorEdificioEnConstruccion();
 		
-		return new Marine();
+		return crearUnidad(0);
 	}
 
 	@Override
@@ -28,5 +32,5 @@ public class Barraca extends EdificioUnidadesBasicas {
 	public int vidaActual() {
 		return this.vida;
 	}
-
+	
 }

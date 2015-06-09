@@ -14,7 +14,7 @@ public class EdificioCasaTest {
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(1, 1, barraca);
 		
-		Unidad marine = barraca.crearUnidad();
+		Unidad marine = barraca.crearMarine();
 	}
 	
 	@Test
@@ -25,7 +25,7 @@ public class EdificioCasaTest {
 		for (int i=1; i <=12; i++){
 			mapa.pasarTurno();
 		}
-		Unidad marine = barraca.crearUnidad();
+		Unidad marine = barraca.crearMarine();
 	}
 	
 	@Test

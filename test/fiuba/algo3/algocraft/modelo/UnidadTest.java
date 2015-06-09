@@ -8,9 +8,14 @@ public class UnidadTest {
 	@Test
 	public void CrearMarine() {
 		Mapa mapa = new Mapa();
-		
 		Barraca barraca = new Barraca();
-		Unidad marine = barraca.crearUnidad();
+		mapa.agregarElemento(1, 1, barraca);
+		
+		for (int i=1; i <=12; i++){
+			mapa.pasarTurno();
+		}
+		
+		Unidad marine = barraca.crearMarine();
 		
 		Assert.assertEquals(marine.vidaActual(),40);
 		Assert.assertEquals(marine.getCostoMineral(),50);
@@ -20,21 +25,25 @@ public class UnidadTest {
 	@Test
 	public void CrearZealot() {
 		Mapa mapa = new Mapa();
-		
 		Acceso acceso = new Acceso();
-		Unidad zealot = acceso.crearUnidad();
+		mapa.agregarElemento(1, 1, acceso);
+		for (int i=1; i <=12; i++){
+			mapa.pasarTurno();
+		}
+		
+		Unidad zealot = acceso.crearZealot();
 		
 		Assert.assertEquals(zealot.vidaActual(),100);
 	}
-	
-	@Test
-	public void CrearZerling() {
-		Mapa mapa = new Mapa();
-		
-		ReservaDeReproduccion reserva = new ReservaDeReproduccion();
-		Unidad zerling = reserva.crearUnidad();
-		
-		Assert.assertEquals(zerling.vidaActual(),35);
-	}
+//	
+//	@Test
+//	public void CrearZerling() {
+//		Mapa mapa = new Mapa();
+//		
+//		ReservaDeReproduccion reserva = new ReservaDeReproduccion();
+//		Unidad zerling = reserva.Zerling();
+//		
+//		Assert.assertEquals(zerling.vidaActual(),35);
+//	}
 
 }

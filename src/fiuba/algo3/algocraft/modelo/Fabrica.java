@@ -16,7 +16,7 @@ public class Fabrica extends EdificioUnidadesAvanzadas {
 	}
 
 	@Override
-	public Unidad crearUnidad() {
+	public Unidad crearUnidad(int i) {
 		return new Golliat();
 	}
 

@@ -11,7 +11,7 @@ public class Espiral extends EdificioConstructorDeNaves {
 	}
 
 	@Override
-	public Unidad crearUnidad() {
+	public Unidad crearUnidad(int i) {
 		return new Zerling();
 	}
 

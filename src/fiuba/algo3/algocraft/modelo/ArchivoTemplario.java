@@ -10,7 +10,7 @@ public class ArchivoTemplario extends EdificioUnidadesAvanzadas {
 	}
 
 	@Override
-	public Unidad crearUnidad() {
+	public Unidad crearUnidad(int i) {
 		return new AltoTemplario();
 	}
 
