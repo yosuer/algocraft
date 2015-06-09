@@ -6,7 +6,7 @@ import java.util.Queue;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 
-public abstract class EdificioUnidadesBasicas extends Edificio implements CreadorDeUnidades{
+public abstract class EdificioUnidadesBasicas extends Edificio {
 	
 	protected ArrayList<Unidad> colaDeProduccion;
 	

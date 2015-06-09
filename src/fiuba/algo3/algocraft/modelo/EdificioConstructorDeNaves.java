@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public abstract class EdificioConstructorDeNaves extends Edificio implements CreadorDeUnidades {
+public abstract class EdificioConstructorDeNaves extends Edificio {
 
 	protected ArrayList<Unidad> colaDeProduccion;
 	
