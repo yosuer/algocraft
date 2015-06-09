@@ -9,13 +9,22 @@ import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 public abstract class Unidad implements IElemento {
 
-	protected int vida;
-	protected int tiempoDeConstruccion;
 	protected Posicion posicion;
-	protected int costoMineral;
-	protected int costoVespeno;
 	protected Mapa mapa;
 	protected int nivel = 0;
+	
+	protected int transporte;
+	protected int vision;
+	protected int costoMineral;
+	protected int costoVespeno;
+	protected int tiempoDeConstruccion;
+	protected int danioAire;
+	protected int danioTierra;
+	protected int suministro;
+	protected int rangoAtaqueAire;
+	protected int rangoAtaqueTierra;
+	protected int vida;
+
 	
 	public Unidad(){
 	}
@@ -38,8 +47,32 @@ public abstract class Unidad implements IElemento {
 		return this.costoVespeno;
 	}
 	
-	public int getTiempoDeConstruccion(){
-		return this.tiempoDeConstruccion;
+	public int getTransporte() {
+		return this.transporte;
+	}
+	
+	public int getVision() {
+		return this.vision;
+	}
+	
+	public int getDanioAire() {
+		return this.danioAire;
+	}
+	
+	public int getDanioTierra() {
+		return this.danioTierra;
+	}
+	
+	public int getSuministro() {
+		return this.suministro;
+	}
+	
+	public int getRangoAtaqueAire() {
+		return this.rangoAtaqueAire;
+	}
+	
+	public int getRangoAtaqueTierra() {
+		return this.rangoAtaqueTierra;
 	}
 	
 	public boolean moverseA(Posicion nuevaPos){
