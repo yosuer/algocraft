@@ -15,11 +15,19 @@ public class UnidadTest {
 			mapa.pasarTurno();
 		}
 		
-		Unidad marine = barraca.crearMarine();
+		barraca.crearMarine();
 		
+		for (int i=1; i <=5; i++){
+			mapa.pasarTurno();
+		}
+		
+		Assert.assertEquals(mapa.getElemento(5, 5, 0).getClass(), new Marine());
+		
+		/*
 		Assert.assertEquals(marine.vidaActual(),40);
 		Assert.assertEquals(marine.getCostoMineral(),50);
 		Assert.assertEquals(marine.getCostoVespeno(),0);
+		*/
 	}
 	
 	@Test
