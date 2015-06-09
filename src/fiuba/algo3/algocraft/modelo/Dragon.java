@@ -3,7 +3,11 @@ package fiuba.algo3.algocraft.modelo;
 public class Dragon extends Unidad {
 
 	public Dragon(){
-		this.vida = 150;
+		this.tiempoDeConstruccion = 6;
+		this.vida = 180;
+		this.costoMineral = 125;
+		this.costoVespeno = 50;
+		this.nivel = 0;
 	}
 	@Override
 	public int getNivel() {

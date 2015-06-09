@@ -1,13 +1,13 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class Espectro extends Unidad {
+public class NaveTransporteTerran extends Unidad{
 
-	public Espectro() {
-		this.tiempoDeConstruccion = 8;
-		this.vida = 120;
-		this.costoMineral = 150;
+	public NaveTransporteTerran() {
+		this.vida = 150;
+		this.costoMineral = 100;
 		this.costoVespeno = 100;
-		this.nivel = 0;
+		this.tiempoDeConstruccion = 7;
+		this.nivel = 1;
 	}
 
 	@Override

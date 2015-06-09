@@ -2,14 +2,19 @@ package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Queue;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 
-public abstract class EdificioUnidadesBasicas extends Edificio 
-												implements CreadorDeUnidades{
+public abstract class EdificioUnidadesBasicas extends Edificio implements CreadorDeUnidades{
 	
-	ArrayList<Unidad> unidadesDisponibles;
+	protected ArrayList<Unidad> colaDeProduccion;
 	
+	public  EdificioUnidadesBasicas()
+	{
+		this.colaDeProduccion = new ArrayList<Unidad>();
+	}
+	/*
 	public Collection<Unidad> getUnidadesDisponibles(){
 		return this.unidadesDisponibles; 
 	}
@@ -30,5 +35,6 @@ public abstract class EdificioUnidadesBasicas extends Edificio
 		
 		return null;
 	}
+	*/
 
 }

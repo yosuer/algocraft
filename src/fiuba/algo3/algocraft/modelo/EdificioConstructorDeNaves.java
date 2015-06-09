@@ -1,12 +1,15 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public abstract class EdificioConstructorDeNaves extends Edificio implements CreadorDeUnidades {
 
-	Collection<Unidad> unidadesDisponibles;
+	protected ArrayList<Unidad> colaDeProduccion;
 	
-	public Collection<Unidad> getUnidadesDisponibles(){
-		return this.unidadesDisponibles; 
+	public EdificioConstructorDeNaves()
+	{
+		this.colaDeProduccion= new ArrayList<Unidad>();
 	}
+
 }

@@ -60,6 +60,8 @@ public abstract class Unidad implements IElemento {
 	
 	@Override
 	public void pasarTurno() {
+		if (this.tiempoDeConstruccion > 0) 
+			this.tiempoDeConstruccion--;
 	}
 
 }

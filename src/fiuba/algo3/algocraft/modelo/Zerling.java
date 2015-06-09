@@ -5,6 +5,9 @@ public class Zerling extends Unidad {
 
 	public Zerling() {
 		this.vida = 35;
+		this.costoMineral = 25;
+		this.costoVespeno = 0;
+		this.tiempoDeConstruccion = 2;
 		this.nivel = 0;
 	}
 
