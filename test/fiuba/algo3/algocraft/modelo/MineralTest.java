@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.modelo.Posicion;
 
@@ -18,7 +19,6 @@ public class MineralTest {
 	@Test
 	public void test02_CadaExtraccionDeUnMineralDevuelve10DeMineralYReduceEn10LaReservaDisponibleDelMineral()
 	{
-		Mapa mapa = new Mapa();
 		Recurso mineral = new Mineral();
 		int cantidad = mineral.extraer();
 		
@@ -51,7 +51,6 @@ public class MineralTest {
 		ExtractorDeMineral extractor = new CentroDeMineral();
 		
 		mapa.agregarElemento(3, 2, mineral);
-		
 		mapa.agregarElemento(3, 2, extractor);
 		
 		mineral.asignarExtractor(extractor);
@@ -59,21 +58,18 @@ public class MineralTest {
 		Assert.assertEquals(mineral.getExtractor(), extractor);
 	}
 	
-	@Test
+	@Test(expected = ErrorAgregandoElementoAlMapa.class)
 	public void test05_AUnMineralNoSeLePuedeAsignarUnExtractorMineralTerranDeDistintaPosicion()
 	{
+		Mapa mapa = new Mapa();
 		Recurso mineral = new Mineral();
 		ExtractorDeMineral extractor = new CentroDeMineral();
 		
-		Posicion posMineral = new Posicion(5,5,0);
-		mineral.setPosicion(posMineral);
-		
-		Posicion posExtractor = new Posicion(4,4,0);
-		extractor.setPosicion(posExtractor);
+		mapa.agregarElemento(5, 5, mineral);
+		mapa.agregarElemento(4, 4, extractor);
 		
 		mineral.asignarExtractor(extractor);
 		
-		Assert.assertNull(mineral.getExtractor());
 	}
 	
 	@Test(expected = ErrorExtractorDeRecursosIncompatible.class)

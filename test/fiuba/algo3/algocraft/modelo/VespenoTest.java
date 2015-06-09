@@ -46,12 +46,12 @@ public class VespenoTest {
 	@Test
 	public void test04_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoTerranEnLaMismaPosicionDaOK()
 	{
+		Mapa mapa = new Mapa();
 		Recurso vespeno = new Vespeno();
 		ExtractorDeGasVespeno extractor = new Refineria();
 		
-		Posicion pos = new Posicion(2,5,0);
-		vespeno.setPosicion(pos);
-		extractor.setPosicion(pos);
+		mapa.agregarElemento(2, 5, vespeno);
+		mapa.agregarElemento(2, 5, extractor);
 		
 		vespeno.asignarExtractor(extractor);
 		
@@ -130,10 +130,8 @@ public class VespenoTest {
 		Recurso vespeno = new Vespeno();
 		ExtractorDeGasVespeno extractor = new Asimilador();
 		
-		Posicion posVespeno = new Posicion(4,1,0);
-		vespeno.setPosicion(posVespeno);
-		Posicion posExtractor = new Posicion(1,4,0);
-		extractor.setPosicion(posExtractor);
+		mapa.agregarElemento(4, 1, vespeno);
+		mapa.agregarElemento(1,4,extractor);
 		
 		vespeno.asignarExtractor(extractor);
 		
