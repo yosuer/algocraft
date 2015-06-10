@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,7 +10,6 @@ import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
-import fiuba.algo3.algocraft.modelo.Grafo.Nodo;
 
 public class MapaTest {
 	
@@ -167,38 +165,26 @@ public class MapaTest {
 	public void test09_CaminoMinimoConElementosEnElMapa(){
 		Mapa mapa = new Mapa();
 		
-		//mapa.agregarElemento(1, 2, new ObstaculoTerrestre());
+		mapa.agregarElemento(1, 2, new ObstaculoTerrestre());
 		mapa.agregarElemento(2, 2, new ObstaculoTerrestre());
+		mapa.agregarElemento(3, 2, new ObstaculoTerrestre());
 		
-		ArrayList<Posicion>camino = 
-			(ArrayList<Posicion>) mapa.getHojaDeRuta(new Posicion(1,3,0), 
-													 new Posicion(3,1,0));
-		
-		Iterator<Posicion> it = camino.iterator();
-		while (it.hasNext()){
-			System.out.println(it.next());
-		}
-		
-		Assert.assertEquals(4, camino.size());
+		Collection<Posicion>camino = mapa.getHojaDeRuta(new Posicion(1,3,0), new Posicion(3,1,0));
+		Assert.assertEquals(5, camino.size());
 	}
 	
-//	@Test
-//	public void testNoSePuedeMoverUnEdificio(){
-//		Mapa mapa = new Mapa();
-//		Barraca barraca = new Barraca();
-//		mapa.agregarElemento(4, 4, barraca);
-//		
-//		mapa.moverElemento(barraca,7,7);
-//		
-//		Assert.assertEquals(mapa.getElemento(4,4,0),barraca);
-//		Assert.assertEquals(mapa.getElemento(7,7,0),null);
-//	}
-	
-	/*
 	@Test
-	public void testxx_IngresarJugadorEnMapa(){
+	public void test10_MoverUnaUnidadDentroDelMapa(){
+		Mapa mapa = new Mapa();
+		Marine marine = new Marine();
 		
+		mapa.agregarElemento(1, 1, marine);
 		
+		Collection<Posicion> camino = mapa.moverElemento(marine, 3,6);
+		
+		Assert.assertEquals(6, camino.size());
+		Assert.assertNull(mapa.getElemento(1, 2, 0));
+		Assert.assertEquals(marine, mapa.getElemento(3, 6, 0));
 	}
-	*/
+		
 }

@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
-import fiuba.algo3.algocraft.modelo.Grafo.Nodo;
 
 public class Mapa {
 
@@ -113,13 +112,13 @@ public class Mapa {
 	}
 
 	public Collection<Posicion> getHojaDeRuta(Posicion inicial, Posicion destino) {
-		Collection<Nodo<Posicion>> camino =
+		Collection<Posicion> camino =
 			this.grafo.getCaminoMinimo(inicial.toString(), destino.toString());
 		
 		Collection<Posicion> hojaDeRuta = new ArrayList<Posicion>();
-		Iterator<Nodo<Posicion>> it = camino.iterator();
+		Iterator<Posicion> it = camino.iterator();
 		while (it.hasNext()){
-			hojaDeRuta.add(it.next().getValor());
+			hojaDeRuta.add(it.next());
 		}
 		
 		return hojaDeRuta;

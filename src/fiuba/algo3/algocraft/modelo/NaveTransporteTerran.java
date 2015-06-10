@@ -14,7 +14,7 @@ public class NaveTransporteTerran extends Unidad{
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 0;
 		this.vida = 150;
-		this.nivel = 1; //Si dice capacidad 8, es terrestre o aéreo?
+		this.nivel = 1; //Si dice capacidad 8, es terrestre o aereo?
 	}
 
 	@Override

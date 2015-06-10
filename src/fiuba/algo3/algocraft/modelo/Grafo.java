@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -99,7 +100,7 @@ public class Grafo<E> {
         distancias.put(origen, new Integer(0));
     }
 
-    public ListaMU<Nodo<E>> getCaminoMinimo(String origen, String destino) {
+    public ArrayList<E> getCaminoMinimo(String origen, String destino) {
         if (origen == null || 
         		destino == null) {
             return null;
@@ -122,7 +123,7 @@ public class Grafo<E> {
             try {
             if (idNodo.equals(destino)) {
                 ListaMU<Nodo<E>> resultado = formarRespuesta(anterior, destino);
-                return resultado;
+                return this.crearListadoDeElemento(resultado);
             	}
             } catch( NullPointerException e){
             	//throw new ErrorNoExisteCaminoPosible();
@@ -152,7 +153,16 @@ public class Grafo<E> {
         return null;
     }
     
-    public void imprimirCamino(ListaMU<Nodo<E>> lista){
+    private ArrayList<E> crearListadoDeElemento(ListaMU<Nodo<E>> resultado) {
+		ArrayList<E> elementos = new ListaMU<E>();
+		Iterator<Nodo<E>> it = resultado.iterator();
+		while (it.hasNext()) {
+			elementos.add(it.next().getValor());
+		}
+		return elementos;
+	}
+
+	public void imprimirCamino(ListaMU<Nodo<E>> lista){
     	Iterator<Nodo<E>> it = lista.iterator();
     	while (it.hasNext()) {
     		System.out.println(it.next().getValor());
@@ -160,10 +170,11 @@ public class Grafo<E> {
     	System.out.println("-----------------------");
     }
 
+	
     /* 
      * Solo para uso interno del Grafo
      */
-    public static class Nodo<E> {
+    private static class Nodo<E> {
         private String id;
         private E valor;
         private ListaMU<Nodo<E>> vecinos;
