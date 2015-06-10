@@ -29,20 +29,20 @@ public class UnidadTest {
 		Assert.assertEquals(marine.getCostoVespeno(),0);
 		*/
 	}
-	
-	@Test
-	public void CrearZealot() {
-		Mapa mapa = new Mapa();
-		Acceso acceso = new Acceso();
-		mapa.agregarElemento(1, 1, acceso);
-		for (int i=1; i <=12; i++){
-			mapa.pasarTurno();
-		}
-		
-		Unidad zealot = acceso.crearZealot();
-		
-		Assert.assertEquals(zealot.vidaActual(),100);
-	}
+//	
+//	@Test
+//	public void CrearZealot() {
+//		Mapa mapa = new Mapa();
+//		Acceso acceso = new Acceso();
+//		mapa.agregarElemento(1, 1, acceso);
+//		for (int i=1; i <=12; i++){
+//			mapa.pasarTurno();
+//		}
+//		
+//		Unidad zealot = acceso.crearZealot();
+//		
+//		Assert.assertEquals(zealot.vidaActual(),100);
+//	}
 //	
 //	@Test
 //	public void CrearZerling() {

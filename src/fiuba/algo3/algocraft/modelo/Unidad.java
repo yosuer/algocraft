@@ -101,4 +101,8 @@ public abstract class Unidad implements IElemento {
 			this.tiempoDeConstruccion--;
 	}
 
+	public int getTiempoDeConstruccion() {
+		return this.tiempoDeConstruccion;
+	}
+
 }
