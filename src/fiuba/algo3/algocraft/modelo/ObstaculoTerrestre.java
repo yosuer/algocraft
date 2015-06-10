@@ -13,6 +13,7 @@ public class ObstaculoTerrestre implements IElemento {
 	Mapa mapa;
 	
 	public ObstaculoTerrestre() {
+		this.nivel = 0;
 	}
 
 	@Override

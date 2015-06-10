@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Iterator;
 
+import fiuba.algo3.algocraft.excepciones.ErrorNoExisteCaminoPosible;
+
 public class Grafo<E> {
 
     private Hashtable<String, Nodo<E>> nodos;
@@ -44,7 +46,7 @@ public class Grafo<E> {
     	while (it.hasNext()){
     		it.next().eliminarVecino(nodoAEliminar);
     	}
-    	nodoAEliminar.setVecinos(new ListaMU<Nodo<E>>());
+    	//nodoAEliminar.setVecinos(new ListaMU<Nodo<E>>());
     }
 
     private String getNodoDistanciaMasCortaEnAnalizados(ListaMU<String> analizados, 
@@ -117,11 +119,16 @@ public class Grafo<E> {
                 getNodoDistanciaMasCortaEnAnalizados(analizados, distancias);
             // Lo quita de la lista de analizados
             analizados.eliminarContenido(idNodo);
-
+            try {
             if (idNodo.equals(destino)) {
                 ListaMU<Nodo<E>> resultado = formarRespuesta(anterior, destino);
                 return resultado;
+            	}
+            } catch( NullPointerException e){
+            	//throw new ErrorNoExisteCaminoPosible();
+            	return null;
             }
+            
 
             Iterator<Nodo<E>> i = nodos.get(idNodo).getVecinos().iterator();
             while (i.hasNext()) {
@@ -204,7 +211,7 @@ public class Grafo<E> {
         }
 
         private void insertarVecino(Nodo<E> objNodoDestino) {
-        	if ( !this.vecinos.existe(objNodoDestino) )
+        	if ( !this.vecinos.contains(objNodoDestino) )
         		this.vecinos.insertar(objNodoDestino);
         }
         

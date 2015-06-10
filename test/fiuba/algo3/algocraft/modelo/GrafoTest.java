@@ -5,6 +5,8 @@ import java.util.Iterator;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
+import fiuba.algo3.algocraft.excepciones.ErrorNoExisteCaminoPosible;
 import fiuba.algo3.algocraft.modelo.Grafo.Nodo;
 
 public class GrafoTest {
@@ -100,7 +102,7 @@ public class GrafoTest {
 		ListaMU<Nodo<Posicion>> camino= grafo.getCaminoMinimo("1,5", "1,3");
 
 		Assert.assertEquals(camino.size(), 3);
-		Assert.assertEquals(new Posicion(1,5,0),camino.get(0).getValor());
+		//Assert.assertEquals(new Posicion(1,5,0),camino.get(0).getValor());
 		Assert.assertEquals(new Posicion(1,4,0),camino.get(1).getValor());
 		Assert.assertEquals(new Posicion(1,3,0),camino.get(2).getValor());
 	}
@@ -128,7 +130,7 @@ public class GrafoTest {
 		
 		ListaMU<Nodo<Posicion>> camino= grafo.getCaminoMinimo("2,1", "2,3");
 
-		Assert.assertEquals(camino.size(), 6);
+		Assert.assertEquals(6, camino.size());
 		Assert.assertEquals(new Posicion(2,1,0),camino.primero().getValor());
 		Assert.assertEquals(new Posicion(1,2,0),camino.get(1).getValor());
 		Assert.assertEquals(new Posicion(1,4,0),camino.get(3).getValor());
@@ -162,7 +164,6 @@ public class GrafoTest {
 		Assert.assertEquals(camino.size(), 5);
 		Assert.assertEquals(new Posicion(2,1,0),camino.primero().getValor());
 		Assert.assertEquals(new Posicion(1,2,0),camino.get(1).getValor());
-		Assert.assertEquals(new Posicion(1,3,0),camino.get(2).getValor());
 		Assert.assertEquals(new Posicion(1,4,0),camino.get(3).getValor());
 		Assert.assertEquals(new Posicion(2,3,0),camino.ultimo().getValor());
 	}
@@ -198,7 +199,56 @@ public class GrafoTest {
 	}
 	
 	@Test
-	public void test07_EliminarNodosYVolverAAgregar(){
+	public void test07_EliminarNodosYElCaminoMinimoEvitaLosNodosEliminados(){
+		Grafo<Posicion> grafo = new Grafo<Posicion>();
+		ListaMU<Nodo<Posicion>> camino;
+		int n = 0;
+		
+		for (int x=1; x <= 4; x++){
+			for (int y=1; y<= 4; y++){
+				grafo.nuevoNodo(new Posicion(x,y,n));
+				grafo.arista(x+","+y, (x-1)+","+(y-1));
+				grafo.arista(x+","+y, (x-1)+","+y);
+				grafo.arista(x+","+y, (x-1)+","+(y+1));
+				
+				grafo.arista(x+","+y,  x+","+(y-1));
+				grafo.arista(x+","+y,  x+","+(y+1));
+				
+				grafo.arista(x+","+y, (x+1)+","+(y-1));
+				grafo.arista(x+","+y, (x+1)+","+y);
+				grafo.arista(x+","+y, (x+1)+","+(y+1));
+			}
+		}
+		
+		grafo.eliminarNodo("2,2");
+
+		camino= grafo.getCaminoMinimo("1,3", "3,1");
+		Assert.assertEquals(camino.size(), 4);
+		Assert.assertEquals(new Posicion(1,3,0),camino.primero().getValor());
+		Assert.assertEquals(new Posicion(2,3,0),camino.get(1).getValor());
+		Assert.assertEquals(new Posicion(3,2,0),camino.get(2).getValor());
+		Assert.assertEquals(new Posicion(3,1,0),camino.ultimo().getValor());
+		//grafo.imprimirCamino(camino);
+		
+		grafo.arista("1,2", "0,1");
+		grafo.arista("1,2", "0,2");
+		grafo.arista("1,2", "0,3");
+		grafo.arista("1,2", "1,1");
+		grafo.arista("1,2", "1,3");
+		grafo.arista("1,2", "2,1");
+		grafo.arista("1,2", "2,2");
+		grafo.arista("1,2", "2,3");
+		
+		camino= grafo.getCaminoMinimo("1,1", "1,3");
+		Assert.assertEquals(camino.size(), 3);
+		Assert.assertEquals(new Posicion(1,1,0),camino.primero().getValor());
+		Assert.assertEquals(new Posicion(1,2,0),camino.get(1).getValor());
+		Assert.assertEquals(new Posicion(1,3,0),camino.ultimo().getValor());
+		//grafo.imprimirCamino(camino);
+	}
+	
+	@Test//(expected = ErrorNoExisteCaminoPosible.class)
+	public void test07_SiNoExisteUnCaminoPosibleSeDevuelveNull(){
 		Grafo<Posicion> grafo = new Grafo<Posicion>();
 		ListaMU<Nodo<Posicion>> camino;
 		int n = 0;
@@ -221,31 +271,38 @@ public class GrafoTest {
 		}
 		
 		grafo.eliminarNodo("1,2");
-		grafo.eliminarNodo("2,2");
+
+		Assert.assertNull(grafo.getCaminoMinimo("1,4", "1,2"));
+	}
 	
-		camino= grafo.getCaminoMinimo("1,1", "1,3");
-		Assert.assertEquals(camino.size(), 5);
-		Assert.assertEquals(new Posicion(1,1,0),camino.primero().getValor());
-		Assert.assertEquals(new Posicion(2,1,0),camino.get(1).getValor());
-		Assert.assertEquals(new Posicion(3,2,0),camino.get(2).getValor());
-		Assert.assertEquals(new Posicion(2,3,0),camino.get(3).getValor());
-		Assert.assertEquals(new Posicion(1,3,0),camino.ultimo().getValor());
-		//grafo.imprimirCamino(camino);
+	@Test
+	public void test07_SePuedeCrearUnCaminoDesdeUnNodoEliminado(){
+		Grafo<Posicion> grafo = new Grafo<Posicion>();
+		ListaMU<Nodo<Posicion>> camino;
+		int n = 0;
 		
-		grafo.arista("1,2", "0,1");
-		grafo.arista("1,2", "0,2");
-		grafo.arista("1,2", "0,3");
-		grafo.arista("1,2", "1,1");
-		grafo.arista("1,2", "1,3");
-		grafo.arista("1,2", "2,1");
-		grafo.arista("1,2", "2,2");
-		grafo.arista("1,2", "2,3");
+		for (int x=1; x <= 5; x++){
+			for (int y=1; y<= 5; y++){
+				grafo.nuevoNodo(new Posicion(x,y,n));
+				
+				grafo.arista(x+","+y, (x-1)+","+(y-1));
+				grafo.arista(x+","+y, (x-1)+","+y);
+				grafo.arista(x+","+y, (x-1)+","+(y+1));
+				
+				grafo.arista(x+","+y,  x+","+(y-1));
+				grafo.arista(x+","+y,  x+","+(y+1));
+				
+				grafo.arista(x+","+y, (x+1)+","+(y-1));
+				grafo.arista(x+","+y, (x+1)+","+y);
+				grafo.arista(x+","+y, (x+1)+","+(y+1));
+			}
+		}
 		
-		camino= grafo.getCaminoMinimo("1,1", "1,3");
-		Assert.assertEquals(camino.size(), 3);
-		Assert.assertEquals(new Posicion(1,1,0),camino.primero().getValor());
-		Assert.assertEquals(new Posicion(1,2,0),camino.get(1).getValor());
-		Assert.assertEquals(new Posicion(1,3,0),camino.ultimo().getValor());
-		//grafo.imprimirCamino(camino);
+		grafo.eliminarNodo("1,2");
+		camino = grafo.getCaminoMinimo("1,2", "1,4");
+		Assert.assertEquals(3, camino.size());
+		Assert.assertEquals(new Posicion(1,2,0),camino.primero().getValor());
+		Assert.assertEquals(new Posicion(1,3,0),camino.get(1).getValor());
+		Assert.assertEquals(new Posicion(1,4,0),camino.ultimo().getValor());
 	}
 }

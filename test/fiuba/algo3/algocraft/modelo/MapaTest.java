@@ -167,14 +167,19 @@ public class MapaTest {
 	public void test09_CaminoMinimoConElementosEnElMapa(){
 		Mapa mapa = new Mapa();
 		
-		mapa.agregarElemento(1, 2, new ObstaculoTerrestre());
+		//mapa.agregarElemento(1, 2, new ObstaculoTerrestre());
 		mapa.agregarElemento(2, 2, new ObstaculoTerrestre());
 		
 		ArrayList<Posicion>camino = 
 			(ArrayList<Posicion>) mapa.getHojaDeRuta(new Posicion(1,3,0), 
-													 new Posicion(1,1,0));
+													 new Posicion(3,1,0));
 		
-		Assert.assertEquals(5, camino.size());
+		Iterator<Posicion> it = camino.iterator();
+		while (it.hasNext()){
+			System.out.println(it.next());
+		}
+		
+		Assert.assertEquals(4, camino.size());
 	}
 	
 //	@Test

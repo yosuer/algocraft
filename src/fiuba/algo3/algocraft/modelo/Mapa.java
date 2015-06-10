@@ -29,11 +29,9 @@ public class Mapa {
 		for (int x = 1; x <= this.ancho; x++){
 			for (int y = 1; y <= this.largo; y++){
 				for (int z = 1; z <= this.alto; z++){
-					Posicion pos = new Posicion(x,y,0);
 					elementos[x][y][z] = null;
-					grafo.nuevoNodo(pos);
-					this.agregarElementoEnGrafo(pos);
 				}
+				this.agregarElementoEnGrafo(new Posicion(x,y,0));
 			}
 		}
 	}
@@ -56,7 +54,7 @@ public class Mapa {
 	
 	public void agregarElemento(int x, int y, IElemento elemento) {
 		
-		Posicion pos = new Posicion(x,y,elemento.getNivel());
+		Posicion pos = new Posicion(x,y,0);
 		elemento.setPosicion(pos); //elemento verifica la coord z segun su nivel
 		
 		try {
@@ -67,6 +65,7 @@ public class Mapa {
 		
 		this.elementosActivos.add(elemento);
 		this.elementos[pos.x()][pos.y()][pos.z()] = elemento;
+		
 		this.grafo.eliminarNodo(pos.toString());
 	}
 	
@@ -135,11 +134,13 @@ public class Mapa {
 			Iterator<Posicion> it = camino.iterator();
 			Posicion posAnt = it.next();
 			while (it.hasNext()){
-				Posicion posNueva = it.next(); System.out.println(posNueva);
+				Posicion posNueva = it.next(); //System.out.println(posNueva);
 				e.moverseA(posNueva);
 				this.elementos[posAnt.x()][posAnt.y()][posAnt.z()] = null;
 				this.quitarElemento(posAnt.x(),posAnt.y(),posAnt.z());
 				this.grafo.eliminarNodo(posNueva.toString());
+				this.elementos[posNueva.x()][posNueva.y()][posNueva.z()] = e;
+				posAnt = posNueva;
 			}
 			hojaDeRuta = camino;
 		}
@@ -155,6 +156,7 @@ public class Mapa {
 	}
 	
 	private void agregarElementoEnGrafo(Posicion pos) {
+		grafo.nuevoNodo(pos);
 		int x = pos.x();
 		int y = pos.y();
 		
