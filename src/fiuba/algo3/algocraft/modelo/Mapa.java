@@ -13,7 +13,7 @@ public class Mapa {
 	private int alto; //z
 	
 	private Collection<IElemento> elementosActivos;
-
+	private Grafo<Posicion> grafo;
 	private IElemento[][][] elementos;
 
 	public Mapa() {
@@ -21,13 +21,15 @@ public class Mapa {
 		this.largo = 100;
 		this.alto = 2;
 		this.elementosActivos = new ArrayList<IElemento>();
-		
+		this.grafo = new Grafo<Posicion>();
+				
 		elementos = new IElemento[this.ancho+1][this.largo+1][this.alto+1];
 		
 		for (int x = 1; x <= this.ancho; x++){
 			for (int y = 1; y <= this.largo; y++){
 				for (int z = 1; z <= this.alto; z++){
 					elementos[x][y][z] = null;
+					grafo.nuevoNodo(new Posicion(x,y,z));
 				}
 			}
 		}

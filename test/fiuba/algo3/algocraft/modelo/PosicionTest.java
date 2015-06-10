@@ -25,4 +25,15 @@ public class PosicionTest {
 		Assert.assertEquals(pos1,pos2);
 		Assert.assertNotEquals(pos1,pos3);
 	}
+	
+	@Test
+	public void test03_ToStringPosicion(){
+		Posicion pos1 = new Posicion(1,6,1);
+		Posicion pos2 = new Posicion(53,30,1);
+		Posicion pos3 = new Posicion(9,99,1);
+		
+		Assert.assertEquals(pos1.toString(),"1,6");
+		Assert.assertEquals(pos2.toString(),"53,30");
+		Assert.assertEquals(pos3.toString(),"9,99");
+	}
 }

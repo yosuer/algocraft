@@ -31,7 +31,10 @@ public class Posicion {
 		return (p.x() == this.x) & 
 				(p.y() == this.y) &
 				(p.z() == this.z);
-		
+	}
+	
+	public String toString(){
+		return this.x + "," + this.y;
 	}
 
 }
