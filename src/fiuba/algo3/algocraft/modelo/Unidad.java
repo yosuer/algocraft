@@ -75,14 +75,9 @@ public abstract class Unidad implements IElemento {
 		return this.rangoAtaqueTierra;
 	}
 	
-	public boolean moverseA(Posicion nuevaPos){
-		
-		if (!mapa.estaOcupado(nuevaPos.x(), nuevaPos.y(), nuevaPos.z())){
-			mapa.agregarElemento(nuevaPos.x(), nuevaPos.y(), this);
-			return true;
-		}
-		
-		return false;
+	public void moverseA(Posicion pos){
+		if (mapa.estaOcupado(pos.x(), pos.y(), pos.z())) throw new ErrorPosicionOcupada();
+		this.posicion = pos;
 	}
 	
 	public Collection<IElemento> elementosRequeridos(){

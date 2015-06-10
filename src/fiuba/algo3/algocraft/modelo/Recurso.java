@@ -26,8 +26,7 @@ public abstract class Recurso implements IElemento{
 
 	public abstract ExtractorDeRecursos getExtractor();
 	
-	public boolean moverseA(Posicion posicion){
-		return false;
+	public void moverseA(Posicion posicion){
 	}
 	
 	public Collection<IElemento> elementosRequeridos(){

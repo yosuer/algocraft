@@ -97,7 +97,7 @@ public class GrafoTest {
 		grafo.arista("1,5", "1,4");
 		grafo.arista("1,4", "1,3");
 		
-		ListaMU<Nodo<Posicion>> camino= grafo.caminoMasCortoDijkstra("1,5", "1,3");
+		ListaMU<Nodo<Posicion>> camino= grafo.getCaminoMinimo("1,5", "1,3");
 
 		Assert.assertEquals(camino.size(), 3);
 		Assert.assertEquals(new Posicion(1,5,0),camino.get(0).getValor());
@@ -126,7 +126,7 @@ public class GrafoTest {
 		grafo.arista("2,4", "1,4");
 		grafo.arista("2,3", "2,4");
 		
-		ListaMU<Nodo<Posicion>> camino= grafo.caminoMasCortoDijkstra("2,1", "2,3");
+		ListaMU<Nodo<Posicion>> camino= grafo.getCaminoMinimo("2,1", "2,3");
 
 		Assert.assertEquals(camino.size(), 6);
 		Assert.assertEquals(new Posicion(2,1,0),camino.primero().getValor());
@@ -157,7 +157,7 @@ public class GrafoTest {
 		grafo.arista("2,3", "2,4");
 		grafo.arista("1,4", "2,3");
 		
-		ListaMU<Nodo<Posicion>> camino= grafo.caminoMasCortoDijkstra("2,1", "2,3");
+		ListaMU<Nodo<Posicion>> camino= grafo.getCaminoMinimo("2,1", "2,3");
 
 		Assert.assertEquals(camino.size(), 5);
 		Assert.assertEquals(new Posicion(2,1,0),camino.primero().getValor());
@@ -190,10 +190,10 @@ public class GrafoTest {
 			}
 		}
 		
-		camino= grafo.caminoMasCortoDijkstra("2,1", "2,4");
+		camino= grafo.getCaminoMinimo("2,1", "2,4");
 		Assert.assertEquals(camino.size(), 4);
 		
-		camino= grafo.caminoMasCortoDijkstra("5,5", "1,1");
+		camino= grafo.getCaminoMinimo("5,5", "1,1");
 		Assert.assertEquals(camino.size(), 5);
 	}
 	
@@ -223,7 +223,7 @@ public class GrafoTest {
 		grafo.eliminarNodo("1,2");
 		grafo.eliminarNodo("2,2");
 	
-		camino= grafo.caminoMasCortoDijkstra("1,1", "1,3");
+		camino= grafo.getCaminoMinimo("1,1", "1,3");
 		Assert.assertEquals(camino.size(), 5);
 		Assert.assertEquals(new Posicion(1,1,0),camino.primero().getValor());
 		Assert.assertEquals(new Posicion(2,1,0),camino.get(1).getValor());
@@ -241,7 +241,7 @@ public class GrafoTest {
 		grafo.arista("1,2", "2,2");
 		grafo.arista("1,2", "2,3");
 		
-		camino= grafo.caminoMasCortoDijkstra("1,1", "1,3");
+		camino= grafo.getCaminoMinimo("1,1", "1,3");
 		Assert.assertEquals(camino.size(), 3);
 		Assert.assertEquals(new Posicion(1,1,0),camino.primero().getValor());
 		Assert.assertEquals(new Posicion(1,2,0),camino.get(1).getValor());

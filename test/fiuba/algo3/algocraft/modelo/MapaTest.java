@@ -1,5 +1,9 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -7,6 +11,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.Grafo.Nodo;
 
 public class MapaTest {
 	
@@ -130,21 +135,47 @@ public class MapaTest {
 		Assert.assertTrue(mapa.getElemento(95,97,0).getClass() == Vespeno.class);
 	}
 	
-//	@Test
-//	public void testMoverUnaUnidad(){
-//		Mapa mapa = new Mapa();
-//		Barraca barraca = new Barraca();
-//		Unidad marine= barraca.crearUnidad();
-//		mapa.agregarElemento(4, 4, barraca);
-//		mapa.agregarElemento(5, 5, marine);
-//
-//		Assert.assertEquals(mapa.getElemento(5,5,0),marine);
-//		
-//		mapa.moverElemento(marine,6,6);
-//		
-//		Assert.assertEquals(mapa.getElemento(6,6,0),marine);
-//		Assert.assertEquals(mapa.getElemento(5,5,0),null);
-//	}
+	@Test
+	public void test09_AlIniciarElMapaSePuedeRecorrerTodasLasPosiciones1(){
+		Mapa mapa = new Mapa();
+		
+		ArrayList<Posicion>camino = 
+			(ArrayList<Posicion>) mapa.getHojaDeRuta(new Posicion(1,1,0), new Posicion(4,4,0));
+		
+		Assert.assertEquals(4, camino.size());
+		
+		ArrayList<Posicion> caminoEsperado = new ArrayList<Posicion>();
+		caminoEsperado.add(new Posicion(1,1,0));
+		caminoEsperado.add(new Posicion(2,2,0));
+		caminoEsperado.add(new Posicion(3,3,0));
+		caminoEsperado.add(new Posicion(4,4,0));
+		
+		Assert.assertEquals(caminoEsperado, camino);
+	}
+
+	@Test
+	public void test09_AlIniciarElMapaSePuedeRecorrerTodasLasPosiciones2(){
+		Mapa mapa = new Mapa();
+		
+		ArrayList<Posicion>camino = 
+			(ArrayList<Posicion>) mapa.getHojaDeRuta(new Posicion(100,100,0), new Posicion(80,80,0));
+		
+		Assert.assertEquals(21, camino.size());
+	}
+	
+	@Test
+	public void test09_CaminoMinimoConElementosEnElMapa(){
+		Mapa mapa = new Mapa();
+		
+		mapa.agregarElemento(1, 2, new ObstaculoTerrestre());
+		mapa.agregarElemento(2, 2, new ObstaculoTerrestre());
+		
+		ArrayList<Posicion>camino = 
+			(ArrayList<Posicion>) mapa.getHojaDeRuta(new Posicion(1,3,0), 
+													 new Posicion(1,1,0));
+		
+		Assert.assertEquals(5, camino.size());
+	}
 	
 //	@Test
 //	public void testNoSePuedeMoverUnEdificio(){

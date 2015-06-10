@@ -13,7 +13,7 @@ public interface IElemento {
 	
 	public int getNivel();
 	
-	public boolean moverseA(Posicion posicion);
+	public void moverseA(Posicion posicion);
 
 	public Collection<IElemento> elementosRequeridos();
 	

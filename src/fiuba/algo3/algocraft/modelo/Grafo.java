@@ -38,61 +38,13 @@ public class Grafo<E> {
     
     public void eliminarNodo(String nodo){
     	Nodo<E> nodoAEliminar = this.nodos.get(nodo);
+    	
+    	ListaMU<Nodo<E>> vecinos = nodoAEliminar.getVecinos();
+    	Iterator<Nodo<E>> it = vecinos.iterator();
+    	while (it.hasNext()){
+    		it.next().eliminarVecino(nodoAEliminar);
+    	}
     	nodoAEliminar.setVecinos(new ListaMU<Nodo<E>>());
-    }
-
-    public int caminoMasCorto(String de, String a) {
-        // inicializamos las visitas a 0
-        inicializarVisitadoa0();
-
-        // creamos la cola y colocamos el nodo DE
-        ListaMU<Nodo<E>> tocaVisitar = new ListaMU<Nodo<E>>();
-        boolean encontro = false;
-
-        Nodo<E> nodoDe = nodos.get(de);
-        nodoDe.setVisitaMas1();
-        tocaVisitar.push(nodoDe);
-
-        Nodo<E> nodoA = nodos.get(a);
-
-        // Mientras la Pila no este vacia o no hayamos encontrado a A
-        while (!tocaVisitar.estaVacia() && !encontro) {
-            Nodo<E> objNodo = tocaVisitar.pop();
-            encontro = visitarNodo(objNodo, tocaVisitar, nodoA);
-        }
-        return nodoA.getVisitado() - 1;
-    }
-
-    private void inicializarVisitadoa0() {
-        Iterator<Nodo<E>> i = nodos.values().iterator();
-        while (i.hasNext()) {
-            i.next().resetVisita();
-        }
-    }
-
-    private boolean visitarNodo(Nodo<E> objVisitado, ListaMU<Nodo<E>> tocaVisitar, 
-                                Nodo<E> objDestino) {
-        Iterator<Nodo<E>> vecinosVisitado = 
-            objVisitado.getVecinos().iterator();
-        while (vecinosVisitado.hasNext()) {
-            Nodo<E> vecino = vecinosVisitado.next();
-
-            // Si es el que estamos buscando devuelve true y le coloca el numero
-            // de visitado que corresponda.
-            if (vecino == objDestino) {
-                vecino.setVisitado(objVisitado.getVisitado() + 1);
-                return true;
-            }
-
-            // Solamente lo coloca si no esta en la cola (si no ha sido visitado)
-            if (vecino.getVisitado() == 0)
-                tocaVisitar.push(vecino);
-
-            // Coloca el visitado de acuerdo a lo que corresponde
-            vecino.setVisitado(objVisitado.getVisitado() + 1);
-        }
-        // Si no lo encuentra entre los vecinos de este nodo
-        return false;
     }
 
     private String getNodoDistanciaMasCortaEnAnalizados(ListaMU<String> analizados, 
@@ -133,6 +85,7 @@ public class Grafo<E> {
     private void inicializarParaDijkstra(String origen, 
                                          ListaMU<String> analizados, 
                                          Hashtable<String, Integer> distancias) {
+    	
         Iterator<Nodo<E>> i = this.nodos.values().iterator();
         while (i.hasNext()) {
             Nodo<E> objNodo = i.next();
@@ -140,15 +93,13 @@ public class Grafo<E> {
             analizados.insertar(objNodo.getId());
         }
 
-        boolean encontro = false;
-
         // coloca la distancia del origen a 0
         distancias.put(origen, new Integer(0));
     }
 
-    public ListaMU<Nodo<E>> caminoMasCortoDijkstra(String origen, String destino) {
-        if (nodos.get(origen) == null || 
-        		nodos.get(destino) == null) {
+    public ListaMU<Nodo<E>> getCaminoMinimo(String origen, String destino) {
+        if (origen == null || 
+        		destino == null) {
             return null;
         }
         
@@ -255,6 +206,10 @@ public class Grafo<E> {
         private void insertarVecino(Nodo<E> objNodoDestino) {
         	if ( !this.vecinos.existe(objNodoDestino) )
         		this.vecinos.insertar(objNodoDestino);
+        }
+        
+        private void eliminarVecino(Nodo<E> objNodo) {
+        	this.vecinos.eliminarContenido(objNodo);
         }
     }
 }

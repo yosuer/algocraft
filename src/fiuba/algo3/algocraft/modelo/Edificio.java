@@ -46,8 +46,7 @@ public abstract class Edificio implements IElemento{
 		return this.costoVespeno;
 	}
 	
-	public boolean moverseA(Posicion posicion){
-		return false;
+	public void moverseA(Posicion posicion){
 	}
 	
 	public boolean equals(Object o)

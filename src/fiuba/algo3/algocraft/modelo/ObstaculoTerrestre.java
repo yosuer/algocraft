@@ -31,9 +31,7 @@ public class ObstaculoTerrestre implements IElemento {
 	}
 
 	@Override
-	public boolean moverseA(Posicion posicion) {
-		// TODO Auto-generated method stub
-		return false;
+	public void moverseA(Posicion posicion) {
 	}
 	
 	public Collection<IElemento> elementosRequeridos(){

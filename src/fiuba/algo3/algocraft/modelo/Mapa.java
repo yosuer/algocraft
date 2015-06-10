@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
+import fiuba.algo3.algocraft.modelo.Grafo.Nodo;
 
 public class Mapa {
 
@@ -28,8 +29,10 @@ public class Mapa {
 		for (int x = 1; x <= this.ancho; x++){
 			for (int y = 1; y <= this.largo; y++){
 				for (int z = 1; z <= this.alto; z++){
+					Posicion pos = new Posicion(x,y,0);
 					elementos[x][y][z] = null;
-					grafo.nuevoNodo(new Posicion(x,y,z));
+					grafo.nuevoNodo(pos);
+					this.agregarElementoEnGrafo(pos);
 				}
 			}
 		}
@@ -64,11 +67,15 @@ public class Mapa {
 		
 		this.elementosActivos.add(elemento);
 		this.elementos[pos.x()][pos.y()][pos.z()] = elemento;
+		this.grafo.eliminarNodo(pos.toString());
 	}
 	
+
 	public IElemento quitarElemento(int x, int y, int z) {
 		IElemento elementoAQuitar = this.getElemento(x, y, z);
 		elementos[x][y][z] = null;
+		this.agregarElementoEnGrafo(new Posicion(x,y,z));
+		
 		return elementoAQuitar;
 	}
 	
@@ -106,11 +113,37 @@ public class Mapa {
 		this.agregarElemento(95,97,new Vespeno());
 	}
 
-	public void moverElemento(IElemento elemento, int x, int y) {
-		Posicion posAnt = elemento.getPosicion();
+	public Collection<Posicion> getHojaDeRuta(Posicion inicial, Posicion destino) {
+		Collection<Nodo<Posicion>> camino =
+			this.grafo.getCaminoMinimo(inicial.toString(), destino.toString());
 		
-		if (elemento.moverseA( new Posicion(x,y,elemento.getNivel())) ) 
-			elementos[posAnt.x()][posAnt.y()][posAnt.z()] = null;
+		Collection<Posicion> hojaDeRuta = new ArrayList<Posicion>();
+		Iterator<Nodo<Posicion>> it = camino.iterator();
+		while (it.hasNext()){
+			hojaDeRuta.add(it.next().getValor());
+		}
+		
+		return hojaDeRuta;
+	}
+	
+	public Collection<Posicion> moverElemento(IElemento e, int x, int y) {
+		Collection<Posicion> hojaDeRuta = null;
+		if (!this.estaOcupado(x, y, e.getNivel())) {
+			Collection<Posicion> camino = 
+					getHojaDeRuta(e.getPosicion(),new Posicion(x,y,e.getNivel()));
+			
+			Iterator<Posicion> it = camino.iterator();
+			Posicion posAnt = it.next();
+			while (it.hasNext()){
+				Posicion posNueva = it.next(); System.out.println(posNueva);
+				e.moverseA(posNueva);
+				this.elementos[posAnt.x()][posAnt.y()][posAnt.z()] = null;
+				this.quitarElemento(posAnt.x(),posAnt.y(),posAnt.z());
+				this.grafo.eliminarNodo(posNueva.toString());
+			}
+			hojaDeRuta = camino;
+		}
+		return hojaDeRuta;
 	}
 	
 	public void pasarTurno(){
@@ -120,5 +153,22 @@ public class Mapa {
 			it.next().pasarTurno();
 		}
 	}
+	
+	private void agregarElementoEnGrafo(Posicion pos) {
+		int x = pos.x();
+		int y = pos.y();
+		
+		grafo.arista(x+","+y, (x-1)+","+(y-1));
+		grafo.arista(x+","+y, (x-1)+","+y);
+		grafo.arista(x+","+y, (x-1)+","+(y+1));
+		
+		grafo.arista(x+","+y,  x+","+(y-1));
+		grafo.arista(x+","+y,  x+","+(y+1));
+		
+		grafo.arista(x+","+y, (x+1)+","+(y-1));
+		grafo.arista(x+","+y, (x+1)+","+y);
+		grafo.arista(x+","+y, (x+1)+","+(y+1));
+	}
+
 
 }
