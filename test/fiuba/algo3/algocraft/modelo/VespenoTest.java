@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.modelo.Posicion;
 
@@ -88,7 +89,7 @@ public class VespenoTest {
 		vespeno.asignarExtractor(extractor);
 	}
 	
-	@Test
+	@Test 
 	public void test07_AUnVespenoSoloSeLePuedeAsignarUnExtractorDeVespeno()
 	{
 		
@@ -123,17 +124,29 @@ public class VespenoTest {
 		Assert.assertEquals(vespeno.getExtractor(), extractor);
 	}
 	
-	@Test
+	@Test (expected = ErrorAgregandoElementoAlMapa.class)
 	public void test09_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoProtossDeDistintaPosicion()
 	{
 		Mapa mapa = new Mapa();
 		Recurso vespeno = new Vespeno();
 		ExtractorDeGasVespeno extractor = new Asimilador();
 		
-		mapa.agregarElemento(4, 1, vespeno);
+		mapa.agregarElemento(4,1, vespeno);
 		mapa.agregarElemento(1,4,extractor);
+	}
+	
+	@Test
+	public void test09B_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoProtossDeDistintaPosicion()
+	{
+		Mapa mapa = new Mapa();
+		Recurso vespeno = new Vespeno();
+		ExtractorDeGasVespeno extractor = new Asimilador();
 		
-		vespeno.asignarExtractor(extractor);
+		mapa.agregarElemento(4,1, vespeno);
+		try{
+			mapa.agregarElemento(1,4,extractor);
+		} catch (ErrorAgregandoElementoAlMapa e){
+		}
 		
 		Assert.assertNull(vespeno.getExtractor());
 	}
