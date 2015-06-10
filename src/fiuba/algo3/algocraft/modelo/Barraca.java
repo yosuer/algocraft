@@ -33,17 +33,16 @@ public class Barraca extends EdificioUnidadesBasicas {
 		return this.vida;
 	}
 	
-	public void pasarTurno()
-	{
+	public void pasarTurno() {
 		super.pasarTurno();
 		Iterator<Unidad> it= this.colaDeProduccion.iterator();
-		while(it.hasNext())
-		{
+		while(it.hasNext()) {
+			
 			Unidad unaUnidad = it.next();
 			unaUnidad.pasarTurno();
-			if (unaUnidad.getTiempoDeConstruccion() == 0)
-			{
-				this.mapa.agregarElemento(5,5,unaUnidad);
+			
+			if (unaUnidad.getTiempoDeConstruccion() == 0) {
+//				this.mapa.agregarElemento(5,5,unaUnidad);
 				this.colaDeProduccion.remove(unaUnidad);
 			}
 		}

@@ -10,11 +10,6 @@ public class GuaridaDeHidralisco extends EdificioUnidadesAvanzadas {
 	}
 
 	@Override
-	public Unidad crearUnidad(int i) {
-		return null;
-	}
-
-	@Override
 	public int getNivel() {
 		return this.nivel;
 	}
