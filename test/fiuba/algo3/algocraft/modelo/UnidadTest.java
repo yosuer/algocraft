@@ -108,7 +108,7 @@ public class UnidadTest {
 		for (int i=1; i <=12; i++) mapa.pasarTurnoMapa();
 		
 		Fabrica fabrica = new Fabrica();
-		//No me está pasando los turnos de Fabrica
+		//No me esta pasando los turnos de Fabrica
 		
 //		mapa.pasarTurnoMapa();
 //		Assert.assertEquals(fabrica.tiempoDeConstruccion,11);
