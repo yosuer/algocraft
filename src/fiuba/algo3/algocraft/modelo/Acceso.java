@@ -4,32 +4,26 @@ import java.util.ArrayList;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 
-
 public class Acceso extends EdificioUnidadesBasicas {
 
-	
 	public Acceso() {
 		super();
 		this.vida = 1000;
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
 		this.tiempoDeConstruccion = 8;
-	}
-
-	public void crearZealot()
-	{	
-		if(this.tiempoDeConstruccion == 0)
-		{
-			this.unidadesEnProduccion.add(new Zealot());
-		}
+		this.nivel = 0;
+		this.unidadesEnProduccion = new ListaMU<Unidad>();
 	}
 	
-	public void crearDragon()
-	{
-		if(this.tiempoDeConstruccion == 0)
-		{
-			this.unidadesEnProduccion.add(new Dragon());
-		}
+	public void crearZealot() {
+		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
+		this.unidadesEnProduccion.encolar(new Zealot());
+	}
+	
+	public void crearDragon() {
+		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
+		this.unidadesEnProduccion.encolar(new Dragon());
 	}
 	
 	@Override

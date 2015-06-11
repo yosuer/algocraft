@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
+import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+
 public class Fabrica extends EdificioUnidadesAvanzadas {
 
 	public Fabrica() {
@@ -9,14 +11,12 @@ public class Fabrica extends EdificioUnidadesAvanzadas {
 		this.costoVespeno = 100;
 		this.tiempoDeConstruccion = 12;
 		this.edificiosRequeridos.add(new Barraca());
+		this.unidadesEnProduccion = new ListaMU<Unidad>();
 	}
-
-	public void crearGoliat()
-	{	
-		if(this.tiempoDeConstruccion ==0)
-		{
-			this.colaDeProduccion.add(new Golliat());
-		}
+	
+	public void crearGolliat() {
+		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
+		this.unidadesEnProduccion.encolar(new Golliat());
 	}
 	
 	@Override

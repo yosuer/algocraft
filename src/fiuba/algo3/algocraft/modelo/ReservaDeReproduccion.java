@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
+import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+
 
 public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
 
@@ -9,14 +11,13 @@ public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
 		this.tiempoDeConstruccion = 10;
+		this.nivel = 0;
+		this.unidadesEnProduccion = new ListaMU<Unidad>();
 	}
 
-	public void crearZerling()
-	{
-		if(this.tiempoDeConstruccion == 0)
-		{
-			this.unidadesEnProduccion.add(new Zerling());
-		}
+	public void crearZerling() {
+		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
+		this.unidadesEnProduccion.encolar(new Marine());
 	}
 
 	@Override

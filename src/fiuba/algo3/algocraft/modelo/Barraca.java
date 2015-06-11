@@ -14,8 +14,7 @@ public class Barraca extends EdificioUnidadesBasicas {
 		this.unidadesEnProduccion = new ListaMU<Unidad>();
 	}
 	
-	public void crearMarine()
-	{
+	public void crearMarine() {
 		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
 		this.unidadesEnProduccion.encolar(new Marine());
 	}

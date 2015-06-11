@@ -88,28 +88,15 @@ public class Mapa {
 	}
 	
 	public void inicializarMapa() {
+		
 		//Jugador1
-		this.agregarElemento(2,2,new Mineral());
-		this.agregarElemento(2,3,new Mineral());
-		this.agregarElemento(2,4,new Mineral());
-		this.agregarElemento(2,5,new Mineral());
-		this.agregarElemento(2,6,new Mineral());
-		this.agregarElemento(3,2,new Mineral());
-		this.agregarElemento(4,2,new Mineral());
-		this.agregarElemento(5,2,new Mineral());
-		this.agregarElemento(6,2,new Mineral());
+		for (int x=3; x<=6; x++) this.agregarElemento(x, 2, new Mineral());	
+		for (int y=2; y<=6; y++) this.agregarElemento(2, y, new Mineral());
 		this.agregarElemento(4,6,new Vespeno());
 		
 		//Jugador2
-		this.agregarElemento(99,99,new Mineral());
-		this.agregarElemento(98,99,new Mineral());
-		this.agregarElemento(97,99,new Mineral());
-		this.agregarElemento(96,99,new Mineral());
-		this.agregarElemento(95,99,new Mineral());
-		this.agregarElemento(99,98,new Mineral());
-		this.agregarElemento(99,97,new Mineral());
-		this.agregarElemento(99,96,new Mineral());
-		this.agregarElemento(99,95,new Mineral());
+		for (int x=95; x<=99; x++) this.agregarElemento(x, 99, new Mineral());
+		for (int y=95; y<=98; y++) this.agregarElemento(99, y, new Mineral());
 		this.agregarElemento(95,97,new Vespeno());
 	}
 
