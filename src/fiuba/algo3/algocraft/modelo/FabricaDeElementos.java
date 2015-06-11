@@ -8,5 +8,5 @@ public interface FabricaDeElementos {
 	public ExtractorDeMineral crearExtractorDeMineral(Mapa mapa);
 	public EdificioConstructorDeNaves crearEdificioCreadorDeNaves(Mapa mapa);
 	public EdificioUnidadesAvanzadas crearEdificioUnidadesAvanzadas(Mapa mapa);
-	public EdificioCasa crearEdificioCasa(Mapa mapa);
+	public ElementoPoblacion crearEdificioCasa(Mapa mapa);
 }

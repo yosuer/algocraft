@@ -59,10 +59,10 @@ public class EdificioCasaTest {
 	public void test05_CrearUnAmoSupremo(){
 		AmoSupremo amo = new AmoSupremo();
 		
-		Assert.assertEquals(amo.vidaActual(), 700);
-		Assert.assertEquals(amo.getCostoMineral(), 150);
+		Assert.assertEquals(amo.vidaActual(), 200);
+		Assert.assertEquals(amo.getCostoMineral(), 100);
 		Assert.assertEquals(amo.getCostoVespeno(), 0);
-		Assert.assertEquals(amo.getNivel(), 0);
+		Assert.assertEquals(amo.getNivel(), 1);
 	}
 
 }

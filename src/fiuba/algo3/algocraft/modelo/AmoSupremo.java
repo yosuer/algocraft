@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class AmoSupremo extends EdificioCasa implements Unidad {
+public class AmoSupremo extends Unidad implements ElementoPoblacion {
 
 	public AmoSupremo() {
 //		this.transporte =  Capacidad 8 ?
@@ -10,7 +10,7 @@ public class AmoSupremo extends EdificioCasa implements Unidad {
 		this.tiempoDeConstruccion = 4;
 		this.danioAire = 0;
 		this.danioTierra = 0;
-		this.suministro = 0;
+		this.suministro = 10;
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 0;
 		this.vida = 200;
@@ -20,6 +20,16 @@ public class AmoSupremo extends EdificioCasa implements Unidad {
 	@Override
 	public int vidaActual() {
 		return this.vida;
+	}
+
+	@Override
+	public int getNivel() {
+		return 1;
+	}
+
+	@Override
+	public int getPoblacion() {
+		return this.suministro;
 	}
 
 }

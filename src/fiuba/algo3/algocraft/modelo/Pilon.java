@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class Pilon extends EdificioCasa {
+public class Pilon extends Edificio implements ElementoPoblacion {
 
 	public Pilon() {
 		this.vida = 600;
@@ -12,6 +12,11 @@ public class Pilon extends EdificioCasa {
 	@Override
 	public int vidaActual() {
 		return this.vida;
+	}
+
+	@Override
+	public int getPoblacion() {
+		return 10;
 	}
 
 }

@@ -34,7 +34,7 @@ public class FabricaProtoss implements FabricaDeElementos {
 	}
 
 	@Override
-	public EdificioCasa crearEdificioCasa(Mapa mapa) {
+	public ElementoPoblacion crearEdificioCasa(Mapa mapa) {
 		return (new Pilon());
 	}
 
