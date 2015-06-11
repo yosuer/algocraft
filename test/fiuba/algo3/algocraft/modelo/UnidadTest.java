@@ -12,22 +12,29 @@ public class UnidadTest {
 		mapa.agregarElemento(1, 1, barraca);
 		
 		for (int i=1; i <=12; i++){
-			mapa.pasarTurno();
+			mapa.pasarTurnoMapa();
 		}
 		
 		barraca.crearMarine();
 		
 		for (int i=1; i <=5; i++){
-			mapa.pasarTurno();
+			mapa.pasarTurnoMapa();
 		}
 		
-		Assert.assertEquals(mapa.getElemento(5, 5, 0).getClass(), new Marine());
-		
-		/*
+		Marine marine = (Marine) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(marine.vidaActual(),40);
 		Assert.assertEquals(marine.getCostoMineral(),50);
 		Assert.assertEquals(marine.getCostoVespeno(),0);
-		*/
+	}
+	
+	@Test
+	public void PasarTurnoMarine() {
+		Mapa mapa = new Mapa();
+		Marine marine = new Marine();
+		
+		//mapa.agregarElemento(2, 2, marine);
+		
+		mapa.pasarTurnoMapa();
 	}
 //	
 //	@Test

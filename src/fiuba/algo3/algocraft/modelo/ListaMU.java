@@ -15,10 +15,10 @@ public class ListaMU<E> extends ArrayList<E>{
     }
 	
 	public void encolar(E e) {
-		this.add(0, e);
+		this.add(e);
     }
 
-	public E desEncolar(E e) {
+	public E desEncolar() {
 		if (empty()) throw new EmptyStackException();
 		return this.remove(0);
     }

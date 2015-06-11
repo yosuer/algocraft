@@ -13,6 +13,7 @@ public class Mapa {
 	private int alto; //z
 	
 	private Collection<IElemento> elementosActivos;
+	private Collection<Unidad> unidadesPreparadas;
 	private Grafo<Posicion> grafo;
 	private IElemento[][][] elementos;
 
@@ -21,6 +22,7 @@ public class Mapa {
 		this.largo = 100;
 		this.alto = 2;
 		this.elementosActivos = new ArrayList<IElemento>();
+		this.unidadesPreparadas = new ArrayList<Unidad>();
 		this.grafo = new Grafo<Posicion>();
 				
 		elementos = new IElemento[this.ancho+1][this.largo+1][this.alto+1];
@@ -146,12 +148,22 @@ public class Mapa {
 		return hojaDeRuta;
 	}
 	
-	public void pasarTurno(){
+	public void pasarTurnoMapa(){
 		Iterator<IElemento> it = elementosActivos.iterator();
-		
 		while (it.hasNext()){
 			it.next().pasarTurno();
 		}
+		
+		Iterator<Unidad> it2 = this.unidadesPreparadas.iterator();
+		while (it2.hasNext()){
+			Unidad u = it2.next();
+			this.agregarElemento(u.getPosicion().x(),u.getPosicion().y(), u);
+		}
+		this.unidadesPreparadas = new ArrayList<Unidad>();
+	}
+	
+	public void encolarUnidad(Unidad u){
+		this.unidadesPreparadas.add(u);
 	}
 	
 	private void agregarElementoEnGrafo(Posicion pos) {

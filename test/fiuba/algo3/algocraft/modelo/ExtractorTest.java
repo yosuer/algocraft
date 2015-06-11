@@ -73,13 +73,13 @@ public class ExtractorTest {
 		mapa.agregarElemento(1, 1, centro);
 	
 		for (int i = 1; i <= 4; i++) {
-			mapa.pasarTurno();
+			mapa.pasarTurnoMapa();
 		}
 		
 		Assert.assertEquals(centro.getRecoleccion(),0);
 		
 		for (int i = 1; i <= 22; i++) {
-			mapa.pasarTurno();
+			mapa.pasarTurnoMapa();
 		}
 		
 		Assert.assertEquals(centro.getRecoleccion(),200);

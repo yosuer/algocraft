@@ -20,7 +20,7 @@ public class Acceso extends EdificioUnidadesBasicas {
 	{	
 		if(this.tiempoDeConstruccion == 0)
 		{
-			this.colaDeProduccion.add(new Zealot());
+			this.unidadesEnProduccion.add(new Zealot());
 		}
 	}
 	
@@ -28,7 +28,7 @@ public class Acceso extends EdificioUnidadesBasicas {
 	{
 		if(this.tiempoDeConstruccion == 0)
 		{
-			this.colaDeProduccion.add(new Dragon());
+			this.unidadesEnProduccion.add(new Dragon());
 		}
 	}
 	

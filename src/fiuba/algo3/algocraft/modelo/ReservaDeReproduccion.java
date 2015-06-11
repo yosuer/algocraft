@@ -15,7 +15,7 @@ public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
 	{
 		if(this.tiempoDeConstruccion == 0)
 		{
-			this.colaDeProduccion.add(new Zerling());
+			this.unidadesEnProduccion.add(new Zerling());
 		}
 	}
 

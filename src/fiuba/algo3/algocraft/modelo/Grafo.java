@@ -157,7 +157,7 @@ public class Grafo<E> {
 		ArrayList<E> elementos = new ListaMU<E>();
 		Iterator<Nodo<E>> it = resultado.iterator();
 		while (it.hasNext()) {
-			elementos.add(it.next().getValor());
+			elementos.add(0,it.next().getValor());
 		}
 		return elementos;
 	}

@@ -8,7 +8,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 
 public class EdificioCasaTest {
 
-	@Test// (expected = ErrorEdificioEnConstruccion.class)
+	@Test (expected = ErrorEdificioEnConstruccion.class)
 	public void test01_UnaBarracaNoPuedeCrearUnidadesSiNoTerminoDeConstruirse(){
 		Mapa mapa = new Mapa();
 		Barraca barraca = new Barraca();
@@ -23,13 +23,13 @@ public class EdificioCasaTest {
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(1, 1, barraca);
 		for (int i=1; i <=12; i++){
-			mapa.pasarTurno();
+			mapa.pasarTurnoMapa();
 		}
-		
+
 		barraca.crearMarine();
 		
 		for (int i=1; i <=4; i++){
-			mapa.pasarTurno();
+			mapa.pasarTurnoMapa();
 		}
 		
 	}

@@ -92,6 +92,7 @@ public abstract class Unidad implements IElemento {
 	
 	@Override
 	public void pasarTurno() {
+		System.out.println("Marine pasa turno");
 		if (this.tiempoDeConstruccion > 0) 
 			this.tiempoDeConstruccion--;
 	}
