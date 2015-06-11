@@ -16,6 +16,7 @@ public class Dragon extends Unidad {
 		this.vida = 180;
 		this.nivel = 0;
 	}
+	
 	@Override
 	public int getNivel() {
 		return this.nivel;

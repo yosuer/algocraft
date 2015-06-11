@@ -17,7 +17,7 @@ public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
 
 	public void crearZerling() {
 		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
-		this.unidadesEnProduccion.encolar(new Marine());
+		this.unidadesEnProduccion.encolar(new Zerling());
 	}
 
 	@Override

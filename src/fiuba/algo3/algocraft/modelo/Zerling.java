@@ -20,7 +20,7 @@ public class Zerling extends Unidad {
 
 	@Override
 	public int getNivel() {
-		return 0;
+		return this.nivel;
 	}
 	
 	@Override

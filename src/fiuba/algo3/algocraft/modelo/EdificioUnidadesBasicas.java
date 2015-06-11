@@ -26,10 +26,11 @@ public abstract class EdificioUnidadesBasicas extends Edificio {
 	public boolean hayUnidadPreparada(){
 		return unidadesEnProduccion.primero().getTiempoDeConstruccion() == 0;
 	}
-	/*
-	public Collection<Unidad> getUnidadesDisponibles(){
-		return this.unidadesDisponibles; 
+	
+	public int unidadesEnProduccion(){
+		return this.unidadesEnProduccion.size();
 	}
+	/*
 	
 	@Override
 	public Unidad crearUnidad(int i) {

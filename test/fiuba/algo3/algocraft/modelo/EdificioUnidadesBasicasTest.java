@@ -8,11 +8,6 @@ import fiuba.algo3.algocraft.modelo.Posicion;
 public class EdificioUnidadesBasicasTest {
 	
 	@Test
-	public void test01_CrearUnidadesYVerificarPropiedasBasicas(){
-		
-	}
-	
-	@Test
 	public void test02_CrearUnaBarraca(){
 		Barraca barraca = new Barraca();
 		
@@ -41,5 +36,17 @@ public class EdificioUnidadesBasicasTest {
 		Assert.assertEquals(reservaReprod.getCostoMineral(), 150);
 		Assert.assertEquals(reservaReprod.getCostoVespeno(), 0);
 		Assert.assertEquals(reservaReprod.getNivel(), 0);
+	}
+	
+	@Test
+	public void test02_CrearUnaBarracaYAgregarlaAlMapa(){
+		
+		
+		Barraca barraca = new Barraca();
+		
+		Assert.assertEquals(barraca.vidaActual(), 1000);
+		Assert.assertEquals(barraca.getCostoMineral(), 150);
+		Assert.assertEquals(barraca.getCostoVespeno(), 0);
+		Assert.assertEquals(barraca.getNivel(), 0);
 	}
 }
