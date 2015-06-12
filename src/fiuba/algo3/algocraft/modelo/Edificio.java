@@ -87,7 +87,7 @@ public abstract class Edificio implements IElemento,IDaniable{
 	}
 	
 	public void recibirDanioDe(IAtacante a){
-		
+		this.daniarse(a.getDanioTierra());
 	}
 
 }

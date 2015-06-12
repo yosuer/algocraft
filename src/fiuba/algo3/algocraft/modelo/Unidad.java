@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElementoAereo;
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
@@ -111,10 +112,14 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	}
 	
 	public void atacar(IDaniable elemento) {
-		elemento.daniarse(this.danioTierra);
+		elemento.recibirDanioDe(this);
 	}
 	
 	public void recibirDanioDe(IAtacante a){
-		
+		if (this.nivel == 1 & a.getDanioAire() == 0) 
+			throw new ErrorNoSePuedeAtacarElementoAereo();
+		if (this.nivel == 0) this.daniarse(a.getDanioTierra());
+		if (this.nivel == 1) this.daniarse(a.getDanioAire());
 	}
+	
 }
