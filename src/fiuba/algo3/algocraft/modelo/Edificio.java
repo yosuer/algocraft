@@ -85,5 +85,9 @@ public abstract class Edificio implements IElemento,IDaniable{
 		this.estadoFisico.daniarse(danio);
 		if (this.estadoFisico.getVida() <= 0)this.mapa.quitarElemento(this);
 	}
+	
+	public void recibirDanioDe(IAtacante a){
+		
+	}
 
 }

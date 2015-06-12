@@ -4,6 +4,8 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElementoAereo;
+
 public class AtaquesTerrestresTest {
 	
 	@Test
@@ -59,6 +61,22 @@ public class AtaquesTerrestresTest {
 		
 		Assert.assertEquals(992,acceso.vidaActual());
 		Assert.assertEquals(492,acceso.escudoRestante());
+	}
+
+	@Test (expected = ErrorNoSePuedeAtacarElementoAereo.class)
+	public void test05_UnZealotNoPuedeAtacarUnaUnidadAerea(){
+		Zealot zealot = new Zealot();
+		Espectro espectro = new Espectro();
+		
+		zealot.atacar(espectro);
+	}
+	
+	@Test (expected = ErrorNoSePuedeAtacarElementoAereo.class)
+	public void test06_UnZerlingNoPuedeAtacarUnaUnidadAerea(){
+		Zerling zerling = new Zerling();
+		Espectro espectro = new Espectro();
+		
+		zerling.atacar(espectro);
 	}
 	
 }

@@ -113,4 +113,8 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	public void atacar(IDaniable elemento) {
 		elemento.daniarse(this.danioTierra);
 	}
+	
+	public void recibirDanioDe(IAtacante a){
+		
+	}
 }
