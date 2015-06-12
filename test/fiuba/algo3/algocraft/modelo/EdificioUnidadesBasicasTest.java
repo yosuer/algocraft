@@ -59,12 +59,8 @@ public class EdificioUnidadesBasicasTest {
 		for (int i=1; i<=12; i++) mapa.pasarTurnoMapa();
 		
 		barraca.crearMarine();
-
-		Assert.assertEquals(1,barraca.unidadesEnProduccion());
 		
 		for (int i=1; i<=4; i++) mapa.pasarTurnoMapa();
-		
-		Assert.assertEquals(0,barraca.unidadesEnProduccion());
 		
 		Collection<IElemento> elementos = new ArrayList<IElemento>();
 		elementos.add(new Marine());

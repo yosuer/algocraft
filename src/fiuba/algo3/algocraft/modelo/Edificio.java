@@ -16,7 +16,7 @@ public abstract class Edificio implements IElemento,IDaniable{
 	protected Mapa mapa;
 	protected int nivel;
 	protected Collection<IElemento> edificiosRequeridos;
-	protected EstadoDeConstruccion estadoDeConstruccion;
+	protected IEstado estadoDeConstruccion;
 	protected RazaEstado estadoFisico;
 	
 	public Edificio(){
@@ -87,6 +87,10 @@ public abstract class Edificio implements IElemento,IDaniable{
 	
 	public void recibirDanioDe(IAtacante a){
 		this.daniarse(a.getDanioTierra());
+	}
+	
+	public void actualizarEstado(IEstado estado){
+		
 	}
 
 }

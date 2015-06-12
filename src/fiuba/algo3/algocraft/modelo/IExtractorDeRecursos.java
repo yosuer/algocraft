@@ -1,7 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
 
-public interface ExtractorDeRecursos {
+public interface IExtractorDeRecursos {
 
 	Posicion getPosicion();
 	

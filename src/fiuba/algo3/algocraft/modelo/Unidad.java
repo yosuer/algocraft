@@ -129,4 +129,9 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 		if (this.nivel == 1) this.daniarse(a.getDanioAire());
 	}
 	
+	public void actualizarEstado(IEstado estado){
+		
+	}
+
+	
 }

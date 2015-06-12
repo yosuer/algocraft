@@ -22,9 +22,9 @@ public abstract class Recurso implements IElemento{
 
 	public abstract int extraer();
 
-	public abstract void asignarExtractor(ExtractorDeRecursos extractor);
+	public abstract void asignarExtractor(IExtractorDeRecursos extractor);
 
-	public abstract ExtractorDeRecursos getExtractor();
+	public abstract IExtractorDeRecursos getExtractor();
 	
 	public void moverseA(Posicion posicion){
 	}
@@ -42,5 +42,10 @@ public abstract class Recurso implements IElemento{
 	@Override
 	public void pasarTurno() {
 	}
+	
+	public void actualizarEstado(IEstado estado){
+		
+	}
+
 
 }

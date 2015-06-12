@@ -28,7 +28,7 @@ public class Vespeno extends Recurso implements IElemento {
 	}
 
 	@Override
-	public void asignarExtractor(ExtractorDeRecursos ext) {
+	public void asignarExtractor(IExtractorDeRecursos ext) {
 		if ( this.posicion.equals(ext.getPosicion()) ){
 			try {
 				this.extractor = (ExtractorDeGasVespeno)ext;
@@ -39,7 +39,7 @@ public class Vespeno extends Recurso implements IElemento {
 	}
 
 	@Override
-	public ExtractorDeRecursos getExtractor() {
+	public IExtractorDeRecursos getExtractor() {
 		return this.extractor;
 	}
 

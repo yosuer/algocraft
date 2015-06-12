@@ -26,7 +26,7 @@ public class Mineral extends Recurso {
 	}
 
 	@Override
-	public void asignarExtractor(ExtractorDeRecursos ext) {
+	public void asignarExtractor(IExtractorDeRecursos ext) {
 		if ( this.posicion.equals(ext.getPosicion()) ){
 			try {
 				this.extractor = (ExtractorDeMineral)ext;
@@ -38,7 +38,7 @@ public class Mineral extends Recurso {
 	}
 
 	@Override
-	public ExtractorDeRecursos getExtractor() {
+	public IExtractorDeRecursos getExtractor() {
 		return this.extractor;
 	}
 

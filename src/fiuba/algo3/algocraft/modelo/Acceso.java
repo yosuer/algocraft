@@ -1,26 +1,28 @@
 package fiuba.algo3.algocraft.modelo;
 
-import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+public class Acceso extends Edificio 
+								implements ElementoProtoss, 
+											IElementoCreador {
 
-public class Acceso extends EdificioUnidadesBasicas implements ElementoProtoss {
-
+	IEstado estado;
+	ICreadorDeElementos creador;
+	
 	public Acceso() {
 		super();
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
 		this.tiempoDeConstruccion = 8;
-		this.unidadesEnProduccion = new ListaMU<Unidad>();
 		this.estadoFisico = new Protoss(500,500);
+		this.estado = new Construyendose(this, 8);
+		this.creador = new CreadorEnCola(this);
 	}
 	
 	public void crearZealot() {
-		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
-		this.unidadesEnProduccion.encolar(new Zealot());
+		this.crearUnidad(new Zealot());
 	}
 	
 	public void crearDragon() {
-		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
-		this.unidadesEnProduccion.encolar(new Dragon());
+		this.crearUnidad(new Dragon());
 	}
 
 	@Override
@@ -32,4 +34,27 @@ public class Acceso extends EdificioUnidadesBasicas implements ElementoProtoss {
 	public void regenerarse() {
 		this.estadoFisico.regenerarse();
 	}
+	
+	public void actualizarEstado(IEstado estado){
+		this.estado = estado;
+	}
+	
+	@Override
+	public void pasarTurno() {
+		this.estado.pasarTurno();
+		this.creador.expulsarUnidad();
+	}
+	
+	public void expulsarUnidad(Unidad u){
+		Posicion pos = new Posicion(2,2,0);
+		u.setPosicion(pos);
+		this.mapa.encolarUnidad(u);
+	}
+
+	@Override
+	public void crearUnidad(Unidad unidad) {
+		this.estado.elementoActivo();
+		this.creador.prepararUnidad(unidad);
+	}
+
 }

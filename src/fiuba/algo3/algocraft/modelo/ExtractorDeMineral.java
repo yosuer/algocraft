@@ -5,7 +5,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 
 
 public abstract class ExtractorDeMineral extends Edificio 
-										implements ExtractorDeRecursos{
+										implements IExtractorDeRecursos{
 
 	protected Mineral recurso;
 	protected int recolectado;

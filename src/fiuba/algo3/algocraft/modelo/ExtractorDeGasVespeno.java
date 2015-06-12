@@ -4,7 +4,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 
 
 public abstract class ExtractorDeGasVespeno extends Edificio 
-											implements ExtractorDeRecursos{
+											implements IExtractorDeRecursos{
 
 	protected Vespeno recurso;
 	protected int recolectado;

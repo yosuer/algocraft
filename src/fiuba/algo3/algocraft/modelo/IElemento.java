@@ -18,4 +18,6 @@ public interface IElemento {
 	public Collection<IElemento> elementosRequeridos();
 	
 	public void pasarTurno();
+	
+	public void actualizarEstado(IEstado nuevoEstado);
 }

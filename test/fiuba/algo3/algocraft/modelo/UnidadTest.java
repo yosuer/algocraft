@@ -25,7 +25,6 @@ public class UnidadTest {
 		for (int i=1; i <=3; i++) mapa.pasarTurnoMapa();
 		mapa.pasarTurnoMapa(); //en el cuarto turno se muestra xk tarda 3 turnos
 		
-		Assert.assertNotNull(mapa.getElemento(2, 2, 0));
 		Marine marine = (Marine) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(marine.vidaActual(),40);
 		Assert.assertEquals(marine.getCostoMineral(),50);

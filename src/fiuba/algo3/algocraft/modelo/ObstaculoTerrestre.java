@@ -48,5 +48,10 @@ public class ObstaculoTerrestre implements IElemento {
 	@Override
 	public void pasarTurno() {
 	}
+	
+	public void actualizarEstado(IEstado estado){
+		
+	}
+
 
 }
