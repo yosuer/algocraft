@@ -13,7 +13,7 @@ public class ReservaDeReproduccion extends EdificioUnidadesBasicas {
 		this.estadoFisico = new Zerg(1000);
 	}
 
-	//Faltaría poner que se hace Zerling a raíz de una Larva
+	//Faltaria poner que se hace Zerling a raiz de una Larva
 	public void evolucionarLarva() {
 		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
 		this.unidadesEnProduccion.encolar(new Zerling());
