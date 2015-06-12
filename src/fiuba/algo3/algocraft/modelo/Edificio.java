@@ -8,9 +8,8 @@ import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaCons
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 
-public abstract class Edificio implements IElemento{
+public abstract class Edificio implements IElemento,IDaniable{
 	
-	protected int vida;
 	protected int tiempoDeConstruccion;
 	protected Posicion posicion;
 	protected int costoMineral;
@@ -18,14 +17,18 @@ public abstract class Edificio implements IElemento{
 	protected Mapa mapa;
 	protected int nivel = 0;
 	protected Collection<IElemento> edificiosRequeridos;
+	protected EstadoDeConstruccion estadoDeConstruccion;
+	protected RazaEstado estadoFisico;
 	
 	public Edificio(){
 		this.nivel = 0;
 		this.edificiosRequeridos = new ArrayList<IElemento>();
 	}
 	
-	public abstract int vidaActual();
-
+	public int vidaActual(){
+		return this.estadoFisico.getVida();
+	}
+	
 	public void setPosicion(Posicion posicion){
 		this.posicion = posicion;
 	}
@@ -69,9 +72,18 @@ public abstract class Edificio implements IElemento{
 		this.mapa = mapa;
 	}
 	
-	public void pasarTurno() {
+	public void edificar(){
 		if (this.tiempoDeConstruccion > 0) 
 			this.tiempoDeConstruccion--;
+	}
+	
+	public void pasarTurno() {
+		this.edificar();
+	}
+
+	public void daniarse(int danio){
+		this.estadoFisico.daniarse(danio);
+		if (this.estadoFisico.getVida() <= 0)this.mapa.quitarElemento(this);
 	}
 
 }

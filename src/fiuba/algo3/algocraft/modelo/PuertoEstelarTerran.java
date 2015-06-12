@@ -5,10 +5,10 @@ public class PuertoEstelarTerran extends EdificioConstructorDeNaves {
 
 	public PuertoEstelarTerran() {
 		super();
-		this.vida = 1300;
 		this.costoMineral = 150;
 		this.costoVespeno = 100;
 		this.tiempoDeConstruccion = 10;
+		this.estadoFisico = new Terran(1300);
 	}
 
 	public void crearEspectro()
@@ -33,16 +33,6 @@ public class PuertoEstelarTerran extends EdificioConstructorDeNaves {
 		{
 			this.colaDeProduccion.add(new NaveTransporteTerran());
 		}
-	}
-
-	@Override
-	public int getNivel() {
-		return this.nivel;
-	}
-
-	@Override
-	public int vidaActual() {
-		return this.vida;
 	}
 
 }

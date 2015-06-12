@@ -47,7 +47,6 @@ public class Grafo<E> {
     	while (it.hasNext()){
     		it.next().eliminarVecino(nodoAEliminar);
     	}
-    	//nodoAEliminar.setVecinos(new ListaMU<Nodo<E>>());
     }
 
     private String getNodoDistanciaMasCortaEnAnalizados(ListaMU<String> analizados, 

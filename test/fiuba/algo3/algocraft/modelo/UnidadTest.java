@@ -46,6 +46,7 @@ public class UnidadTest {
 		Assert.assertNotNull(mapa.getElemento(2, 2, 0));
 		Zealot zealot = (Zealot) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(zealot.vidaActual(),160);
+		Assert.assertEquals(zealot.escudoRestante(), 60);
 		Assert.assertEquals(zealot.getCostoMineral(),100);
 		Assert.assertEquals(zealot.getCostoVespeno(),0);
 	}

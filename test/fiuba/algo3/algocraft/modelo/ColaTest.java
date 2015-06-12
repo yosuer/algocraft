@@ -23,7 +23,7 @@ public class ColaTest {
 	}
 	
 	@Test
-	public void test03_pedirPrimeroEnUnaColaDevuelveElPrimerAgregado(){
+	public void test03_pedirPrimeroEnUnaColaDevuelveElPrimerElementoAgregado(){
 		ListaMU<String> cola = new ListaMU<String>();
 		cola.encolar("a");
 		cola.encolar("b");

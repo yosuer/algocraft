@@ -3,7 +3,8 @@ package fiuba.algo3.algocraft.modelo;
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 
 
-public abstract class ExtractorDeGasVespeno extends Edificio implements ExtractorDeRecursos{
+public abstract class ExtractorDeGasVespeno extends Edificio 
+											implements ExtractorDeRecursos{
 
 	protected Vespeno recurso;
 	protected int recolectado;
@@ -33,5 +34,11 @@ public abstract class ExtractorDeGasVespeno extends Edificio implements Extracto
 		}
 
 		this.mapa = mapa;
+	}
+	
+	@Override
+	public void pasarTurno() {
+		super.pasarTurno();
+		this.realizarExtraccion();
 	}
 }

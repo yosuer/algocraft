@@ -4,24 +4,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class EdificioBasePrincipalTest {
-	
-	@Test
-	public void test01_CrearUnCentroDeMando(){
-		Mapa mapa = new Mapa();
-		CentroDeMando centroDeMando = new CentroDeMando();
-		
-		mapa.agregarElemento(1, 1, centroDeMando);
-		
-		Assert.assertEquals(mapa.getElemento(1, 1, 0), new CentroDeMando());
 
-		for (int i=1; i <=6; i++){
-			mapa.pasarTurnoMapa();
-		}
-		
-		Assert.assertEquals(centroDeMando.tiempoDeConstruccion,1);
-		
-		mapa.pasarTurnoMapa();
-		Assert.assertEquals(centroDeMando.tiempoDeConstruccion,0);
+	@Test
+	public void test01_PropiedadesBasicasDeUnCentroDeMando(){
+		CentroDeMando centroDeMando = new CentroDeMando();
 		
 		Assert.assertEquals(centroDeMando.vidaActual(), 1500);
 		Assert.assertEquals(centroDeMando.getCostoMineral(), 100);
@@ -30,7 +16,19 @@ public class EdificioBasePrincipalTest {
 	}
 	
 	@Test
-	public void test02_CrearUnNexo(){
+	public void test02_ElTiempoDeConstruccionDeUnCentroDeMandoEs7(){
+		Mapa mapa = new Mapa();
+		CentroDeMando centroDeMando = new CentroDeMando();
+		mapa.agregarElemento(1, 1, centroDeMando);
+		
+		for (int i=1; i <=7; i++)
+			mapa.pasarTurnoMapa();
+
+		Assert.assertEquals(mapa.getElemento(1, 1, 0), centroDeMando);
+	}
+	
+	@Test
+	public void test03_CrearUnNexo(){
 		Mapa mapa = new Mapa();
 		Nexo nexo = new Nexo();
 		
@@ -44,14 +42,14 @@ public class EdificioBasePrincipalTest {
 		Assert.assertEquals(nexo.tiempoDeConstruccion,0);
 		
 		Assert.assertEquals(nexo.vidaActual(), 1500);
-		//Assert.assertEquals(acceso.escudoActual(), 750);
+		Assert.assertEquals(nexo.escudoRestante(), 750);
 		Assert.assertEquals(nexo.getCostoMineral(), 100);
 		Assert.assertEquals(nexo.getCostoVespeno(), 100);
 		Assert.assertEquals(nexo.getNivel(), 0);
 	}
 	
 	@Test
-	public void test03_CrearUnCriadero(){
+	public void test04_CrearUnCriadero(){
 		Mapa mapa = new Mapa();
 		Criadero criadero = new Criadero();
 		

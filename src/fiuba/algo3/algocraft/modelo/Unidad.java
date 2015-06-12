@@ -7,7 +7,7 @@ import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaCons
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 
-public abstract class Unidad implements IElemento {
+public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 
 	protected Posicion posicion;
 	protected Mapa mapa;
@@ -98,6 +98,19 @@ public abstract class Unidad implements IElemento {
 
 	public int getTiempoDeConstruccion() {
 		return this.tiempoDeConstruccion;
+	}	public boolean equals(Object o)
+	{
+		if(this == o) return true;
+		if (o == null) return false;
+		
+		return (o.getClass() == this.getClass());
 	}
-
+	
+	public void daniarse(int danio){
+		this.vida -= danio;
+	}
+	
+	public void atacar(IDaniable elemento) {
+		elemento.daniarse(this.danioTierra);
+	}
 }

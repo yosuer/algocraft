@@ -20,7 +20,7 @@ public class Mapa {
 	public Mapa() {
 		this.ancho = 100;
 		this.largo = 100;
-		this.alto = 2;
+		this.alto = 1;
 		this.elementosActivos = new ArrayList<IElemento>();
 		this.unidadesPreparadas = new ArrayList<Unidad>();
 		this.grafo = new Grafo<Posicion>();
@@ -29,10 +29,10 @@ public class Mapa {
 		
 		for (int x = 1; x <= this.ancho; x++){
 			for (int y = 1; y <= this.largo; y++){
-				for (int z = 1; z <= this.alto; z++){
+				for (int z = 0; z <= this.alto; z++){
 					elementos[x][y][z] = null;
+					this.agregarElementoEnGrafo(new Posicion(x,y,z));
 				}
-				this.agregarElementoEnGrafo(new Posicion(x,y,0));
 			}
 		}
 	}
@@ -55,7 +55,7 @@ public class Mapa {
 	
 	public void agregarElemento(int x, int y, IElemento elemento) {
 		
-		Posicion pos = new Posicion(x,y,0);
+		Posicion pos = new Posicion(x,y,elemento.getNivel());
 		elemento.setPosicion(pos); //elemento verifica la coord z segun su nivel
 		
 		try {
@@ -71,12 +71,10 @@ public class Mapa {
 	}
 	
 
-	public IElemento quitarElemento(int x, int y, int z) {
-		IElemento elementoAQuitar = this.getElemento(x, y, z);
-		elementos[x][y][z] = null;
-		this.agregarElementoEnGrafo(new Posicion(x,y,z));
-		
-		return elementoAQuitar;
+	public void quitarElemento(IElemento elemento) {
+		Posicion pos = elemento.getPosicion();
+		elementos[pos.x()][pos.y()][pos.z()] = null;
+		this.agregarElementoEnGrafo(elemento.getPosicion());
 	}
 	
 	public IElemento getElemento(int x, int y, int z) {
@@ -125,7 +123,7 @@ public class Mapa {
 				Posicion posNueva = it.next(); //System.out.println(posNueva);
 				e.moverseA(posNueva);
 				this.elementos[posAnt.x()][posAnt.y()][posAnt.z()] = null;
-				this.quitarElemento(posAnt.x(),posAnt.y(),posAnt.z());
+				this.quitarElemento(e);
 				this.grafo.eliminarNodo(posNueva.toString());
 				this.elementos[posNueva.x()][posNueva.y()][posNueva.z()] = e;
 				posAnt = posNueva;
@@ -157,18 +155,18 @@ public class Mapa {
 		grafo.nuevoNodo(pos);
 		int x = pos.x();
 		int y = pos.y();
+		int z = pos.z();
 		
-		grafo.arista(x+","+y, (x-1)+","+(y-1));
-		grafo.arista(x+","+y, (x-1)+","+y);
-		grafo.arista(x+","+y, (x-1)+","+(y+1));
+		grafo.arista(pos.toString(), (x-1)+","+(y-1)+","+z);
+		grafo.arista(pos.toString(), (x-1)+","+y+","+z);
+		grafo.arista(pos.toString(), (x-1)+","+(y+1)+","+z);
 		
-		grafo.arista(x+","+y,  x+","+(y-1));
-		grafo.arista(x+","+y,  x+","+(y+1));
+		grafo.arista(pos.toString(),  x+","+(y-1)+","+z);
+		grafo.arista(pos.toString(),  x+","+(y+1)+","+z);
 		
-		grafo.arista(x+","+y, (x+1)+","+(y-1));
-		grafo.arista(x+","+y, (x+1)+","+y);
-		grafo.arista(x+","+y, (x+1)+","+(y+1));
+		grafo.arista(pos.toString(), (x+1)+","+(y-1)+","+z);
+		grafo.arista(pos.toString(), (x+1)+","+y+","+z);
+		grafo.arista(pos.toString(), (x+1)+","+(y+1)+","+z);
 	}
-
 
 }

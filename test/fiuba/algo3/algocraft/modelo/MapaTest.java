@@ -19,7 +19,7 @@ public class MapaTest {
 		
 		Assert.assertEquals(nuevoMapa.ancho(), 100);
 		Assert.assertEquals(nuevoMapa.largo(), 100);	
-		Assert.assertEquals(nuevoMapa.alto(), 2);	
+		Assert.assertEquals(nuevoMapa.alto(), 1);	
 	}
 	
 	@Test
@@ -77,7 +77,6 @@ public class MapaTest {
 		Assert.assertEquals(mapa.getElemento(1,1,0),mineral);
 	}
 	
-	
 	@Test
 	public void test06_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorObstaculoTerrestre(){
 		Mapa mapa = new Mapa();
@@ -95,21 +94,6 @@ public class MapaTest {
 		
 		Assert.assertEquals(mapa.getElemento(4,4,0),obstaculo);
 	}
-	
-//	@Test
-//	public void test07_AgregarFabricasUnidadesBasicasAlMapa(){
-//		Mapa mapa = new Mapa();
-//		FabricaDeElementos fabricaProtoss = new FabricaProtoss();
-//		FabricaDeElementos fabricaTerran = new FabricaTerran();
-//		EdificioUnidadesBasicas barraca = 
-//					fabricaTerran.crearFabricaUnidadesBasicas();
-//		EdificioUnidadesBasicas acceso = fabricaProtoss.crearFabricaUnidadesBasicas();
-//		mapa.agregarElemento(1,1,barraca);
-//		mapa.agregarElemento(1,2,acceso);
-//		
-//		Assert.assertEquals(mapa.getElemento(1,1,0),barraca);
-//		Assert.assertEquals(mapa.getElemento(1,2,0),acceso);
-//	}
 	
 	@Test
 	public void test08_CrearUnMapaConRecursosPredeterminados(){
@@ -137,8 +121,9 @@ public class MapaTest {
 	public void test09_AlIniciarElMapaSePuedeRecorrerTodasLasPosiciones1(){
 		Mapa mapa = new Mapa();
 		
-		ArrayList<Posicion>camino = 
-			(ArrayList<Posicion>) mapa.getHojaDeRuta(new Posicion(1,1,0), new Posicion(4,4,0));
+		ArrayList<Posicion>camino = new ArrayList<Posicion>();
+		camino = (ArrayList<Posicion>) mapa.getHojaDeRuta(new Posicion(1,1,0), 
+														new Posicion(4,4,0));
 		
 		Assert.assertEquals(4, camino.size());
 		

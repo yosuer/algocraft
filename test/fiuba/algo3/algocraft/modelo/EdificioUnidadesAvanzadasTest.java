@@ -35,7 +35,7 @@ public class EdificioUnidadesAvanzadasTest {
 	public void test03_CrearUnaGuaridaDeHidralisco(){
 		GuaridaDeHidralisco guarida = new GuaridaDeHidralisco();
 		
-		Assert.assertEquals(guarida.vidaActual(), 1100);
+		Assert.assertEquals(guarida.vidaActual(), 1250);
 		Assert.assertEquals(guarida.getCostoMineral(), 150);
 		Assert.assertEquals(guarida.getCostoVespeno(), 100);
 		Assert.assertEquals(guarida.getNivel(), 0);

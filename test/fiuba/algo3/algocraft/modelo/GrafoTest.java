@@ -93,14 +93,14 @@ public class GrafoTest {
 			}
 		}
 		
-		grafo.arista("1,1", "1,2");
-		grafo.arista("1,2", "1,3");
-		grafo.arista("1,3", "1,4");
-		grafo.arista("1,4", "1,5");
-		grafo.arista("1,5", "1,4");
-		grafo.arista("1,4", "1,3");
+		grafo.arista("1,1,0", "1,2,0");
+		grafo.arista("1,2,0", "1,3,0");
+		grafo.arista("1,3,0", "1,4,0");
+		grafo.arista("1,4,0", "1,5,0");
+		grafo.arista("1,5,0", "1,4,0");
+		grafo.arista("1,4,0", "1,3,0");
 		
-		ArrayList<Posicion> camino = grafo.getCaminoMinimo("1,5", "1,3");
+		ArrayList<Posicion> camino = grafo.getCaminoMinimo("1,5,0", "1,3,0");
 
 		Assert.assertEquals(camino.size(), 3);
 		Assert.assertEquals(new Posicion(1,4,0),camino.get(1));
@@ -110,25 +110,24 @@ public class GrafoTest {
 	@Test
 	public void test04_caminosMinimos(){
 		Grafo<Posicion> grafo = new Grafo<Posicion>();
-		int n = 0;
 		
 		for (int x=1; x <= 5; x++){
 			for (int y=1; y<= 5; y++){
-				grafo.nuevoNodo(new Posicion(x,y,n));	
+				grafo.nuevoNodo(new Posicion(x,y,0));	
 			}
 		}
 		
-		grafo.arista("1,1", "1,2"); 
-		grafo.arista("1,2", "1,3");	
-		grafo.arista("1,3", "1,4");	
+		grafo.arista("1,1,0", "1,2,0"); 
+		grafo.arista("1,2,0", "1,3,0");	
+		grafo.arista("1,3,0", "1,4,0");	
 		
-		grafo.arista("2,1", "1,1");
-		grafo.arista("2,1", "1,2");
+		grafo.arista("2,1,0", "1,1,0");
+		grafo.arista("2,1,0", "1,2,0");
 		
-		grafo.arista("2,4", "1,4");
-		grafo.arista("2,3", "2,4");
+		grafo.arista("2,4,0", "1,4,0");
+		grafo.arista("2,3,0", "2,4,0");
 		
-		ArrayList<Posicion> camino= grafo.getCaminoMinimo("2,1", "2,3");
+		ArrayList<Posicion> camino= grafo.getCaminoMinimo("2,1,0", "2,3,0");
 
 		Assert.assertEquals(6, camino.size());
 		Assert.assertEquals(new Posicion(2,1,0),camino.get(0));
@@ -140,26 +139,25 @@ public class GrafoTest {
 	@Test
 	public void test05_caminosMinimos2(){
 		Grafo<Posicion> grafo = new Grafo<Posicion>();
-		int n = 0;
-		
+
 		for (int x=1; x <= 5; x++){
 			for (int y=1; y<= 5; y++){
-				grafo.nuevoNodo(new Posicion(x,y,n));	
+				grafo.nuevoNodo(new Posicion(x,y,0));	
 			}
 		}
 		
-		grafo.arista("1,1", "1,2"); 
-		grafo.arista("1,2", "1,3");	
-		grafo.arista("1,3", "1,4");	
+		grafo.arista("1,1,0", "1,2,0"); 
+		grafo.arista("1,2,0", "1,3,0");	
+		grafo.arista("1,3,0", "1,4,0");	
 		
-		grafo.arista("2,1", "1,1");
-		grafo.arista("2,1", "1,2");
+		grafo.arista("2,1,0", "1,1,0");
+		grafo.arista("2,1,0", "1,2,0");
 		
-		grafo.arista("2,4", "1,4");
-		grafo.arista("2,3", "2,4");
-		grafo.arista("1,4", "2,3");
+		grafo.arista("2,4,0", "1,4,0");
+		grafo.arista("2,3,0", "2,4,0");
+		grafo.arista("1,4,0", "2,3,0");
 		
-		ArrayList<Posicion> camino= grafo.getCaminoMinimo("2,1", "2,3");
+		ArrayList<Posicion> camino= grafo.getCaminoMinimo("2,1,0", "2,3,0");
 
 		Assert.assertEquals(camino.size(), 5);
 		Assert.assertEquals(new Posicion(2,1,0),camino.get(0));
@@ -172,29 +170,29 @@ public class GrafoTest {
 	public void test06_caminosMinimos3(){
 		Grafo<Posicion> grafo = new Grafo<Posicion>();
 		ArrayList<Posicion> camino;
-		int n = 0;
 		
 		for (int x=1; x <= 5; x++){
 			for (int y=1; y<= 5; y++){
-				grafo.nuevoNodo(new Posicion(x,y,n));
+				Posicion pos = new Posicion(x,y,0);
+				grafo.nuevoNodo(pos);
 				
-				grafo.arista(x+","+y, (x-1)+","+(y-1));
-				grafo.arista(x+","+y, (x-1)+","+y);
-				grafo.arista(x+","+y, (x-1)+","+(y+1));
+				grafo.arista(pos.toString(), (x-1)+","+(y-1)+",0");
+				grafo.arista(pos.toString(), (x-1)+","+y+",0");
+				grafo.arista(pos.toString(), (x-1)+","+(y+1)+",0");
 				
-				grafo.arista(x+","+y,  x+","+(y-1));
-				grafo.arista(x+","+y,  x+","+(y+1));
+				grafo.arista(pos.toString(),  x+","+(y-1)+",0");
+				grafo.arista(pos.toString(),  x+","+(y+1)+",0");
 				
-				grafo.arista(x+","+y, (x+1)+","+(y-1));
-				grafo.arista(x+","+y, (x+1)+","+y);
-				grafo.arista(x+","+y, (x+1)+","+(y+1));
+				grafo.arista(pos.toString(), (x+1)+","+(y-1)+",0");
+				grafo.arista(pos.toString(), (x+1)+","+y+",0");
+				grafo.arista(pos.toString(), (x+1)+","+(y+1)+",0");
 			}
 		}
 		
-		camino= grafo.getCaminoMinimo("2,1", "2,4");
+		camino = grafo.getCaminoMinimo("2,1,0", "2,4,0");
 		Assert.assertEquals(camino.size(), 4);
 		
-		camino= grafo.getCaminoMinimo("5,5", "1,1");
+		camino= grafo.getCaminoMinimo("5,5,0", "1,1,0");
 		Assert.assertEquals(camino.size(), 5);
 	}
 	
@@ -206,40 +204,42 @@ public class GrafoTest {
 		
 		for (int x=1; x <= 4; x++){
 			for (int y=1; y<= 4; y++){
-				grafo.nuevoNodo(new Posicion(x,y,n));
-				grafo.arista(x+","+y, (x-1)+","+(y-1));
-				grafo.arista(x+","+y, (x-1)+","+y);
-				grafo.arista(x+","+y, (x-1)+","+(y+1));
+				Posicion pos = new Posicion(x,y,0);
+				grafo.nuevoNodo(pos);
 				
-				grafo.arista(x+","+y,  x+","+(y-1));
-				grafo.arista(x+","+y,  x+","+(y+1));
+				grafo.arista(pos.toString(), (x-1)+","+(y-1)+",0");
+				grafo.arista(pos.toString(), (x-1)+","+y+",0");
+				grafo.arista(pos.toString(), (x-1)+","+(y+1)+",0");
 				
-				grafo.arista(x+","+y, (x+1)+","+(y-1));
-				grafo.arista(x+","+y, (x+1)+","+y);
-				grafo.arista(x+","+y, (x+1)+","+(y+1));
+				grafo.arista(pos.toString(),  x+","+(y-1)+",0");
+				grafo.arista(pos.toString(),  x+","+(y+1)+",0");
+				
+				grafo.arista(pos.toString(), (x+1)+","+(y-1)+",0");
+				grafo.arista(pos.toString(), (x+1)+","+y+",0");
+				grafo.arista(pos.toString(), (x+1)+","+(y+1)+",0");
 			}
 		}
 		
-		grafo.eliminarNodo("2,2");
+		grafo.eliminarNodo("2,2,0");
 
-		camino= grafo.getCaminoMinimo("1,3", "3,1");
+		camino= grafo.getCaminoMinimo("1,3,0", "3,1,0");
 		Assert.assertEquals(camino.size(), 4);
 		Assert.assertEquals(new Posicion(1,3,0),camino.get(0));
 		Assert.assertEquals(new Posicion(2,3,0),camino.get(1));
 		Assert.assertEquals(new Posicion(3,2,0),camino.get(2));
 		Assert.assertEquals(new Posicion(3,1,0),camino.get(3));
 		//grafo.imprimirCamino(camino);
+		Posicion pos = new Posicion(1,2,0);
+		grafo.arista(pos.toString(), "0,1,0");
+		grafo.arista(pos.toString(), "0,2,0");
+		grafo.arista(pos.toString(), "0,3,0");
+		grafo.arista(pos.toString(), "1,1,0");
+		grafo.arista(pos.toString(), "1,3,0");
+		grafo.arista(pos.toString(), "2,1,0");
+		grafo.arista(pos.toString(), "2,2,0");
+		grafo.arista(pos.toString(), "2,3,0");
 		
-		grafo.arista("1,2", "0,1");
-		grafo.arista("1,2", "0,2");
-		grafo.arista("1,2", "0,3");
-		grafo.arista("1,2", "1,1");
-		grafo.arista("1,2", "1,3");
-		grafo.arista("1,2", "2,1");
-		grafo.arista("1,2", "2,2");
-		grafo.arista("1,2", "2,3");
-		
-		camino= grafo.getCaminoMinimo("1,1", "1,3");
+		camino= grafo.getCaminoMinimo("1,1,0", "1,3,0");
 		Assert.assertEquals(camino.size(), 3);
 		Assert.assertEquals(new Posicion(1,1,0),camino.get(0));
 		Assert.assertEquals(new Posicion(1,2,0),camino.get(1));
@@ -247,59 +247,58 @@ public class GrafoTest {
 		//grafo.imprimirCamino(camino);
 	}
 	
-	@Test//(expected = ErrorNoExisteCaminoPosible.class)
+	@Test
 	public void test08_SiNoExisteUnCaminoPosibleSeDevuelveNull(){
 		Grafo<Posicion> grafo = new Grafo<Posicion>();
-		ArrayList<Posicion> camino;
-		int n = 0;
-		
+
 		for (int x=1; x <= 5; x++){
 			for (int y=1; y<= 5; y++){
-				grafo.nuevoNodo(new Posicion(x,y,n));
+				Posicion pos = new Posicion(x,y,0);
+				grafo.nuevoNodo(pos);
 				
-				grafo.arista(x+","+y, (x-1)+","+(y-1));
-				grafo.arista(x+","+y, (x-1)+","+y);
-				grafo.arista(x+","+y, (x-1)+","+(y+1));
+				grafo.arista(pos.toString(), (x-1)+","+(y-1)+",0");
+				grafo.arista(pos.toString(), (x-1)+","+y+",0");
+				grafo.arista(pos.toString(), (x-1)+","+(y+1)+",0");
 				
-				grafo.arista(x+","+y,  x+","+(y-1));
-				grafo.arista(x+","+y,  x+","+(y+1));
+				grafo.arista(pos.toString(),  x+","+(y-1)+",0");
+				grafo.arista(pos.toString(),  x+","+(y+1)+",0");
 				
-				grafo.arista(x+","+y, (x+1)+","+(y-1));
-				grafo.arista(x+","+y, (x+1)+","+y);
-				grafo.arista(x+","+y, (x+1)+","+(y+1));
+				grafo.arista(pos.toString(), (x+1)+","+(y-1)+",0");
+				grafo.arista(pos.toString(), (x+1)+","+y+",0");
+				grafo.arista(pos.toString(), (x+1)+","+(y+1)+",0");
 			}
 		}
 		
-		grafo.eliminarNodo("1,2");
+		grafo.eliminarNodo("1,2,0");
 
-		Assert.assertNull(grafo.getCaminoMinimo("1,4", "1,2"));
+		Assert.assertNull(grafo.getCaminoMinimo("1,4,0", "1,2,0"));
 	}
 	
 	@Test
 	public void test09_SePuedeCrearUnCaminoDesdeUnNodoEliminado(){
 		Grafo<Posicion> grafo = new Grafo<Posicion>();
 		ArrayList<Posicion> camino;
-		int n = 0;
 		
 		for (int x=1; x <= 5; x++){
 			for (int y=1; y<= 5; y++){
-				grafo.nuevoNodo(new Posicion(x,y,n));
+				Posicion pos = new Posicion(x,y,0);
+				grafo.nuevoNodo(pos);
 				
-				grafo.arista(x+","+y, (x-1)+","+(y-1));
-				grafo.arista(x+","+y, (x-1)+","+y);
-				grafo.arista(x+","+y, (x-1)+","+(y+1));
+				grafo.arista(pos.toString(), (x-1)+","+(y-1)+",0");
+				grafo.arista(pos.toString(), (x-1)+","+y+",0");
+				grafo.arista(pos.toString(), (x-1)+","+(y+1)+",0");
 				
-				grafo.arista(x+","+y,  x+","+(y-1));
-				grafo.arista(x+","+y,  x+","+(y+1));
+				grafo.arista(pos.toString(),  x+","+(y-1)+",0");
+				grafo.arista(pos.toString(),  x+","+(y+1)+",0");
 				
-				grafo.arista(x+","+y, (x+1)+","+(y-1));
-				grafo.arista(x+","+y, (x+1)+","+y);
-				grafo.arista(x+","+y, (x+1)+","+(y+1));
+				grafo.arista(pos.toString(), (x+1)+","+(y-1)+",0");
+				grafo.arista(pos.toString(), (x+1)+","+y+",0");
+				grafo.arista(pos.toString(), (x+1)+","+(y+1)+",0");
 			}
 		}
 		
-		grafo.eliminarNodo("1,2");
-		camino = grafo.getCaminoMinimo("1,2", "1,4");
+		grafo.eliminarNodo("1,2,0");
+		camino = grafo.getCaminoMinimo("1,2,0", "1,4,0");
 		Assert.assertEquals(3, camino.size());
 		Assert.assertEquals(new Posicion(1,2,0),camino.get(0));
 		Assert.assertEquals(new Posicion(1,3,0),camino.get(1));

@@ -20,7 +20,7 @@ public class EdificioConstructorDeNavesTest {
 		PuertoEstelarProtoss puertoEstelar = new PuertoEstelarProtoss();
 		
 		Assert.assertEquals(puertoEstelar.vidaActual(), 1200);
-		//Assert.assertEquals(acceso.escudoActual(), 600);
+		Assert.assertEquals(puertoEstelar.escudoRestante(), 600);
 		Assert.assertEquals(puertoEstelar.getCostoMineral(), 150);
 		Assert.assertEquals(puertoEstelar.getCostoVespeno(), 150);
 		Assert.assertEquals(puertoEstelar.getNivel(), 0);
@@ -30,7 +30,7 @@ public class EdificioConstructorDeNavesTest {
 	public void test03_CrearUnaReservaDeReproduccion(){
 		Espiral espiral = new Espiral();
 		
-		Assert.assertEquals(espiral.vidaActual(), 1200);
+		Assert.assertEquals(espiral.vidaActual(), 1300);
 		Assert.assertEquals(espiral.getCostoMineral(), 150);
 		Assert.assertEquals(espiral.getCostoVespeno(), 150);
 		Assert.assertEquals(espiral.getNivel(), 0);

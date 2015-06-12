@@ -1,19 +1,17 @@
 package fiuba.algo3.algocraft.modelo;
 
-import java.util.ArrayList;
-
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 
-public class Acceso extends EdificioUnidadesBasicas {
+public class Acceso extends EdificioUnidadesBasicas implements ElementoProtoss{
 
 	public Acceso() {
 		super();
-		this.vida = 1000;
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
 		this.tiempoDeConstruccion = 8;
 		this.nivel = 0;
 		this.unidadesEnProduccion = new ListaMU<Unidad>();
+		this.estadoFisico = new Protoss(500,500);
 	}
 	
 	public void crearZealot() {
@@ -33,6 +31,16 @@ public class Acceso extends EdificioUnidadesBasicas {
 
 	@Override
 	public int vidaActual() {
-		return this.vida;
+		return this.estadoFisico.getVida();
+	}
+
+	@Override
+	public int escudoRestante() {
+		return this.estadoFisico.getEscudo();
+	}
+
+	@Override
+	public void regenerarse() {
+		this.estadoFisico.regenerarse();
 	}
 }

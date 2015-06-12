@@ -5,20 +5,10 @@ public class ZergMineral extends ExtractorDeMineral {
 
 	public ZergMineral() {
 		this.recolectado = 0;
-		this.vida = 500;
 		this.costoMineral = 50;
 		this.costoVespeno = 0;
 		this.tiempoDeConstruccion = 4;
-	}
-
-	@Override
-	public int getNivel() {
-		return this.nivel;
-	}
-
-	@Override
-	public int vidaActual() {
-		return this.vida;
+		this.estadoFisico = new Zerg(500);
 	}
 
 }

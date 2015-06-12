@@ -1,15 +1,12 @@
 package fiuba.algo3.algocraft.modelo;
 
-import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
-
 public abstract class EdificioUnidadesBasicas extends Edificio {
 	
 	protected ListaMU<Unidad> unidadesEnProduccion;
 	
 	public void pasarTurno() {
-		if (this.tiempoDeConstruccion > 0) 
-			this.tiempoDeConstruccion--;
-		else if (!this.unidadesEnProduccion.isEmpty()) {
+		super.pasarTurno();
+		if (!this.unidadesEnProduccion.isEmpty()) {
 			if (this.hayUnidadPreparada()){
 				this.expulsarUnidad(this.unidadesEnProduccion.desEncolar());
 			} else
