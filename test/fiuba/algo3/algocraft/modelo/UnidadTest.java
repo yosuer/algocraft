@@ -42,7 +42,6 @@ public class UnidadTest {
 		for (int i=1; i <=4; i++) mapa.pasarTurnoMapa();
 		mapa.pasarTurnoMapa();
 		
-		Assert.assertNotNull(mapa.getElemento(2, 2, 0));
 		Zealot zealot = (Zealot) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(zealot.vidaActual(),160);
 		Assert.assertEquals(zealot.escudoRestante(),60);
@@ -62,7 +61,6 @@ public class UnidadTest {
 		for (int i=1; i <=6; i++) mapa.pasarTurnoMapa();
 		mapa.pasarTurnoMapa();
 		
-		Assert.assertNotNull(mapa.getElemento(2, 2, 0));
 		Dragon dragon = (Dragon) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(dragon.vidaActual(),180);
 		Assert.assertEquals(dragon.escudoRestante(),80);
@@ -80,7 +78,6 @@ public class UnidadTest {
 		reserva.evolucionarLarva();
 		for (int i=1; i <=6; i++) mapa.pasarTurnoMapa();
 		
-		Assert.assertNotNull(mapa.getElemento(2, 2, 0));
 		Zerling zerling = (Zerling) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(zerling.vidaActual(),35);
 		Assert.assertEquals(zerling.getCostoMineral(),25);

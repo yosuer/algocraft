@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 
-public class EdificioCasaTest {
+public class EdificiosTest {
 
 	@Test (expected = ErrorEdificioEnConstruccion.class)
 	public void test01_UnaBarracaNoPuedeCrearUnidadesSiNoTerminoDeConstruirse(){

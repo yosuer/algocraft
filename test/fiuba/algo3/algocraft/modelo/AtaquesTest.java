@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElementoAereo;
 
-public class AtaquesTerrestresTest {
+public class AtaquesTest {
 	
 	@Test
 	public void test01_AtaqueEntreUnidadesTerran(){

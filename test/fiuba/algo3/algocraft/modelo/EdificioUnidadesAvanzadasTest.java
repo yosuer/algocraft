@@ -1,12 +1,9 @@
 package fiuba.algo3.algocraft.modelo;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
-import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 
 public class EdificioUnidadesAvanzadasTest {
 
@@ -25,7 +22,7 @@ public class EdificioUnidadesAvanzadasTest {
 		ArchivoTemplario archivoTemplario = new ArchivoTemplario();
 		
 		Assert.assertEquals(archivoTemplario.vidaActual(), 1000);
-		//Assert.assertEquals(acceso.escudoActual(), 500);
+		Assert.assertEquals(archivoTemplario.escudoRestante(), 500);
 		Assert.assertEquals(archivoTemplario.getCostoMineral(), 150);
 		Assert.assertEquals(archivoTemplario.getCostoVespeno(), 200);
 		Assert.assertEquals(archivoTemplario.getNivel(), 0);

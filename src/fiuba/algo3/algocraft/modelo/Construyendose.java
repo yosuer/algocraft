@@ -18,10 +18,9 @@ public class Construyendose implements IEstado {
 		if (this.tiempoDeConstruccion == 0) 
 			elemento.actualizarEstado(new Activo(elemento));
 	}
-	
 
 	@Override
-	public void elementoActivo() {
+	public void estaActivo() {
 		throw new ErrorEdificioEnConstruccion();
 	}
 

@@ -57,4 +57,7 @@ public class Mineral extends Recurso {
 		this.posicion = posicion;
 	}
 	
+	public void ejecutarAcciones(){
+	}
+	
 }

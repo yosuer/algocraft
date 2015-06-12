@@ -18,6 +18,8 @@ public abstract class Edificio implements IElemento,IDaniable{
 	protected Collection<IElemento> edificiosRequeridos;
 	protected IEstado estadoDeConstruccion;
 	protected RazaEstado estadoFisico;
+	protected IEstado estado;
+	protected ICreadorDeElementos creador;
 	
 	public Edificio(){
 		this.nivel = 0;
@@ -90,7 +92,8 @@ public abstract class Edificio implements IElemento,IDaniable{
 	}
 	
 	public void actualizarEstado(IEstado estado){
-		
+		this.estado = estado;
 	}
-
+	public void ejecutarAcciones(){
+	}
 }

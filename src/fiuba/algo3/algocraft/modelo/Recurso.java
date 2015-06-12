@@ -46,6 +46,9 @@ public abstract class Recurso implements IElemento{
 	public void actualizarEstado(IEstado estado){
 		
 	}
+	
+	public void ejecutarAcciones(){
+	}
 
 
 }

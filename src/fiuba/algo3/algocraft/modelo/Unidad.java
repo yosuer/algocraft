@@ -132,6 +132,9 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	public void actualizarEstado(IEstado estado){
 		
 	}
+	
+	public void ejecutarAcciones(){
+	}
 
 	
 }

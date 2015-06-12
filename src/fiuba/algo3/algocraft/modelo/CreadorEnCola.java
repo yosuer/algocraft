@@ -19,7 +19,7 @@ public class CreadorEnCola implements ICreadorDeElementos {
 	public void expulsarUnidad() {
 		if (!this.unidadesEnProduccion.isEmpty()) {
 			if (this.hayUnidadPreparada()){
-				elemento.expulsarUnidad(this.unidadesEnProduccion.desEncolar());
+				elemento.enviarUnidadAlMapa(this.unidadesEnProduccion.desEncolar());
 			} else
 				this.unidadesEnProduccion.primero().pasarTurno();
 			}

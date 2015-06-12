@@ -52,6 +52,9 @@ public class ObstaculoTerrestre implements IElemento {
 	public void actualizarEstado(IEstado estado){
 		
 	}
+	
+	public void ejecutarAcciones(){
+	}
 
 
 }

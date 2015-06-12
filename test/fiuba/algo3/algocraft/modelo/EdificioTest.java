@@ -10,7 +10,6 @@ public class EdificioTest {
 
 	@Test
 	public void IgualdadDeEdificios() {
-		Mapa mapa = new Mapa();
 		Edificio barraca1 = new Barraca();
 		Edificio barraca2 = new Barraca();
 		Edificio acceso1 = new Acceso();
@@ -24,7 +23,6 @@ public class EdificioTest {
 	
 	@Test
 	public void IgualDeEdificiosConContainsAll() {
-		Mapa mapa = new Mapa();
 		Edificio barraca1 = new Barraca();
 		Edificio acceso1 = new Acceso();
 		Edificio reserva = new ReservaDeReproduccion();

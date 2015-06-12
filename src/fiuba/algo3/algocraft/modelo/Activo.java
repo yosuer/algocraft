@@ -10,11 +10,11 @@ public class Activo implements IEstado {
 
 	@Override
 	public void pasarTurno() {
-		
+		this.elemento.ejecutarAcciones();
 	}
 
 	@Override
-	public void elementoActivo() {
+	public void estaActivo() {
 		
 	}
 

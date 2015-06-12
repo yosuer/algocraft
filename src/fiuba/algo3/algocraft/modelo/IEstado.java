@@ -4,6 +4,6 @@ public interface IEstado {
 
 	public void pasarTurno();
 	
-	public void elementoActivo();
+	public void estaActivo();
 	
 }

@@ -1,6 +1,5 @@
 package fiuba.algo3.algocraft.modelo;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.Assert;

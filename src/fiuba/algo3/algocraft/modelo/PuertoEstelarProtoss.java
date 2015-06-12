@@ -2,27 +2,25 @@ package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 
-public class PuertoEstelarProtoss extends EdificioConstructorDeNaves
-									implements ElementoProtoss {
+public class PuertoEstelarProtoss extends Edificio
+									implements ElementoProtoss, IElementoCreador{
 
 	public PuertoEstelarProtoss() {
 		super();
 		this.costoMineral = 150;
 		this.costoVespeno = 150;
-		this.tiempoDeConstruccion = 10;
 		this.edificiosRequeridos.add(new Acceso());
-		this.unidadesEnProduccion = new ListaMU<Unidad>();
 		this.estadoFisico = new Protoss(600,600);
+		this.creador = new CreadorEnCola(this);
+		this.estado = new Construyendose(this,10);
 	}
 	
 	public void crearScout() {
-		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
-		this.unidadesEnProduccion.encolar(new Scout());
+		this.crearUnidad(new Scout());
 	}
 	
 	public void crearNaveDeTransporteProtoss() {
-		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
-		this.unidadesEnProduccion.encolar(new NaveDeTransporteProtoss());
+		this.crearUnidad(new NaveDeTransporteProtoss());
 	}
 
 	@Override
@@ -33,6 +31,19 @@ public class PuertoEstelarProtoss extends EdificioConstructorDeNaves
 	@Override
 	public void regenerarse() {
 		this.estadoFisico.regenerarse();
+	}
+
+	@Override
+	public void enviarUnidadAlMapa(Unidad u) {
+		Posicion pos = new Posicion(2,2,0);
+		u.setPosicion(pos);
+		this.mapa.encolarUnidad(u);
+	}
+
+	@Override
+	public void crearUnidad(Unidad unidad) {
+		this.estado.estaActivo();
+		this.creador.prepararUnidad(unidad);
 	}
 
 }
