@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 public class NaveCiencia extends Unidad {
 
+	private int capacidadMaximaEnergia;
 	private int cargaDeEnergia;
 	
 	public NaveCiencia() {
@@ -15,20 +16,11 @@ public class NaveCiencia extends Unidad {
 		this.suministro = 2;
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 0;
-		this.vida = 200;
+		this.estadoFisico = new Terran(200);
 		this.nivel = 1;
 		
-		this.cargaDeEnergia = 0;
-	}
-
-	@Override
-	public int getNivel() {
-		return this.nivel;
-	}
-
-	@Override
-	public int vidaActual() {
-		return this.vida;
+		this.capacidadMaximaEnergia = 200;
+		this.cargaDeEnergia = 50;
 	}
 
 }

@@ -3,7 +3,6 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
@@ -15,7 +14,7 @@ public abstract class Edificio implements IElemento,IDaniable{
 	protected int costoMineral;
 	protected int costoVespeno;
 	protected Mapa mapa;
-	protected int nivel = 0;
+	protected int nivel;
 	protected Collection<IElemento> edificiosRequeridos;
 	protected EstadoDeConstruccion estadoDeConstruccion;
 	protected RazaEstado estadoFisico;

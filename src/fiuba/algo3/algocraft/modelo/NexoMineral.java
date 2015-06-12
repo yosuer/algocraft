@@ -1,8 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
-
 public class NexoMineral extends ExtractorDeMineral 
-							implements ElementoProtoss{
+							implements ElementoProtoss {
 
 	public NexoMineral() {
 		this.recolectado = 0;

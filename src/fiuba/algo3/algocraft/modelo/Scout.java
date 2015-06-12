@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class Scout extends Unidad {
+public class Scout extends Unidad implements ElementoProtoss {
 
 	public Scout() {
 		this.transporte = 0;
@@ -13,20 +13,18 @@ public class Scout extends Unidad {
 		this.suministro = 3;
 		this.rangoAtaqueAire = 4;
 		this.rangoAtaqueTierra = 0;
-		this.vida = 250;
+		this.estadoFisico = new Protoss(150,100);
 		this.nivel = 1;
-	}
-	
-	@Override
-	public int getNivel() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override
-	public int vidaActual() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int escudoRestante() {
+		return this.estadoFisico.getEscudo();
+	}
+
+	@Override
+	public void regenerarse() {
+		this.estadoFisico.regenerarse();
 	}
 
 }

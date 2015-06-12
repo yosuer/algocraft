@@ -13,18 +13,8 @@ public class Golliat extends Unidad {
 		this.suministro = 2;
 		this.rangoAtaqueAire = 5;
 		this.rangoAtaqueTierra = 6;
-		this.vida = 125;
+		this.estadoFisico = new Terran(125);
 		this.nivel = 0;
-	}
-
-	@Override
-	public int getNivel() {
-		return this.nivel;
-	}
-
-	@Override
-	public int vidaActual() {
-		return this.vida;
 	}
 
 }

@@ -1,6 +1,5 @@
 package fiuba.algo3.algocraft.modelo;
 
-
 public class Zerling extends Unidad {
 
 	public Zerling() {
@@ -11,20 +10,11 @@ public class Zerling extends Unidad {
 		this.tiempoDeConstruccion = 2;
 		this.danioAire = 0;
 		this.danioTierra = 5;
-//		this.suministro = 1,5;
+		this.suministro = 1/2;
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 1;
-		this.vida = 35;
+		this.estadoFisico = new Zerg(35);
 		this.nivel = 0;
 	}
 
-	@Override
-	public int getNivel() {
-		return this.nivel;
-	}
-	
-	@Override
-	public int vidaActual() {
-		return this.vida;
-	}
 }

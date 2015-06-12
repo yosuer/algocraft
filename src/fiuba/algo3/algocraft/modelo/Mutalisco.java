@@ -1,6 +1,5 @@
 package fiuba.algo3.algocraft.modelo;
 
-
 public class Mutalisco extends Unidad {
 
 	public Mutalisco() {
@@ -14,17 +13,8 @@ public class Mutalisco extends Unidad {
 		this.suministro = 2;
 		this.rangoAtaqueAire = 3;
 		this.rangoAtaqueTierra = 0;
-		this.vida = 120;
+		this.estadoFisico = new Zerg(120);
 		this.nivel = 1;
 	}
 
-	@Override
-	public int getNivel() {
-		return 0;
-	}
-	
-	@Override
-	public int vidaActual() {
-		return this.vida;
-	}
 }

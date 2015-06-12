@@ -1,7 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
-
-public class Nexo extends BasePrincipal implements ElementoProtoss{
+public class Nexo extends BasePrincipal implements ElementoProtoss {
 
 	public Nexo() {
 		this.costoMineral = 100;

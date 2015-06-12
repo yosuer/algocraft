@@ -1,6 +1,5 @@
 package fiuba.algo3.algocraft.modelo;
 
-
 public class Marine extends Unidad {
 
 	public Marine() {
@@ -14,18 +13,8 @@ public class Marine extends Unidad {
 		this.suministro = 1;
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 4;
-		this.vida = 40;
+		this.estadoFisico = new Terran(40);
 		this.nivel = 0;
-	}
-
-	@Override
-	public int getNivel() {
-		return this.nivel;
-	}
-
-	@Override
-	public int vidaActual() {
-		return this.vida;
 	}
 
 }

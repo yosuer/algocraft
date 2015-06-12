@@ -1,9 +1,12 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class NaveDeTransporteProtoss extends Unidad {
+public class NaveDeTransporteProtoss extends Unidad implements ElementoProtoss {
+	
+	private int capacidadMaximaEnergia;
+	private int cargaDeEnergia;
 
 	public NaveDeTransporteProtoss() {
-//		this.transporte = 2;
+		this.transporte = 8;
 		this.vision = 8;
 		this.costoMineral = 200;
 		this.costoVespeno = 0;
@@ -13,18 +16,22 @@ public class NaveDeTransporteProtoss extends Unidad {
 		this.suministro = 2;
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 0;
-		this.vida = 140;
-		this.nivel = 1;
-	}
-	
-	@Override
-	public int getNivel() {
-		return this.nivel;
+		this.estadoFisico = new Protoss(80,60);
+		this.nivel = 0;
+		
+		this.capacidadMaximaEnergia = 200;
+		this.cargaDeEnergia = 50;
 	}
 
 	@Override
-	public int vidaActual() {
-		return this.vida;
+	public int escudoRestante() {
+		return this.estadoFisico.getEscudo();
 	}
+
+	@Override
+	public void regenerarse() {
+		this.estadoFisico.regenerarse();
+	}
+
 
 }

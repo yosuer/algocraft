@@ -13,18 +13,8 @@ public class Espectro extends Unidad {
 		this.suministro = 2;
 		this.rangoAtaqueAire = 5;
 		this.rangoAtaqueTierra = 0;
-		this.vida = 120;
+		this.estadoFisico = new Terran(120);
 		this.nivel = 1;
-	}
-
-	@Override
-	public int getNivel() {
-		return this.nivel;
-	}
-
-	@Override
-	public int vidaActual() {
-		return this.vida;
 	}
 
 }

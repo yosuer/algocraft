@@ -1,7 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class AltoTemplario extends Unidad {
-
+public class AltoTemplario extends Unidad implements ElementoProtoss {
 
 	public AltoTemplario() {
 		this.transporte = 2;
@@ -14,24 +13,19 @@ public class AltoTemplario extends Unidad {
 		this.suministro = 2;
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 0;
-		this.vida = 80;
+		this.estadoFisico = new Protoss(40,40);
 		this.nivel = 0;
 	}
-	
+
 	@Override
-	public int getNivel() {
-		return this.nivel;
+	public int escudoRestante() {
+		return this.estadoFisico.getEscudo();
 	}
 
 	@Override
-	public int vidaActual() {
-		return this.vida;
+	public void regenerarse() {
+		this.estadoFisico.regenerarse();
 	}
 
-	@Override
-	public void agregarseEn(Mapa mapa) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

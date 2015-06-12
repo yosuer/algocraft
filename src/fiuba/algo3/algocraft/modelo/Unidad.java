@@ -12,7 +12,8 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 
 	protected Posicion posicion;
 	protected Mapa mapa;
-	protected int nivel = 0;
+	protected int nivel;
+	protected RazaEstado estadoFisico;
 	
 	protected int transporte;
 	protected int vision;
@@ -21,11 +22,9 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	protected int tiempoDeConstruccion;
 	protected int danioAire;
 	protected int danioTierra;
-	protected int suministro;
+	protected float suministro;
 	protected int rangoAtaqueAire;
 	protected int rangoAtaqueTierra;
-	protected int vida;
-
 	
 	public Unidad(){
 	}
@@ -38,7 +37,13 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 		return this.posicion;
 	}
 	
-	public abstract int vidaActual();
+	public int getNivel() {
+		return this.nivel;
+	}
+	
+	public int vidaActual(){
+		return this.estadoFisico.getVida();
+	}
 	
 	public int getCostoMineral() {
 		return this.costoMineral;
@@ -64,7 +69,7 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 		return this.danioTierra;
 	}
 	
-	public int getSuministro() {
+	public float getSuministro() {
 		return this.suministro;
 	}
 	
@@ -99,23 +104,25 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 
 	public int getTiempoDeConstruccion() {
 		return this.tiempoDeConstruccion;
-	}	public boolean equals(Object o)
-	{
+	}	
+	
+	public boolean equals(Object o) {
 		if(this == o) return true;
 		if (o == null) return false;
 		
 		return (o.getClass() == this.getClass());
 	}
 	
-	public void daniarse(int danio){
-		this.vida -= danio;
-	}
-	
 	public void atacar(IDaniable elemento) {
 		elemento.recibirDanioDe(this);
 	}
 	
-	public void recibirDanioDe(IAtacante a){
+	public void daniarse(int danio){
+		this.estadoFisico.daniarse(danio);
+		if (this.estadoFisico.getVida() <= 0)this.mapa.quitarElemento(this);
+	}
+	
+	public void recibirDanioDe(IAtacante a) {
 		if (this.nivel == 1 & a.getDanioAire() == 0) 
 			throw new ErrorNoSePuedeAtacarElementoAereo();
 		if (this.nivel == 0) this.daniarse(a.getDanioTierra());

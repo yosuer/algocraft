@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class Terran implements RazaEstado{
+public class Terran implements RazaEstado {
 
 	private int vida;
 	

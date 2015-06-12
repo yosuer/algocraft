@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 public class AmoSupremo extends Unidad implements ElementoPoblacion {
 
 	public AmoSupremo() {
-//		this.transporte =  Capacidad 8 ?
+		this.transporte = 8;
 		this.vision = 9;
 		this.costoMineral = 100;
 		this.costoVespeno = 0;
@@ -13,23 +13,14 @@ public class AmoSupremo extends Unidad implements ElementoPoblacion {
 		this.suministro = 10;
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 0;
-		this.vida = 200;
+		this.estadoFisico = new Zerg(200);
 		this.nivel = 0;
 	}
 
 	@Override
-	public int vidaActual() {
-		return this.vida;
-	}
-
-	@Override
-	public int getNivel() {
-		return 1;
-	}
-
-	@Override
 	public int getPoblacion() {
-		return this.suministro;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

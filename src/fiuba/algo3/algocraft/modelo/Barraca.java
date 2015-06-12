@@ -9,7 +9,6 @@ public class Barraca extends EdificioUnidadesBasicas {
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
 		this.tiempoDeConstruccion = 12;
-		this.nivel = 0;
 		this.unidadesEnProduccion = new ListaMU<Unidad>();
 		this.estadoFisico = new Terran(1000);
 	}

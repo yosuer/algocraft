@@ -27,24 +27,4 @@ public abstract class EdificioUnidadesBasicas extends Edificio {
 	public int unidadesEnProduccion(){
 		return this.unidadesEnProduccion.size();
 	}
-	/*
-	
-	@Override
-	public Unidad crearUnidad(int i) {
-		if (this.tiempoDeConstruccion > 0)
-			throw new ErrorEdificioEnConstruccion();
-		try {
-			Unidad u;
-			u = this.unidadesDisponibles.get(i).getClass().newInstance();
-			return u;
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
-		
-		return null;
-	}
-	*/
-
 }

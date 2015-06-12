@@ -3,14 +3,14 @@ package fiuba.algo3.algocraft.modelo;
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 
 public class ArchivoTemplario extends EdificioUnidadesAvanzadas
-								implements ElementoProtoss{
+								implements ElementoProtoss {
 
 	public ArchivoTemplario() {
 		super();
 		this.costoMineral = 150;
 		this.costoVespeno = 200;
 		this.tiempoDeConstruccion = 9;
-		this.nivel= 0;
+		this.edificiosRequeridos.add(new PuertoEstelarProtoss());
 		this.unidadesEnProduccion = new ListaMU<Unidad>();
 		this.estadoFisico = new Protoss(500,500);
 	}
@@ -18,16 +18,6 @@ public class ArchivoTemplario extends EdificioUnidadesAvanzadas
 	public void crearAltoTemplario() {
 		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
 		this.unidadesEnProduccion.encolar(new AltoTemplario());
-	}
-
-	@Override
-	public int vidaActual() {
-		return this.estadoFisico.getVida();
-	}
-
-	@Override
-	public int getNivel() {
-		return this.nivel;
 	}
 
 	@Override

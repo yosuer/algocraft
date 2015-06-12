@@ -1,8 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
 public class Dragon extends Unidad implements ElementoProtoss {
-
-	private int escudo;
 	
 	public Dragon(){
 		this.transporte = 4;
@@ -15,40 +13,29 @@ public class Dragon extends Unidad implements ElementoProtoss {
 		this.suministro = 2;
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 4;
-		this.vida = 100;
+		this.estadoFisico = new Protoss(100,80);
 		this.nivel = 0;
-		this.escudo = 80;
-	}
-	
-	@Override
-	public int getNivel() {
-		return this.nivel;
-	}
-
-	@Override
-	public int vidaActual() {
-		return this.vida+this.escudo;
+		
 	}
 
 	@Override
 	public int escudoRestante() {
-		return this.escudo;
+		return this.estadoFisico.getEscudo();
 	}
-
 
 	@Override
 	public void regenerarse() {
-		this.escudo+=5;
+		this.estadoFisico.regenerarse();
 	}
 	
-	public void daniarse(int danio){
-		if (this.escudo > 0)
-		{
-			this.escudo -= danio;
-			if (this.escudo < 0) this.vida += this.escudo;
-		} else this.vida -= danio;
-		
-		if (this.vida <= 0)this.mapa.quitarElemento(this);
-	}
+//	public void daniarse(int danio){
+//		if (this.escudo > 0)
+//		{
+//			this.escudo -= danio;
+//			if (this.escudo < 0) this.vida += this.escudo;
+//		} else this.vida -= danio;
+//		
+//		if (this.vida <= 0)this.mapa.quitarElemento(this);
+//	}
 
 }

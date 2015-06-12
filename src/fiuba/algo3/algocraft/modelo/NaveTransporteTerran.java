@@ -1,9 +1,9 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class NaveTransporteTerran extends Unidad{
+public class NaveTransporteTerran extends Unidad {
 
 	public NaveTransporteTerran() {
-//		this.transporte = 2; Dice capacidad 8 -> REVISAR
+		this.transporte = 8;
 		this.vision = 8;
 		this.costoMineral = 100;
 		this.costoVespeno = 100;
@@ -13,18 +13,8 @@ public class NaveTransporteTerran extends Unidad{
 		this.suministro = 2;
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 0;
-		this.vida = 150;
-		this.nivel = 1; //Si dice capacidad 8, es terrestre o aereo?
-	}
-
-	@Override
-	public int getNivel() {
-		return this.nivel;
-	}
-
-	@Override
-	public int vidaActual() {
-		return this.vida;
+		this.estadoFisico = new Terran(150);
+		this.nivel = 0;
 	}
 
 }

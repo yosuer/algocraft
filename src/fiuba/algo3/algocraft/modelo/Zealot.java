@@ -1,9 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
-
 public class Zealot extends Unidad implements ElementoProtoss {
-
-	public int escudo;
 	
 	public Zealot() {
 		this.transporte = 2;
@@ -16,30 +13,19 @@ public class Zealot extends Unidad implements ElementoProtoss {
 		this.suministro = 2;
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 1;
-		this.vida = 100;
+		this.estadoFisico = new Protoss(100,60);
 		this.nivel = 0;
-		this.escudo = 60;
-	}
-
-	@Override
-	public int getNivel() {
-		return this.nivel;
-	}
-
-	@Override
-	public int vidaActual() {
-		return this.vida+this.escudo;
+		
 	}
 
 	@Override
 	public int escudoRestante() {
-		return this.escudo;
+		return this.estadoFisico.getEscudo();
 	}
-
 
 	@Override
 	public void regenerarse() {
-		this.escudo+=5;
+		this.estadoFisico.regenerarse();
 	}
 
 }
