@@ -70,16 +70,14 @@ public class ExtractorMineralTest {
 		mapa.agregarElemento(1, 1, mineral);
 		mapa.agregarElemento(1, 1, centro);
 	
-		for (int i = 1; i <=4; i++) 
+		for (int i = 1; i <=5; i++) 
 			mapa.pasarTurnoMapa();
 		
 		for (int i = 1; i <=2; i++)
-			centro.realizarExtraccion();
+			mapa.pasarTurnoMapa();
 		
-		Assert.assertEquals(20,centro.getRecolectado());
-		
-		mapa.pasarTurnoMapa();
-		Assert.assertEquals(220, mapa.getMineralTotal());
+		//Assert.assertEquals(20,centro.getRecolectado());
+		Assert.assertEquals(170, mapa.getMineralTotal());
 		Assert.assertEquals(10, centro.getRecolectado());
 	}
 	
@@ -92,13 +90,13 @@ public class ExtractorMineralTest {
 		mapa.agregarElemento(1, 1, mineral);
 		mapa.agregarElemento(1, 1, centro);
 	
-		Assert.assertEquals(200,mapa.getMineralTotal());
+		Assert.assertEquals(150,mapa.getMineralTotal());
 		
 		for (int i = 1; i <= 10; i++) {
 			mapa.pasarTurnoMapa();
 		}
 		
-		Assert.assertEquals(250,mapa.getMineralTotal());
+		Assert.assertEquals(200,mapa.getMineralTotal());
 	}
 	
 	@Test
@@ -109,17 +107,13 @@ public class ExtractorMineralTest {
 		
 		mapa.agregarElemento(4, 4, mineral);
 		mapa.agregarElemento(4, 4, nexoMineral);
+		
+		Assert.assertEquals(150, mapa.getMineralTotal());
 	
-		for (int i = 1; i <=4; i++) 
+		for (int i = 1; i <=40; i++) 
 			mapa.pasarTurnoMapa();
-		
-		for (int i = 1; i <=20; i++) 
-			nexoMineral.realizarExtraccion();
-		
-		Assert.assertEquals(200,nexoMineral.getRecolectado());
-		
-		mapa.pasarTurnoMapa();
-		Assert.assertEquals(400, mapa.getMineralTotal());
+
+		Assert.assertEquals(350, mapa.getMineralTotal());
 		Assert.assertEquals(0, nexoMineral.getRecolectado());
 	}
 	
@@ -132,16 +126,12 @@ public class ExtractorMineralTest {
 		mapa.agregarElemento(10, 10, mineral);
 		mapa.agregarElemento(10, 10, zergMineral);
 	
-		for (int i = 1; i <=4; i++) 
+		Assert.assertEquals(150, mapa.getMineralTotal());
+		
+		for (int i = 1; i <=15; i++) 
 			mapa.pasarTurnoMapa();
-		
-		for (int i = 1; i <=20; i++) 
-			zergMineral.realizarExtraccion();
-		
-		Assert.assertEquals(200,zergMineral.getRecolectado());
-		
-		mapa.pasarTurnoMapa();
-		Assert.assertEquals(400, mapa.getMineralTotal());
-		Assert.assertEquals(0, zergMineral.getRecolectado());
+
+		Assert.assertEquals(250, mapa.getMineralTotal());
+		Assert.assertEquals(10, zergMineral.getRecolectado());
 	}
 }

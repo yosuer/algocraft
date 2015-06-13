@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
+import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 
 public abstract class ExtractorDeMineral extends Edificio 
 										implements IExtractorDeRecursos{
@@ -17,10 +18,13 @@ public abstract class ExtractorDeMineral extends Edificio
 	}
 	
 	public void agregarseEn(Mapa mapa){
+		mapa.gastarRecursos(costoMineral, costoVespeno);
 		try {
 		Recurso mineral = 
-				(Recurso) mapa.getElemento(posicion.x(), posicion.y(), posicion.z());
+				(Mineral) mapa.getElemento(posicion.x(), posicion.y(), posicion.z());
 		mineral.asignarExtractor(this);
+		} catch (ErrorExtractorDeRecursosIncompatible e) {
+			throw new ErrorAgregandoElementoAlMapa();
 		} catch (RuntimeException e) {
 			throw new ErrorAgregandoElementoAlMapa();
 		}

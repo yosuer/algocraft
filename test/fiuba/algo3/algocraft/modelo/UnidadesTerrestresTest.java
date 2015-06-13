@@ -28,7 +28,7 @@ public class UnidadesTerrestresTest {
 		mapa.pasarTurnoMapa(); //en el cuarto turno se muestra xk tarda 3 turnos
 		
 		Assert.assertEquals(9,0, mapa.getPoblacionTotal());
-		Marine marine = (Marine) mapa.getElemento(2, 2, 0);
+		Marine marine = (Marine) mapa.getElemento(1, 2, 0);
 		Assert.assertEquals(marine.vidaActual(),40);
 		Assert.assertEquals(marine.getCostoMineral(),50);
 		Assert.assertEquals(marine.getCostoVespeno(),0);
@@ -49,7 +49,7 @@ public class UnidadesTerrestresTest {
 		mapa.pasarTurnoMapa();
 		
 		Assert.assertEquals(7,0, mapa.getPoblacionTotal());
-		Zealot zealot = (Zealot) mapa.getElemento(2, 2, 0);
+		Zealot zealot = (Zealot) mapa.getElemento(1, 2, 0);
 		Assert.assertEquals(zealot.vidaActual(),160);
 		Assert.assertEquals(zealot.escudoRestante(),60);
 		Assert.assertEquals(zealot.escudoRestante(), 60);
@@ -72,7 +72,7 @@ public class UnidadesTerrestresTest {
 		mapa.pasarTurnoMapa();
 		
 		Assert.assertEquals(7,0, mapa.getPoblacionTotal());
-		Dragon dragon = (Dragon) mapa.getElemento(2, 2, 0);
+		Dragon dragon = (Dragon) mapa.getElemento(1, 2, 0);
 		Assert.assertEquals(dragon.vidaActual(),180);
 		Assert.assertEquals(dragon.escudoRestante(),80);
 		Assert.assertEquals(dragon.getCostoMineral(),125);

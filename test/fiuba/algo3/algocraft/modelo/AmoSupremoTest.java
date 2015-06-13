@@ -34,8 +34,8 @@ public class AmoSupremoTest {
 		
 		Assert.assertEquals(20.0, mapa.getPoblacionTotal(),0.0);
 		
-		mapa.quitarElemento(mapa.getElemento(1, 1, 1));
-		mapa.quitarElemento(mapa.getElemento(3, 3, 1));
+		mapa.getElemento(1, 1, 1).eliminarseDelMapa(mapa);
+		mapa.getElemento(3, 3, 1).eliminarseDelMapa(mapa);
 		Assert.assertEquals(10.0, mapa.getPoblacionTotal(), 0.0);
 	}
 	

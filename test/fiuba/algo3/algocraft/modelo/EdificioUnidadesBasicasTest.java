@@ -70,7 +70,7 @@ public class EdificioUnidadesBasicasTest {
 		mapa.recibirMineral(1000);
 
 		Barraca barraca = new Barraca();
-		mapa.agregarElemento(3,3, barraca);
+		mapa.agregarElemento(2,2, barraca);
 		for (int i=1; i<=12; i++) mapa.pasarTurnoMapa();
 		
 		barraca.crearMarine();
@@ -81,12 +81,10 @@ public class EdificioUnidadesBasicasTest {
 		
 		for (int i=1; i<=15; i++) mapa.pasarTurnoMapa();
 		
-		Assert.assertNotNull(mapa.getElemento(2, 2, 0));
 		Assert.assertNotNull(mapa.getElemento(1, 1, 0));
 		Assert.assertNotNull(mapa.getElemento(1, 2, 0));
 		Assert.assertNotNull(mapa.getElemento(1, 3, 0));
 		Assert.assertNotNull(mapa.getElemento(2, 1, 0));
-		Assert.assertNotNull(mapa.getElemento(3, 3, 0)); //barraca
-		Collection<IElemento> elementos = new ArrayList<IElemento>();
+		Assert.assertNotNull(mapa.getElemento(2, 2, 0)); //barraca
 	}
 }

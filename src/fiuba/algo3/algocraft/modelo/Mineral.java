@@ -1,10 +1,10 @@
 package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 public class Mineral extends Recurso {
 
-	private int nivel;
 	private ExtractorDeMineral extractor;
 	
 	public Mineral() {
@@ -22,18 +22,20 @@ public class Mineral extends Recurso {
 			this.reserva-=10;
 			return 10;
 		}
-		else return 0;
+		return 0;
 	}
 
 	@Override
 	public void asignarExtractor(IExtractorDeRecursos ext) {
+		
 		if ( this.posicion.equals(ext.getPosicion()) ){
 			try {
+				//if (this.extractor != null) throw new ErrorPosicionOcupada();
 				this.extractor = (ExtractorDeMineral)ext;
 				ext.asignarRecurso(this);
 			} catch (ClassCastException e){
 				throw new ErrorExtractorDeRecursosIncompatible();
-			}
+			} 
 		}
 	}
 

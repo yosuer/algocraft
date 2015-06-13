@@ -81,7 +81,7 @@ public class Mapa {
 		
 		try {
 			elemento.agregarseEn(this);
-		} catch (ErrorAgregandoElementoAlMapa e){
+		} catch (RuntimeException e){
 			throw e;
 		}
 		this.elementosActivos.add(elemento);
@@ -91,7 +91,7 @@ public class Mapa {
 	public void quitarElemento(IElemento elemento) {
 		if (!this.estaOcupado(elemento.getPosicion()))
 				throw new ErrorElementoNoEncontrado();
-		//elemento.eliminarseDelMapa(this);
+
 		this.desocuparPosicion(elemento.getPosicion());
 		this.elementosActivos.remove(elemento);
 	}
@@ -163,6 +163,14 @@ public class Mapa {
 			this.agregarElemento(u.getPosicion().x(),u.getPosicion().y(), u);
 		}
 		this.unidadesPreparadas.clear();
+		//////////////////////////////////
+//		System.out.println("Poblacion: " + getPoblacionTotal());
+//		System.out.println("Mineral: " + gestorDeRecursos.getMineralTotal());
+//		System.out.println("Vespeno: " + gestorDeRecursos.getVespenoTotal());
+//		Iterator<IElemento> i = elementosActivos.iterator();
+//		while (i.hasNext()) {
+//			System.out.print(i.next().getClass().getSimpleName() + " / ");
+//		} System.out.println();
 	}
 	
 	public void encolarUnidad(Unidad u){

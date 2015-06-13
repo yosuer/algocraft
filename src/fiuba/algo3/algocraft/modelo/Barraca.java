@@ -18,8 +18,8 @@ public class Barraca extends Edificio
 
 	@Override
 	public void enviarUnidadAlMapa(Unidad u) {
-		Posicion pos = new Posicion(2,2,0);
-		u.setPosicion(pos);
+		//Posicion pos = new Posicion(2,2,0);
+		u.setPosicion(posicion);
 		this.mapa.encolarUnidad(u);
 	}
 	

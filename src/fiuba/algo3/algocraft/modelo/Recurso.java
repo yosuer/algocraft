@@ -39,6 +39,7 @@ public abstract class Recurso implements IElemento{
 	
 	@Override
 	public void pasarTurno() {
+		if (this.reserva <= 0) this.eliminarseDelMapa(mapa);
 	}
 	
 	public void actualizarEstado(IEstado estado){

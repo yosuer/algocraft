@@ -43,8 +43,8 @@ public class Acceso extends Edificio implements ElementoProtoss,
 	}
 	
 	public void enviarUnidadAlMapa(Unidad unidad){
-		Posicion pos = new Posicion(2,2,0);
-		unidad.setPosicion(pos);
+		//Posicion pos = new Posicion(2,2,0);
+		unidad.setPosicion(this.posicion);
 		this.mapa.encolarUnidad(unidad);
 	}
 

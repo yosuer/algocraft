@@ -21,7 +21,7 @@ public class Vespeno extends Recurso {
 			this.reserva-=10;
 			return 10;
 		}
-		else return 0;
+		return 0;
 	}
 
 	@Override
