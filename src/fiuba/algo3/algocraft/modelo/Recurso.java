@@ -52,8 +52,13 @@ public abstract class Recurso implements IElemento{
 		return 0;
 	}
 	
-	public void eliminarseDelMapa(){
-		this.mapa.desocuparPosicion(this.posicion);
+	public int vidaActual(){
+		return 99;
+	}
+	
+	@Override
+	public void eliminarseDelMapa(Mapa mapa) {
+		this.mapa.quitarElemento(this);
 	}
 
 }

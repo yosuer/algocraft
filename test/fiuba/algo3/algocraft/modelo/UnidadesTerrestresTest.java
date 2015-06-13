@@ -86,6 +86,8 @@ public class UnidadesTerrestresTest {
 		mapa.agregarElemento(1, 1, reserva);
 		for (int i=1; i <=10; i++) mapa.pasarTurnoMapa();
 		
+		mapa.pasarTurnoMapa();
+		
 		reserva.evolucionarLarva();
 		for (int i=1; i <=6; i++) mapa.pasarTurnoMapa();
 		

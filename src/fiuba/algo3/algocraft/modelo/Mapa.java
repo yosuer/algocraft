@@ -91,7 +91,8 @@ public class Mapa {
 	public void quitarElemento(IElemento elemento) {
 		if (!this.estaOcupado(elemento.getPosicion()))
 				throw new ErrorElementoNoEncontrado();
-		elemento.eliminarseDelMapa();
+		//elemento.eliminarseDelMapa(this);
+		this.desocuparPosicion(elemento.getPosicion());
 		this.elementosActivos.remove(elemento);
 	}
 	
@@ -240,8 +241,12 @@ public class Mapa {
 	}
 	
 	public void aumentarPoblacion(float suministro) {
-		this.poblacionTotal += suministro;
+		if (this.poblacionTotal < 200)
+			this.poblacionTotal += suministro;
 	}
-
-
+	
+	public void restarPoblacion(float suministro) {
+		if (this.poblacionTotal > 0)
+			this.poblacionTotal -= suministro;
+	}
 }

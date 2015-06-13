@@ -140,7 +140,7 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	public void ejecutarAcciones(){
 	}
 	
-	public void eliminarseDelMapa(){
+	public void eliminarseDelMapa(Mapa mapa){
 		this.mapa.desocuparPosicion(this.posicion);
 	}
 

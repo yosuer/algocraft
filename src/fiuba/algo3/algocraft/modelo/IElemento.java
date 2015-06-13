@@ -23,5 +23,7 @@ public interface IElemento {
 	
 	public void ejecutarAcciones();
 
-	public void eliminarseDelMapa();
+	public void eliminarseDelMapa(Mapa mapa);
+	
+	public int vidaActual();
 }

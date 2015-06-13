@@ -15,7 +15,6 @@ public class Dragon extends Unidad implements ElementoProtoss {
 		this.rangoAtaqueTierra = 4;
 		this.estadoFisico = new Protoss(100,80);
 		this.nivel = 0;
-		
 	}
 
 	@Override

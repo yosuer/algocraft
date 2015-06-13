@@ -63,6 +63,14 @@ public class ObstaculoTerrestre implements IElemento {
 	public int getPoblacion(){
 		return 0;
 	}
+	
+	public int vidaActual(){
+		return 99;
+	}
 
+	@Override
+	public void eliminarseDelMapa(Mapa mapa) {
+	
+	}
 
 }

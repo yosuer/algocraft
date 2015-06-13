@@ -20,8 +20,9 @@ public class DepositoDeSuministros extends Edificio {
 		this.mapa.aumentarPoblacion(poblacion);
 	}
 	
-	public void eliminarseDelMapa(){
-		this.mapa.consumirPoblacion(poblacion);
+	public void eliminarseDelMapa(Mapa mapa){
+		super.eliminarseDelMapa(mapa);
+		mapa.restarPoblacion(this.poblacion);
 	}
 
 }

@@ -73,8 +73,8 @@ public abstract class Edificio implements IElemento,IDaniable{
 		this.mapa = mapa;
 	}
 	
-	public void eliminarseDelMapa(){
-		this.mapa.desocuparPosicion(this.posicion);
+	public void eliminarseDelMapa(Mapa mapa){
+		this.mapa.quitarElemento(this);
 	}
 	
 	public void edificar(){
@@ -88,7 +88,7 @@ public abstract class Edificio implements IElemento,IDaniable{
 
 	public void daniarse(int danio){
 		this.estadoFisico.daniarse(danio);
-		if (this.estadoFisico.getVida() <= 0)this.mapa.quitarElemento(this);
+		if (this.estadoFisico.getVida() <= 0) this.eliminarseDelMapa(mapa);
 	}
 	
 	public void recibirDanioDe(IAtacante a){
@@ -98,6 +98,7 @@ public abstract class Edificio implements IElemento,IDaniable{
 	public void actualizarEstado(IEstado estado){
 		this.estado = estado;
 	}
+	
 	public void ejecutarAcciones(){
 	}
 	
