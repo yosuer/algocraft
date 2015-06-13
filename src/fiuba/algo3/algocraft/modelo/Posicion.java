@@ -37,4 +37,48 @@ public class Posicion {
 		return this.x + "," + this.y + "," + this.z;
 	}
 
+	public Posicion Xpp() {
+		this.x +=1;
+		return this;
+	}
+
+	public Posicion Ypp() {
+		this.y +=1;
+		return this;
+	}
+
+	public Posicion ppX() {
+		this.x -=1;
+		return this;
+	}
+	
+	public Posicion ppY() {
+		this.y -=1;
+		return this;
+	}
+	
+	public Posicion ppXppY() {
+		this.x -=1;
+		this.y -=1;
+		return this;
+	}
+	
+	public Posicion ppXYpp() {
+		this.x -=1;
+		this.y +=1;
+		return this;
+	}
+	
+	public Posicion XppppY() {
+		this.x +=1;
+		this.y -=1;
+		return this;
+	}
+	
+	public Posicion XppYpp() {
+		this.x +=1;
+		this.y +=1;
+		return this;
+	}
+
 }

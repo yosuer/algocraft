@@ -30,6 +30,7 @@ public class Acceso extends Edificio implements ElementoProtoss,
 	@Override
 	public void crearUnidad(Unidad unidad) {
 		this.estado.estaActivo();
+		this.mapa.gastarRecursos(unidad.costoMineral, unidad.costoVespeno);
 		this.creador.prepararUnidad(unidad);
 	}
 	

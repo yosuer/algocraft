@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElementoAereo;
-import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 
@@ -91,8 +90,10 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	}
 	
 	public void agregarseEn(Mapa mapa){
-		if ( mapa.estaOcupado(posicion.x(), posicion.y(), posicion.z()) )
-				throw new ErrorPosicionOcupada();
+		if ( mapa.estaOcupado(this.posicion) ){
+			Posicion otraPos = mapa.getPosicionProxima(this.posicion);
+			mapa.agregarElemento(otraPos.x(), otraPos.y(), this);
+		}
 		this.mapa = mapa;
 	}
 	

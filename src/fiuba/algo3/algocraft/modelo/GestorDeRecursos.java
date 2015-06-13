@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
-import fiuba.algo3.algocraft.excepciones.ErrorNoHaySuficientesRecursos;
+import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 
 public class GestorDeRecursos {
 	
@@ -30,7 +30,7 @@ public class GestorDeRecursos {
 
 	public void gastarRecursos(int mineral, int vespeno) {
 		if  ((mineralTotal < mineral) | (vespenoTotal < vespeno) ) 
-							throw new ErrorNoHaySuficientesRecursos();
+							throw new ErrorRecursosInsuficientes();
 		this.mineralTotal -= mineral;
 		this.vespenoTotal -= vespeno;
 	}

@@ -36,4 +36,24 @@ public class PosicionTest {
 		Assert.assertEquals(pos2.toString(),"53,30,1");
 		Assert.assertEquals(pos3.toString(),"9,99,2");
 	}
+	
+	@Test
+	public void test04_AvanzarYRetrocederPosicionEnXY(){
+		Posicion pos = new Posicion(2,6,1);
+		
+		Assert.assertEquals(pos.Xpp().toString(),"3,6,1");
+		Assert.assertEquals(pos.Ypp().toString(),"3,7,1");
+		Assert.assertEquals(pos.ppX().toString(),"2,7,1");
+		Assert.assertEquals(pos.ppY().toString(),"2,6,1");
+	}
+	
+	@Test
+	public void test04_AvanzarYRetrocederPosicionEnXYDiagonales(){
+		Posicion pos = new Posicion(2,6,1);
+		
+		Assert.assertEquals(pos.XppYpp().toString(),"3,7,1");
+		Assert.assertEquals(pos.ppXppY().toString(),"2,6,1");
+		Assert.assertEquals(pos.ppXYpp().toString(),"1,7,1");
+		Assert.assertEquals(pos.XppppY().toString(),"2,6,1");
+	}
 }

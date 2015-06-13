@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
-import fiuba.algo3.algocraft.excepciones.ErrorNoHaySuficientesRecursos;
+import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 
 public class EdificioUnidadesAvanzadasTest {
 
@@ -46,7 +46,7 @@ public class EdificioUnidadesAvanzadasTest {
 		mapa.agregarElemento(1, 10, fabrica);
 	}
 	
-	@Test (expected = ErrorNoHaySuficientesRecursos.class)
+	@Test (expected = ErrorRecursosInsuficientes.class)
 	public void test04_NoSePuedeCrearUnaFabricaSinLosRecursosSuficientes(){
 		Mapa mapa = new Mapa();
 		Barraca barraca = new Barraca();

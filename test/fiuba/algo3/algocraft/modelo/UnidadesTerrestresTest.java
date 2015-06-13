@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class UnidadTest {
+public class UnidadesTerrestresTest {
 
 	@Test
 	public void test00_PasarTurnoMarine() {
@@ -35,6 +35,9 @@ public class UnidadTest {
 	public void test03_CrearZealot() {
 		Mapa mapa = new Mapa();
 		Acceso acceso = new Acceso();
+		mapa.recibirMineral(500);
+		mapa.recibirVespeno(500);
+		
 		mapa.agregarElemento(1, 1, acceso);
 		for (int i=1; i <=8; i++) mapa.pasarTurnoMapa();
 		
@@ -53,6 +56,8 @@ public class UnidadTest {
 	@Test
 	public void test04_crearDragon() {
 		Mapa mapa = new Mapa();
+		mapa.recibirMineral(500);
+		mapa.recibirVespeno(500);
 		Acceso acceso = new Acceso();
 		mapa.agregarElemento(1, 1, acceso);
 		for (int i=1; i <=8; i++) mapa.pasarTurnoMapa();

@@ -1,33 +1,49 @@
 package fiuba.algo3.algocraft.modelo;
 
-import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
-
-
-public class PuertoEstelarTerran extends EdificioConstructorDeNaves {
+public class PuertoEstelarTerran extends Edificio
+										implements IElementoCreador{
 
 	public PuertoEstelarTerran() {
 		super();
 		this.costoMineral = 150;
 		this.costoVespeno = 100;
-		this.tiempoDeConstruccion = 10;
 		this.edificiosRequeridos.add(new Fabrica());
-		this.unidadesEnProduccion = new ListaMU<Unidad>();
 		this.estadoFisico = new Terran(1300);
+		this.creador = new CreadorEnCola(this);
+		this.estado = new Construyendose(this,10);
 	}
 	
 	public void crearEspectro() {
-		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
-		this.unidadesEnProduccion.encolar(new Espectro());
+		this.crearUnidad(new Espectro());
 	}
 	
 	public void crearNaveCiencia() {
-		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
-		this.unidadesEnProduccion.encolar(new NaveCiencia());
+		this.crearUnidad(new NaveCiencia());
 	}
 	
 	public void crearNaveDeTransporteTerran() {
-		if (this.tiempoDeConstruccion > 0) throw new ErrorEdificioEnConstruccion();
-		this.unidadesEnProduccion.encolar(new NaveTransporteTerran());
+		this.crearUnidad(new NaveTransporteTerran());
+	}
+
+	@Override
+	public void enviarUnidadAlMapa(Unidad unidad) {
+		unidad.setPosicion(new Posicion(2,2,0));
+		this.mapa.encolarUnidad(unidad);
+	}
+	
+	public void pasarTurno() {
+		this.estado.pasarTurno();
+	}
+
+	@Override
+	public void crearUnidad(Unidad u) {
+		this.estado.estaActivo();
+		this.mapa.gastarRecursos(u.costoMineral, u.costoVespeno);
+		this.creador.prepararUnidad(u);
+	}
+	
+	public void ejecutarAcciones(){
+		this.creador.expulsarUnidad();
 	}
 
 }

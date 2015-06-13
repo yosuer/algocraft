@@ -65,4 +65,32 @@ public class EdificioUnidadesBasicasTest {
 		elementos.add(new Barraca());
 		Assert.assertTrue(mapa.existenElementos(elementos));
 	}
+	
+	@Test
+	public void test02_CrearUnaBarracaYCrear5Marine(){
+		Mapa mapa = new Mapa();
+		mapa.recibirMineral(1000);
+		Barraca barraca = new Barraca();
+		mapa.agregarElemento(3,3, barraca);
+		for (int i=1; i<=12; i++) mapa.pasarTurnoMapa();
+		
+		barraca.crearMarine();
+		barraca.crearMarine();
+		barraca.crearMarine();
+		barraca.crearMarine();
+		barraca.crearMarine();
+		
+		for (int i=1; i<=15; i++) mapa.pasarTurnoMapa();
+		
+		Assert.assertNotNull(mapa.getElemento(2, 2, 0));
+		Assert.assertNotNull(mapa.getElemento(1, 1, 0));
+		Assert.assertNotNull(mapa.getElemento(1, 2, 0));
+		Assert.assertNotNull(mapa.getElemento(1, 3, 0));
+		Assert.assertNotNull(mapa.getElemento(2, 1, 0));
+		Assert.assertNotNull(mapa.getElemento(3, 3, 0)); //barraca
+		Collection<IElemento> elementos = new ArrayList<IElemento>();
+		elementos.add(new Marine());
+		elementos.add(new Barraca());
+		Assert.assertTrue(mapa.existenElementos(elementos));
+	}
 }

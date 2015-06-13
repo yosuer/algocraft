@@ -19,7 +19,6 @@ public abstract class Edificio implements IElemento,IDaniable{
 	protected Collection<IElemento> edificiosRequeridos;
 	protected RazaEstado estadoFisico;
 	protected IEstado estado; //gestorDeVida
-	protected IEstado estadoDeConstruccion;
 	protected ICreadorDeElementos creador;
 	
 	public Edificio(){

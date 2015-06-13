@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
+import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
@@ -226,12 +227,56 @@ public class MapaTest {
 		Assert.assertEquals(0,mapa.getVespenoTotal());
 	}
 	
-	@Test
-	public void test16_CrearUn(){
+	@Test(expected = ErrorRecursosInsuficientes.class)
+	public void test16_IntentarAgregarUnEdificioSinSuficientesLanzaError(){
 		Mapa mapa = new Mapa();
-		mapa.inicializarMapa();
+
+		mapa.agregarElemento(3, 3, new Barraca());
+		mapa.agregarElemento(2, 2, new Barraca());
+	}
+	
+	@Test
+	public void test17_ObtenerUnaPosicionDisponibleProximaAOtra(){
+		Mapa mapa = new Mapa();
+		Posicion pos = new Posicion(2,2,0);
 		
+		Assert.assertEquals(new Posicion(1,1,0),mapa.getPosicionProxima(pos));
+	}
+	
+	@Test
+	public void test18_ObtenerUnaPosicionDisponibleProximaAOtra2Borde(){
+		Mapa mapa = new Mapa();	
+		mapa.agregarElemento(1,1, new Mineral());
+		Assert.assertEquals(new Posicion(1,2,0),mapa.getPosicionProxima(new Posicion(2,2,0)));
+	
+	}
+	
+	@Test
+	public void test19_ObtenerUnaPosicionDisponibleProximaAOtra2(){
+		Mapa mapa = new Mapa();	
+		mapa.agregarElemento(2,2, new Mineral());
+		Assert.assertEquals(new Posicion(2,3,0),mapa.getPosicionProxima(new Posicion(3,3,0)));
 		
+		mapa.agregarElemento(2, 3, new Mineral());
+		Assert.assertEquals(new Posicion(2,4,0),mapa.getPosicionProxima(new Posicion(3,3,0)));
+		
+		mapa.agregarElemento(2, 4, new Mineral());
+		Assert.assertEquals(new Posicion(3,2,0),mapa.getPosicionProxima(new Posicion(3,3,0)));
+		
+		mapa.agregarElemento(3, 2, new Mineral());
+		Assert.assertEquals(new Posicion(3,4,0),mapa.getPosicionProxima(new Posicion(3,3,0)));
+		
+		mapa.agregarElemento(3, 4, new Mineral());
+		Assert.assertEquals(new Posicion(4,2,0),mapa.getPosicionProxima(new Posicion(3,3,0)));
+		
+		mapa.agregarElemento(4, 2, new Mineral());
+		Assert.assertEquals(new Posicion(4,3,0),mapa.getPosicionProxima(new Posicion(3,3,0)));
+		
+		mapa.agregarElemento(4, 3, new Mineral());
+		Assert.assertEquals(new Posicion(4,4,0),mapa.getPosicionProxima(new Posicion(3,3,0)));
+		
+		mapa.agregarElemento(4, 4, new Mineral());
+		Assert.assertEquals(new Posicion(1,1,0),mapa.getPosicionProxima(new Posicion(3,3,0)));
 	}
 	
 }

@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
+import fiuba.algo3.algocraft.excepciones.ErrorPosicionFueraDeRango;
 
 public class Mapa {
 
@@ -32,7 +33,6 @@ public class Mapa {
 		for (int x = 1; x <= this.ancho; x++){
 			for (int y = 1; y <= this.largo; y++){
 				for (int z = 0; z <= this.alto; z++){
-					elementos[x][y][z] = null;
 					this.agregarElementoEnGrafo(new Posicion(x,y,z));
 				}
 			}
@@ -52,7 +52,13 @@ public class Mapa {
 	}
 	
 	public boolean estaOcupado(int x, int y, int z) {
-		return elementos[x][y][z] != null;
+		if (x == 0 || y == 0)
+			return true;
+		return this.getElemento(x, y, z) != null;
+	}
+	
+	public boolean estaOcupado(Posicion p) {
+		return this.estaOcupado(p.x(), p.y(), p.z());
 	}
 	
 	public void agregarElemento(int x, int y, IElemento elemento) {
@@ -169,6 +175,27 @@ public class Mapa {
 		grafo.arista(pos.toString(), (x+1)+","+(y-1)+","+z);
 		grafo.arista(pos.toString(), (x+1)+","+y+","+z);
 		grafo.arista(pos.toString(), (x+1)+","+(y+1)+","+z);
+	}
+	
+	public Posicion getPosicionProxima(Posicion posAnt){
+		int x = posAnt.x();
+		int y = posAnt.y();
+		int z = posAnt.z();
+		int n=1;
+		
+		while (n < 5){
+			if (!this.estaOcupado(x-n, y-n, z)) return new Posicion(x-n,y-n,z); 
+			if (!this.estaOcupado(x-n, y, z)) return new Posicion(x-n,y,z); 
+			if (!this.estaOcupado(x-n, y+n, z)) return new Posicion(x-n,y+n,z); 
+			if (!this.estaOcupado(x, y-n, z)) return new Posicion(x,y-n,z);
+			if (!this.estaOcupado(x, y+n, z)) return new Posicion(x,y+n,z);
+			if (!this.estaOcupado(x+n, y-n, z)) return new Posicion(x+n,y-n,z);
+			if (!this.estaOcupado(x+n, y, z)) return new Posicion(x+n,y,z);
+			if (!this.estaOcupado(x+n, y+n, z)) return new Posicion(x+n,y+n,z);
+			n++;
+		}
+		
+		return posAnt;
 	}
 
 	public int getPoblacionTotal() {
