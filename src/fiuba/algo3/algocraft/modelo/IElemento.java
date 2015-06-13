@@ -22,6 +22,6 @@ public interface IElemento {
 	public void pasarTurno();
 	
 	public void ejecutarAcciones();
-	
-	public int getPoblacion();
+
+	public void eliminarseDelMapa();
 }

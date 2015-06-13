@@ -51,5 +51,9 @@ public abstract class Recurso implements IElemento{
 	public int getPoblacion(){
 		return 0;
 	}
+	
+	public void eliminarseDelMapa(){
+		this.mapa.desocuparPosicion(this.posicion);
+	}
 
 }

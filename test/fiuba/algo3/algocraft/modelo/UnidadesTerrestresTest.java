@@ -8,6 +8,7 @@ public class UnidadesTerrestresTest {
 	@Test
 	public void test00_PasarTurnoMarine() {
 		Mapa mapa = new Mapa();
+		
 		Marine marine = new Marine();
 		mapa.agregarElemento(2, 2, marine);
 		
@@ -17,6 +18,7 @@ public class UnidadesTerrestresTest {
 	@Test
 	public void test01_CrearMarine() {
 		Mapa mapa = new Mapa();
+
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(1, 1, barraca);
 		for (int i=1; i <=12; i++) mapa.pasarTurnoMapa();
@@ -25,6 +27,7 @@ public class UnidadesTerrestresTest {
 		for (int i=1; i <=3; i++) mapa.pasarTurnoMapa();
 		mapa.pasarTurnoMapa(); //en el cuarto turno se muestra xk tarda 3 turnos
 		
+		Assert.assertEquals(9,0, mapa.getPoblacionTotal());
 		Marine marine = (Marine) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(marine.vidaActual(),40);
 		Assert.assertEquals(marine.getCostoMineral(),50);
@@ -45,6 +48,7 @@ public class UnidadesTerrestresTest {
 		for (int i=1; i <=4; i++) mapa.pasarTurnoMapa();
 		mapa.pasarTurnoMapa();
 		
+		Assert.assertEquals(7,0, mapa.getPoblacionTotal());
 		Zealot zealot = (Zealot) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(zealot.vidaActual(),160);
 		Assert.assertEquals(zealot.escudoRestante(),60);
@@ -58,6 +62,7 @@ public class UnidadesTerrestresTest {
 		Mapa mapa = new Mapa();
 		mapa.recibirMineral(500);
 		mapa.recibirVespeno(500);
+		
 		Acceso acceso = new Acceso();
 		mapa.agregarElemento(1, 1, acceso);
 		for (int i=1; i <=8; i++) mapa.pasarTurnoMapa();
@@ -66,6 +71,7 @@ public class UnidadesTerrestresTest {
 		for (int i=1; i <=6; i++) mapa.pasarTurnoMapa();
 		mapa.pasarTurnoMapa();
 		
+		Assert.assertEquals(7,0, mapa.getPoblacionTotal());
 		Dragon dragon = (Dragon) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(dragon.vidaActual(),180);
 		Assert.assertEquals(dragon.escudoRestante(),80);
@@ -83,6 +89,7 @@ public class UnidadesTerrestresTest {
 		reserva.evolucionarLarva();
 		for (int i=1; i <=6; i++) mapa.pasarTurnoMapa();
 		
+		Assert.assertEquals(9,5, mapa.getPoblacionTotal());
 		Zerling zerling = (Zerling) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(zerling.vidaActual(),35);
 		Assert.assertEquals(zerling.getCostoMineral(),25);
@@ -105,6 +112,7 @@ public class UnidadesTerrestresTest {
 		fabrica.crearGolliat();	
 		for (int i=1; i <=7; i++) mapa.pasarTurnoMapa();
 
+		Assert.assertEquals(8,0, mapa.getPoblacionTotal());
 		Golliat golliat = (Golliat) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(golliat.vidaActual(),125);
 		Assert.assertEquals(golliat.getCostoMineral(),100);
@@ -119,14 +127,15 @@ public class UnidadesTerrestresTest {
 		
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(1, 1, barraca);
-		for (int i=1; i <=12; i++) mapa.pasarTurnoMapa(); //barraca creada
 		Fabrica fabrica = new Fabrica();
 		mapa.agregarElemento(3, 3, fabrica);
-		for (int i=1; i <=12; i++) mapa.pasarTurnoMapa(); //fabrica creada
+		for (int i=1; i <=12; i++) mapa.pasarTurnoMapa(); //fabrica y barraca creada
 		
 		fabrica.crearGolliat();	
+		barraca.crearMarine();
 		for (int i=1; i <=7; i++) mapa.pasarTurnoMapa();
 
+		Assert.assertEquals(7,0, mapa.getPoblacionTotal());
 		Golliat golliat = (Golliat) mapa.getElemento(2, 2, 0);
 		Assert.assertEquals(golliat.vidaActual(),125);
 		Assert.assertEquals(golliat.getCostoMineral(),100);

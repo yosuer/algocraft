@@ -24,10 +24,7 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	protected float suministro;
 	protected int rangoAtaqueAire;
 	protected int rangoAtaqueTierra;
-	
-	public Unidad(){
-	}
-	
+
 	public void setPosicion(Posicion posicion){
 		this.posicion = posicion;
 	}
@@ -90,11 +87,14 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	}
 	
 	public void agregarseEn(Mapa mapa){
-		if ( mapa.estaOcupado(this.posicion) ){
-			Posicion otraPos = mapa.getPosicionProxima(this.posicion);
-			mapa.agregarElemento(otraPos.x(), otraPos.y(), this);
-		}
+		Posicion pos = mapa.getPosicionProxima(this.posicion);
+		mapa.ubicarElemento(this, pos);
 		this.mapa = mapa;
+		this.mapa.consumirPoblacion(this.suministro);
+	}
+	
+	public Posicion buscarPosicionEnMapa(Mapa mapa){
+		return mapa.getPosicionProxima(this.posicion);
 	}
 	
 	@Override
@@ -110,8 +110,11 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	public boolean equals(Object o) {
 		if(this == o) return true;
 		if (o == null) return false;
-		
-		return (o.getClass() == this.getClass());
+		if (o.getClass() != this.getClass()) return false; 
+			
+		Unidad p = (Unidad)o;
+		return (p.getPosicion() == this.posicion);
+		//return (o.getClass() == this.getClass());
 	}
 	
 	public void atacar(IDaniable elemento) {
@@ -137,8 +140,8 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	public void ejecutarAcciones(){
 	}
 	
-	public int getPoblacion(){
-		return 0;
+	public void eliminarseDelMapa(){
+		this.mapa.desocuparPosicion(this.posicion);
 	}
 
 	

@@ -27,15 +27,5 @@ public class Dragon extends Unidad implements ElementoProtoss {
 	public void regenerarse() {
 		this.estadoFisico.regenerarse();
 	}
-	
-//	public void daniarse(int danio){
-//		if (this.escudo > 0)
-//		{
-//			this.escudo -= danio;
-//			if (this.escudo < 0) this.vida += this.escudo;
-//		} else this.vida -= danio;
-//		
-//		if (this.vida <= 0)this.mapa.quitarElemento(this);
-//	}
 
 }

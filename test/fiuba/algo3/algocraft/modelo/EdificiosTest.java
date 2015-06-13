@@ -34,18 +34,6 @@ public class EdificiosTest {
 	}
 	
 	@Test
-	public void test03_CrearUnDepositoDeSuministros(){
-		Mapa mapa = new Mapa();
-		DepositoDeSuministros deposito = new DepositoDeSuministros();
-		mapa.agregarElemento(1, 1, deposito);
-		
-		Assert.assertEquals(deposito.vidaActual(), 500);
-		Assert.assertEquals(deposito.getCostoMineral(), 100);
-		Assert.assertEquals(deposito.getCostoVespeno(), 0);
-		Assert.assertEquals(deposito.getNivel(), 0);
-	}
-	
-	@Test
 	public void test04_CrearUnPilon(){
 		Mapa mapa = new Mapa();
 		Pilon pilon = new Pilon();
@@ -68,7 +56,7 @@ public class EdificiosTest {
 		Assert.assertEquals(amo.getCostoMineral(), 100);
 		Assert.assertEquals(amo.getCostoVespeno(), 0);
 		Assert.assertEquals(amo.tiempoDeConstruccion,4);
-		Assert.assertEquals(amo.getNivel(), 0);
+		Assert.assertEquals(amo.getNivel(), 1);
 	}
 
 }

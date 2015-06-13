@@ -5,7 +5,8 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
-import fiuba.algo3.algocraft.excepciones.ErrorPosicionFueraDeRango;
+import fiuba.algo3.algocraft.excepciones.ErrorCapacidadDePoblacionInsuficiente;
+import fiuba.algo3.algocraft.excepciones.ErrorElementoNoEncontrado;
 
 public class Mapa {
 
@@ -18,6 +19,7 @@ public class Mapa {
 	private Grafo<Posicion> grafo;
 	private IElemento[][][] elementos;
 	private GestorDeRecursos gestorDeRecursos;
+	private float poblacionTotal;
 
 	public Mapa() {
 		this.ancho = 100;
@@ -27,6 +29,7 @@ public class Mapa {
 		this.unidadesPreparadas = new ArrayList<Unidad>();
 		this.grafo = new Grafo<Posicion>();
 		this.gestorDeRecursos = new GestorDeRecursos();
+		this.poblacionTotal = 10;
 				
 		elementos = new IElemento[this.ancho+1][this.largo+1][this.alto+1];
 		
@@ -61,6 +64,16 @@ public class Mapa {
 		return this.estaOcupado(p.x(), p.y(), p.z());
 	}
 	
+	public void desocuparPosicion(Posicion pos) {
+		elementos[pos.x()][pos.y()][pos.z()] = null;
+		this.agregarElementoEnGrafo(pos);
+	}
+	
+	public void ubicarElemento(IElemento elemento, Posicion pos){
+		this.elementos[pos.x()][pos.y()][pos.z()] = elemento;
+		this.grafo.eliminarNodo(pos.toString());
+	}
+	
 	public void agregarElemento(int x, int y, IElemento elemento) {
 		
 		Posicion pos = new Posicion(x,y,elemento.getNivel());
@@ -71,18 +84,15 @@ public class Mapa {
 		} catch (ErrorAgregandoElementoAlMapa e){
 			throw e;
 		}
-		
 		this.elementosActivos.add(elemento);
-		this.elementos[pos.x()][pos.y()][pos.z()] = elemento;
-		
-		this.grafo.eliminarNodo(pos.toString());
+		this.ubicarElemento(elemento, pos);
 	}
 	
-
 	public void quitarElemento(IElemento elemento) {
-		Posicion pos = elemento.getPosicion();
-		elementos[pos.x()][pos.y()][pos.z()] = null;
-		this.agregarElementoEnGrafo(elemento.getPosicion());
+		if (!this.estaOcupado(elemento.getPosicion()))
+				throw new ErrorElementoNoEncontrado();
+		elemento.eliminarseDelMapa();
+		this.elementosActivos.remove(elemento);
 	}
 	
 	public IElemento getElemento(int x, int y, int z) {
@@ -130,14 +140,13 @@ public class Mapa {
 			while (it.hasNext()){
 				Posicion posNueva = it.next(); 
 				e.moverseA(posNueva);
-				this.elementos[posAnt.x()][posAnt.y()][posAnt.z()] = null;
-				this.quitarElemento(e);
-				this.grafo.eliminarNodo(posNueva.toString());
-				this.elementos[posNueva.x()][posNueva.y()][posNueva.z()] = e;
+				this.desocuparPosicion(posAnt);
+				this.ubicarElemento(e, posNueva);
 				posAnt = posNueva;
 			}
 			hojaDeRuta = camino;
 		}
+		
 		return hojaDeRuta;
 	}
 	
@@ -183,6 +192,8 @@ public class Mapa {
 		int z = posAnt.z();
 		int n=1;
 		
+		if (!this.estaOcupado(posAnt)) return posAnt;
+		
 		while (n < 5){
 			if (!this.estaOcupado(x-n, y-n, z)) return new Posicion(x-n,y-n,z); 
 			if (!this.estaOcupado(x-n, y, z)) return new Posicion(x-n,y,z); 
@@ -198,13 +209,8 @@ public class Mapa {
 		return posAnt;
 	}
 
-	public int getPoblacionTotal() {
-		int poblacion = 0;
-		Iterator<IElemento> it = elementosActivos.iterator();
-		while (it.hasNext()){
-			poblacion += it.next().getPoblacion();
-		}
-		return poblacion;
+	public double getPoblacionTotal() {
+		return this.poblacionTotal;
 	}
 
 	public int getMineralTotal() {
@@ -226,4 +232,16 @@ public class Mapa {
 	public void gastarRecursos(int mineral, int vespeno){
 		this.gestorDeRecursos.gastarRecursos(mineral,vespeno);
 	}
+
+	public void consumirPoblacion(float suministro) {
+		if (this.poblacionTotal < suministro)
+					throw new ErrorCapacidadDePoblacionInsuficiente();
+		this.poblacionTotal -= suministro;
+	}
+	
+	public void aumentarPoblacion(float suministro) {
+		this.poblacionTotal += suministro;
+	}
+
+
 }

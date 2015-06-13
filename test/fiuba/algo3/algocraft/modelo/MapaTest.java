@@ -177,7 +177,7 @@ public class MapaTest {
 	public void test11_CantidadDePoblacionInicialEnElMapaEs0(){
 		Mapa mapa = new Mapa();
 		
-		Assert.assertEquals(0,mapa.getPoblacionTotal());
+		Assert.assertEquals(10,0,mapa.getPoblacionTotal());
 	}
 	
 	@Test
@@ -187,7 +187,7 @@ public class MapaTest {
 		
 		mapa.agregarElemento(2, 2, barraca);
 		
-		Assert.assertEquals(0,mapa.getPoblacionTotal());
+		Assert.assertEquals(10,0,mapa.getPoblacionTotal());
 	}
 
 	@Test
@@ -197,11 +197,11 @@ public class MapaTest {
 		
 		mapa.agregarElemento(2, 2, depo);
 		
-		Assert.assertEquals(0,mapa.getPoblacionTotal());
+		Assert.assertEquals(10,0,mapa.getPoblacionTotal());
 		
 		for (int i=1; i<=7; i++) mapa.pasarTurnoMapa();
 		
-		Assert.assertEquals(5,mapa.getPoblacionTotal());
+		Assert.assertEquals(15,0,mapa.getPoblacionTotal());
 	}
 
 	@Test
@@ -211,11 +211,11 @@ public class MapaTest {
 		
 		mapa.agregarElemento(2, 2, pilon);
 		
-		Assert.assertEquals(0,mapa.getPoblacionTotal());
+		Assert.assertEquals(10,0,mapa.getPoblacionTotal());
 		
-		for (int i=1; i<=6; i++) mapa.pasarTurnoMapa();
+		for (int i=1; i<=7; i++) mapa.pasarTurnoMapa();
 		
-		Assert.assertEquals(5,mapa.getPoblacionTotal());
+		Assert.assertEquals(15,0,mapa.getPoblacionTotal());
 	}
 	
 	@Test
@@ -240,21 +240,25 @@ public class MapaTest {
 		Mapa mapa = new Mapa();
 		Posicion pos = new Posicion(2,2,0);
 		
-		Assert.assertEquals(new Posicion(1,1,0),mapa.getPosicionProxima(pos));
+		Assert.assertEquals(new Posicion(2,2,0),mapa.getPosicionProxima(pos));
 	}
 	
 	@Test
 	public void test18_ObtenerUnaPosicionDisponibleProximaAOtra2Borde(){
 		Mapa mapa = new Mapa();	
 		mapa.agregarElemento(1,1, new Mineral());
-		Assert.assertEquals(new Posicion(1,2,0),mapa.getPosicionProxima(new Posicion(2,2,0)));
+		Assert.assertEquals(new Posicion(2,2,0),mapa.getPosicionProxima(new Posicion(2,2,0)));
 	
 	}
 	
 	@Test
 	public void test19_ObtenerUnaPosicionDisponibleProximaAOtra2(){
 		Mapa mapa = new Mapa();	
+		
+		Assert.assertEquals(new Posicion(3,3,0),mapa.getPosicionProxima(new Posicion(3,3,0)));
+		
 		mapa.agregarElemento(2,2, new Mineral());
+		mapa.agregarElemento(3,3, new Mineral());
 		Assert.assertEquals(new Posicion(2,3,0),mapa.getPosicionProxima(new Posicion(3,3,0)));
 		
 		mapa.agregarElemento(2, 3, new Mineral());

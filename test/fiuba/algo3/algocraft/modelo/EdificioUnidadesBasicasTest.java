@@ -52,6 +52,7 @@ public class EdificioUnidadesBasicasTest {
 	@Test
 	public void test02_CrearUnaBarracaYEncolarUnMarineYExpedirMarine(){
 		Mapa mapa = new Mapa();
+		
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(3,3, barraca);
 		for (int i=1; i<=12; i++) mapa.pasarTurnoMapa();
@@ -60,16 +61,14 @@ public class EdificioUnidadesBasicasTest {
 		
 		for (int i=1; i<=4; i++) mapa.pasarTurnoMapa();
 		
-		Collection<IElemento> elementos = new ArrayList<IElemento>();
-		elementos.add(new Marine());
-		elementos.add(new Barraca());
-		Assert.assertTrue(mapa.existenElementos(elementos));
+		Assert.assertNotNull(mapa.getElemento(2, 2, 0));
 	}
 	
 	@Test
 	public void test02_CrearUnaBarracaYCrear5Marine(){
 		Mapa mapa = new Mapa();
 		mapa.recibirMineral(1000);
+
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(3,3, barraca);
 		for (int i=1; i<=12; i++) mapa.pasarTurnoMapa();
@@ -89,8 +88,5 @@ public class EdificioUnidadesBasicasTest {
 		Assert.assertNotNull(mapa.getElemento(2, 1, 0));
 		Assert.assertNotNull(mapa.getElemento(3, 3, 0)); //barraca
 		Collection<IElemento> elementos = new ArrayList<IElemento>();
-		elementos.add(new Marine());
-		elementos.add(new Barraca());
-		Assert.assertTrue(mapa.existenElementos(elementos));
 	}
 }

@@ -3,7 +3,6 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
@@ -72,6 +71,10 @@ public abstract class Edificio implements IElemento,IDaniable{
 				throw new ErrorPosicionOcupada();
 		mapa.gastarRecursos(costoMineral, costoVespeno);
 		this.mapa = mapa;
+	}
+	
+	public void eliminarseDelMapa(){
+		this.mapa.desocuparPosicion(this.posicion);
 	}
 	
 	public void edificar(){
