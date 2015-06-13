@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class AmoSupremo extends Unidad implements ElementoPoblacion {
+public class AmoSupremo extends Unidad {
 
 	public AmoSupremo() {
 		this.transporte = 8;
@@ -19,8 +19,7 @@ public class AmoSupremo extends Unidad implements ElementoPoblacion {
 
 	@Override
 	public int getPoblacion() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 5;
 	}
 
 }

@@ -3,8 +3,6 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
-import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 
@@ -49,6 +47,9 @@ public abstract class Recurso implements IElemento{
 	
 	public void ejecutarAcciones(){
 	}
-
+	
+	public int getPoblacion(){
+		return 0;
+	}
 
 }

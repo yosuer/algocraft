@@ -171,5 +171,67 @@ public class MapaTest {
 		Assert.assertNull(mapa.getElemento(1, 2, 0));
 		Assert.assertEquals(marine, mapa.getElemento(3, 6, 0));
 	}
+	
+	@Test
+	public void test11_CantidadDePoblacionInicialEnElMapaEs0(){
+		Mapa mapa = new Mapa();
 		
+		Assert.assertEquals(0,mapa.getPoblacionTotal());
+	}
+	
+	@Test
+	public void test12_AgregarUnElementoNoPoblacionalNoAumentaLaCapacidadDePoblacion(){
+		Mapa mapa = new Mapa();
+		Barraca barraca = new Barraca();
+		
+		mapa.agregarElemento(2, 2, barraca);
+		
+		Assert.assertEquals(0,mapa.getPoblacionTotal());
+	}
+
+	@Test
+	public void test13_DepositoDeSuministrosAumentaPoblacionAlConstruirse(){
+		Mapa mapa = new Mapa();
+		DepositoDeSuministros depo = new DepositoDeSuministros();
+		
+		mapa.agregarElemento(2, 2, depo);
+		
+		Assert.assertEquals(0,mapa.getPoblacionTotal());
+		
+		for (int i=1; i<=7; i++) mapa.pasarTurnoMapa();
+		
+		Assert.assertEquals(5,mapa.getPoblacionTotal());
+	}
+
+	@Test
+	public void test14_PilonAumentaPoblacionAlConstruirse(){
+		Mapa mapa = new Mapa();
+		Pilon pilon = new Pilon();
+		
+		mapa.agregarElemento(2, 2, pilon);
+		
+		Assert.assertEquals(0,mapa.getPoblacionTotal());
+		
+		for (int i=1; i<=6; i++) mapa.pasarTurnoMapa();
+		
+		Assert.assertEquals(5,mapa.getPoblacionTotal());
+	}
+	
+	@Test
+	public void test15_ElMapaComienzaCon200DeMineralY0DeVespeno(){
+		Mapa mapa = new Mapa();
+		mapa.inicializarMapa();
+		
+		Assert.assertEquals(200, mapa.getMineralTotal());
+		Assert.assertEquals(0,mapa.getVespenoTotal());
+	}
+	
+	@Test
+	public void test16_CrearUn(){
+		Mapa mapa = new Mapa();
+		mapa.inicializarMapa();
+		
+		
+	}
+	
 }

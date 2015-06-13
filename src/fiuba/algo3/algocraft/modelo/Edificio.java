@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
@@ -16,9 +17,9 @@ public abstract class Edificio implements IElemento,IDaniable{
 	protected Mapa mapa;
 	protected int nivel;
 	protected Collection<IElemento> edificiosRequeridos;
-	protected IEstado estadoDeConstruccion;
 	protected RazaEstado estadoFisico;
-	protected IEstado estado;
+	protected IEstado estado; //gestorDeVida
+	protected IEstado estadoDeConstruccion;
 	protected ICreadorDeElementos creador;
 	
 	public Edificio(){
@@ -70,6 +71,7 @@ public abstract class Edificio implements IElemento,IDaniable{
 				throw new NoExistenLosEdificiosrequeridosParaConstruir();
 		if ( mapa.estaOcupado(posicion.x(), posicion.y(), posicion.z()) )
 				throw new ErrorPosicionOcupada();
+		mapa.gastarRecursos(costoMineral, costoVespeno);
 		this.mapa = mapa;
 	}
 	
@@ -95,5 +97,9 @@ public abstract class Edificio implements IElemento,IDaniable{
 		this.estado = estado;
 	}
 	public void ejecutarAcciones(){
+	}
+	
+	public int getPoblacion(){
+		return 0;
 	}
 }

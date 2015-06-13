@@ -135,6 +135,10 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	
 	public void ejecutarAcciones(){
 	}
+	
+	public int getPoblacion(){
+		return 0;
+	}
 
 	
 }

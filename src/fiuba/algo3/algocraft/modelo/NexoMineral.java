@@ -4,11 +4,10 @@ public class NexoMineral extends ExtractorDeMineral
 							implements ElementoProtoss {
 
 	public NexoMineral() {
-		this.recolectado = 0;
 		this.costoMineral = 50;
 		this.costoVespeno = 0;
-		this.tiempoDeConstruccion = 4;
 		this.estadoFisico = new Protoss(250,250);
+		this.estado = new Construyendose(this, 4);
 	}
 
 	@Override

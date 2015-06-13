@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 public class Terran implements RazaEstado {
 
 	private int vida;
+	private int poblacion = 0;
 	
 	public Terran(int vida) {
 		this.vida = vida;
@@ -25,6 +26,10 @@ public class Terran implements RazaEstado {
 
 	@Override
 	public void regenerarse() {
+	}
+	
+	public void setPoblacion(int poblacion){
+		this.poblacion  = poblacion;
 	}
 
 }

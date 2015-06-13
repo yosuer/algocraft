@@ -18,6 +18,9 @@ public class EdificioBasePrincipalTest {
 	@Test
 	public void test02_ElTiempoDeConstruccionDeUnCentroDeMandoEs7(){
 		Mapa mapa = new Mapa();
+		mapa.recibirMineral(1000);
+		mapa.recibirVespeno(1000); //para pruebas aumento directamente
+		
 		CentroDeMando centroDeMando = new CentroDeMando();
 		mapa.agregarElemento(1, 1, centroDeMando);
 		
@@ -31,6 +34,8 @@ public class EdificioBasePrincipalTest {
 	public void test03_CrearUnNexo(){
 		Mapa mapa = new Mapa();
 		Nexo nexo = new Nexo();
+		mapa.recibirMineral(1000);
+		mapa.recibirVespeno(1000); //para pruebas aumento directamente
 		
 		mapa.agregarElemento(2, 1, nexo);
 		Assert.assertEquals(mapa.getElemento(2, 1, 0), new Nexo());
@@ -51,6 +56,9 @@ public class EdificioBasePrincipalTest {
 	@Test
 	public void test04_CrearUnCriadero(){
 		Mapa mapa = new Mapa();
+		mapa.recibirMineral(1000);
+		mapa.recibirVespeno(1000); //para pruebas aumento directamente
+		
 		Criadero criadero = new Criadero();
 		
 		mapa.agregarElemento(2, 3, criadero);

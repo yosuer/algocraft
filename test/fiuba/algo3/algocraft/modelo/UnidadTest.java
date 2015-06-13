@@ -87,6 +87,9 @@ public class UnidadTest {
 	@Test
 	public void test06_CrearGolliat() {
 		Mapa mapa = new Mapa();
+		mapa.recibirMineral(1000);
+		mapa.recibirVespeno(1000); //para pruebas aumento directamente
+		
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(1, 1, barraca);
 		for (int i=1; i <=12; i++) mapa.pasarTurnoMapa(); //barraca creada
@@ -106,6 +109,9 @@ public class UnidadTest {
 	@Test
 	public void test06_CreacionDeMarineYGoliat() {
 		Mapa mapa = new Mapa();
+		mapa.recibirMineral(1000);
+		mapa.recibirVespeno(1000); //para pruebas aumento directamente
+		
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(1, 1, barraca);
 		for (int i=1; i <=12; i++) mapa.pasarTurnoMapa(); //barraca creada

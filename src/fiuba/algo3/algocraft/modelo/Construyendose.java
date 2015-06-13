@@ -24,4 +24,9 @@ public class Construyendose implements IEstado {
 		throw new ErrorEdificioEnConstruccion();
 	}
 
+	@Override
+	public int getPoblacion() {
+		return 0;
+	}
+
 }

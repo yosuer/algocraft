@@ -42,7 +42,6 @@ public class EdificiosTest {
 		Assert.assertEquals(deposito.vidaActual(), 500);
 		Assert.assertEquals(deposito.getCostoMineral(), 100);
 		Assert.assertEquals(deposito.getCostoVespeno(), 0);
-		Assert.assertEquals(deposito.tiempoDeConstruccion,6);
 		Assert.assertEquals(deposito.getNivel(), 0);
 	}
 	
@@ -56,7 +55,6 @@ public class EdificiosTest {
 		Assert.assertEquals(pilon.escudoRestante(), 300);
 		Assert.assertEquals(pilon.getCostoMineral(), 100);
 		Assert.assertEquals(pilon.getCostoVespeno(), 0);
-		Assert.assertEquals(pilon.tiempoDeConstruccion,5);
 		Assert.assertEquals(pilon.getNivel(), 0);
 	}
 	

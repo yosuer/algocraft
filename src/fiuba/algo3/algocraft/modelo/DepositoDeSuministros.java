@@ -1,13 +1,12 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class DepositoDeSuministros extends Edificio 
-									implements ElementoPoblacion {
+public class DepositoDeSuministros extends Edificio {
 
 	public DepositoDeSuministros() {
 		this.costoMineral = 100;
 		this.costoVespeno = 0;
-		this.tiempoDeConstruccion = 6;
 		this.estadoFisico = new Terran(500);
+		this.estado = new Construyendose(this, 6);
 	}
 
 	@Override
@@ -17,7 +16,11 @@ public class DepositoDeSuministros extends Edificio
 
 	@Override
 	public int getPoblacion() {
-		return 10;
+		return this.estado.getPoblacion();
+	}
+	
+	public void pasarTurno() {
+		this.estado.pasarTurno();
 	}
 
 }

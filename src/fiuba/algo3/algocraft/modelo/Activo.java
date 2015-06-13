@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 public class Activo implements IEstado {
 
 	private IElemento elemento;
-	
+
 	public Activo(IElemento elemento) {
 		this.elemento = elemento;
 	}
@@ -16,6 +16,11 @@ public class Activo implements IEstado {
 	@Override
 	public void estaActivo() {
 		
+	}
+
+	@Override
+	public int getPoblacion() {
+		return 5;
 	}
 
 }

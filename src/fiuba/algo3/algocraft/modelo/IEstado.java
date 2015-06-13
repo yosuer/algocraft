@@ -6,4 +6,5 @@ public interface IEstado {
 	
 	public void estaActivo();
 	
+	public int getPoblacion();
 }

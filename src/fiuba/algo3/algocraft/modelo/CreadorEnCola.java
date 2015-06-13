@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.util.EmptyStackException;
+
 public class CreadorEnCola implements ICreadorDeElementos {
 
 	private ListaMU<Unidad> unidadesEnProduccion;
@@ -17,16 +19,12 @@ public class CreadorEnCola implements ICreadorDeElementos {
 
 	@Override
 	public void expulsarUnidad() {
-		if (!this.unidadesEnProduccion.isEmpty()) {
-			if (this.hayUnidadPreparada()){
-				elemento.enviarUnidadAlMapa(this.unidadesEnProduccion.desEncolar());
-			} else
-				this.unidadesEnProduccion.primero().pasarTurno();
-			}
-	}
-	
-	public boolean hayUnidadPreparada(){
-		return unidadesEnProduccion.primero().getTiempoDeConstruccion() == 0;
+		try {
+			elemento.enviarUnidadAlMapa(unidadesEnProduccion.desEncolar());
+			this.unidadesEnProduccion.primero().pasarTurno();
+		} catch (IndexOutOfBoundsException e1){
+		} catch (EmptyStackException e2){
+		}
 	}
 	
 	public int unidadesEnProduccion(){

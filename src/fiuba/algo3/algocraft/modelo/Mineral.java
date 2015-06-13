@@ -4,12 +4,12 @@ import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 
 public class Mineral extends Recurso {
 
+	private int nivel;
+	private ExtractorDeMineral extractor;
+	
 	public Mineral() {
 		this.reserva = 200;
 	}
-
-	private int nivel;
-	private ExtractorDeMineral extractor;
 	
 	@Override
 	public int reservaDisponible() {

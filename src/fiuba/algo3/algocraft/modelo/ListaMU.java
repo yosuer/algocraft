@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
 import java.util.EmptyStackException;
-import java.util.Iterator;
 
 public class ListaMU<E> extends ArrayList<E>{
 

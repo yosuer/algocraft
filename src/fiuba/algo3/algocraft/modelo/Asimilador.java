@@ -6,8 +6,8 @@ public class Asimilador extends ExtractorDeGasVespeno
 	public Asimilador() {
 		this.costoMineral = 100;
 		this.costoVespeno = 0;
-		this.tiempoDeConstruccion = 6;
 		this.estadoFisico = new Protoss(450,450);
+		this.estado = new Construyendose(this, 6);
 	}
 
 	@Override

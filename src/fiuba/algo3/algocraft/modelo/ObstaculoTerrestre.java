@@ -55,6 +55,10 @@ public class ObstaculoTerrestre implements IElemento {
 	
 	public void ejecutarAcciones(){
 	}
+	
+	public int getPoblacion(){
+		return 0;
+	}
 
 
 }

@@ -4,7 +4,7 @@ import java.util.Collection;
 
 
 public interface IElemento {
-	
+
 	public Posicion getPosicion();
 	
 	public void setPosicion(Posicion posicion);
@@ -22,4 +22,6 @@ public interface IElemento {
 	public void pasarTurno();
 	
 	public void ejecutarAcciones();
+	
+	public int getPoblacion();
 }

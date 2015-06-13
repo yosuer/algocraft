@@ -2,22 +2,14 @@ package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 
-
 public abstract class ExtractorDeGasVespeno extends Edificio 
 											implements IExtractorDeRecursos{
 
 	protected Vespeno recurso;
-	protected int recolectado;
+	protected int recolectado = 0;
 	
-	public ExtractorDeGasVespeno() {
-	}
-
-	public void realizarExtraccion(){
-		recolectado += recurso.extraer();
-	}
-
-	public int getRecoleccion(){
-		return recolectado;
+	public int getRecolectado(){
+		return this.recolectado;
 	}
 	
 	public void asignarRecurso(Recurso recurso) {
@@ -26,19 +18,31 @@ public abstract class ExtractorDeGasVespeno extends Edificio
 	
 	public void agregarseEn(Mapa mapa){
 		try {
-		Recurso mineral = 
+		Recurso vespeno = 
 				(Recurso) mapa.getElemento(posicion.x(), posicion.y(), posicion.z());
-		mineral.asignarExtractor(this);
+		vespeno.asignarExtractor(this);
 		} catch (RuntimeException e) {
 			throw new ErrorAgregandoElementoAlMapa();
 		}
-
 		this.mapa = mapa;
 	}
 	
 	@Override
 	public void pasarTurno() {
-		super.pasarTurno();
+		this.estado.pasarTurno();
+	}
+	
+	public void ejecutarAcciones(){
+		this.depositarRecolectado();
 		this.realizarExtraccion();
+	}
+
+	public void depositarRecolectado() {
+		this.mapa.recibirVespeno(this.recolectado);
+		this.recolectado = 0;
+	}
+	
+	public void realizarExtraccion(){
+		this.recolectado += recurso.extraer();
 	}
 }

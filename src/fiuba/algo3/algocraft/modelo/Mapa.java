@@ -16,6 +16,7 @@ public class Mapa {
 	private Collection<Unidad> unidadesPreparadas;
 	private Grafo<Posicion> grafo;
 	private IElemento[][][] elementos;
+	private GestorDeRecursos gestorDeRecursos;
 
 	public Mapa() {
 		this.ancho = 100;
@@ -24,6 +25,7 @@ public class Mapa {
 		this.elementosActivos = new ArrayList<IElemento>();
 		this.unidadesPreparadas = new ArrayList<Unidad>();
 		this.grafo = new Grafo<Posicion>();
+		this.gestorDeRecursos = new GestorDeRecursos();
 				
 		elementos = new IElemento[this.ancho+1][this.largo+1][this.alto+1];
 		
@@ -120,7 +122,7 @@ public class Mapa {
 			Iterator<Posicion> it = camino.iterator();
 			Posicion posAnt = it.next();
 			while (it.hasNext()){
-				Posicion posNueva = it.next(); //System.out.println(posNueva);
+				Posicion posNueva = it.next(); 
 				e.moverseA(posNueva);
 				this.elementos[posAnt.x()][posAnt.y()][posAnt.z()] = null;
 				this.quitarElemento(e);
@@ -144,7 +146,7 @@ public class Mapa {
 			Unidad u = it2.next();
 			this.agregarElemento(u.getPosicion().x(),u.getPosicion().y(), u);
 		}
-		this.unidadesPreparadas = new ArrayList<Unidad>();
+		this.unidadesPreparadas.clear();
 	}
 	
 	public void encolarUnidad(Unidad u){
@@ -169,4 +171,32 @@ public class Mapa {
 		grafo.arista(pos.toString(), (x+1)+","+(y+1)+","+z);
 	}
 
+	public int getPoblacionTotal() {
+		int poblacion = 0;
+		Iterator<IElemento> it = elementosActivos.iterator();
+		while (it.hasNext()){
+			poblacion += it.next().getPoblacion();
+		}
+		return poblacion;
+	}
+
+	public int getMineralTotal() {
+		return this.gestorDeRecursos.getMineralTotal();
+	}
+
+	public int getVespenoTotal() {
+		return this.gestorDeRecursos.getVespenoTotal();
+	}
+
+	public void recibirMineral(int recolectado) {
+		this.gestorDeRecursos.recibirMineral(recolectado);
+	}
+
+	public void recibirVespeno(int recolectado) {
+		this.gestorDeRecursos.recibirVespeno(recolectado);
+	}
+	
+	public void gastarRecursos(int mineral, int vespeno){
+		this.gestorDeRecursos.gastarRecursos(mineral,vespeno);
+	}
 }
