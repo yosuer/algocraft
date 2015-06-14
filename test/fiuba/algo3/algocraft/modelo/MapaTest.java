@@ -248,7 +248,6 @@ public class MapaTest {
 		Mapa mapa = new Mapa();	
 		mapa.agregarElemento(1,1, new Mineral());
 		Assert.assertEquals(new Posicion(2,2,0),mapa.getPosicionProxima(new Posicion(2,2,0)));
-	
 	}
 	
 	@Test

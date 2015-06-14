@@ -42,8 +42,7 @@ public class Acceso extends Edificio implements ElementoProtoss,
 		this.crearUnidad(new Dragon());
 	}
 	
-	public void enviarUnidadAlMapa(Unidad unidad){
-		//Posicion pos = new Posicion(2,2,0);
+	public void enviarUnidadAlMapa(Unidad unidad) {
 		unidad.setPosicion(this.posicion);
 		this.mapa.encolarUnidad(unidad);
 	}

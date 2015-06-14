@@ -40,7 +40,7 @@ public abstract class ExtractorDeMineral extends Edificio
 		this.depositarRecolectado();
 		this.realizarExtraccion();
 	}
-
+	
 	public void depositarRecolectado() {
 		this.mapa.recibirMineral(this.recolectado);
 		this.recolectado = 0;

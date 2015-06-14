@@ -3,22 +3,18 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-
-import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 import fiuba.algo3.algocraft.excepciones.ErrorCapacidadDePoblacionInsuficiente;
 import fiuba.algo3.algocraft.excepciones.ErrorElementoNoEncontrado;
 
 public class Mapa {
-
 	private int ancho; //x
 	private int largo; //y
 	private int alto; //z
 	
 	private Collection<IElemento> elementosActivos;
 	private Collection<Unidad> unidadesPreparadas;
-	private Grafo<Posicion> grafo;
-	private IElemento[][][] elementos;
 	private GestorDeRecursos gestorDeRecursos;
+	private GestorDeUbicaciones gestorDeUbicaciones;
 	private float poblacionTotal;
 
 	public Mapa() {
@@ -27,19 +23,9 @@ public class Mapa {
 		this.alto = 1;
 		this.elementosActivos = new ArrayList<IElemento>();
 		this.unidadesPreparadas = new ArrayList<Unidad>();
-		this.grafo = new Grafo<Posicion>();
+		this.gestorDeUbicaciones = new GestorDeUbicaciones(ancho,largo,alto);
 		this.gestorDeRecursos = new GestorDeRecursos();
 		this.poblacionTotal = 10;
-				
-		elementos = new IElemento[this.ancho+1][this.largo+1][this.alto+1];
-		
-		for (int x = 1; x <= this.ancho; x++){
-			for (int y = 1; y <= this.largo; y++){
-				for (int z = 0; z <= this.alto; z++){
-					this.agregarElementoEnGrafo(new Posicion(x,y,z));
-				}
-			}
-		}
 	}
 
 	public int ancho() {
@@ -54,24 +40,23 @@ public class Mapa {
 		return this.alto;
 	}
 	
-	public boolean estaOcupado(int x, int y, int z) {
-		if (x == 0 || y == 0)
-			return true;
-		return this.getElemento(x, y, z) != null;
+	public IElemento getElemento(int x, int y, int z) {
+		return this.gestorDeUbicaciones.getElemento(x,y,z);
 	}
 	
+	public boolean estaOcupado(int x, int y, int z) {
+		return this.gestorDeUbicaciones.estaOcupado(x, y, z);
+	}
 	public boolean estaOcupado(Posicion p) {
 		return this.estaOcupado(p.x(), p.y(), p.z());
 	}
 	
 	public void desocuparPosicion(Posicion pos) {
-		elementos[pos.x()][pos.y()][pos.z()] = null;
-		this.agregarElementoEnGrafo(pos);
+		this.gestorDeUbicaciones.desocuparPosicion(pos);
 	}
 	
 	public void ubicarElemento(IElemento elemento, Posicion pos){
-		this.elementos[pos.x()][pos.y()][pos.z()] = elemento;
-		this.grafo.eliminarNodo(pos.toString());
+		this.gestorDeUbicaciones.ocuparPosicion(elemento,pos);
 	}
 	
 	public void agregarElemento(int x, int y, IElemento elemento) {
@@ -96,16 +81,11 @@ public class Mapa {
 		this.elementosActivos.remove(elemento);
 	}
 	
-	public IElemento getElemento(int x, int y, int z) {
-		return this.elementos[x][y][z];
-	}
-	
 	public boolean existenElementos(Collection<IElemento> aBuscar){
 		return this.elementosActivos.containsAll(aBuscar);
 	}
 	
 	public void inicializarMapa() {
-		
 		//Jugador1
 		for (int x=3; x<=6; x++) this.agregarElemento(x, 2, new Mineral());	
 		for (int y=2; y<=6; y++) this.agregarElemento(2, y, new Mineral());
@@ -118,16 +98,7 @@ public class Mapa {
 	}
 
 	public Collection<Posicion> getHojaDeRuta(Posicion inicial, Posicion destino) {
-		Collection<Posicion> camino =
-			this.grafo.getCaminoMinimo(inicial.toString(), destino.toString());
-		
-		Collection<Posicion> hojaDeRuta = new ArrayList<Posicion>();
-		Iterator<Posicion> it = camino.iterator();
-		while (it.hasNext()){
-			hojaDeRuta.add(it.next());
-		}
-		
-		return hojaDeRuta;
+		return this.gestorDeUbicaciones.getHojaDeRuta(inicial, destino);
 	}
 	
 	public Collection<Posicion> moverElemento(IElemento e, int x, int y) {
@@ -177,45 +148,8 @@ public class Mapa {
 		this.unidadesPreparadas.add(u);
 	}
 	
-	private void agregarElementoEnGrafo(Posicion pos) {
-		grafo.nuevoNodo(pos);
-		int x = pos.x();
-		int y = pos.y();
-		int z = pos.z();
-		
-		grafo.arista(pos.toString(), (x-1)+","+(y-1)+","+z);
-		grafo.arista(pos.toString(), (x-1)+","+y+","+z);
-		grafo.arista(pos.toString(), (x-1)+","+(y+1)+","+z);
-		
-		grafo.arista(pos.toString(),  x+","+(y-1)+","+z);
-		grafo.arista(pos.toString(),  x+","+(y+1)+","+z);
-		
-		grafo.arista(pos.toString(), (x+1)+","+(y-1)+","+z);
-		grafo.arista(pos.toString(), (x+1)+","+y+","+z);
-		grafo.arista(pos.toString(), (x+1)+","+(y+1)+","+z);
-	}
-	
 	public Posicion getPosicionProxima(Posicion posAnt){
-		int x = posAnt.x();
-		int y = posAnt.y();
-		int z = posAnt.z();
-		int n=1;
-		
-		if (!this.estaOcupado(posAnt)) return posAnt;
-		
-		while (n < 5){
-			if (!this.estaOcupado(x-n, y-n, z)) return new Posicion(x-n,y-n,z); 
-			if (!this.estaOcupado(x-n, y, z)) return new Posicion(x-n,y,z); 
-			if (!this.estaOcupado(x-n, y+n, z)) return new Posicion(x-n,y+n,z); 
-			if (!this.estaOcupado(x, y-n, z)) return new Posicion(x,y-n,z);
-			if (!this.estaOcupado(x, y+n, z)) return new Posicion(x,y+n,z);
-			if (!this.estaOcupado(x+n, y-n, z)) return new Posicion(x+n,y-n,z);
-			if (!this.estaOcupado(x+n, y, z)) return new Posicion(x+n,y,z);
-			if (!this.estaOcupado(x+n, y+n, z)) return new Posicion(x+n,y+n,z);
-			n++;
-		}
-		
-		return posAnt;
+		return this.gestorDeUbicaciones.getPosicionProxima(posAnt);
 	}
 
 	public double getPoblacionTotal() {

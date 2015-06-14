@@ -15,12 +15,7 @@ public class Activo implements IEstado {
 
 	@Override
 	public void estaActivo() {
-		
-	}
 
-	@Override
-	public int getPoblacion() {
-		return 5;
 	}
 
 }

@@ -49,10 +49,6 @@ public abstract class Recurso implements IElemento{
 	public void ejecutarAcciones(){
 	}
 	
-	public int getPoblacion(){
-		return 0;
-	}
-	
 	public int vidaActual(){
 		return 99;
 	}

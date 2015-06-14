@@ -15,7 +15,6 @@ public class Zealot extends Unidad implements ElementoProtoss {
 		this.rangoAtaqueTierra = 1;
 		this.estadoFisico = new Protoss(100,60);
 		this.nivel = 0;
-		
 	}
 
 	@Override
