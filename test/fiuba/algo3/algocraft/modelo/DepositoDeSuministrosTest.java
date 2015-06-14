@@ -63,4 +63,6 @@ public class DepositoDeSuministrosTest {
 		Assert.assertEquals(8.0, mapa.getPoblacionTotal(),0.0);
 	}
 	
+	
+	
 }

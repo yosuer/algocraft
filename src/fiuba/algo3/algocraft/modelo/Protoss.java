@@ -2,35 +2,31 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Protoss implements RazaEstado {
 
-	private int vida;
-	private int escudo;
+	private IntRango vida;
+	private IntRango escudo;
 
 	public Protoss(int vida, int escudo) {
-		this.vida = vida;
-		this.escudo = escudo;
+		this.vida = new IntRango(vida);
+		this.escudo = new IntRango(escudo);
 	}
 
 	@Override
 	public int getVida() {
-		return this.vida+this.escudo;
+		return vida.val() + escudo.val();
 	}
 
 	@Override
 	public void daniarse(int danio){
-		if (this.escudo > 0)
-		{
-			this.escudo -= danio;
-			if (this.escudo < 0) this.vida += this.escudo;
-		} else this.vida -= danio;
+		vida.disminuir(escudo.disminuir(danio));
 	}
 	
 	@Override
 	public int getEscudo() {
-		return this.escudo;
+		return this.escudo.val();
 	}
 
 	@Override
 	public void regenerarse() {
-		if (this.escudo > 0) this.escudo+=5;
+		this.escudo.aumentar(5);
 	}
 }

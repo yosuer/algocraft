@@ -13,6 +13,7 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	protected Mapa mapa;
 	protected int nivel;
 	protected RazaEstado estadoFisico;
+	protected IEstado estado; //gestorDeVida
 	
 	protected int transporte;
 	protected int vision;
@@ -138,6 +139,7 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	}
 	
 	public void ejecutarAcciones(){
+		this.estadoFisico.regenerarse();
 	}
 	
 	public void eliminarseDelMapa(Mapa mapa){

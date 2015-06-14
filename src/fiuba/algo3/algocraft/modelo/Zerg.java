@@ -2,20 +2,20 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Zerg implements RazaEstado {
 
-	private int vida;
+	private IntRango vida;
 	
 	public Zerg(int vida) {
-		this.vida = vida;
+		this.vida = new IntRango(vida);
 	}
 
 	@Override
 	public int getVida() {
-		return this.vida;
+		return this.vida.val();
 	}
 
 	@Override
 	public void daniarse(int danio) {
-		this.vida-=danio;
+		this.vida.disminuir(danio);
 	}
 
 	@Override
@@ -25,7 +25,7 @@ public class Zerg implements RazaEstado {
 
 	@Override
 	public void regenerarse() {
-		this.vida+=10;
+		this.vida.aumentar(5);
 	}
 
 

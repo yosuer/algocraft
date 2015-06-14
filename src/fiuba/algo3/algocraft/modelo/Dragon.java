@@ -15,6 +15,7 @@ public class Dragon extends Unidad implements ElementoProtoss {
 		this.rangoAtaqueTierra = 4;
 		this.estadoFisico = new Protoss(100,80);
 		this.nivel = 0;
+		this.estado = new Construyendose(this, 6);
 	}
 
 	@Override
@@ -25,6 +26,19 @@ public class Dragon extends Unidad implements ElementoProtoss {
 	@Override
 	public void regenerarse() {
 		this.estadoFisico.regenerarse();
+	}
+	
+	@Override
+	public void pasarTurno() {
+		this.estado.pasarTurno();
+	}
+	
+	public void ejecutarAcciones(){
+		this.regenerarse();
+	}
+	
+	public void actualizarEstado(IEstado estado){
+		this.estado = estado;
 	}
 
 }

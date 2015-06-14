@@ -15,7 +15,7 @@ public class Mapa {
 	private Collection<Unidad> unidadesPreparadas;
 	private GestorDeRecursos gestorDeRecursos;
 	private GestorDeUbicaciones gestorDeUbicaciones;
-	private float poblacionTotal;
+	private FloatRango poblacionTotal;
 
 	public Mapa() {
 		this.ancho = 100;
@@ -25,7 +25,8 @@ public class Mapa {
 		this.unidadesPreparadas = new ArrayList<Unidad>();
 		this.gestorDeUbicaciones = new GestorDeUbicaciones(ancho,largo,alto);
 		this.gestorDeRecursos = new GestorDeRecursos();
-		this.poblacionTotal = 10;
+		this.poblacionTotal = new FloatRango(200);
+		this.poblacionTotal.disminuir(190);
 	}
 
 	public int ancho() {
@@ -153,7 +154,7 @@ public class Mapa {
 	}
 
 	public double getPoblacionTotal() {
-		return this.poblacionTotal;
+		return this.poblacionTotal.val();
 	}
 
 	public int getMineralTotal() {
@@ -177,18 +178,16 @@ public class Mapa {
 	}
 
 	public void consumirPoblacion(float suministro) {
-		if (this.poblacionTotal < suministro)
+		if (this.poblacionTotal.val() < suministro)
 					throw new ErrorCapacidadDePoblacionInsuficiente();
-		this.poblacionTotal -= suministro;
+		this.poblacionTotal.disminuir(suministro);
 	}
 	
 	public void aumentarPoblacion(float suministro) {
-		if (this.poblacionTotal < 200)
-			this.poblacionTotal += suministro;
+		this.poblacionTotal.aumentar(suministro);
 	}
 	
 	public void restarPoblacion(float suministro) {
-		if (this.poblacionTotal > 0)
-			this.poblacionTotal -= suministro;
+		this.poblacionTotal.disminuir(suministro);
 	}
 }
