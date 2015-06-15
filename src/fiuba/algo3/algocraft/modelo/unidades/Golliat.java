@@ -1,4 +1,7 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.unidades;
+
+import fiuba.algo3.algocraft.modelo.Terran;
+import fiuba.algo3.algocraft.modelo.Unidad;
 
 public class Golliat extends Unidad {
 

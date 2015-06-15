@@ -1,6 +1,8 @@
 package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+import fiuba.algo3.algocraft.modelo.unidades.Mutalisco;
+import fiuba.algo3.algocraft.modelo.unidades.Reina;
 
 public class Espiral extends EdificioConstructorDeNaves {
 

@@ -1,9 +1,14 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.unidades;
 
 import java.util.Collection;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.unidades.Espectro;
+import fiuba.algo3.algocraft.modelo.unidades.Marine;
 
 public class MovimientoUnidadesAereasTest {
 	

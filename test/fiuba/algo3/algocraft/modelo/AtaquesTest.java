@@ -5,6 +5,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElementoAereo;
+import fiuba.algo3.algocraft.modelo.unidades.Dragon;
+import fiuba.algo3.algocraft.modelo.unidades.Espectro;
+import fiuba.algo3.algocraft.modelo.unidades.Golliat;
+import fiuba.algo3.algocraft.modelo.unidades.Marine;
+import fiuba.algo3.algocraft.modelo.unidades.Zealot;
+import fiuba.algo3.algocraft.modelo.unidades.Zerling;
 
 public class AtaquesTest {
 	

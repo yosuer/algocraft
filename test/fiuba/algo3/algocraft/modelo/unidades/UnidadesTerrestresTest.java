@@ -1,7 +1,18 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.unidades;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import fiuba.algo3.algocraft.modelo.Acceso;
+import fiuba.algo3.algocraft.modelo.Barraca;
+import fiuba.algo3.algocraft.modelo.Fabrica;
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.ReservaDeReproduccion;
+import fiuba.algo3.algocraft.modelo.unidades.Dragon;
+import fiuba.algo3.algocraft.modelo.unidades.Golliat;
+import fiuba.algo3.algocraft.modelo.unidades.Marine;
+import fiuba.algo3.algocraft.modelo.unidades.Zealot;
+import fiuba.algo3.algocraft.modelo.unidades.Zerling;
 
 public class UnidadesTerrestresTest {
 

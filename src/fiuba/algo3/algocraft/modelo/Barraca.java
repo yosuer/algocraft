@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
+import fiuba.algo3.algocraft.modelo.unidades.Marine;
+
 public class Barraca extends Edificio 
 							implements IElementoCreador{
 	

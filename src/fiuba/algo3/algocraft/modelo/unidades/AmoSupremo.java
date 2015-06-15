@@ -1,4 +1,8 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.unidades;
+
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.Unidad;
+import fiuba.algo3.algocraft.modelo.Zerg;
 
 public class AmoSupremo extends Unidad {
 
@@ -22,7 +26,7 @@ public class AmoSupremo extends Unidad {
 	
 	public void agregarseEn(Mapa mapa){
 		super.agregarseEn(mapa);
-		this.mapa.aumentarPoblacion(poblacion);
+		mapa.aumentarPoblacion(poblacion);
 	}
 	
 	public void eliminarseDelMapa(Mapa mapa){

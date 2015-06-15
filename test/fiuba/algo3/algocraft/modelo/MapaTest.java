@@ -11,6 +11,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.unidades.Marine;
 
 public class MapaTest {
 	

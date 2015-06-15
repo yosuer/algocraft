@@ -1,7 +1,10 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.unidades;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.unidades.AmoSupremo;
 
 public class AmoSupremoTest {
 

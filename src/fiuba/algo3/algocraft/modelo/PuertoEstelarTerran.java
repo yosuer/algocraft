@@ -1,5 +1,9 @@
 package fiuba.algo3.algocraft.modelo;
 
+import fiuba.algo3.algocraft.modelo.unidades.Espectro;
+import fiuba.algo3.algocraft.modelo.unidades.NaveCiencia;
+import fiuba.algo3.algocraft.modelo.unidades.NaveTransporteTerran;
+
 public class PuertoEstelarTerran extends Edificio
 										implements IElementoCreador{
 

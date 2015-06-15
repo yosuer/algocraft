@@ -1,7 +1,13 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.unidades;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import fiuba.algo3.algocraft.modelo.Barraca;
+import fiuba.algo3.algocraft.modelo.Fabrica;
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.PuertoEstelarTerran;
+import fiuba.algo3.algocraft.modelo.unidades.Espectro;
 
 public class UnidadesAereasTest {
 	

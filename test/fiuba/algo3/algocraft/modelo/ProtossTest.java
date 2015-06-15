@@ -3,6 +3,9 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.modelo.unidades.Dragon;
+import fiuba.algo3.algocraft.modelo.unidades.Marine;
+
 public class ProtossTest {
 
 	@Test

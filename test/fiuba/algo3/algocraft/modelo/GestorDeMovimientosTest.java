@@ -9,7 +9,7 @@ public class GestorDeMovimientosTest {
 	
 	@Test
 	public void test01_ObtenerCaminos(){
-		GestorDeUbicaciones gm = new GestorDeUbicaciones(50,50,50);
+		GestorDeUbicaciones gm = new GestorDeUbicaciones(10,10,1);
 		Posicion inicio = new Posicion(1,1,0);
 		Posicion destino = new Posicion(6,6,0);
 		

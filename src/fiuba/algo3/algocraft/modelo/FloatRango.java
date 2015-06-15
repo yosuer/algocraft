@@ -18,6 +18,12 @@ public class FloatRango {
 		actual = maximo;
 	}
 	
+	public FloatRango(float minimo, float maximo, float actual){
+		min = minimo;
+		max = maximo;
+		actual = actual;
+	}
+	
 	public float val(){
 		return actual;
 	}

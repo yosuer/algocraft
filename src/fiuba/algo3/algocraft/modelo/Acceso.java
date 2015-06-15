@@ -1,5 +1,8 @@
 package fiuba.algo3.algocraft.modelo;
 
+import fiuba.algo3.algocraft.modelo.unidades.Dragon;
+import fiuba.algo3.algocraft.modelo.unidades.Zealot;
+
 public class Acceso extends Edificio implements ElementoProtoss, 
 											IElementoCreador {
 
@@ -49,6 +52,7 @@ public class Acceso extends Edificio implements ElementoProtoss,
 
 	public void ejecutarAcciones(){
 		this.creador.expulsarUnidad();
+		this.estadoFisico.regenerarse();
 	}
 
 }

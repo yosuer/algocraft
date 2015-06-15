@@ -16,6 +16,7 @@ public class Mapa {
 	private GestorDeRecursos gestorDeRecursos;
 	private GestorDeUbicaciones gestorDeUbicaciones;
 	private FloatRango poblacionTotal;
+	private Equipo equipoActual;
 
 	public Mapa() {
 		this.ancho = 100;
@@ -27,6 +28,7 @@ public class Mapa {
 		this.gestorDeRecursos = new GestorDeRecursos();
 		this.poblacionTotal = new FloatRango(200);
 		this.poblacionTotal.disminuir(190);
+		this.equipoActual = new Equipo("equipo");
 	}
 
 	public int ancho() {
@@ -39,6 +41,10 @@ public class Mapa {
 
 	public int alto() {
 		return this.alto;
+	}
+	
+	public void agregarEquipo(Equipo equipo) {
+		this.equipoActual = equipo;
 	}
 	
 	public IElemento getElemento(int x, int y, int z) {
@@ -64,12 +70,12 @@ public class Mapa {
 		
 		Posicion pos = new Posicion(x,y,elemento.getNivel());
 		elemento.setPosicion(pos); //elemento verifica la coord z segun su nivel
-		
 		try {
 			elemento.agregarseEn(this);
 		} catch (RuntimeException e){
 			throw e;
 		}
+		this.equipoActual.agregarElemento(elemento);
 		this.elementosActivos.add(elemento);
 		this.ubicarElemento(elemento, pos);
 	}
@@ -80,9 +86,11 @@ public class Mapa {
 
 		this.desocuparPosicion(elemento.getPosicion());
 		this.elementosActivos.remove(elemento);
+		this.equipoActual.removerElemento(elemento);
 	}
 	
 	public boolean existenElementos(Collection<IElemento> aBuscar){
+		this.equipoActual.existen(aBuscar);
 		return this.elementosActivos.containsAll(aBuscar);
 	}
 	
@@ -124,6 +132,7 @@ public class Mapa {
 	}
 	
 	public void pasarTurnoMapa(){
+		//this.equipoActual.pasarTurno();
 		Iterator<IElemento> it = elementosActivos.iterator();
 		while (it.hasNext()){
 			it.next().pasarTurno();
@@ -158,22 +167,27 @@ public class Mapa {
 	}
 
 	public int getMineralTotal() {
+		int m = this.equipoActual.getMineralTotal();
 		return this.gestorDeRecursos.getMineralTotal();
 	}
 
 	public int getVespenoTotal() {
+		int m = this.equipoActual.getVespenoTotal();
 		return this.gestorDeRecursos.getVespenoTotal();
 	}
 
 	public void recibirMineral(int recolectado) {
+		this.equipoActual.recibirMineral(recolectado);
 		this.gestorDeRecursos.recibirMineral(recolectado);
 	}
 
 	public void recibirVespeno(int recolectado) {
+		this.equipoActual.recibirVespeno(recolectado);
 		this.gestorDeRecursos.recibirVespeno(recolectado);
 	}
 	
 	public void gastarRecursos(int mineral, int vespeno){
+		this.equipoActual.gastarRecursos(mineral,vespeno);
 		this.gestorDeRecursos.gastarRecursos(mineral,vespeno);
 	}
 
@@ -181,13 +195,18 @@ public class Mapa {
 		if (this.poblacionTotal.val() < suministro)
 					throw new ErrorCapacidadDePoblacionInsuficiente();
 		this.poblacionTotal.disminuir(suministro);
+		//this.equipoActual.consumirPoblacion(suministro);
 	}
 	
 	public void aumentarPoblacion(float suministro) {
+		this.equipoActual.aumentarPoblacion(suministro);
 		this.poblacionTotal.aumentar(suministro);
 	}
 	
 	public void restarPoblacion(float suministro) {
+		this.equipoActual.restarPoblacion(suministro);
 		this.poblacionTotal.disminuir(suministro);
 	}
+
+
 }

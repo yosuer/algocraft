@@ -1,6 +1,8 @@
 package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+import fiuba.algo3.algocraft.modelo.unidades.NaveDeTransporteProtoss;
+import fiuba.algo3.algocraft.modelo.unidades.Scout;
 
 public class PuertoEstelarProtoss extends Edificio
 									implements ElementoProtoss, IElementoCreador{

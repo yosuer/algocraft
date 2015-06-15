@@ -1,4 +1,10 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.unidades;
+
+import fiuba.algo3.algocraft.modelo.Construyendose;
+import fiuba.algo3.algocraft.modelo.ElementoProtoss;
+import fiuba.algo3.algocraft.modelo.IEstado;
+import fiuba.algo3.algocraft.modelo.Protoss;
+import fiuba.algo3.algocraft.modelo.Unidad;
 
 public class Dragon extends Unidad implements ElementoProtoss {
 	
