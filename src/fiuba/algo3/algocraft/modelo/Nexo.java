@@ -5,8 +5,9 @@ public class Nexo extends BasePrincipal implements ElementoProtoss {
 	public Nexo() {
 		this.costoMineral = 100;
 		this.costoVespeno = 100;
-		this.tiempoDeConstruccion = 9;
 		this.estadoFisico = new Protoss(750,750);
+		this.estado = new Construyendose(this,9);
+
 	}
 
 	@Override

@@ -43,9 +43,7 @@ public class EdificioBasePrincipalTest {
 		for (int i=1; i <=9; i++){
 			mapa.pasarTurnoMapa();
 		}
-		
-		Assert.assertEquals(nexo.tiempoDeConstruccion,0);
-		
+				
 		Assert.assertEquals(nexo.vidaActual(), 1500);
 		Assert.assertEquals(nexo.escudoRestante(), 750);
 		Assert.assertEquals(nexo.getCostoMineral(), 100);

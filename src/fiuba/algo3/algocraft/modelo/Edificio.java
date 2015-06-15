@@ -18,7 +18,7 @@ public abstract class Edificio implements IElemento,IDaniable{
 	protected Collection<IElemento> edificiosRequeridos;
 	protected RazaEstado estadoFisico;
 	protected IEstado estado; //gestorDeVida
-	protected ICreadorDeElementos creador;
+	//protected ICreadorDeElementos creador;
 	
 	public Edificio(){
 		this.nivel = 0;
@@ -77,13 +77,8 @@ public abstract class Edificio implements IElemento,IDaniable{
 		this.mapa.quitarElemento(this);
 	}
 	
-	public void edificar(){
-		if (this.tiempoDeConstruccion > 0) 
-			this.tiempoDeConstruccion--;
-	}
-	
 	public void pasarTurno() {
-		this.edificar();
+		this.estado.pasarTurno();
 	}
 
 	public void daniarse(int danio){
