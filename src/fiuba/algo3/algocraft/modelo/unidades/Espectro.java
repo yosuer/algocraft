@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.Terran;
 import fiuba.algo3.algocraft.modelo.Unidad;
 
@@ -18,6 +19,7 @@ public class Espectro extends Unidad {
 		this.rangoAtaqueTierra = 0;
 		this.estadoFisico = new Terran(120);
 		this.nivel = 1;
+		this.estado = new Construyendose(this,8);
 	}
 
 }

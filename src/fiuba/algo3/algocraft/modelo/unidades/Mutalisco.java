@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.Zerg;
 
@@ -17,6 +18,7 @@ public class Mutalisco extends Unidad {
 		this.rangoAtaqueAire = 3;
 		this.rangoAtaqueTierra = 0;
 		this.estadoFisico = new Zerg(120);
+		this.estado = new Construyendose(this,6);
 		this.nivel = 1;
 	}
 

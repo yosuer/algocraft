@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
+import fiuba.algo3.algocraft.modelo.IEstado;
 import fiuba.algo3.algocraft.modelo.Terran;
 import fiuba.algo3.algocraft.modelo.Unidad;
 
@@ -17,7 +19,7 @@ public class Marine extends Unidad {
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 4;
 		this.estadoFisico = new Terran(40);
+		this.estado = new Construyendose(this,3);
 		this.nivel = 0;
 	}
-
 }

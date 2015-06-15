@@ -35,7 +35,10 @@ public class UnidadesTerrestresTest {
 		for (int i=1; i <=12; i++) mapa.pasarTurnoMapa();
 		
 		barraca.crearMarine();
-		for (int i=1; i <=3; i++) mapa.pasarTurnoMapa();
+		mapa.pasarTurnoMapa();
+		mapa.pasarTurnoMapa();
+		mapa.pasarTurnoMapa();
+		Assert.assertNull(mapa.getElemento(1, 2, 0));
 		mapa.pasarTurnoMapa(); //en el cuarto turno se muestra xk tarda 3 turnos
 		
 		Assert.assertEquals(9,0, mapa.getPoblacionTotal());

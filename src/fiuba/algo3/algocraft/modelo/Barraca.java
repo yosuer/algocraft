@@ -4,7 +4,6 @@ import fiuba.algo3.algocraft.modelo.unidades.Marine;
 
 public class Barraca extends Edificio 
 							implements IElementoCreador{
-	
 	public Barraca() {
 		super();
 		this.costoMineral = 150;
@@ -20,7 +19,6 @@ public class Barraca extends Edificio
 
 	@Override
 	public void enviarUnidadAlMapa(Unidad u) {
-		//Posicion pos = new Posicion(2,2,0);
 		u.setPosicion(posicion);
 		this.mapa.encolarUnidad(u);
 	}

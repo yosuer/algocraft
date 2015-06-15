@@ -12,7 +12,7 @@ import fiuba.algo3.algocraft.modelo.unidades.Espectro;
 public class UnidadesAereasTest {
 	
 	@Test
-	public void test00_PasarTurnoMarine() {
+	public void test00_PasarTurnoEspectro() {
 		Mapa mapa = new Mapa();
 		Espectro espectro = new Espectro();
 		mapa.agregarElemento(2, 2, espectro);
@@ -39,8 +39,9 @@ public class UnidadesAereasTest {
 		for (int i=1; i <=12; i++) mapa.pasarTurnoMapa();
 		
 		puerto.crearEspectro();
-		
-		mapa.pasarTurnoMapa(); 
+
+		Assert.assertNull(mapa.getElemento(2, 2, 1));
+		for (int i=1; i <=9; i++) mapa.pasarTurnoMapa();
 		
 		Espectro espectro = (Espectro) mapa.getElemento(2, 2, 1);
 		Assert.assertEquals(espectro.vidaActual(),120);

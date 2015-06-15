@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.Terran;
 import fiuba.algo3.algocraft.modelo.Unidad;
 
@@ -17,6 +18,7 @@ public class Golliat extends Unidad {
 		this.rangoAtaqueAire = 5;
 		this.rangoAtaqueTierra = 6;
 		this.estadoFisico = new Terran(125);
+		this.estado = new Construyendose(this,6);
 		this.nivel = 0;
 	}
 

@@ -2,7 +2,9 @@ package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Queue;
 
+import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElementoAereo;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
@@ -14,6 +16,7 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	protected int nivel;
 	protected RazaEstado estadoFisico;
 	protected IEstado estado; //gestorDeVida
+	protected Queue<Unidad> movimientos; //guardar movimientos
 	
 	protected int transporte;
 	protected int vision;
@@ -100,8 +103,7 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	
 	@Override
 	public void pasarTurno() {
-		if (this.tiempoDeConstruccion > 0) 
-			this.tiempoDeConstruccion--;
+		this.estado.pasarTurno();
 	}
 
 	public int getTiempoDeConstruccion() {
@@ -135,7 +137,7 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	}
 	
 	public void actualizarEstado(IEstado estado){
-		
+		this.estado = estado;
 	}
 	
 	public void ejecutarAcciones(){
@@ -144,6 +146,17 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	
 	public void eliminarseDelMapa(Mapa mapa){
 		this.mapa.desocuparPosicion(this.posicion);
+	}
+	
+	public boolean listaParaSalir(){
+		try {
+			this.estado.estaActivo();
+		} catch (ErrorEdificioEnConstruccion e){
+			return false;
+		} catch (Exception e){
+			
+		}
+		return true;
 	}
 	
 }

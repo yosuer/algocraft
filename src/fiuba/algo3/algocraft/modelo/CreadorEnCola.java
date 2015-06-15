@@ -1,34 +1,36 @@
 package fiuba.algo3.algocraft.modelo;
 
-import java.util.EmptyStackException;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+import java.util.Queue;
 
 public class CreadorEnCola implements ICreadorDeElementos {
 
-	private ListaMU<Unidad> unidadesEnProduccion;
 	private IElementoCreador elemento;
+	private Queue<Unidad> unidades;
 	
-	public CreadorEnCola(IElementoCreador elemento){
-		this.elemento = elemento;
-		unidadesEnProduccion = new ListaMU<Unidad>();
+	public CreadorEnCola(IElementoCreador elementoCreador){
+		this.elemento = elementoCreador;
+		unidades = new LinkedList<Unidad>();
 	}
 	
 	@Override
 	public void prepararUnidad(Unidad u) {
-		this.unidadesEnProduccion.encolar(u);
+		this.unidades.add(u);
 	}
 
 	@Override
 	public void expulsarUnidad() {
 		try {
-			elemento.enviarUnidadAlMapa(unidadesEnProduccion.desEncolar());
-			this.unidadesEnProduccion.primero().pasarTurno();
-		} catch (IndexOutOfBoundsException e1){
-		} catch (EmptyStackException e2){
+			if (unidades.element().listaParaSalir())
+					elemento.enviarUnidadAlMapa(this.unidades.remove());
+			this.unidades.element().pasarTurno();
+		} catch (NoSuchElementException e1){
 		}
 	}
 	
 	public int unidadesEnProduccion(){
-		return this.unidadesEnProduccion.size();
+		return this.unidades.size();
 	}
 
 }

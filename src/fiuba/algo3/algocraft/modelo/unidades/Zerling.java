@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.Zerg;
 
@@ -18,6 +19,7 @@ public class Zerling extends Unidad {
 		this.rangoAtaqueTierra = 1;
 		this.estadoFisico = new Zerg(35);
 		this.nivel = 0;
+		this.estado = new Construyendose(this,2);
 	}
 
 }

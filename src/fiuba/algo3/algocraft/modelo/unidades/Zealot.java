@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.ElementoProtoss;
 import fiuba.algo3.algocraft.modelo.Protoss;
 import fiuba.algo3.algocraft.modelo.Unidad;
@@ -18,6 +19,7 @@ public class Zealot extends Unidad implements ElementoProtoss {
 		this.rangoAtaqueAire = 0;
 		this.rangoAtaqueTierra = 1;
 		this.estadoFisico = new Protoss(100,60);
+		this.estado = new Construyendose(this,4);
 		this.nivel = 0;
 	}
 
