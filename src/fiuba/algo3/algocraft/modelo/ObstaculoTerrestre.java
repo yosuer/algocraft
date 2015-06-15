@@ -44,10 +44,7 @@ public class ObstaculoTerrestre implements IElemento {
 				throw new ErrorPosicionOcupada();
 		this.mapa = mapa;
 	}
-	
-	public void eliminarseDelMapa(){
-		this.mapa.desocuparPosicion(this.posicion);
-	}
+
 	
 	@Override
 	public void pasarTurno() {
@@ -70,7 +67,7 @@ public class ObstaculoTerrestre implements IElemento {
 
 	@Override
 	public void eliminarseDelMapa(Mapa mapa) {
-	
+		this.mapa.desocuparPosicion(this.posicion);
 	}
 
 }

@@ -144,6 +144,7 @@ public class Mapa {
 			this.agregarElemento(u.getPosicion().x(),u.getPosicion().y(), u);
 		}
 		this.unidadesPreparadas.clear();
+		
 		//////////////////////////////////
 //		System.out.println("Poblacion: " + getPoblacionTotal());
 //		System.out.println("Mineral: " + gestorDeRecursos.getMineralTotal());
