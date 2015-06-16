@@ -78,21 +78,19 @@ public class ExtractorVespenoTest {
 	public void test05_RefineriaExtraeVespenoPorTurnosDelMapa(){
 		Mapa mapa = new Mapa();
 		ExtractorDeGasVespeno refineria = new Refineria();
-		Vespeno vespeno = new Vespeno();
 		
-		mapa.agregarElemento(1, 1, vespeno);
-		mapa.agregarElemento(1, 1, refineria);
+		mapa.agregarElemento(4, 6, refineria);
 	
-		for (int i = 1; i <=10; i++) 
+		for (int i = 1; i <=4; i++) 
 			mapa.pasarTurnoMapa();
-
+		Assert.assertEquals(0, mapa.getVespenoTotal());
+		mapa.pasarTurnoMapa();
+		
 		Assert.assertEquals(10, mapa.getVespenoTotal());
 		
 		mapa.pasarTurnoMapa();
 		mapa.pasarTurnoMapa();
-		
-		Assert.assertEquals(40, mapa.getVespenoTotal());
-		Assert.assertEquals(10, refineria.getRecolectado());
+		Assert.assertEquals(30, mapa.getVespenoTotal());
 	}
 
 }

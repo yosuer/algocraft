@@ -72,70 +72,58 @@ public class ExtractorMineralTest {
 	public void test04_CentroDeMineralConTurnos(){
 		Mapa mapa = new Mapa();
 		CentroDeMineral centro = new CentroDeMineral();
-		Mineral mineral = new Mineral();
-		
-		mapa.agregarElemento(1, 1, mineral);
-		mapa.agregarElemento(1, 1, centro);
+		mapa.agregarElemento(2, 2, centro);
 		Assert.assertEquals(150, mapa.getMineralTotal());
 		
-		for (int i = 1; i <=3; i++) 
+		for (int i = 1; i <=2; i++) 
 			mapa.pasarTurnoMapa();
 		
-		Assert.assertEquals(170, mapa.getMineralTotal());
-		Assert.assertEquals(10, centro.getRecolectado());
+		Assert.assertEquals(150, mapa.getMineralTotal());
 	}
 	
 	@Test
 	public void test05_LaRecoleccionDeRecursosSeReflejaDesdeElMapa(){
 		Mapa mapa = new Mapa();
 		CentroDeMineral centro = new CentroDeMineral();
-		Mineral mineral = new Mineral();
-		
-		mapa.agregarElemento(1, 1, mineral);
-		mapa.agregarElemento(1, 1, centro);
+
+		mapa.agregarElemento(2, 2, centro);
 	
 		Assert.assertEquals(150,mapa.getMineralTotal());
 		
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= 24; i++) {
 			mapa.pasarTurnoMapa();
 		}
 		
-		Assert.assertEquals(200,mapa.getMineralTotal());
+		Assert.assertEquals(350,mapa.getMineralTotal());
 	}
 	
 	@Test
 	public void test05_NexoMineralProtossRecolectaMineralYEntregaMineralAlPasarElTurno(){
 		Mapa mapa = new Mapa();
 		NexoMineral nexoMineral = new NexoMineral();
-		Mineral mineral = new Mineral();
-		
-		mapa.agregarElemento(4, 4, mineral);
-		mapa.agregarElemento(4, 4, nexoMineral);
+
+		mapa.agregarElemento(2, 5, nexoMineral);
 		
 		Assert.assertEquals(150, mapa.getMineralTotal());
 	
-		for (int i = 1; i <=40; i++) 
+		for (int i = 1; i <=60; i++) 
 			mapa.pasarTurnoMapa();
 
 		Assert.assertEquals(350, mapa.getMineralTotal());
-		Assert.assertEquals(0, nexoMineral.getRecolectado());
 	}
 	
 	@Test
 	public void test05_ZergMineralRecolectaMineralYEntregaMineralAlPasarElTurno(){
 		Mapa mapa = new Mapa();
 		ZergMineral zergMineral = new ZergMineral();
-		Mineral mineral = new Mineral();
-		
-		mapa.agregarElemento(10, 10, mineral);
-		mapa.agregarElemento(10, 10, zergMineral);
+
+		mapa.agregarElemento(2, 2, zergMineral);
 	
 		Assert.assertEquals(150, mapa.getMineralTotal());
 		
-		for (int i = 1; i <=15; i++) 
+		for (int i = 1; i <=24; i++) 
 			mapa.pasarTurnoMapa();
 
-		Assert.assertEquals(250, mapa.getMineralTotal());
-		Assert.assertEquals(10, zergMineral.getRecolectado());
+		Assert.assertEquals(350, mapa.getMineralTotal());
 	}
 }

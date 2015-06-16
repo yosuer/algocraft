@@ -3,8 +3,8 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.excepciones.ErrorNoExisteRecursoEnLaPosicion;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
 import fiuba.algo3.algocraft.modelo.edificios.NexoMineral;
@@ -50,18 +50,14 @@ public class MineralTest {
 	public void test04_SiAUnMineralSeLeAsignaUnExtractorMineralTerranEnLaMismaPosicionDaOK()
 	{
 		Mapa mapa = new Mapa();
-		Recurso mineral = new Mineral();
 		ExtractorDeMineral extractor = new CentroDeMineral();
 		
-		mapa.agregarElemento(3, 2, mineral);
 		mapa.agregarElemento(3, 2, extractor);
 		
-		mineral.asignarExtractor(extractor);
-		
-		Assert.assertEquals(mineral.getExtractor(), extractor);
+		Assert.assertEquals(mapa.getElemento(3, 2, 0), extractor);
 	}
 	
-	@Test(expected = ErrorAgregandoElementoAlMapa.class)
+	@Test(expected = ErrorNoExisteRecursoEnLaPosicion.class)
 	public void test05_AUnMineralNoSeLePuedeAsignarUnExtractorMineralTerranDeDistintaPosicion()
 	{
 		Mapa mapa = new Mapa();

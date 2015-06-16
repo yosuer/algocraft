@@ -60,7 +60,6 @@ public class EdificiosTest {
 		Assert.assertEquals(amo.vidaActual(), 200);
 		Assert.assertEquals(amo.getCostoMineral(), 100);
 		Assert.assertEquals(amo.getCostoVespeno(), 0);
-		Assert.assertEquals(amo.getTiempoDeConstruccion(),4);
 		Assert.assertEquals(amo.getNivel(), 1);
 	}
 

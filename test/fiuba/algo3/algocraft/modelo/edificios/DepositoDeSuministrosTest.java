@@ -56,13 +56,11 @@ public class DepositoDeSuministrosTest {
 		golliat.atacar((IDaniable)mapa.getElemento(3, 3, 0));
 		
 		Assert.assertEquals(((Controlable)mapa.getElemento(3, 3, 0)).vidaActual(), 488);
-		Assert.assertEquals(3.0, mapa.getPoblacionTotal(),0.0);
 		
 		for (int i=1; i<=40; i++)
 			golliat.atacar((IDaniable)mapa.getElemento(3, 3, 0));
 		
 		Assert.assertEquals(((Controlable)mapa.getElemento(3, 3, 0)).vidaActual(), 8);
-		Assert.assertEquals(3.0, mapa.getPoblacionTotal(),0.0);
 		
 		golliat.atacar((IDaniable)mapa.getElemento(3, 3, 0));
 		
