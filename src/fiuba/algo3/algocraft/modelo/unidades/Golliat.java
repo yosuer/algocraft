@@ -11,7 +11,6 @@ public class Golliat extends Unidad {
 		this.vision = 8;
 		this.costoMineral = 100;
 		this.costoVespeno = 50;
-		this.tiempoDeConstruccion = 6;
 		this.danioAire = 10;
 		this.danioTierra = 12;
 		this.suministro = 2;

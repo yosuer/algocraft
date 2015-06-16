@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.Zerg;
@@ -13,7 +14,6 @@ public class AmoSupremo extends Unidad {
 		this.vision = 9;
 		this.costoMineral = 100;
 		this.costoVespeno = 0;
-		this.tiempoDeConstruccion = 4;
 		this.danioAire = 0;
 		this.danioTierra = 0;
 		this.suministro = 0;
@@ -22,6 +22,7 @@ public class AmoSupremo extends Unidad {
 		this.estadoFisico = new Zerg(200);
 		this.nivel = 1;
 		this.poblacion = 5;
+		this.estado = new Construyendose(this,4);
 	}
 	
 	public void agregarseEn(Mapa mapa){

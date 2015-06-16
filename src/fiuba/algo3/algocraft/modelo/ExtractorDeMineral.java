@@ -1,14 +1,14 @@
 package fiuba.algo3.algocraft.modelo;
 
-import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.excepciones.ErrorNoExisteRecursoEnLaPosicion;
 
 public abstract class ExtractorDeMineral extends Edificio 
 										implements IExtractorDeRecursos{
 
 	protected Mineral recurso;
 	protected int recolectado = 0;
-
+	
 	public int getRecolectado(){
 		return this.recolectado;
 	}
@@ -22,17 +22,18 @@ public abstract class ExtractorDeMineral extends Edificio
 		try {
 		Recurso mineral = (Mineral) mapa.getElemento(posicion.x(), posicion.y(), posicion.z());
 		mineral.asignarExtractor(this);
-		} catch (ErrorExtractorDeRecursosIncompatible e) {
-			throw new ErrorAgregandoElementoAlMapa();
-		} catch (RuntimeException e) {
-			throw new ErrorAgregandoElementoAlMapa();
+		} catch (NullPointerException e) {
+			throw new ErrorNoExisteRecursoEnLaPosicion();
+		} catch (ClassCastException e){
+			throw new ErrorExtractorDeRecursosIncompatible();
 		}
+		mapa.agregarControlable(this);
 		this.mapa = mapa;
 	}
 	
 	public void ejecutarAcciones(){
-		this.depositarRecolectado(this.equipo);
 		this.realizarExtraccion();
+		this.depositarRecolectado(this.equipo);
 	}
 	
 	public void depositarRecolectado(Equipo equipo) {

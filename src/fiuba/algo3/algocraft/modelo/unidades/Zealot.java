@@ -12,7 +12,6 @@ public class Zealot extends Unidad implements ElementoProtoss {
 		this.vision = 7;
 		this.costoMineral = 100;
 		this.costoVespeno = 0;
-		this.tiempoDeConstruccion = 4;
 		this.danioAire = 0;
 		this.danioTierra = 8;
 		this.suministro = 2;

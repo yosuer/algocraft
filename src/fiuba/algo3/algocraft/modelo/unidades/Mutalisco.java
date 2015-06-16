@@ -11,7 +11,6 @@ public class Mutalisco extends Unidad {
 		this.vision = 7;
 		this.costoMineral = 100;
 		this.costoVespeno = 100;
-		this.tiempoDeConstruccion = 6;
 		this.danioAire = 9;
 		this.danioTierra = 9;
 		this.suministro = 2;

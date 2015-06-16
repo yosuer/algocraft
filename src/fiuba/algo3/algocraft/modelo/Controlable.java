@@ -6,7 +6,6 @@ import java.util.Collection;
 public abstract class Controlable implements IDaniable, IElemento{
 
 	protected Collection<Controlable> edificiosRequeridos;
-	protected int tiempoDeConstruccion;
 	protected Posicion posicion;
 	protected int costoMineral;
 	protected int costoVespeno;
@@ -20,6 +19,10 @@ public abstract class Controlable implements IDaniable, IElemento{
 	public Controlable(){
 		this.nivel = 0;
 		this.edificiosRequeridos = new ArrayList<Controlable>();
+	}
+	
+	public void estaActivo() {
+		this.estado.estaActivo();
 	}
 	
 	public void setEquipo(Equipo equipo){
@@ -52,10 +55,6 @@ public abstract class Controlable implements IDaniable, IElemento{
 	
 	public Collection<Controlable> elementosRequeridos(){
 		return this.edificiosRequeridos;
-	}
-	
-	public int getTiempoDeConstruccion() {
-		return this.tiempoDeConstruccion;
 	}
 	
 	public void actualizarEstado(IEstado estado){

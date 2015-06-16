@@ -42,11 +42,6 @@ public class Equipo {
 			Unidad u = unidadesPreparadas.remove();
 			mapa.agregarElemento(u.getPosicion().x(),u.getPosicion().y(), u);
 		}
-		Iterator<Unidad> it2 = this.unidadesPreparadas.iterator();
-		while (it2.hasNext()){
-			Unidad u = it2.next();
-			this.mapa.agregarElemento(u.getPosicion().x(),u.getPosicion().y(), u);
-		}
 	}
 
 	public void setMapa(Mapa mapa) {

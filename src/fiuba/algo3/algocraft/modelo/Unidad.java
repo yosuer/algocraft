@@ -1,13 +1,10 @@
 package fiuba.algo3.algocraft.modelo;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Queue;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElementoAereo;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
-
 
 public abstract class Unidad extends Controlable 
 									implements IAtacante {

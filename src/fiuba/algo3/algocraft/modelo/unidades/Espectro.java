@@ -11,7 +11,6 @@ public class Espectro extends Unidad {
 		this.vision = 7;
 		this.costoMineral = 150;
 		this.costoVespeno = 100;
-		this.tiempoDeConstruccion = 8;
 		this.danioAire = 20;
 		this.danioTierra = 8;
 		this.suministro = 2;

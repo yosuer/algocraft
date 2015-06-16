@@ -3,7 +3,6 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import fiuba.algo3.algocraft.excepciones.ErrorCapacidadDePoblacionInsuficiente;
 import fiuba.algo3.algocraft.excepciones.ErrorElementoNoEncontrado;
 
 public class Mapa {
@@ -83,7 +82,6 @@ public class Mapa {
 	}
 	
 	public void agregarElemento(int x, int y, IElemento elemento) {
-		
 		Posicion pos = new Posicion(x,y,elemento.getNivel());
 		elemento.setPosicion(pos); //elemento verifica la coord z segun su nivel
 		try {
@@ -174,7 +172,7 @@ public class Mapa {
 	}
 
 	public int getVespenoTotal() {
-		return this.equipoActual.getVespenoTotal();
+		return this.equipo1.getVespenoTotal()+this.equipo2.getVespenoTotal();
 	}
 
 	public void recibirMineral(int recolectado, Equipo equipo) {
@@ -185,9 +183,14 @@ public class Mapa {
 		equipo1.recibirMineral(recolectado);
 		equipo2.recibirMineral(recolectado);
 	}
-
+	
 	public void recibirVespeno(int recolectado) {
-		this.equipoActual.recibirVespeno(recolectado);
+		equipo1.recibirVespeno(recolectado);
+		equipo2.recibirVespeno(recolectado);
+	}
+	
+	public void recibirVespeno(int recolectado, Equipo equipo) {
+		equipo.recibirVespeno(recolectado);
 	}
 	
 	public void gastarRecursos(int mineral, int vespeno){

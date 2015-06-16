@@ -18,15 +18,17 @@ public abstract class ExtractorDeGasVespeno extends Edificio
 	}
 	
 	public void agregarseEn(Mapa mapa){
+		mapa.gastarRecursos(costoMineral, costoVespeno);
 		try {
 		Recurso vespeno = 
 				(Recurso) mapa.getElemento(posicion.x(), posicion.y(), posicion.z());
 		vespeno.asignarExtractor(this);
 		} catch (ErrorExtractorDeRecursosIncompatible e) {
-			throw new ErrorAgregandoElementoAlMapa();
+			throw new ErrorExtractorDeRecursosIncompatible();
 		} catch (RuntimeException e) {
 			throw new ErrorAgregandoElementoAlMapa();
 		}
+		mapa.agregarControlable(this);
 		this.mapa = mapa;
 	}
 	
@@ -36,12 +38,12 @@ public abstract class ExtractorDeGasVespeno extends Edificio
 	}
 	
 	public void ejecutarAcciones(){
-		this.depositarRecolectado();
 		this.realizarExtraccion();
+		this.depositarRecolectado();
 	}
 
 	public void depositarRecolectado() {
-		this.mapa.recibirVespeno(this.recolectado);
+		this.mapa.recibirVespeno(this.recolectado,this.equipo);
 		this.recolectado = 0;
 	}
 	

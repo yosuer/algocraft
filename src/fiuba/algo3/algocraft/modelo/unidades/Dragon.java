@@ -13,7 +13,6 @@ public class Dragon extends Unidad implements ElementoProtoss {
 		this.vision = 8;
 		this.costoMineral = 125;
 		this.costoVespeno = 50;
-		this.tiempoDeConstruccion = 6;
 		this.danioAire = 20;
 		this.danioTierra = 20;
 		this.suministro = 2;

@@ -11,7 +11,6 @@ public class Zerling extends Unidad {
 		this.vision = 5;
 		this.costoMineral = 25;
 		this.costoVespeno = 0;
-		this.tiempoDeConstruccion = 2;
 		this.danioAire = 0;
 		this.danioTierra = 5;
 		this.suministro = 1/2;
