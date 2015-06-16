@@ -1,4 +1,10 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
+
+import fiuba.algo3.algocraft.modelo.Construyendose;
+import fiuba.algo3.algocraft.modelo.Edificio;
+import fiuba.algo3.algocraft.modelo.ElementoProtoss;
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.Protoss;
 
 public class Pilon extends Edificio implements ElementoProtoss {
 

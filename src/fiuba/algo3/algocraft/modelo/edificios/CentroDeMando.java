@@ -1,4 +1,7 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
+
+import fiuba.algo3.algocraft.modelo.Construyendose;
+import fiuba.algo3.algocraft.modelo.Terran;
 
 public class CentroDeMando extends BasePrincipal {
 

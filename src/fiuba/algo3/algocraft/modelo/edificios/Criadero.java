@@ -1,4 +1,10 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
+
+import fiuba.algo3.algocraft.modelo.CreadorEnCola;
+import fiuba.algo3.algocraft.modelo.Edificio;
+import fiuba.algo3.algocraft.modelo.IElementoCreador;
+import fiuba.algo3.algocraft.modelo.Unidad;
+import fiuba.algo3.algocraft.modelo.Zerg;
 
 public class Criadero extends Edificio implements IElementoCreador{
 

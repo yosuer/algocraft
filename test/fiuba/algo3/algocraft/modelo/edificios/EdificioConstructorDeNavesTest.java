@@ -1,7 +1,11 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import fiuba.algo3.algocraft.modelo.edificios.Espiral;
+import fiuba.algo3.algocraft.modelo.edificios.PuertoEstelarProtoss;
+import fiuba.algo3.algocraft.modelo.edificios.PuertoEstelarTerran;
 
 public class EdificioConstructorDeNavesTest {
 	

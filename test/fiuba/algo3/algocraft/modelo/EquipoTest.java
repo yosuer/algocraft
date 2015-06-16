@@ -3,6 +3,8 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.modelo.edificios.Barraca;
+
 public class EquipoTest {
 	
 	@Test

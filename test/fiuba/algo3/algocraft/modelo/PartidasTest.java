@@ -2,6 +2,10 @@ package fiuba.algo3.algocraft.modelo;
 
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.modelo.edificios.Barraca;
+import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
+import fiuba.algo3.algocraft.modelo.edificios.Refineria;
+
 public class PartidasTest {
 	
 	@Test

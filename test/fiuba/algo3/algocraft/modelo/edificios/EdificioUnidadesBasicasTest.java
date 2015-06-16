@@ -1,10 +1,15 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.edificios.Acceso;
+import fiuba.algo3.algocraft.modelo.edificios.Barraca;
+import fiuba.algo3.algocraft.modelo.edificios.ReservaDeReproduccion;
 
 public class EdificioUnidadesBasicasTest {
 	

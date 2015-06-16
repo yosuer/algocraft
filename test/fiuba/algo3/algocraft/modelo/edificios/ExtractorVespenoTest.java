@@ -1,7 +1,16 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import fiuba.algo3.algocraft.modelo.ExtractorDeGasVespeno;
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.Recurso;
+import fiuba.algo3.algocraft.modelo.Vespeno;
+import fiuba.algo3.algocraft.modelo.edificios.Asimilador;
+import fiuba.algo3.algocraft.modelo.edificios.Extractor;
+import fiuba.algo3.algocraft.modelo.edificios.Refineria;
 
 public class ExtractorVespenoTest {
 
@@ -74,18 +83,15 @@ public class ExtractorVespenoTest {
 		mapa.agregarElemento(1, 1, vespeno);
 		mapa.agregarElemento(1, 1, refineria);
 	
-		for (int i = 1; i <=4; i++) 
+		for (int i = 1; i <=10; i++) 
 			mapa.pasarTurnoMapa();
-		
-		for (int i = 1; i <=2; i++) 
-			refineria.realizarExtraccion();
-		
-		Assert.assertEquals(20,refineria.getRecolectado());
-		Assert.assertEquals(0, mapa.getVespenoTotal());
+
+		Assert.assertEquals(10, mapa.getVespenoTotal());
 		
 		mapa.pasarTurnoMapa();
+		mapa.pasarTurnoMapa();
 		
-		Assert.assertEquals(20, mapa.getVespenoTotal());
+		Assert.assertEquals(40, mapa.getVespenoTotal());
 		Assert.assertEquals(10, refineria.getRecolectado());
 	}
 

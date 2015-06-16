@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
+import fiuba.algo3.algocraft.modelo.edificios.Acceso;
+import fiuba.algo3.algocraft.modelo.edificios.Barraca;
 
 public class GestorDeRecursosTest {
 	

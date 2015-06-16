@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElementoAereo;
+import fiuba.algo3.algocraft.modelo.edificios.Acceso;
+import fiuba.algo3.algocraft.modelo.edificios.DepositoDeSuministros;
 import fiuba.algo3.algocraft.modelo.unidades.Dragon;
 import fiuba.algo3.algocraft.modelo.unidades.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.Golliat;

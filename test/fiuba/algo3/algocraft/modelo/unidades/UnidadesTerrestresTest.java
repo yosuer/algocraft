@@ -3,11 +3,11 @@ package fiuba.algo3.algocraft.modelo.unidades;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.modelo.Acceso;
-import fiuba.algo3.algocraft.modelo.Barraca;
-import fiuba.algo3.algocraft.modelo.Fabrica;
 import fiuba.algo3.algocraft.modelo.Mapa;
-import fiuba.algo3.algocraft.modelo.ReservaDeReproduccion;
+import fiuba.algo3.algocraft.modelo.edificios.Acceso;
+import fiuba.algo3.algocraft.modelo.edificios.Barraca;
+import fiuba.algo3.algocraft.modelo.edificios.Fabrica;
+import fiuba.algo3.algocraft.modelo.edificios.ReservaDeReproduccion;
 import fiuba.algo3.algocraft.modelo.unidades.Dragon;
 import fiuba.algo3.algocraft.modelo.unidades.Golliat;
 import fiuba.algo3.algocraft.modelo.unidades.Marine;

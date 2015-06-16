@@ -1,7 +1,12 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.edificios.CentroDeMando;
+import fiuba.algo3.algocraft.modelo.edificios.Criadero;
+import fiuba.algo3.algocraft.modelo.edificios.Nexo;
 
 public class EdificioBasePrincipalTest {
 
@@ -66,7 +71,7 @@ public class EdificioBasePrincipalTest {
 			mapa.pasarTurnoMapa();
 		}
 		
-		Assert.assertEquals(criadero.tiempoDeConstruccion,0);
+		Assert.assertEquals(criadero.getTiempoDeConstruccion(),0);
 		
 		Assert.assertEquals(criadero.vidaActual(), 1500);
 		Assert.assertEquals(criadero.getCostoMineral(), 100);

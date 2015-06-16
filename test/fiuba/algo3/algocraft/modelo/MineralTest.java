@@ -6,6 +6,9 @@ import org.junit.Test;
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
+import fiuba.algo3.algocraft.modelo.edificios.NexoMineral;
+import fiuba.algo3.algocraft.modelo.edificios.Refineria;
 
 public class MineralTest {
 

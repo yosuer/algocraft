@@ -15,7 +15,7 @@ public class Construyendose implements IEstado {
 	@Override
 	public void pasarTurno() {
 		this.tiempoDeConstruccion--;
-		if (this.tiempoDeConstruccion == 0) 
+		if (this.tiempoDeConstruccion < 1) 
 			elemento.actualizarEstado(new Activo(elemento));
 	}
 

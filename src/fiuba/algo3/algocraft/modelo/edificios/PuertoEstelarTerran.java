@@ -1,5 +1,12 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
+import fiuba.algo3.algocraft.modelo.CreadorEnCola;
+import fiuba.algo3.algocraft.modelo.Edificio;
+import fiuba.algo3.algocraft.modelo.IElementoCreador;
+import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.Terran;
+import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.NaveCiencia;
 import fiuba.algo3.algocraft.modelo.unidades.NaveTransporteTerran;
@@ -40,10 +47,10 @@ public class PuertoEstelarTerran extends Edificio
 	}
 
 	@Override
-	public void crearUnidad(Unidad u) {
+	public void crearUnidad(Unidad unidad) {
 		this.estado.estaActivo();
-		this.mapa.gastarRecursos(u.costoMineral, u.costoVespeno);
-		this.creador.prepararUnidad(u);
+		this.mapa.gastarRecursos(unidad.getCostoMineral(), unidad.getCostoVespeno());
+		this.creador.prepararUnidad(unidad);
 	}
 	
 	public void ejecutarAcciones(){

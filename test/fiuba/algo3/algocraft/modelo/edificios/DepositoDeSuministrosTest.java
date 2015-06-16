@@ -1,8 +1,13 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.modelo.Controlable;
+import fiuba.algo3.algocraft.modelo.IAtacante;
+import fiuba.algo3.algocraft.modelo.IDaniable;
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.edificios.DepositoDeSuministros;
 import fiuba.algo3.algocraft.modelo.unidades.Golliat;
 
 public class DepositoDeSuministrosTest {

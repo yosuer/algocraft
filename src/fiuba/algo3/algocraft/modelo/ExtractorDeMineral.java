@@ -31,11 +31,6 @@ public abstract class ExtractorDeMineral extends Edificio
 		this.mapa = mapa;
 	}
 	
-	@Override
-	public void pasarTurno() {
-		this.estado.pasarTurno();
-	}
-	
 	public void ejecutarAcciones(){
 		this.depositarRecolectado();
 		this.realizarExtraccion();

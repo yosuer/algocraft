@@ -1,5 +1,12 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
+import fiuba.algo3.algocraft.modelo.CreadorEnCola;
+import fiuba.algo3.algocraft.modelo.Edificio;
+import fiuba.algo3.algocraft.modelo.ElementoProtoss;
+import fiuba.algo3.algocraft.modelo.IElementoCreador;
+import fiuba.algo3.algocraft.modelo.Protoss;
+import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.Dragon;
 import fiuba.algo3.algocraft.modelo.unidades.Zealot;
 
@@ -33,7 +40,7 @@ public class Acceso extends Edificio implements ElementoProtoss,
 	@Override
 	public void crearUnidad(Unidad unidad) {
 		this.estado.estaActivo();
-		this.mapa.gastarRecursos(unidad.costoMineral, unidad.costoVespeno);
+		this.mapa.gastarRecursos(unidad.getCostoMineral(), unidad.getCostoVespeno());
 		this.mapa.consumirPoblacion(unidad.getSuministro());
 		this.creador.prepararUnidad(unidad);
 	}

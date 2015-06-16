@@ -1,9 +1,12 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.edificios.Barraca;
+import fiuba.algo3.algocraft.modelo.edificios.Pilon;
 import fiuba.algo3.algocraft.modelo.unidades.AmoSupremo;
 
 public class EdificiosTest {
@@ -56,7 +59,7 @@ public class EdificiosTest {
 		Assert.assertEquals(amo.vidaActual(), 200);
 		Assert.assertEquals(amo.getCostoMineral(), 100);
 		Assert.assertEquals(amo.getCostoVespeno(), 0);
-		Assert.assertEquals(amo.tiempoDeConstruccion,4);
+		Assert.assertEquals(amo.getTiempoDeConstruccion(),4);
 		Assert.assertEquals(amo.getNivel(), 1);
 	}
 

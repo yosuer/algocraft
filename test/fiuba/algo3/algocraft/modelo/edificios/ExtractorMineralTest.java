@@ -1,9 +1,16 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.algocraft.modelo.ExtractorDeMineral;
+import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.Mineral;
 import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.Recurso;
+import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
+import fiuba.algo3.algocraft.modelo.edificios.NexoMineral;
+import fiuba.algo3.algocraft.modelo.edificios.ZergMineral;
 
 public class ExtractorMineralTest {
 
@@ -69,14 +76,11 @@ public class ExtractorMineralTest {
 		
 		mapa.agregarElemento(1, 1, mineral);
 		mapa.agregarElemento(1, 1, centro);
-	
-		for (int i = 1; i <=5; i++) 
+		Assert.assertEquals(150, mapa.getMineralTotal());
+		
+		for (int i = 1; i <=3; i++) 
 			mapa.pasarTurnoMapa();
 		
-		for (int i = 1; i <=2; i++)
-			mapa.pasarTurnoMapa();
-		
-		//Assert.assertEquals(20,centro.getRecolectado());
 		Assert.assertEquals(170, mapa.getMineralTotal());
 		Assert.assertEquals(10, centro.getRecolectado());
 	}

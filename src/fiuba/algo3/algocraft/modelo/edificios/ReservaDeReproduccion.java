@@ -1,5 +1,12 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
+import fiuba.algo3.algocraft.modelo.CreadorEnCola;
+import fiuba.algo3.algocraft.modelo.Edificio;
+import fiuba.algo3.algocraft.modelo.IElementoCreador;
+import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.Unidad;
+import fiuba.algo3.algocraft.modelo.Zerg;
 import fiuba.algo3.algocraft.modelo.unidades.Zerling;
 
 public class ReservaDeReproduccion extends Edificio 
@@ -28,7 +35,7 @@ public class ReservaDeReproduccion extends Edificio
 	@Override
 	public void crearUnidad(Unidad unidad) {
 		this.estado.estaActivo();
-		this.mapa.gastarRecursos(unidad.costoMineral, unidad.costoVespeno);
+		this.mapa.gastarRecursos(unidad.getCostoMineral(), unidad.getCostoVespeno());
 		this.creador.prepararUnidad(unidad);
 	}
 	

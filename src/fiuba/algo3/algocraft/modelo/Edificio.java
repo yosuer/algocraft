@@ -1,8 +1,5 @@
 package fiuba.algo3.algocraft.modelo;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
@@ -55,6 +52,7 @@ public abstract class Edificio extends Controlable {
 	
 	public void actualizarEstado(IEstado estado){
 		this.estado = estado;
+		System.out.print("Actua");
 	}
 	
 	public void ejecutarAcciones(){

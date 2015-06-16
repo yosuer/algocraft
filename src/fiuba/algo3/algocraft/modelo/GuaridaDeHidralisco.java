@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+import fiuba.algo3.algocraft.modelo.edificios.ReservaDeReproduccion;
 import fiuba.algo3.algocraft.modelo.unidades.Hidralisco;
 
 public class GuaridaDeHidralisco extends Edificio 

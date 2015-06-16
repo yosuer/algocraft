@@ -6,6 +6,10 @@ import org.junit.Test;
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.edificios.Asimilador;
+import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
+import fiuba.algo3.algocraft.modelo.edificios.Extractor;
+import fiuba.algo3.algocraft.modelo.edificios.Refineria;
 
 public class VespenoTest {
 
