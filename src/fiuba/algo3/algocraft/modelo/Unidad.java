@@ -9,56 +9,25 @@ import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElementoAereo;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 
-public abstract class Unidad implements IElemento,IDaniable,IAtacante {
+public abstract class Unidad extends Controlable 
+									implements IAtacante {
 
-	protected Posicion posicion;
-	protected Mapa mapa;
-	protected int nivel;
-	protected RazaEstado estadoFisico;
-	protected IEstado estado; //gestorDeVida
 	protected Queue<Unidad> movimientos; //guardar movimientos
 	
+	protected float suministro;
 	protected int transporte;
-	protected int vision;
-	protected int costoMineral;
-	protected int costoVespeno;
-	protected int tiempoDeConstruccion;
+	
 	protected int danioAire;
 	protected int danioTierra;
-	protected float suministro;
 	protected int rangoAtaqueAire;
 	protected int rangoAtaqueTierra;
 
-	public void setPosicion(Posicion posicion){
-		this.posicion = posicion;
-	}
-	
-	public Posicion getPosicion(){
-		return this.posicion;
-	}
-	
-	public int getNivel() {
-		return this.nivel;
-	}
-	
 	public int vidaActual(){
 		return this.estadoFisico.getVida();
 	}
 	
-	public int getCostoMineral() {
-		return this.costoMineral;
-	}
-	
-	public int getCostoVespeno() {
-		return this.costoVespeno;
-	}
-	
 	public int getTransporte() {
 		return this.transporte;
-	}
-	
-	public int getVision() {
-		return this.vision;
 	}
 	
 	public int getDanioAire() {
@@ -86,10 +55,6 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 		this.posicion = pos;
 	}
 	
-	public Collection<IElemento> elementosRequeridos(){
-		return new ArrayList<IElemento>();
-	}
-	
 	public void agregarseEn(Mapa mapa){
 		Posicion pos = mapa.getPosicionProxima(this.posicion);
 		mapa.ubicarElemento(this, pos);
@@ -100,15 +65,6 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 	public Posicion buscarPosicionEnMapa(Mapa mapa){
 		return mapa.getPosicionProxima(this.posicion);
 	}
-	
-	@Override
-	public void pasarTurno() {
-		this.estado.pasarTurno();
-	}
-
-	public int getTiempoDeConstruccion() {
-		return this.tiempoDeConstruccion;
-	}	
 	
 	public boolean equals(Object o) {
 		if(this == o) return true;
@@ -134,10 +90,6 @@ public abstract class Unidad implements IElemento,IDaniable,IAtacante {
 			throw new ErrorNoSePuedeAtacarElementoAereo();
 		if (this.nivel == 0) this.daniarse(a.getDanioTierra());
 		if (this.nivel == 1) this.daniarse(a.getDanioAire());
-	}
-	
-	public void actualizarEstado(IEstado estado){
-		this.estado = estado;
 	}
 	
 	public void ejecutarAcciones(){

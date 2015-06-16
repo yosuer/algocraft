@@ -3,11 +3,14 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import fiuba.algo3.algocraft.excepciones.ErrorCapacidadDePoblacionInsuficiente;
 
 public class Equipo {
-	private Collection<IElemento> elementosActivos;
+	private Collection<Controlable> elementosActivos;
+	private Queue<Unidad> unidadesPreparadas;
 	private String nombre;
 	private Mapa mapa;
 	private GestorDeRecursos gestorDeRecursos;
@@ -15,7 +18,8 @@ public class Equipo {
 
 	public Equipo(String nombre){
 		this.nombre = nombre;
-		this.elementosActivos = new ArrayList<IElemento>();
+		this.elementosActivos = new ArrayList<Controlable>();
+		this.unidadesPreparadas = new LinkedList<Unidad>();
 		this.gestorDeRecursos = new GestorDeRecursos();
 		this.poblacionTotal = new FloatRango(0,200,10);
 	}
@@ -29,9 +33,19 @@ public class Equipo {
 	}
 	
 	public void pasarTurno(){
-		Iterator<IElemento> it = elementosActivos.iterator();
+		Iterator<Controlable> it = elementosActivos.iterator();
 		while (it.hasNext()){
 			it.next().pasarTurno();
+		}
+		
+		for (int i=1; i<=unidadesPreparadas.size(); i++){
+			Unidad u = unidadesPreparadas.remove();
+			mapa.agregarElemento(u.getPosicion().x(),u.getPosicion().y(), u);
+		}
+		Iterator<Unidad> it2 = this.unidadesPreparadas.iterator();
+		while (it2.hasNext()){
+			Unidad u = it2.next();
+			this.mapa.agregarElemento(u.getPosicion().x(),u.getPosicion().y(), u);
 		}
 	}
 
@@ -40,7 +54,7 @@ public class Equipo {
 		mapa.agregarEquipo(this);
 	}
 	
-	public void agregarElemento(IElemento elemento) {
+	public void agregarElemento(Controlable elemento) {
 		this.elementosActivos.add(elemento);
 	}
 	
@@ -68,7 +82,7 @@ public class Equipo {
 		this.elementosActivos.remove(elemento);
 	}
 
-	public boolean existen(Collection<IElemento> aBuscar) {
+	public boolean existen(Collection<Controlable> aBuscar) {
 		return this.elementosActivos.containsAll(aBuscar);
 	}
 
@@ -88,6 +102,10 @@ public class Equipo {
 		if (this.poblacionTotal.val() < suministro)
 					throw new ErrorCapacidadDePoblacionInsuficiente();
 		this.poblacionTotal.disminuir(suministro);
+	}
+
+	public void encolarUnidad(Unidad u) {
+		this.unidadesPreparadas.add(u);
 	}
 
 }

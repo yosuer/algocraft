@@ -54,5 +54,4 @@ public class Acceso extends Edificio implements ElementoProtoss,
 		this.creador.expulsarUnidad();
 		this.estadoFisico.regenerarse();
 	}
-
 }

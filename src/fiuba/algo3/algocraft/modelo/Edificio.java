@@ -7,46 +7,12 @@ import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaCons
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 
-public abstract class Edificio implements IElemento,IDaniable{
+public abstract class Edificio extends Controlable {
 	
-	protected int tiempoDeConstruccion;
-	protected Posicion posicion;
-	protected int costoMineral;
-	protected int costoVespeno;
-	protected Mapa mapa;
-	protected int nivel;
-	protected Collection<IElemento> edificiosRequeridos;
-	protected RazaEstado estadoFisico;
-	protected IEstado estado; //gestorDeVida
-	//protected ICreadorDeElementos creador;
+	protected ICreadorDeElementos creador;
 	
 	public Edificio(){
-		this.nivel = 0;
-		this.edificiosRequeridos = new ArrayList<IElemento>();
-	}
-	
-	public int vidaActual(){
-		return this.estadoFisico.getVida();
-	}
-	
-	public void setPosicion(Posicion posicion){
-		this.posicion = posicion;
-	}
-	
-	public Posicion getPosicion(){
-		return this.posicion;
-	}
-	
-	public int getNivel() {
-		return this.nivel;
-	}
-	
-	public int getCostoMineral() {
-		return this.costoMineral;
-	}
-	
-	public int getCostoVespeno() {
-		return this.costoVespeno;
+		this.vision = 6; //vision para todos los edificios
 	}
 	
 	public void moverseA(Posicion posicion){
@@ -60,16 +26,13 @@ public abstract class Edificio implements IElemento,IDaniable{
 		return (o.getClass() == this.getClass());		
 	}
 	
-	public Collection<IElemento> elementosRequeridos(){
-		return this.edificiosRequeridos;
-	}
-	
 	public void agregarseEn(Mapa mapa){
 		if ( !mapa.existenElementos(this.elementosRequeridos()) )
 				throw new NoExistenLosEdificiosrequeridosParaConstruir();
 		if ( mapa.estaOcupado(posicion.x(), posicion.y(), posicion.z()) )
 				throw new ErrorPosicionOcupada();
 		mapa.gastarRecursos(costoMineral, costoVespeno);
+		mapa.agregarControlable(this);
 		this.mapa = mapa;
 	}
 	

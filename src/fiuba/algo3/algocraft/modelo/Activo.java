@@ -2,9 +2,9 @@ package fiuba.algo3.algocraft.modelo;
 
 public class Activo implements IEstado {
 
-	private IElemento elemento;
+	private Controlable elemento;
 
-	public Activo(IElemento elemento) {
+	public Activo(Controlable elemento) {
 		this.elemento = elemento;
 	}
 

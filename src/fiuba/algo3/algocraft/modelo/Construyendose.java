@@ -5,9 +5,9 @@ import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 public class Construyendose implements IEstado {
 
 	private int tiempoDeConstruccion;
-	private IElemento elemento;
+	private Controlable elemento;
 
-	public Construyendose(IElemento elemento, int tiempo) {
+	public Construyendose(Controlable elemento, int tiempo) {
 		this.tiempoDeConstruccion = tiempo;
 		this.elemento = elemento;
 	}

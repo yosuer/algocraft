@@ -21,7 +21,7 @@ public class FloatRango {
 	public FloatRango(float minimo, float maximo, float actual){
 		min = minimo;
 		max = maximo;
-		actual = actual;
+		this.actual = actual;
 	}
 	
 	public float val(){

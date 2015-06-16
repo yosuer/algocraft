@@ -31,7 +31,7 @@ public class MapaTest {
 		
 		mapa.agregarElemento(1,1,mineral);
 		
-		Assert.assertEquals(mapa.getElemento(1,1,0),mineral);	
+		Assert.assertEquals(mineral,mapa.getElemento(1,1,0));	
 	}
 	
 	@Test
@@ -163,6 +163,7 @@ public class MapaTest {
 	@Test
 	public void test10_MoverUnaUnidadDentroDelMapa(){
 		Mapa mapa = new Mapa();
+		mapa.inicializarMapa();
 		Marine marine = new Marine();
 		
 		mapa.agregarElemento(1, 1, marine);
@@ -194,13 +195,14 @@ public class MapaTest {
 	@Test
 	public void test13_DepositoDeSuministrosAumentaPoblacionAlConstruirse(){
 		Mapa mapa = new Mapa();
+		mapa.inicializarMapa();
 		DepositoDeSuministros depo = new DepositoDeSuministros();
 		
-		mapa.agregarElemento(2, 2, depo);
+		mapa.agregarElemento(4, 4, depo);
 		
 		Assert.assertEquals(10,0,mapa.getPoblacionTotal());
 		
-		for (int i=1; i<=7; i++) mapa.pasarTurnoMapa();
+		for (int i=1; i<=8; i++) mapa.pasarTurnoMapa();
 		
 		Assert.assertEquals(15,0,mapa.getPoblacionTotal());
 	}

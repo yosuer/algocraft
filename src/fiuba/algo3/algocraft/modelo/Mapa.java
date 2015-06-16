@@ -11,24 +11,32 @@ public class Mapa {
 	private int largo; //y
 	private int alto; //z
 	
-	private Collection<IElemento> elementosActivos;
-	private Collection<Unidad> unidadesPreparadas;
+	//private Collection<IElemento> elementosActivos;
+	//private Collection<Unidad> unidadesPreparadas;
+	private Collection<Estatico> elementosEstaticos;
 	private GestorDeRecursos gestorDeRecursos;
 	private GestorDeUbicaciones gestorDeUbicaciones;
 	private FloatRango poblacionTotal;
+	
+	private Equipo equipo1;
+	private Equipo equipo2;
 	private Equipo equipoActual;
+	private Equipo equipoSiguiente;
 
 	public Mapa() {
 		this.ancho = 100;
 		this.largo = 100;
 		this.alto = 1;
-		this.elementosActivos = new ArrayList<IElemento>();
-		this.unidadesPreparadas = new ArrayList<Unidad>();
+		//this.elementosActivos = new ArrayList<IElemento>();
+		//this.unidadesPreparadas = new ArrayList<Unidad>();
+		this.elementosEstaticos = new ArrayList<Estatico>();
 		this.gestorDeUbicaciones = new GestorDeUbicaciones(ancho,largo,alto);
 		this.gestorDeRecursos = new GestorDeRecursos();
 		this.poblacionTotal = new FloatRango(200);
 		this.poblacionTotal.disminuir(190);
-		this.equipoActual = new Equipo("equipo");
+		this.equipo1 = new Equipo("EquipoRocket");
+		this.equipo2 = new Equipo("EquipoNoSe");
+		this.inicializarMapa();
 	}
 
 	public int ancho() {
@@ -75,23 +83,30 @@ public class Mapa {
 		} catch (RuntimeException e){
 			throw e;
 		}
+//		this.equipoActual.agregarElemento(elemento);
+//		this.ubicarElemento(elemento, pos);
+	}
+	
+	public void agregarControlable(Controlable elemento) {
 		this.equipoActual.agregarElemento(elemento);
-		this.elementosActivos.add(elemento);
-		this.ubicarElemento(elemento, pos);
+		this.ubicarElemento(elemento, elemento.getPosicion());
+	}
+	
+	public void agregarEstatico(Estatico elemento) {
+		this.elementosEstaticos.add(elemento);
+		this.ubicarElemento(elemento, elemento.getPosicion());
 	}
 	
 	public void quitarElemento(IElemento elemento) {
 		if (!this.estaOcupado(elemento.getPosicion()))
 				throw new ErrorElementoNoEncontrado();
-
 		this.desocuparPosicion(elemento.getPosicion());
-		this.elementosActivos.remove(elemento);
 		this.equipoActual.removerElemento(elemento);
 	}
 	
-	public boolean existenElementos(Collection<IElemento> aBuscar){
-		this.equipoActual.existen(aBuscar);
-		return this.elementosActivos.containsAll(aBuscar);
+	public boolean existenElementos(Collection<Controlable> aBuscar){
+		return this.equipoActual.existen(aBuscar);
+		//return this.elementosActivos.containsAll(aBuscar);
 	}
 	
 	public void inicializarMapa() {
@@ -104,13 +119,16 @@ public class Mapa {
 		for (int x=95; x<=99; x++) this.agregarElemento(x, 99, new Mineral());
 		for (int y=95; y<=98; y++) this.agregarElemento(99, y, new Mineral());
 		this.agregarElemento(95,97,new Vespeno());
+		
+		this.equipoActual = equipo1;
+		this.equipoSiguiente = equipo2;
 	}
 
 	public Collection<Posicion> getHojaDeRuta(Posicion inicial, Posicion destino) {
 		return this.gestorDeUbicaciones.getHojaDeRuta(inicial, destino);
 	}
 	
-	public Collection<Posicion> moverElemento(IElemento e, int x, int y) {
+	public Collection<Posicion> moverElemento(Controlable e, int x, int y) {
 		Collection<Posicion> hojaDeRuta = null;
 		if (!this.estaOcupado(x, y, e.getNivel())) {
 			Collection<Posicion> camino = 
@@ -127,23 +145,28 @@ public class Mapa {
 			}
 			hojaDeRuta = camino;
 		}
-		
 		return hojaDeRuta;
 	}
 	
 	public void pasarTurnoMapa(){
-		//this.equipoActual.pasarTurno();
-		Iterator<IElemento> it = elementosActivos.iterator();
-		while (it.hasNext()){
-			it.next().pasarTurno();
-		}
+		Equipo equipoAux;
+		this.equipoActual.pasarTurno();
+//		Iterator<IElemento> it = elementosActivos.iterator();
+//		while (it.hasNext()){
+//			it.next().pasarTurno();
+//		}
 		
-		Iterator<Unidad> it2 = this.unidadesPreparadas.iterator();
-		while (it2.hasNext()){
-			Unidad u = it2.next();
-			this.agregarElemento(u.getPosicion().x(),u.getPosicion().y(), u);
-		}
-		this.unidadesPreparadas.clear();
+		this.equipoSiguiente.pasarTurno();
+		
+		equipoAux = this.equipoActual;
+		this.equipoActual = this.equipoSiguiente;
+		this.equipoSiguiente = equipoAux;
+//		Iterator<Unidad> it2 = this.unidadesPreparadas.iterator();
+//		while (it2.hasNext()){
+//			Unidad u = it2.next();
+//			this.agregarElemento(u.getPosicion().x(),u.getPosicion().y(), u);
+//		}
+//		this.unidadesPreparadas.clear();
 		
 		//////////////////////////////////
 //		System.out.println("Poblacion: " + getPoblacionTotal());
@@ -156,7 +179,8 @@ public class Mapa {
 	}
 	
 	public void encolarUnidad(Unidad u){
-		this.unidadesPreparadas.add(u);
+		this.equipoActual.encolarUnidad(u);
+		//this.unidadesPreparadas.add(u);
 	}
 	
 	public Posicion getPosicionProxima(Posicion posAnt){
@@ -168,45 +192,45 @@ public class Mapa {
 	}
 
 	public int getMineralTotal() {
-		int m = this.equipoActual.getMineralTotal();
-		return this.gestorDeRecursos.getMineralTotal();
+		return this.equipoActual.getMineralTotal();
+		//return this.gestorDeRecursos.getMineralTotal();
 	}
 
 	public int getVespenoTotal() {
-		int m = this.equipoActual.getVespenoTotal();
-		return this.gestorDeRecursos.getVespenoTotal();
+		return this.equipoActual.getVespenoTotal();
+		//return this.gestorDeRecursos.getVespenoTotal();
 	}
 
 	public void recibirMineral(int recolectado) {
 		this.equipoActual.recibirMineral(recolectado);
-		this.gestorDeRecursos.recibirMineral(recolectado);
+		//this.gestorDeRecursos.recibirMineral(recolectado);
 	}
 
 	public void recibirVespeno(int recolectado) {
 		this.equipoActual.recibirVespeno(recolectado);
-		this.gestorDeRecursos.recibirVespeno(recolectado);
+		//this.gestorDeRecursos.recibirVespeno(recolectado);
 	}
 	
 	public void gastarRecursos(int mineral, int vespeno){
 		this.equipoActual.gastarRecursos(mineral,vespeno);
-		this.gestorDeRecursos.gastarRecursos(mineral,vespeno);
+		//this.gestorDeRecursos.gastarRecursos(mineral,vespeno);
 	}
 
 	public void consumirPoblacion(float suministro) {
-		if (this.poblacionTotal.val() < suministro)
-					throw new ErrorCapacidadDePoblacionInsuficiente();
-		this.poblacionTotal.disminuir(suministro);
-		//this.equipoActual.consumirPoblacion(suministro);
+//		if (this.poblacionTotal.val() < suministro)
+//					throw new ErrorCapacidadDePoblacionInsuficiente();
+//		this.poblacionTotal.disminuir(suministro);
+		this.equipoActual.consumirPoblacion(suministro);
 	}
 	
 	public void aumentarPoblacion(float suministro) {
 		this.equipoActual.aumentarPoblacion(suministro);
-		this.poblacionTotal.aumentar(suministro);
+		//this.poblacionTotal.aumentar(suministro);
 	}
 	
 	public void restarPoblacion(float suministro) {
 		this.equipoActual.restarPoblacion(suministro);
-		this.poblacionTotal.disminuir(suministro);
+		//this.poblacionTotal.disminuir(suministro);
 	}
 
 

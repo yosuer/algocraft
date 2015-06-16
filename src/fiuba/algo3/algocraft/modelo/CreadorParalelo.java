@@ -6,12 +6,12 @@ import java.util.NoSuchElementException;
 
 public class CreadorParalelo implements ICreadorDeElementos{
 	
-	private List<IElemento> unidades;
+	private List<Controlable> unidades;
 	private IElementoCreador elemento;
 	
 	public CreadorParalelo(IElementoCreador elementoCreador){
 		this.elemento = elementoCreador;
-		this.unidades = new LinkedList<IElemento>();
+		this.unidades = new LinkedList<Controlable>();
 	}
 
 	@Override

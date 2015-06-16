@@ -7,7 +7,7 @@ public class Criadero extends Edificio implements IElementoCreador{
 		this.costoVespeno = 100;
 		this.tiempoDeConstruccion = 10;
 		this.estadoFisico = new Zerg(1500);
-		//this.creador = new CreadorEnParalelo(this);
+		this.creador = new CreadorEnCola(this);
 	}
 
 	@Override

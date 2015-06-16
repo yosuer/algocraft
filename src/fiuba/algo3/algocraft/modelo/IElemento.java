@@ -1,8 +1,5 @@
 package fiuba.algo3.algocraft.modelo;
 
-import java.util.Collection;
-
-
 public interface IElemento {
 
 	public Posicion getPosicion();
@@ -13,17 +10,6 @@ public interface IElemento {
 	
 	public int getNivel();
 	
-	public void moverseA(Posicion posicion);
-
-	public Collection<IElemento> elementosRequeridos();
+	public void eliminarseDelMapa(Mapa mapa); 
 	
-	public void actualizarEstado(IEstado nuevoEstado);
-	
-	public void pasarTurno();
-	
-	public void ejecutarAcciones();
-
-	public void eliminarseDelMapa(Mapa mapa);
-	
-	public int vidaActual();
 }
