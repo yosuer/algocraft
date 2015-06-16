@@ -18,7 +18,7 @@ public class IntRango {
 		actual = maximo;
 	}
 	
-	public int val(){
+	public int valor(){
 		return actual;
 	}
 	

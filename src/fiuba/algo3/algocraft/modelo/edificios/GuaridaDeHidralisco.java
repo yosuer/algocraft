@@ -1,7 +1,11 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.edificios;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
-import fiuba.algo3.algocraft.modelo.edificios.ReservaDeReproduccion;
+import fiuba.algo3.algocraft.modelo.CreadorEnCola;
+import fiuba.algo3.algocraft.modelo.Edificio;
+import fiuba.algo3.algocraft.modelo.IElementoCreador;
+import fiuba.algo3.algocraft.modelo.Unidad;
+import fiuba.algo3.algocraft.modelo.Zerg;
 import fiuba.algo3.algocraft.modelo.unidades.Hidralisco;
 
 public class GuaridaDeHidralisco extends Edificio 
@@ -30,7 +34,7 @@ public class GuaridaDeHidralisco extends Edificio
 	@Override
 	public void crearUnidad(Unidad unidad) {
 		this.estado.estaActivo();
-		this.mapa.gastarRecursos(unidad.costoMineral, unidad.costoVespeno);
+		this.mapa.gastarRecursos(unidad.getCostoMineral(), unidad.getCostoVespeno());
 		this.creador.prepararUnidad(unidad);
 	}
 	

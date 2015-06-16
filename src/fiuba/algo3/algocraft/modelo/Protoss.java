@@ -12,7 +12,7 @@ public class Protoss implements RazaEstado {
 
 	@Override
 	public int getVida() {
-		return vida.val() + escudo.val();
+		return vida.valor() + escudo.valor();
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class Protoss implements RazaEstado {
 	
 	@Override
 	public int getEscudo() {
-		return this.escudo.val();
+		return this.escudo.valor();
 	}
 
 	@Override

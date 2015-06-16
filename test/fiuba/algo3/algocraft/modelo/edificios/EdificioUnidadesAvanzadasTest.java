@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
-import fiuba.algo3.algocraft.modelo.GuaridaDeHidralisco;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.edificios.ArchivoTemplario;
 import fiuba.algo3.algocraft.modelo.edificios.Barraca;

@@ -10,7 +10,7 @@ public class Terran implements RazaEstado {
 
 	@Override
 	public int getVida() {
-		return this.vida.val();
+		return this.vida.valor();
 	}
 
 	@Override
