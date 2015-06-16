@@ -57,9 +57,9 @@ public abstract class Unidad extends Controlable
 	
 	public void agregarseEn(Mapa mapa){
 		Posicion pos = mapa.getPosicionProxima(this.posicion);
+
 		mapa.ubicarElemento(this, pos);
 		this.mapa = mapa;
-		this.mapa.consumirPoblacion(this.suministro);
 	}
 	
 	public Posicion buscarPosicionEnMapa(Mapa mapa){

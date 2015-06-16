@@ -17,5 +17,7 @@ public class GestorDeMovimientosTest {
 		
 		Assert.assertEquals(6, camino.size());
 	}
+	
+	
 
 }

@@ -51,8 +51,8 @@ public class VespenoTest {
 		Recurso vespeno = new Vespeno();
 		ExtractorDeGasVespeno extractor = new Refineria();
 		
-		mapa.agregarElemento(2, 5, vespeno);
-		mapa.agregarElemento(2, 5, extractor);
+		mapa.agregarElemento(3, 5, vespeno);
+		mapa.agregarElemento(3, 5, extractor);
 		
 		vespeno.asignarExtractor(extractor);
 		

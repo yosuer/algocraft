@@ -31,8 +31,7 @@ public class Fabrica extends Edificio implements ElementoProtoss,
 
 	@Override
 	public void enviarUnidadAlMapa(Unidad unidad) {
-		Posicion pos = new Posicion(2,2,0);
-		unidad.setPosicion(pos);
+		unidad.setPosicion(this.posicion);
 		this.mapa.encolarUnidad(unidad);
 	}
 

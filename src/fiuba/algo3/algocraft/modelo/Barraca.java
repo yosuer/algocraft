@@ -28,10 +28,12 @@ public class Barraca extends Edificio
 	}
 
 	@Override
-	public void crearUnidad(Unidad u) {
+	public void crearUnidad(Unidad unidad) {
 		this.estado.estaActivo();
-		this.mapa.gastarRecursos(u.costoMineral, u.costoVespeno);
-		this.creador.prepararUnidad(u);
+		this.mapa.gastarRecursos(unidad.costoMineral, unidad.costoVespeno);
+		this.mapa.consumirPoblacion(unidad.getSuministro());
+		this.creador.prepararUnidad(unidad);
+
 	}
 	
 	public void ejecutarAcciones(){

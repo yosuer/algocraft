@@ -34,6 +34,7 @@ public class Acceso extends Edificio implements ElementoProtoss,
 	public void crearUnidad(Unidad unidad) {
 		this.estado.estaActivo();
 		this.mapa.gastarRecursos(unidad.costoMineral, unidad.costoVespeno);
+		this.mapa.consumirPoblacion(unidad.getSuministro());
 		this.creador.prepararUnidad(unidad);
 	}
 	

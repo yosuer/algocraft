@@ -21,7 +21,7 @@ public class Equipo {
 		this.elementosActivos = new ArrayList<Controlable>();
 		this.unidadesPreparadas = new LinkedList<Unidad>();
 		this.gestorDeRecursos = new GestorDeRecursos();
-		this.poblacionTotal = new FloatRango(0,200,10);
+		this.poblacionTotal = new FloatRango(0,200,0);
 	}
 	
 	public String getNombre() {
@@ -90,6 +90,8 @@ public class Equipo {
 		return this.elementosActivos.size();
 	}
 	
+	
+	
 	public void aumentarPoblacion(float suministro) {
 		this.poblacionTotal.aumentar(suministro);
 	}
@@ -106,6 +108,10 @@ public class Equipo {
 
 	public void encolarUnidad(Unidad u) {
 		this.unidadesPreparadas.add(u);
+	}
+
+	public double getPoblacionTotal() {
+		return this.poblacionTotal.val();
 	}
 
 }

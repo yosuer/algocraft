@@ -11,12 +11,8 @@ public class Mapa {
 	private int largo; //y
 	private int alto; //z
 	
-	//private Collection<IElemento> elementosActivos;
-	//private Collection<Unidad> unidadesPreparadas;
 	private Collection<Estatico> elementosEstaticos;
-	private GestorDeRecursos gestorDeRecursos;
 	private GestorDeUbicaciones gestorDeUbicaciones;
-	private FloatRango poblacionTotal;
 	
 	private Equipo equipo1;
 	private Equipo equipo2;
@@ -27,15 +23,12 @@ public class Mapa {
 		this.ancho = 100;
 		this.largo = 100;
 		this.alto = 1;
-		//this.elementosActivos = new ArrayList<IElemento>();
-		//this.unidadesPreparadas = new ArrayList<Unidad>();
 		this.elementosEstaticos = new ArrayList<Estatico>();
 		this.gestorDeUbicaciones = new GestorDeUbicaciones(ancho,largo,alto);
-		this.gestorDeRecursos = new GestorDeRecursos();
-		this.poblacionTotal = new FloatRango(200);
-		this.poblacionTotal.disminuir(190);
 		this.equipo1 = new Equipo("EquipoRocket");
 		this.equipo2 = new Equipo("EquipoNoSe");
+		this.equipo1.setMapa(this);
+		this.equipo2.setMapa(this);
 		this.inicializarMapa();
 	}
 
@@ -74,6 +67,21 @@ public class Mapa {
 		this.gestorDeUbicaciones.ocuparPosicion(elemento,pos);
 	}
 	
+	public void inicializarMapa() {
+		//Jugador1
+		for (int x=3; x<=6; x++) this.agregarElemento(x, 2, new Mineral());	
+		for (int y=2; y<=6; y++) this.agregarElemento(2, y, new Mineral());
+		this.agregarElemento(4,6,new Vespeno());
+		
+		//Jugador2
+		for (int x=95; x<=99; x++) this.agregarElemento(x, 99, new Mineral());
+		for (int y=95; y<=98; y++) this.agregarElemento(99, y, new Mineral());
+		this.agregarElemento(95,97,new Vespeno());
+		
+		this.equipoActual = equipo1;
+		this.equipoSiguiente = equipo2;
+	}
+	
 	public void agregarElemento(int x, int y, IElemento elemento) {
 		
 		Posicion pos = new Posicion(x,y,elemento.getNivel());
@@ -83,8 +91,6 @@ public class Mapa {
 		} catch (RuntimeException e){
 			throw e;
 		}
-//		this.equipoActual.agregarElemento(elemento);
-//		this.ubicarElemento(elemento, pos);
 	}
 	
 	public void agregarControlable(Controlable elemento) {
@@ -106,22 +112,6 @@ public class Mapa {
 	
 	public boolean existenElementos(Collection<Controlable> aBuscar){
 		return this.equipoActual.existen(aBuscar);
-		//return this.elementosActivos.containsAll(aBuscar);
-	}
-	
-	public void inicializarMapa() {
-		//Jugador1
-		for (int x=3; x<=6; x++) this.agregarElemento(x, 2, new Mineral());	
-		for (int y=2; y<=6; y++) this.agregarElemento(2, y, new Mineral());
-		this.agregarElemento(4,6,new Vespeno());
-		
-		//Jugador2
-		for (int x=95; x<=99; x++) this.agregarElemento(x, 99, new Mineral());
-		for (int y=95; y<=98; y++) this.agregarElemento(99, y, new Mineral());
-		this.agregarElemento(95,97,new Vespeno());
-		
-		this.equipoActual = equipo1;
-		this.equipoSiguiente = equipo2;
 	}
 
 	public Collection<Posicion> getHojaDeRuta(Posicion inicial, Posicion destino) {
@@ -149,24 +139,13 @@ public class Mapa {
 	}
 	
 	public void pasarTurnoMapa(){
-		Equipo equipoAux;
 		this.equipoActual.pasarTurno();
-//		Iterator<IElemento> it = elementosActivos.iterator();
-//		while (it.hasNext()){
-//			it.next().pasarTurno();
-//		}
-		
 		this.equipoSiguiente.pasarTurno();
 		
+		Equipo equipoAux;
 		equipoAux = this.equipoActual;
 		this.equipoActual = this.equipoSiguiente;
 		this.equipoSiguiente = equipoAux;
-//		Iterator<Unidad> it2 = this.unidadesPreparadas.iterator();
-//		while (it2.hasNext()){
-//			Unidad u = it2.next();
-//			this.agregarElemento(u.getPosicion().x(),u.getPosicion().y(), u);
-//		}
-//		this.unidadesPreparadas.clear();
 		
 		//////////////////////////////////
 //		System.out.println("Poblacion: " + getPoblacionTotal());
@@ -180,7 +159,6 @@ public class Mapa {
 	
 	public void encolarUnidad(Unidad u){
 		this.equipoActual.encolarUnidad(u);
-		//this.unidadesPreparadas.add(u);
 	}
 	
 	public Posicion getPosicionProxima(Posicion posAnt){
@@ -188,49 +166,39 @@ public class Mapa {
 	}
 
 	public double getPoblacionTotal() {
-		return this.poblacionTotal.val();
+		return this.equipo1.getPoblacionTotal() + this.equipo2.getPoblacionTotal();
 	}
 
 	public int getMineralTotal() {
 		return this.equipoActual.getMineralTotal();
-		//return this.gestorDeRecursos.getMineralTotal();
 	}
 
 	public int getVespenoTotal() {
 		return this.equipoActual.getVespenoTotal();
-		//return this.gestorDeRecursos.getVespenoTotal();
 	}
 
 	public void recibirMineral(int recolectado) {
 		this.equipoActual.recibirMineral(recolectado);
-		//this.gestorDeRecursos.recibirMineral(recolectado);
 	}
 
 	public void recibirVespeno(int recolectado) {
 		this.equipoActual.recibirVespeno(recolectado);
-		//this.gestorDeRecursos.recibirVespeno(recolectado);
 	}
 	
 	public void gastarRecursos(int mineral, int vespeno){
 		this.equipoActual.gastarRecursos(mineral,vespeno);
-		//this.gestorDeRecursos.gastarRecursos(mineral,vespeno);
 	}
 
 	public void consumirPoblacion(float suministro) {
-//		if (this.poblacionTotal.val() < suministro)
-//					throw new ErrorCapacidadDePoblacionInsuficiente();
-//		this.poblacionTotal.disminuir(suministro);
 		this.equipoActual.consumirPoblacion(suministro);
 	}
 	
 	public void aumentarPoblacion(float suministro) {
 		this.equipoActual.aumentarPoblacion(suministro);
-		//this.poblacionTotal.aumentar(suministro);
 	}
 	
 	public void restarPoblacion(float suministro) {
 		this.equipoActual.restarPoblacion(suministro);
-		//this.poblacionTotal.disminuir(suministro);
 	}
 
 

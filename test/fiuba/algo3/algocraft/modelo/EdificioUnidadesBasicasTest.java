@@ -52,7 +52,7 @@ public class EdificioUnidadesBasicasTest {
 	@Test
 	public void test02_CrearUnaBarracaYEncolarUnMarineYExpedirMarine(){
 		Mapa mapa = new Mapa();
-		
+		mapa.aumentarPoblacion(10);
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(3,3, barraca);
 		for (int i=1; i<=12; i++) mapa.pasarTurnoMapa();
@@ -68,23 +68,23 @@ public class EdificioUnidadesBasicasTest {
 	public void test02_CrearUnaBarracaYCrear5Marine(){
 		Mapa mapa = new Mapa();
 		mapa.recibirMineral(1000);
+		mapa.aumentarPoblacion(10);
 
 		Barraca barraca = new Barraca();
-		mapa.agregarElemento(2,2, barraca);
+		mapa.agregarElemento(3,3, barraca);
 		for (int i=1; i<=12; i++) mapa.pasarTurnoMapa();
 		
 		barraca.crearMarine();
 		barraca.crearMarine();
 		barraca.crearMarine();
 		barraca.crearMarine();
-		barraca.crearMarine();
 		
-		for (int i=1; i<=15; i++) mapa.pasarTurnoMapa();
+		for (int i=1; i<=20; i++) mapa.pasarTurnoMapa();
 		
+		Assert.assertNotNull(mapa.getElemento(3, 4, 0));
+		Assert.assertNotNull(mapa.getElemento(4, 3, 0));
+		Assert.assertNotNull(mapa.getElemento(4, 4, 0));
 		Assert.assertNotNull(mapa.getElemento(1, 1, 0));
-		Assert.assertNotNull(mapa.getElemento(1, 2, 0));
-		Assert.assertNotNull(mapa.getElemento(1, 3, 0));
-		Assert.assertNotNull(mapa.getElemento(2, 1, 0));
-		Assert.assertNotNull(mapa.getElemento(2, 2, 0)); //barraca
+		Assert.assertNotNull(mapa.getElemento(3, 3, 0)); //barraca
 	}
 }
