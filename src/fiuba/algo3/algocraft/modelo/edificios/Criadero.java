@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.edificios;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.CreadorEnCola;
 import fiuba.algo3.algocraft.modelo.Edificio;
 import fiuba.algo3.algocraft.modelo.IElementoCreador;
@@ -14,6 +15,7 @@ public class Criadero extends Edificio implements IElementoCreador{
 		this.tiempoDeConstruccion = 10;
 		this.estadoFisico = new Zerg(1500);
 		this.creador = new CreadorEnCola(this);
+		this.estado = new Construyendose(this, 10);
 	}
 
 	@Override

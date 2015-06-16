@@ -15,10 +15,15 @@ public abstract class Controlable implements IDaniable, IElemento{
 	protected RazaEstado estadoFisico;
 	protected IEstado estado; //gestorDeVida
 	protected int vision;
+	protected Equipo equipo;
 	
 	public Controlable(){
 		this.nivel = 0;
 		this.edificiosRequeridos = new ArrayList<Controlable>();
+	}
+	
+	public void setEquipo(Equipo equipo){
+		this.equipo = equipo;
 	}
 	
 	public void setPosicion(Posicion posicion){

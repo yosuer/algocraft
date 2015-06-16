@@ -52,7 +52,7 @@ public abstract class Edificio extends Controlable {
 	
 	public void actualizarEstado(IEstado estado){
 		this.estado = estado;
-		System.out.print("Actua");
+		//System.out.print("Actua");
 	}
 	
 	public void ejecutarAcciones(){

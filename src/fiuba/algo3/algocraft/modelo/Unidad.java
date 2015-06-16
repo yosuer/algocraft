@@ -57,7 +57,7 @@ public abstract class Unidad extends Controlable
 	
 	public void agregarseEn(Mapa mapa){
 		Posicion pos = mapa.getPosicionProxima(this.posicion);
-
+		mapa.agregarControlable(this);
 		mapa.ubicarElemento(this, pos);
 		this.mapa = mapa;
 	}

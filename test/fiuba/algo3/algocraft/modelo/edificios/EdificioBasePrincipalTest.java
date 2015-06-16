@@ -64,14 +64,14 @@ public class EdificioBasePrincipalTest {
 		
 		Criadero criadero = new Criadero();
 		
-		mapa.agregarElemento(2, 3, criadero);
-		Assert.assertEquals(mapa.getElemento(2, 3, 0), new Criadero());
+		mapa.agregarElemento(3, 3, criadero);
+		Assert.assertEquals(mapa.getElemento(3, 3, 0), new Criadero());
 		
 		for (int i=1; i <=10; i++){
 			mapa.pasarTurnoMapa();
 		}
 		
-		Assert.assertEquals(criadero.getTiempoDeConstruccion(),0);
+		Assert.assertEquals(0,criadero.getTiempoDeConstruccion());
 		
 		Assert.assertEquals(criadero.vidaActual(), 1500);
 		Assert.assertEquals(criadero.getCostoMineral(), 100);

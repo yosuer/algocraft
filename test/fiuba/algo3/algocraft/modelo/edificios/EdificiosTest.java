@@ -23,6 +23,7 @@ public class EdificiosTest {
 	@Test
 	public void test02_UnaBarracaPuedeCrearUnidadesSiTerminoDeContruirse(){
 		Mapa mapa = new Mapa();
+		mapa.aumentarPoblacion(10);
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(1, 1, barraca);
 		for (int i=1; i <=12; i++){

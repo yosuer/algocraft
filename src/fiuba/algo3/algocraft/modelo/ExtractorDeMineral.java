@@ -20,8 +20,7 @@ public abstract class ExtractorDeMineral extends Edificio
 	public void agregarseEn(Mapa mapa){
 		mapa.gastarRecursos(costoMineral, costoVespeno);
 		try {
-		Recurso mineral = 
-				(Mineral) mapa.getElemento(posicion.x(), posicion.y(), posicion.z());
+		Recurso mineral = (Mineral) mapa.getElemento(posicion.x(), posicion.y(), posicion.z());
 		mineral.asignarExtractor(this);
 		} catch (ErrorExtractorDeRecursosIncompatible e) {
 			throw new ErrorAgregandoElementoAlMapa();
@@ -32,12 +31,12 @@ public abstract class ExtractorDeMineral extends Edificio
 	}
 	
 	public void ejecutarAcciones(){
-		this.depositarRecolectado();
+		this.depositarRecolectado(this.equipo);
 		this.realizarExtraccion();
 	}
 	
-	public void depositarRecolectado() {
-		this.mapa.recibirMineral(this.recolectado);
+	public void depositarRecolectado(Equipo equipo) {
+		this.mapa.recibirMineral(this.recolectado,this.equipo);
 		this.recolectado = 0;
 	}
 	

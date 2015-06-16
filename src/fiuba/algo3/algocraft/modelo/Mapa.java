@@ -177,8 +177,13 @@ public class Mapa {
 		return this.equipoActual.getVespenoTotal();
 	}
 
+	public void recibirMineral(int recolectado, Equipo equipo) {
+		equipo.recibirMineral(recolectado);
+	}
+	
 	public void recibirMineral(int recolectado) {
-		this.equipoActual.recibirMineral(recolectado);
+		equipo1.recibirMineral(recolectado);
+		equipo2.recibirMineral(recolectado);
 	}
 
 	public void recibirVespeno(int recolectado) {
@@ -193,12 +198,17 @@ public class Mapa {
 		this.equipoActual.consumirPoblacion(suministro);
 	}
 	
-	public void aumentarPoblacion(float suministro) {
-		this.equipoActual.aumentarPoblacion(suministro);
+	public void aumentarPoblacion(float suministro, Equipo equipo) {
+		equipo.aumentarPoblacion(suministro);
 	}
 	
-	public void restarPoblacion(float suministro) {
-		this.equipoActual.restarPoblacion(suministro);
+	public void aumentarPoblacion(float suministro) {
+		equipo1.aumentarPoblacion(suministro);
+		equipo2.aumentarPoblacion(suministro);
+	}
+	
+	public void restarPoblacion(float suministro, Equipo equipo) {
+		equipo.restarPoblacion(suministro);
 	}
 
 

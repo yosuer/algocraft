@@ -23,7 +23,7 @@ public class MovimientoUnidadesTest {
 		
 		Collection<Posicion> caminado = mapa.moverElemento(marine, 3,3);
 		
-		Assert.assertEquals(3, caminado.size());
+		Assert.assertEquals(11, caminado.size());
 		Assert.assertEquals(mapa.getElemento(3, 3, 0),marine);
 		Assert.assertNull(mapa.getElemento(1, 1, 0));
 	}
@@ -35,17 +35,14 @@ public class MovimientoUnidadesTest {
 		ObstaculoTerrestre obs = new ObstaculoTerrestre();
 		
 		mapa.agregarElemento(1, 2, obs);
-		mapa.agregarElemento(2, 2, obs);
-		
 		mapa.agregarElemento(1, 3, marine);
 		
 		Assert.assertEquals(mapa.getElemento(1,3,0),marine);
 		Assert.assertEquals(mapa.getElemento(1,2,0),obs);
-		Assert.assertEquals(mapa.getElemento(2,2,0),obs);
 		
 		Collection<Posicion> caminado = mapa.moverElemento(marine, 1,1);
 		
-		Assert.assertEquals(5, caminado.size());
+		Assert.assertEquals(16, caminado.size());
 		Assert.assertEquals(mapa.getElemento(1, 1, 0),marine);
 		Assert.assertNull(mapa.getElemento(1, 3, 0));
 	}

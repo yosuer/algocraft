@@ -26,12 +26,12 @@ public class AmoSupremo extends Unidad {
 	
 	public void agregarseEn(Mapa mapa){
 		super.agregarseEn(mapa);
-		mapa.aumentarPoblacion(poblacion);
+		mapa.aumentarPoblacion(poblacion,equipo);
 	}
 	
 	public void eliminarseDelMapa(Mapa mapa){
 		super.eliminarseDelMapa(mapa);
-		mapa.restarPoblacion(this.poblacion);
+		mapa.restarPoblacion(this.poblacion,equipo);
 	}
 
 }

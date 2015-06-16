@@ -55,6 +55,7 @@ public class Equipo {
 	}
 	
 	public void agregarElemento(Controlable elemento) {
+		elemento.setEquipo(this);
 		this.elementosActivos.add(elemento);
 	}
 	

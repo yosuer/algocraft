@@ -25,7 +25,7 @@ public class AmoSupremoTest {
 		
 		mapa.agregarElemento(1, 1, amo);
 		
-		Assert.assertEquals(15.0,mapa.getPoblacionTotal(),0.0);
+		Assert.assertEquals(5.0,mapa.getPoblacionTotal(),0.0);
 	}
 	
 	@Test
@@ -35,11 +35,11 @@ public class AmoSupremoTest {
 		mapa.agregarElemento(1, 1, new AmoSupremo());
 		mapa.agregarElemento(3, 3, new AmoSupremo());
 		
-		Assert.assertEquals(20.0, mapa.getPoblacionTotal(),0.0);
+		Assert.assertEquals(10.0, mapa.getPoblacionTotal(),0.0);
 		
 		mapa.getElemento(1, 1, 1).eliminarseDelMapa(mapa);
 		mapa.getElemento(3, 3, 1).eliminarseDelMapa(mapa);
-		Assert.assertEquals(10.0, mapa.getPoblacionTotal(), 0.0);
+		Assert.assertEquals(0.0, mapa.getPoblacionTotal(), 0.0);
 	}
 	
 }

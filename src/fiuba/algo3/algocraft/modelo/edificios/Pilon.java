@@ -34,7 +34,7 @@ public class Pilon extends Edificio implements ElementoProtoss {
 	
 	public void agregarseEn(Mapa mapa){
 		super.agregarseEn(mapa);
-		this.mapa.aumentarPoblacion(poblacion);
+		this.mapa.aumentarPoblacion(poblacion,equipo);
 	}
 
 }

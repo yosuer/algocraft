@@ -22,12 +22,12 @@ public class DepositoDeSuministros extends Edificio {
 	
 	public void agregarseEn(Mapa mapa){
 		super.agregarseEn(mapa);
-		this.mapa.aumentarPoblacion(poblacion);
+		this.mapa.aumentarPoblacion(poblacion,equipo);
 	}
 	
 	public void eliminarseDelMapa(Mapa mapa){
 		super.eliminarseDelMapa(mapa);
-		mapa.restarPoblacion(this.poblacion);
+		mapa.restarPoblacion(this.poblacion,equipo);
 	}
 
 }
