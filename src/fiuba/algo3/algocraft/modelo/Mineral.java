@@ -1,7 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
-import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 public class Mineral extends Recurso {
 
