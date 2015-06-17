@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo.edificios;
 
-import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.CreadorEnCola;
 import fiuba.algo3.algocraft.modelo.Edificio;
 import fiuba.algo3.algocraft.modelo.IElementoCreador;
@@ -14,10 +14,10 @@ public class GuaridaDeHidralisco extends Edificio
 	public GuaridaDeHidralisco() {
 		this.costoMineral = 150;
 		this.costoVespeno = 100;
-		this.tiempoDeConstruccion = 10;
 		this.edificiosRequeridos.add(new ReservaDeReproduccion());
 		this.estadoFisico = new Zerg(1250);
 		this.creador = new CreadorEnCola(this);
+		this.estado = new Construyendose(this,10);
 	}
 
 	//Faltaria poner que se hace Hidralisco a raiz de una Larva

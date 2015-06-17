@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.ElementoProtoss;
 import fiuba.algo3.algocraft.modelo.IUnidadMagica;
 import fiuba.algo3.algocraft.modelo.IntRango;
@@ -19,7 +20,6 @@ public class AltoTemplario extends Unidad implements ElementoProtoss,IUnidadMagi
 		this.vision = 7;
 		this.costoMineral = 50;
 		this.costoVespeno = 150;
-		this.tiempoDeConstruccion = 7;
 		this.danioAire = 0;
 		this.danioTierra = 0;
 		this.suministro = 2;
@@ -27,7 +27,7 @@ public class AltoTemplario extends Unidad implements ElementoProtoss,IUnidadMagi
 		this.rangoAtaqueTierra = 0;
 		this.estadoFisico = new Protoss(40,40);
 		this.nivel = 0;
-		
+		this.estado = new Construyendose(this,7);
 		this.energia = new IntRango(200);
 		this.inicializarEnergia();
 	}

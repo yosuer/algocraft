@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.IUnidadMagica;
 import fiuba.algo3.algocraft.modelo.IntRango;
 import fiuba.algo3.algocraft.modelo.Magia;
@@ -18,7 +19,6 @@ public class Reina extends Unidad implements IUnidadMagica {
 		this.vision = 10;
 		this.costoMineral = 100;
 		this.costoVespeno = 100;
-		this.tiempoDeConstruccion = 7;
 		this.danioAire = 0;
 		this.danioTierra = 0;
 		this.suministro = 2;
@@ -26,7 +26,7 @@ public class Reina extends Unidad implements IUnidadMagica {
 		this.rangoAtaqueTierra = 0;
 		this.estadoFisico = new Zerg(120);
 		this.nivel = 1;
-		
+		this.estado = new Construyendose(this,7);
 		this.energia = new IntRango(200);
 		this.inicializarEnergia();
 

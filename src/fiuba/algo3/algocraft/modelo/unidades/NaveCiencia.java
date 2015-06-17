@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.IntRango;
 import fiuba.algo3.algocraft.modelo.Magia;
 import fiuba.algo3.algocraft.modelo.Terran;
@@ -17,7 +18,6 @@ public class NaveCiencia extends Unidad implements IUnidadMagica {
 		this.vision = 10;
 		this.costoMineral = 100;
 		this.costoVespeno = 225;
-		this.tiempoDeConstruccion = 10;
 		this.danioAire = 0;
 		this.danioTierra = 0;
 		this.suministro = 2;
@@ -25,7 +25,7 @@ public class NaveCiencia extends Unidad implements IUnidadMagica {
 		this.rangoAtaqueTierra = 0;
 		this.estadoFisico = new Terran(200);
 		this.nivel = 1;
-		
+		this.estado = new Construyendose(this,10);
 		this.energia = new IntRango(200);
 		this.inicializarEnergia();
 	}
