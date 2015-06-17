@@ -10,8 +10,11 @@ public class ProtossTest {
 
 	@Test
 	public void test01_LasUnidadesProtossRegenerarSuEscudoCadaTurno(){
+		Mapa mapa = new Mapa();
 		Dragon dragon = new Dragon();
 		Marine marine = new Marine();
+		mapa.agregarElemento(1, 1, dragon);
+		mapa.agregarElemento(1, 2, marine);
 		for (int i=1; i<=6; i++) dragon.pasarTurno(); //se construyen
 		
 		marine.atacar(dragon);

@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.ArmaSimple;
 import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.ElementoProtoss;
 import fiuba.algo3.algocraft.modelo.IEstado;
@@ -13,14 +14,11 @@ public class Dragon extends Unidad implements ElementoProtoss {
 		this.vision = 8;
 		this.costoMineral = 125;
 		this.costoVespeno = 50;
-		this.danioAire = 20;
-		this.danioTierra = 20;
 		this.suministro = 2;
-		this.rangoAtaqueAire = 0;
-		this.rangoAtaqueTierra = 4;
 		this.estadoFisico = new Protoss(100,80);
 		this.nivel = 0;
 		this.estado = new Construyendose(this, 6);
+		this.arma = new ArmaSimple(20,20,4,4);
 	}
 
 	@Override

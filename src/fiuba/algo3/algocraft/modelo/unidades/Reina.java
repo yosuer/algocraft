@@ -19,11 +19,7 @@ public class Reina extends Unidad implements IUnidadMagica {
 		this.vision = 10;
 		this.costoMineral = 100;
 		this.costoVespeno = 100;
-		this.danioAire = 0;
-		this.danioTierra = 0;
 		this.suministro = 2;
-		this.rangoAtaqueAire = 0;
-		this.rangoAtaqueTierra = 0;
 		this.estadoFisico = new Zerg(120);
 		this.nivel = 1;
 		this.estado = new Construyendose(this,7);

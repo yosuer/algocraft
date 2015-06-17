@@ -42,16 +42,16 @@ public class EdificioUnidadesAvanzadasTest {
 		Assert.assertEquals(guarida.getCostoVespeno(), 100);
 		Assert.assertEquals(guarida.getNivel(), 0);
 	}
-	
+
 	@Test(expected = ErrorAgregandoElementoAlMapa.class)
-	public void test04_NoSePuedeCrearUnaFabricaSinUnaBarracaEnElMapa(){
+	public void test05_NoSePuedeCrearUnaFabricaSinUnaBarracaEnElMapa(){
 		Mapa mapa = new Mapa();
 		Fabrica fabrica = new Fabrica();
 		mapa.agregarElemento(1, 10, fabrica);
 	}
 	
 	@Test (expected = ErrorRecursosInsuficientes.class)
-	public void test04_NoSePuedeCrearUnaFabricaSinLosRecursosSuficientes(){
+	public void test06_NoSePuedeCrearUnaFabricaSinLosRecursosSuficientes(){
 		Mapa mapa = new Mapa();
 		Barraca barraca = new Barraca();
 		Fabrica fabrica = new Fabrica();
@@ -61,7 +61,7 @@ public class EdificioUnidadesAvanzadasTest {
 	}
 	
 	@Test ()
-	public void test05_SePuedeCrearUnaFabricaSoloDespuesDeCrearUnaBarraca(){
+	public void test07_SePuedeCrearUnaFabricaSoloDespuesDeCrearUnaBarraca(){
 		Mapa mapa = new Mapa();
 		mapa.recibirMineral(1000);
 		mapa.recibirVespeno(1000); //para pruebas aumento directamente

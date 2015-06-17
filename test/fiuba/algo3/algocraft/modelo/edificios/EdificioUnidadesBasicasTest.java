@@ -83,6 +83,9 @@ public class EdificioUnidadesBasicasTest {
 		barraca.crearMarine();
 		barraca.crearMarine();
 		barraca.crearMarine();
+		barraca.crearMarine();
+		
+		Assert.assertEquals(4, barraca.unidadesEnProduccion());
 		
 		for (int i=1; i<=20; i++) mapa.pasarTurnoMapa();
 		

@@ -10,6 +10,6 @@ public interface IElemento {
 	
 	public int getNivel();
 	
-	public void eliminarseDelMapa(Mapa mapa); 
+	public void eliminarseDelMapa(Mapa mapa);
 	
 }

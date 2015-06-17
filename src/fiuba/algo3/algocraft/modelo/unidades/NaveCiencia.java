@@ -18,13 +18,9 @@ public class NaveCiencia extends Unidad implements IUnidadMagica {
 		this.vision = 10;
 		this.costoMineral = 100;
 		this.costoVespeno = 225;
-		this.danioAire = 0;
-		this.danioTierra = 0;
 		this.suministro = 2;
-		this.rangoAtaqueAire = 0;
-		this.rangoAtaqueTierra = 0;
-		this.estadoFisico = new Terran(200);
 		this.nivel = 1;
+		this.estadoFisico = new Terran(200);
 		this.estado = new Construyendose(this,10);
 		this.energia = new IntRango(200);
 		this.inicializarEnergia();

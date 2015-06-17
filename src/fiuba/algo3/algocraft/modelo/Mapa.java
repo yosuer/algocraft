@@ -214,5 +214,9 @@ public class Mapa {
 		equipo.restarPoblacion(suministro);
 	}
 
+	public int getDistancia(Posicion posInicial, Posicion posObjetivo) {
+		return this.gestorDeUbicaciones.getDistancia(posInicial,posObjetivo);
+	}
+
 
 }

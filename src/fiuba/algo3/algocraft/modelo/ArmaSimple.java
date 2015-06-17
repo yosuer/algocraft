@@ -1,38 +1,33 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class ArmaSimple implements Arma {
+public class ArmaSimple implements IArma {
 
-	private int danioTierra;
-	private int danioAire;
-	private int alcanceTierra;
-	private int alcanceAire;
+	private int[] danios;
+	private int[] alcances;
 
 	public ArmaSimple(int danioTierra, int danioAire, 
 						int alcanceTierra, int alcanceAire) {
-		this.danioTierra = danioTierra;
-		this.danioAire = danioAire;
-		this.alcanceTierra = alcanceTierra;
-		this.alcanceAire = alcanceAire;
+		this.danios = new int[2];
+		this.alcances = new int[2];
+		this.danios[0] = danioTierra;
+		this.danios[1] = danioAire;
+		this.alcances[0] = alcanceTierra;
+		this.alcances[1] = alcanceAire;
 	}
 
 	@Override
-	public int getDanioTierra() {
-		return this.danioTierra;
+	public int getDanio(int nivel) {
+		return danios[nivel];
+	}
+	
+	@Override
+	public int getAlcance(int nivel) {
+		return alcances[nivel];
 	}
 
 	@Override
-	public int getDanioAire() {
-		return this.danioAire;
-	}
-
-	@Override
-	public int getAlcanceTierra() {
-		return this.alcanceTierra;
-	}
-
-	@Override
-	public int getAlcanceAire() {
-		return this.alcanceAire;
+	public void atacar(IDaniable daniable, int distancia) {
+		daniable.recibirDanioDe(this,distancia);
 	}
 
 }

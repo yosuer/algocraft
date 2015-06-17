@@ -3,7 +3,9 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public abstract class Controlable implements IDaniable, IElemento{
+import ar.uba.fi.algo3.titiritero.Posicionable;
+
+public abstract class Controlable implements IDaniable, IElemento, Posicionable{
 
 	protected Collection<Controlable> edificiosRequeridos;
 	protected Posicion posicion;
@@ -11,7 +13,7 @@ public abstract class Controlable implements IDaniable, IElemento{
 	protected int costoVespeno;
 	protected Mapa mapa;
 	protected int nivel;
-	protected RazaEstado estadoFisico;
+	protected IRazaEstado estadoFisico;
 	protected IEstado estado; //gestorDeVida
 	protected int vision;
 	protected Equipo equipo;
@@ -19,6 +21,14 @@ public abstract class Controlable implements IDaniable, IElemento{
 	public Controlable(){
 		this.nivel = 0;
 		this.edificiosRequeridos = new ArrayList<Controlable>();
+	}
+	
+	public int getX(){
+		return this.posicion.x();
+	}
+	
+	public int getY(){
+		return this.posicion.y();
 	}
 	
 	public void estaActivo() {

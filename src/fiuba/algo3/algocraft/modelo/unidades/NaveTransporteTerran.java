@@ -11,11 +11,7 @@ public class NaveTransporteTerran extends Unidad {
 		this.vision = 8;
 		this.costoMineral = 100;
 		this.costoVespeno = 100;
-		this.danioAire = 0;
-		this.danioTierra = 0;
 		this.suministro = 2;
-		this.rangoAtaqueAire = 0;
-		this.rangoAtaqueTierra = 0;
 		this.estadoFisico = new Terran(150);
 		this.estado = new Construyendose(this,7);
 		this.nivel = 0;

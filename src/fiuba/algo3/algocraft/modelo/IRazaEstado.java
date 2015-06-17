@@ -1,6 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
-public interface RazaEstado {
+public interface IRazaEstado {
 
 	public int getVida();
 	
@@ -9,4 +9,5 @@ public interface RazaEstado {
 	public void daniarse(int danio);
 	
 	public void regenerarse();
+	
 }

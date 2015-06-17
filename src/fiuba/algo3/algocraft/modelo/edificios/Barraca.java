@@ -45,4 +45,8 @@ public class Barraca extends Edificio
 	public void ejecutarAcciones(){
 		this.creador.expulsarUnidad();
 	}
+	
+	public int unidadesEnProduccion() {
+		return this.creador.unidadesEnProduccion();
+	}
 }

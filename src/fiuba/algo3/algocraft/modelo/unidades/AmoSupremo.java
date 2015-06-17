@@ -14,11 +14,7 @@ public class AmoSupremo extends Unidad {
 		this.vision = 9;
 		this.costoMineral = 100;
 		this.costoVespeno = 0;
-		this.danioAire = 0;
-		this.danioTierra = 0;
 		this.suministro = 0;
-		this.rangoAtaqueAire = 0;
-		this.rangoAtaqueTierra = 0;
 		this.estadoFisico = new Zerg(200);
 		this.nivel = 1;
 		this.poblacion = 5;

@@ -3,7 +3,8 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.Queue;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
-import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElementoAereo;
+import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElemento;
+import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 public abstract class Unidad extends Controlable 
@@ -13,11 +14,7 @@ public abstract class Unidad extends Controlable
 	
 	protected float suministro;
 	protected int transporte;
-	
-	protected int danioAire;
-	protected int danioTierra;
-	protected int rangoAtaqueAire;
-	protected int rangoAtaqueTierra;
+	protected IArma arma;
 
 	public int vidaActual(){
 		return this.estadoFisico.getVida();
@@ -27,24 +24,8 @@ public abstract class Unidad extends Controlable
 		return this.transporte;
 	}
 	
-	public int getDanioAire() {
-		return this.danioAire;
-	}
-	
-	public int getDanioTierra() {
-		return this.danioTierra;
-	}
-	
 	public float getSuministro() {
 		return this.suministro;
-	}
-	
-	public int getRangoAtaqueAire() {
-		return this.rangoAtaqueAire;
-	}
-	
-	public int getRangoAtaqueTierra() {
-		return this.rangoAtaqueTierra;
 	}
 	
 	public void moverseA(Posicion pos){
@@ -74,19 +55,16 @@ public abstract class Unidad extends Controlable
 	}
 	
 	public void atacar(IDaniable elemento) {
-		elemento.recibirDanioDe(this);
+		Posicion posObjetivo = ((Controlable)elemento).getPosicion();
+		int distancia = this.mapa.getDistancia(this.posicion, posObjetivo);
+		
+		this.arma.atacar(elemento,distancia);
 	}
 	
-	public void daniarse(int danio){
-		this.estadoFisico.daniarse(danio);
+	public void recibirDanioDe(IArma arma, int distancia) {
+		if (distancia > arma.getAlcance(nivel)) throw new ErrorObjetivoFueraDelAlcance();
+		this.estadoFisico.daniarse(arma.getDanio(nivel));
 		if (this.estadoFisico.getVida() <= 0)this.mapa.quitarElemento(this);
-	}
-	
-	public void recibirDanioDe(IAtacante a) {
-		if (this.nivel == 1 & a.getDanioAire() == 0) 
-			throw new ErrorNoSePuedeAtacarElementoAereo();
-		if (this.nivel == 0) this.daniarse(a.getDanioTierra());
-		if (this.nivel == 1) this.daniarse(a.getDanioAire());
 	}
 	
 	public void ejecutarAcciones(){

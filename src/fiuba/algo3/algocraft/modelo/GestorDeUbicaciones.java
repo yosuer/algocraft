@@ -89,4 +89,10 @@ public class GestorDeUbicaciones {
 		
 		return posAnt;
 	}
+
+	public int getDistancia(Posicion posInicial, Posicion posFinal) {
+		int difX = Math.abs(posInicial.x() - posFinal.x());
+		int difY = Math.abs(posInicial.y() - posFinal.y());
+		return (int) Math.round(Math.sqrt( difX*difX + difY*difY));
+	}
 }

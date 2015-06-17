@@ -1,8 +1,9 @@
 package fiuba.algo3.algocraft.modelo;
 
+import ar.uba.fi.algo3.titiritero.Posicionable;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
-public abstract class Estatico implements IElemento{
+public abstract class Estatico implements IElemento, Posicionable{
 	
 	protected Mapa mapa;
 	protected Posicion posicion;
@@ -33,6 +34,14 @@ public abstract class Estatico implements IElemento{
 				throw new ErrorPosicionOcupada();
 		mapa.agregarEstatico(this);
 		this.mapa = mapa;
+	}
+	
+	public int getX(){
+		return this.posicion.x();
+	}
+	
+	public int getY(){
+		return this.posicion.y();
 	}
 
 }

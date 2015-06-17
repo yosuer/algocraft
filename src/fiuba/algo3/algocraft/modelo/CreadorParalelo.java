@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.modelo;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class CreadorParalelo implements ICreadorDeElementos{
 	
@@ -26,6 +25,11 @@ public class CreadorParalelo implements ICreadorDeElementos{
 //			this.unidades.element().pasarTurno();
 //		} catch (NoSuchElementException e1){
 //		}
+	}
+
+	@Override
+	public int unidadesEnProduccion() {
+		return unidades.size();
 	}
 	
 	

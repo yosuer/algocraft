@@ -149,7 +149,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void test09_CaminoMinimoConElementosEnElMapa(){
+	public void test09_CaminoMinimoConObstaculosEnElMapa(){
 		Mapa mapa = new Mapa();
 		
 		mapa.agregarElemento(1,9, new ObstaculoTerrestre());

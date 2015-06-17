@@ -1,6 +1,8 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class Protoss implements RazaEstado {
+import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElemento;
+
+public class Protoss implements IRazaEstado {
 
 	private IntRango vida;
 	private IntRango escudo;
@@ -17,6 +19,7 @@ public class Protoss implements RazaEstado {
 
 	@Override
 	public void daniarse(int danio){
+		if (danio == 0) throw new ErrorNoSePuedeAtacarElemento();
 		vida.disminuir(escudo.disminuir(danio));
 	}
 	

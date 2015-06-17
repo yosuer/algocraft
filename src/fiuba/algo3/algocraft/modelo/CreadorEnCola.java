@@ -8,15 +8,18 @@ public class CreadorEnCola implements ICreadorDeElementos {
 
 	private IElementoCreador elemento;
 	private Queue<Unidad> unidades;
+	private int maxUnidades;
 	
 	public CreadorEnCola(IElementoCreador elementoCreador){
 		this.elemento = elementoCreador;
 		unidades = new LinkedList<Unidad>();
+		this.maxUnidades = 4;
 	}
 	
 	@Override
 	public void prepararUnidad(Unidad u) {
-		this.unidades.add(u);
+		if (this.unidades.size() < 4)
+			this.unidades.add(u);
 	}
 
 	@Override
@@ -29,6 +32,7 @@ public class CreadorEnCola implements ICreadorDeElementos {
 		}
 	}
 	
+	@Override
 	public int unidadesEnProduccion(){
 		return this.unidades.size();
 	}
