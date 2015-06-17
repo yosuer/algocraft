@@ -1,12 +1,14 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
 import java.util.Collection;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.ObstaculoTerrestre;
 import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.Tierra;
 import fiuba.algo3.algocraft.modelo.unidades.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.Marine;
 
@@ -26,14 +28,14 @@ public class MovimientoUnidadesTest {
 		
 		mapa.pasarTurnoMapa();
 		
-		Assert.assertNull(mapa.getElemento(3,3,0));
+		Assert.assertEquals(mapa.getElemento(3,3,0), new Tierra());
 		Assert.assertEquals(1, caminado.size());
 		Assert.assertEquals(mapa.getElemento(4,4,0),marine);
 		
 		mapa.pasarTurnoMapa();
 		
-		Assert.assertNull(mapa.getElemento(3,3,0));
-		Assert.assertNull(mapa.getElemento(4,4,0));
+		Assert.assertEquals(mapa.getElemento(3,3,0), new Tierra());
+		Assert.assertEquals(mapa.getElemento(4,4,0), new Tierra());
 		Assert.assertEquals(0, caminado.size());
 		Assert.assertEquals(mapa.getElemento(5,5,0),marine);
 	}
@@ -56,7 +58,7 @@ public class MovimientoUnidadesTest {
 		
 		for (int i=1; i<=15; i++) mapa.pasarTurnoMapa();
 		
-		Assert.assertNull(mapa.getElemento(1, 3, 0));
+		Assert.assertEquals(mapa.getElemento(1, 3, 0), new Tierra());
 		Assert.assertEquals(mapa.getElemento(1, 1, 0),marine);
 	}
 	
@@ -77,7 +79,7 @@ public class MovimientoUnidadesTest {
 		
 		mapa.pasarTurnoMapa();
 		
-		Assert.assertNull(mapa.getElemento(2, 2, 1));
+		Assert.assertEquals(mapa.getElemento(2, 2, 1), new Tierra());
 		Assert.assertEquals(espectro, mapa.getElemento(3, 3, 1));
 		Assert.assertEquals(marine, mapa.getElemento(3, 3, 0));
 		Assert.assertEquals(1, camino.size());

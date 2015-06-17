@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.Controlable;
 import fiuba.algo3.algocraft.modelo.IAtacante;
 import fiuba.algo3.algocraft.modelo.IDaniable;
 import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.Tierra;
 import fiuba.algo3.algocraft.modelo.edificios.DepositoDeSuministros;
 import fiuba.algo3.algocraft.modelo.unidades.Golliat;
 
@@ -64,7 +65,7 @@ public class DepositoDeSuministrosTest {
 		
 		golliat.atacar((IDaniable)mapa.getElemento(3, 3, 0));
 		
-		Assert.assertNull(mapa.getElemento(3, 3, 0));
+		Assert.assertEquals(mapa.getElemento(3, 3, 0), new Tierra());
 		Assert.assertEquals(0.0, mapa.getPoblacionTotal(),0.0);
 	}
 	

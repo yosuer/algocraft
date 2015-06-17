@@ -107,7 +107,7 @@ public class MapaTest {
 		Assert.assertTrue(mapa.getElemento(2,2, 0).getClass() ==	Mineral.class);
 		Assert.assertTrue(mapa.getElemento(6,2, 0).getClass() ==	Mineral.class);
 		
-		Assert.assertNull(mapa.getElemento(3,3, 0));
+		Assert.assertEquals(mapa.getElemento(3,3, 0), new Tierra());
 
 		Assert.assertTrue(mapa.getElemento(4,6, 0).getClass() == Vespeno.class);
 		
@@ -115,7 +115,7 @@ public class MapaTest {
 		Assert.assertTrue(mapa.getElemento(95,99,0).getClass() ==	Mineral.class);
 		Assert.assertTrue(mapa.getElemento(99,95,0).getClass() ==	Mineral.class);
 		
-		Assert.assertNull(mapa.getElemento(97,97,0));
+		Assert.assertEquals(mapa.getElemento(97,97,0), new Tierra());
 
 		Assert.assertTrue(mapa.getElemento(95,97,0).getClass() == Vespeno.class);
 	}
@@ -172,7 +172,7 @@ public class MapaTest {
 		
 		for (int i=1;i<=7;i++) mapa.pasarTurnoMapa();
 		
-		Assert.assertNull(mapa.getElemento(1, 1, 0));
+		Assert.assertEquals(mapa.getElemento(1, 1, 0), new Tierra());
 		Assert.assertEquals(marine, mapa.getElemento(3, 6, 0));
 	}
 	

@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.Tierra;
 import fiuba.algo3.algocraft.modelo.unidades.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.Marine;
 
@@ -33,7 +34,7 @@ public class MovimientoUnidadesAereasTest {
 		
 		for (int i=1;i<=3;i++) mapa.pasarTurnoMapa();
 		
-		Assert.assertNull(mapa.getElemento(1, 1, 1));
+		Assert.assertEquals(mapa.getElemento(1, 1, 1), new Tierra());
 		Assert.assertEquals(esp,mapa.getElemento(4, 4, 1));
 		Assert.assertEquals(0, camino.size());
 	}
