@@ -16,7 +16,6 @@ public class MovimientoUnidadesAereasTest {
 	public void test01_agregarUnidadAereaAlMapa(){
 		Mapa mapa = new Mapa();
 		Espectro esp = new Espectro();
-		
 		mapa.agregarElemento(3, 3, esp);
 		
 		Assert.assertEquals(esp,mapa.getElemento(3, 3, 1));
@@ -26,12 +25,17 @@ public class MovimientoUnidadesAereasTest {
 	public void test02_moverUnidadAerea(){
 		Mapa mapa = new Mapa();
 		Espectro esp = new Espectro();
-		mapa.agregarElemento(3, 3, esp);
-		Collection<Posicion> camino = mapa.moverElemento(esp, 5, 5);
+		mapa.agregarElemento(1, 1, esp);
+		for (int i=1;i<=8;i++) mapa.pasarTurnoMapa();
+		Collection<Posicion> camino = esp.mover(4, 4);
 		
-		Assert.assertNull(mapa.getElemento(3, 3, 1));
-		Assert.assertEquals(esp,mapa.getElemento(5, 5, 1));
 		Assert.assertEquals(3, camino.size());
+		
+		for (int i=1;i<=3;i++) mapa.pasarTurnoMapa();
+		
+		Assert.assertNull(mapa.getElemento(1, 1, 1));
+		Assert.assertEquals(esp,mapa.getElemento(4, 4, 1));
+		Assert.assertEquals(0, camino.size());
 	}
 	
 	public void test03_unaUnidadAereaNoObstruyeElCaminoDeUnaUnidadTerrestre(){
@@ -41,7 +45,7 @@ public class MovimientoUnidadesAereasTest {
 		mapa.agregarElemento(2, 2, espectro);
 		mapa.agregarElemento(1, 1, marine);
 		
-		Collection<Posicion> camino = mapa.moverElemento(marine, 3, 3);
+		Collection<Posicion> camino = marine.mover(3, 3);
 		
 		Assert.assertNull(mapa.getElemento(1, 1, 0));
 		Assert.assertEquals(marine,mapa.getElemento(3, 3, 1));
@@ -56,7 +60,7 @@ public class MovimientoUnidadesAereasTest {
 		mapa.agregarElemento(2, 2, espectro1);
 		mapa.agregarElemento(3, 3, espectro2);
 		
-		Collection<Posicion> camino = mapa.moverElemento(espectro1, 4, 4);
+		Collection<Posicion> camino = espectro1.mover(4, 4);
 		
 		Assert.assertNull(mapa.getElemento(2, 2, 1));
 		Assert.assertEquals(espectro1,mapa.getElemento(4, 4, 1));
@@ -71,10 +75,9 @@ public class MovimientoUnidadesAereasTest {
 		mapa.agregarElemento(2, 4, espectro1);
 		mapa.agregarElemento(4, 3, espectro2);
 		
-		Collection<Posicion> caminoE2 = mapa.moverElemento(espectro2, 4, 1);
-		Collection<Posicion> caminoE1 = mapa.moverElemento(espectro1, 4, 3);
-		
-		
+		Collection<Posicion> caminoE2 = espectro2.mover(4,4);
+		Collection<Posicion> caminoE1 = espectro1.mover(4,3);
+
 		Assert.assertNull(mapa.getElemento(2, 4, 1));
 		Assert.assertEquals(espectro2,mapa.getElemento(4, 1, 1));
 		Assert.assertEquals(espectro1,mapa.getElemento(4, 3, 1));

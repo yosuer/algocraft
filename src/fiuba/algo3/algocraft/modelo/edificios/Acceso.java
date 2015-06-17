@@ -4,6 +4,7 @@ import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.CreadorEnCola;
 import fiuba.algo3.algocraft.modelo.Edificio;
 import fiuba.algo3.algocraft.modelo.ElementoProtoss;
+import fiuba.algo3.algocraft.modelo.ICreadorDeElementos;
 import fiuba.algo3.algocraft.modelo.IElementoCreador;
 import fiuba.algo3.algocraft.modelo.Protoss;
 import fiuba.algo3.algocraft.modelo.Unidad;
@@ -13,6 +14,8 @@ import fiuba.algo3.algocraft.modelo.unidades.Zealot;
 public class Acceso extends Edificio implements ElementoProtoss, 
 											IElementoCreador {
 
+	private ICreadorDeElementos creador;
+	
 	public Acceso() {
 		super();
 		this.costoMineral = 150;

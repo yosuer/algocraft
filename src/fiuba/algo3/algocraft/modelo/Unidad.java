@@ -1,18 +1,15 @@
 package fiuba.algo3.algocraft.modelo;
 
-import java.util.Collection;
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
-import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 public abstract class Unidad extends Controlable 
 									implements IAtacante {
 
-	protected Queue<Posicion> movimientos; //guardar movimientos
-	
+	protected List<Posicion> movimientos; //guardar movimientos
 	protected float suministro;
 	protected int transporte;
 	protected IArma arma;
@@ -20,7 +17,6 @@ public abstract class Unidad extends Controlable
 	public Unidad(){
 		this.movimientos = new LinkedList<Posicion>();
 	}
-	
 	public int vidaActual(){
 		return this.estadoFisico.getVida();
 	}
@@ -33,9 +29,22 @@ public abstract class Unidad extends Controlable
 		return this.suministro;
 	}
 	
-	public void moverseA(Posicion pos){
-		if (mapa.estaOcupado(pos.x(), pos.y(), pos.z())) throw new ErrorPosicionOcupada();
-		this.posicion = pos;
+	public List<Posicion> mover(int x, int y){
+		List<Posicion> movimientos = (List<Posicion>)this.mapa.getHojaDeRuta(this.posicion, 
+																			new Posicion(x,y,nivel));
+		movimientos.remove(0);
+		this.movimientos = movimientos;
+		return movimientos;
+	}
+	
+	public void moverse(){
+		if (!this.movimientos.isEmpty()){
+			Posicion posNueva = this.movimientos.remove(0);
+			mapa.moverElemento(this, posNueva);
+			this.posicion = posNueva;
+		}
+//		if (mapa.estaOcupado(pos.x(), pos.y(), pos.z())) throw new ErrorPosicionOcupada();
+//		this.posicion = pos;
 	}
 	
 	public void agregarseEn(Mapa mapa){
@@ -74,6 +83,7 @@ public abstract class Unidad extends Controlable
 	
 	public void ejecutarAcciones(){
 		this.estadoFisico.regenerarse();
+		this.moverse();
 	}
 	
 	public void eliminarseDelMapa(Mapa mapa){
@@ -90,9 +100,5 @@ public abstract class Unidad extends Controlable
 		}
 		return true;
 	}
-	
-	public void setRuta(Collection<Posicion> hojaDeRuta){
-		this.movimientos = (Queue<Posicion>) hojaDeRuta;
-	};
 	
 }

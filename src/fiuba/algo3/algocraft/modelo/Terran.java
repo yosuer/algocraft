@@ -1,6 +1,5 @@
 package fiuba.algo3.algocraft.modelo;
 
-import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElemento;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 
 public class Terran implements IRazaEstado {

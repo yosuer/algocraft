@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import ar.uba.fi.algo3.titiritero.Posicionable;
 
@@ -81,10 +82,8 @@ public abstract class Controlable implements IDaniable, IElemento, Posicionable{
 	
 	public abstract void ejecutarAcciones();
 	
-	public abstract void moverseA(Posicion posicion);
+	public abstract List<Posicion> mover(int x, int y);
 	
 	public abstract void agregarseEn(Mapa mapa);
-
-	public abstract void setRuta(Collection<Posicion> hojaDeRuta);
 
 }

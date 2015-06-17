@@ -1,8 +1,6 @@
 package fiuba.algo3.algocraft.modelo;
 
-import java.util.Collection;
-import java.util.Queue;
-
+import java.util.List;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
@@ -10,15 +8,10 @@ import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 public abstract class Edificio extends Controlable {
 	
-	protected ICreadorDeElementos creador;
-	
 	public Edificio(){
 		this.vision = 6; //vision para todos los edificios
 	}
-	
-	public void moverseA(Posicion posicion){
-	}
-	
+
 	public boolean equals(Object o)
 	{
 		if(this == o) return true;
@@ -56,13 +49,15 @@ public abstract class Edificio extends Controlable {
 	}
 	
 	public void ejecutarAcciones(){
+		this.estadoFisico.regenerarse();
 	}
 	
 	public int getPoblacion(){
 		return 0;
 	}
 	
-	public void setRuta(Collection<Posicion> hojaDeRuta){
-	};
+	public List<Posicion> mover(int x, int y){
+		return null;
+	}
 
 }

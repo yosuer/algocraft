@@ -1,7 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
 import java.util.Collection;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,18 +13,29 @@ import fiuba.algo3.algocraft.modelo.unidades.Marine;
 public class MovimientoUnidadesTest {
 
 	@Test
-	public void test01_MoverUnaUnidad(){
+	public void test01_LasUnidadesSeMuevenDeA1PosicionPorTurno(){
 		Mapa mapa = new Mapa();
 		Marine marine = new Marine();
-		mapa.agregarElemento(1, 1, marine);
+		mapa.agregarElemento(3, 3, marine);
+		for (int i=1;i<=4;i++) mapa.pasarTurnoMapa();
 		
-		Assert.assertEquals(mapa.getElemento(1,1,0),marine);
+		Collection<Posicion> caminado = marine.mover(5,5);
 		
-		Collection<Posicion> caminado = mapa.moverElemento(marine, 3,3);
+		Assert.assertEquals(mapa.getElemento(3,3,0),marine);
+		Assert.assertEquals(2, caminado.size());
 		
-		Assert.assertEquals(11, caminado.size());
-		Assert.assertEquals(mapa.getElemento(3, 3, 0),marine);
-		Assert.assertNull(mapa.getElemento(1, 1, 0));
+		mapa.pasarTurnoMapa();
+		
+		Assert.assertNull(mapa.getElemento(3,3,0));
+		Assert.assertEquals(1, caminado.size());
+		Assert.assertEquals(mapa.getElemento(4,4,0),marine);
+		
+		mapa.pasarTurnoMapa();
+		
+		Assert.assertNull(mapa.getElemento(3,3,0));
+		Assert.assertNull(mapa.getElemento(4,4,0));
+		Assert.assertEquals(0, caminado.size());
+		Assert.assertEquals(mapa.getElemento(5,5,0),marine);
 	}
 	
 	@Test
@@ -36,29 +46,40 @@ public class MovimientoUnidadesTest {
 		
 		mapa.agregarElemento(1, 2, obs);
 		mapa.agregarElemento(1, 3, marine);
+		for (int i=1;i<=4;i++) mapa.pasarTurnoMapa();
 		
 		Assert.assertEquals(mapa.getElemento(1,3,0),marine);
 		Assert.assertEquals(mapa.getElemento(1,2,0),obs);
 		
-		Collection<Posicion> caminado = mapa.moverElemento(marine, 1,1);
+		Collection<Posicion> caminado = marine.mover(1, 1);
+		Assert.assertEquals(15, caminado.size());
 		
-		Assert.assertEquals(16, caminado.size());
-		Assert.assertEquals(mapa.getElemento(1, 1, 0),marine);
+		for (int i=1; i<=15; i++) mapa.pasarTurnoMapa();
+		
 		Assert.assertNull(mapa.getElemento(1, 3, 0));
+		Assert.assertEquals(mapa.getElemento(1, 1, 0),marine);
 	}
 	
-	public void test03_unaUnidadTerrestreNoObstruyeElCaminoDeUnaUnidadAerea(){
+	@Test
+	public void test03_UnaUnidadTerrestreNoObstruyeElCaminoDeUnaUnidadAerea(){
 		Mapa mapa = new Mapa();
 		Espectro espectro = new Espectro();
 		Marine marine = new Marine();
 		mapa.agregarElemento(2, 2, espectro);
 		mapa.agregarElemento(3, 3, marine);
+		for (int i=1;i<=8;i++) mapa.pasarTurnoMapa();
 		
-		Collection<Posicion> camino = mapa.moverElemento(espectro, 4, 4);
+		Collection<Posicion> camino = espectro.mover(4, 4);
+		
+		Assert.assertEquals(espectro, mapa.getElemento(2, 2, 1));
+		Assert.assertEquals(marine, mapa.getElemento(3, 3, 0));
+		Assert.assertEquals(2, camino.size());
+		
+		mapa.pasarTurnoMapa();
 		
 		Assert.assertNull(mapa.getElemento(2, 2, 1));
-		Assert.assertEquals(espectro,mapa.getElemento(4, 4, 1));
-		Assert.assertEquals(marine,mapa.getElemento(3, 3, 0));
-		Assert.assertEquals(3, camino.size());
+		Assert.assertEquals(espectro, mapa.getElemento(3, 3, 1));
+		Assert.assertEquals(marine, mapa.getElemento(3, 3, 0));
+		Assert.assertEquals(1, camino.size());
 	}
 }

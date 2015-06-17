@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo.edificios;
 import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.CreadorEnCola;
 import fiuba.algo3.algocraft.modelo.Edificio;
+import fiuba.algo3.algocraft.modelo.ICreadorDeElementos;
 import fiuba.algo3.algocraft.modelo.IElementoCreador;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Terran;
@@ -14,6 +15,8 @@ import fiuba.algo3.algocraft.modelo.unidades.NaveTransporteTerran;
 public class PuertoEstelarTerran extends Edificio
 										implements IElementoCreador{
 
+	private ICreadorDeElementos creador;
+	
 	public PuertoEstelarTerran() {
 		super();
 		this.costoMineral = 150;

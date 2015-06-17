@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.modelo.edificios;
 import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.CreadorEnCola;
 import fiuba.algo3.algocraft.modelo.Edificio;
+import fiuba.algo3.algocraft.modelo.ICreadorDeElementos;
 import fiuba.algo3.algocraft.modelo.IElementoCreador;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.Zerg;
@@ -10,7 +11,9 @@ import fiuba.algo3.algocraft.modelo.unidades.Hidralisco;
 
 public class GuaridaDeHidralisco extends Edificio 
 									implements IElementoCreador{
-
+	
+	private ICreadorDeElementos creador;
+	
 	public GuaridaDeHidralisco() {
 		this.costoMineral = 150;
 		this.costoVespeno = 100;

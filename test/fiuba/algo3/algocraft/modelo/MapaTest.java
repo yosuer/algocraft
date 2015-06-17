@@ -163,13 +163,15 @@ public class MapaTest {
 	public void test10_MoverUnaUnidadDentroDelMapa(){
 		Mapa mapa = new Mapa();
 		Marine marine = new Marine();
-		mapa.aumentarPoblacion(5);
-		
 		mapa.agregarElemento(1, 1, marine);
+		for (int i=1;i<=3;i++) mapa.pasarTurnoMapa();
 		
-		Collection<Posicion> camino = mapa.moverElemento(marine, 3,6);
+		Collection<Posicion> camino = marine.mover(3, 6);
 		
-		Assert.assertEquals(8, camino.size());
+		Assert.assertEquals(7, camino.size());
+		
+		for (int i=1;i<=7;i++) mapa.pasarTurnoMapa();
+		
 		Assert.assertNull(mapa.getElemento(1, 1, 0));
 		Assert.assertEquals(marine, mapa.getElemento(3, 6, 0));
 	}

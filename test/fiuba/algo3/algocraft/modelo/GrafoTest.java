@@ -7,11 +7,6 @@ import org.junit.Test;
 public class GrafoTest {
 
 	@Test
-	public void test01_instanciarGrafo(){
-		Grafo<Posicion> grafo = new Grafo<Posicion>();
-	}
-	
-	@Test
 	public void test02_agregarNodosAlGrafo(){
 		Grafo<String> grafo = new Grafo<String>();
 		

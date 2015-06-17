@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import fiuba.algo3.algocraft.excepciones.ErrorElementoNoEncontrado;
 
 public class Mapa {
@@ -115,28 +114,7 @@ public class Mapa {
 	public Collection<Posicion> getHojaDeRuta(Posicion inicial, Posicion destino) {
 		return this.gestorDeUbicaciones.getHojaDeRuta(inicial, destino);
 	}
-	
-	public Collection<Posicion> moverElemento(Controlable e, int x, int y) {
-		Collection<Posicion> hojaDeRuta = null;
-		if (!this.estaOcupado(x, y, e.getNivel())) {
-			Collection<Posicion> camino = 
-					getHojaDeRuta(e.getPosicion(),new Posicion(x,y,e.getNivel()));
-			
-			Iterator<Posicion> it = camino.iterator();
-			Posicion posAnt = it.next();
-			while (it.hasNext()){
-				Posicion posNueva = it.next(); 
-				e.moverseA(posNueva);
-				this.desocuparPosicion(posAnt);
-				this.ubicarElemento(e, posNueva);
-				posAnt = posNueva;
-			}
-			hojaDeRuta = camino;
-		}
-		e.setRuta(hojaDeRuta);
-		return hojaDeRuta;
-	}
-	
+
 	public void moverElemento(Controlable e, Posicion posNueva) {
 		Posicion posAnt = e.getPosicion();
 		this.desocuparPosicion(posAnt);

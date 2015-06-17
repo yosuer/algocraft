@@ -4,6 +4,7 @@ import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.CreadorEnCola;
 import fiuba.algo3.algocraft.modelo.Edificio;
 import fiuba.algo3.algocraft.modelo.IArma;
+import fiuba.algo3.algocraft.modelo.ICreadorDeElementos;
 import fiuba.algo3.algocraft.modelo.IElementoCreador;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Unidad;
@@ -13,6 +14,8 @@ import fiuba.algo3.algocraft.modelo.unidades.Zerling;
 public class ReservaDeReproduccion extends Edificio 
 										implements IElementoCreador{
 
+	private ICreadorDeElementos creador;
+	
 	public ReservaDeReproduccion() {
 		super();
 		this.costoMineral = 150;
