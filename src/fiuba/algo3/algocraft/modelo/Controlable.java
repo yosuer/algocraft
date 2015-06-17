@@ -85,5 +85,6 @@ public abstract class Controlable implements IDaniable, IElemento, Posicionable{
 	
 	public abstract void agregarseEn(Mapa mapa);
 
+	public abstract void setRuta(Collection<Posicion> hojaDeRuta);
 
 }

@@ -6,7 +6,6 @@ import fiuba.algo3.algocraft.modelo.IntRango;
 import fiuba.algo3.algocraft.modelo.Magia;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.Zerg;
-import fiuba.algo3.algocraft.modelo.magias.EMP;
 import fiuba.algo3.algocraft.modelo.magias.Infestar;
 import fiuba.algo3.algocraft.modelo.magias.Red;
 

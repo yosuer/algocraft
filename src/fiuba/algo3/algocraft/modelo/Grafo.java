@@ -1,11 +1,10 @@
 package fiuba.algo3.algocraft.modelo;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Iterator;
-
-import fiuba.algo3.algocraft.excepciones.ErrorNoExisteCaminoPosible;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Grafo<E> {
 
@@ -42,14 +41,14 @@ public class Grafo<E> {
     public void eliminarNodo(String nodo){
     	Nodo<E> nodoAEliminar = this.nodos.get(nodo);
     	
-    	ListaMU<Nodo<E>> vecinos = nodoAEliminar.getVecinos();
+    	List<Nodo<E>> vecinos = nodoAEliminar.getVecinos();
     	Iterator<Nodo<E>> it = vecinos.iterator();
     	while (it.hasNext()){
     		it.next().eliminarVecino(nodoAEliminar);
     	}
     }
 
-    private String getNodoDistanciaMasCortaEnAnalizados(ListaMU<String> analizados, 
+    private String getNodoDistanciaMasCortaEnAnalizados(List<String> analizados, 
                                                         Hashtable<String, Integer> distancias) {
         String resultado = null;
         int minDistancia = Integer.MAX_VALUE;
@@ -66,40 +65,39 @@ public class Grafo<E> {
         return resultado;
     }
 
-    private ListaMU<Nodo<E>> formarRespuesta(Hashtable<String, String> anterior, 
-                                          						String destino) {
-        ListaMU<Nodo<E>> resultado = new ListaMU<Nodo<E>>();
-        
-        Nodo<E> recorre = nodos.get(destino);
-        resultado.encolar(recorre);
+    private List<E> formarRespuesta(Hashtable<String, String> anterior, 
+    															String destino) {
+    	List<E> resultado = new LinkedList<E>();
 
-        while (true) {
-            String idAnterior = anterior.get(recorre.getId());
-            if (idAnterior == null)
-                break;
-            recorre = nodos.get(idAnterior);
-            resultado.encolar(recorre);
-        }
-        
-        return resultado;
+    	Nodo<E> recorre = nodos.get(destino);
+    	resultado.add(recorre.getValor());
+
+    	while (true) {
+    		String idAnterior = anterior.get(recorre.getId());
+    		if (idAnterior == null)
+    				break;
+    		recorre = nodos.get(idAnterior);
+    		resultado.add(0,recorre.getValor());
+    	}
+
+    	return resultado;
     }
 
     private void inicializarParaDijkstra(String origen, 
-                                         ListaMU<String> analizados, 
+                                         List<String> analizados, 
                                          Hashtable<String, Integer> distancias) {
     	
         Iterator<Nodo<E>> i = this.nodos.values().iterator();
         while (i.hasNext()) {
             Nodo<E> objNodo = i.next();
             distancias.put(objNodo.getId(), new Integer(Integer.MAX_VALUE));
-            analizados.insertar(objNodo.getId());
+            analizados.add(objNodo.getId());
         }
-
         // coloca la distancia del origen a 0
         distancias.put(origen, new Integer(0));
     }
-
-    public ArrayList<E> getCaminoMinimo(String origen, String destino) {
+    
+    public List<E> getCaminoMinimo(String origen, String destino) {
         if (origen == null || 
         		destino == null) {
             return null;
@@ -107,22 +105,21 @@ public class Grafo<E> {
         
         // Coloca las distancias de todos los nodos a infinito
         // Se aqrma una cadena analizados con todos los nodos
-        ListaMU<String> analizados = new ListaMU<String>();
+        List<String> analizados = new LinkedList<String>();
         Hashtable<String, Integer> distancias = new Hashtable<String, Integer>();
         Hashtable<String, String> anterior = new Hashtable<String, String>();
 
         inicializarParaDijkstra(origen, analizados, distancias);
 
         // comienza la iteracion
-        while (analizados.tamano() > 0) {
+        while (analizados.size() > 0) {
             String idNodo = 
                 getNodoDistanciaMasCortaEnAnalizados(analizados, distancias);
             // Lo quita de la lista de analizados
-            analizados.eliminarContenido(idNodo);
+            analizados.remove(idNodo);
             try {
             if (idNodo.equals(destino)) {
-                ListaMU<Nodo<E>> resultado = formarRespuesta(anterior, destino);
-                return this.crearListadoDeElemento(resultado);
+                return formarRespuesta(anterior, destino);
             	}
             } catch( NullPointerException e){
             	//throw new ErrorNoExisteCaminoPosible();
@@ -134,7 +131,7 @@ public class Grafo<E> {
             while (i.hasNext()) {
                 Nodo<E> objNodo = i.next();
                 // Solamente los que estan en analizados
-                if (!analizados.existe(objNodo.getId())) {
+                if (!analizados.contains(objNodo.getId())) {
                     continue;
                 }
 
@@ -151,20 +148,11 @@ public class Grafo<E> {
 
         return null;
     }
-    
-    private ArrayList<E> crearListadoDeElemento(ListaMU<Nodo<E>> resultado) {
-		ArrayList<E> elementos = new ListaMU<E>();
-		Iterator<Nodo<E>> it = resultado.iterator();
-		while (it.hasNext()) {
-			elementos.add(0,it.next().getValor());
-		}
-		return elementos;
-	}
 
-	public void imprimirCamino(ListaMU<Nodo<E>> lista){
-    	Iterator<Nodo<E>> it = lista.iterator();
+	public void imprimirCamino(List<Posicion> lista){
+    	Iterator<Posicion> it = lista.iterator();
     	while (it.hasNext()) {
-    		System.out.println(it.next().getValor());
+    		System.out.println(it.next());
     	}
     	System.out.println("-----------------------");
     }
@@ -176,14 +164,12 @@ public class Grafo<E> {
     private static class Nodo<E> {
         private String id;
         private E valor;
-        private ListaMU<Nodo<E>> vecinos;
-        private int visitado;
+        private List<Nodo<E>> vecinos;
 
         public Nodo(String identificador, E v) {
             this.id = identificador;
             this.valor = v;
-            this.vecinos = new ListaMU<Nodo<E>>();
-            this.visitado = 0;
+            this.vecinos = new LinkedList<Nodo<E>>();
         }
 
 
@@ -194,39 +180,18 @@ public class Grafo<E> {
         public E getValor() {
             return valor;
         }
-        
 
-        public int getVisitado() {
-            return visitado;
-        }
-
-        public void setVisitado(int v) {
-            this.visitado = v;
-        }
-
-        public void setVecinos(ListaMU<Nodo<E>> newvecinos) {
-            this.vecinos = newvecinos;
-        }
-
-        public ListaMU<Nodo<E>> getVecinos() {
+        public List<Nodo<E>> getVecinos() {
             return vecinos;
-        }
-
-        public void setVisitaMas1() {
-            this.visitado++;
-        }
-
-        public void resetVisita() {
-            this.visitado = 0;
         }
 
         private void insertarVecino(Nodo<E> objNodoDestino) {
         	if ( !this.vecinos.contains(objNodoDestino) )
-        		this.vecinos.insertar(objNodoDestino);
+        		this.vecinos.add(objNodoDestino);
         }
         
         private void eliminarVecino(Nodo<E> objNodo) {
-        	this.vecinos.eliminarContenido(objNodo);
+        	this.vecinos.remove(objNodo);
         }
     }
 }

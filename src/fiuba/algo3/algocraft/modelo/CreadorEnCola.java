@@ -18,7 +18,7 @@ public class CreadorEnCola implements ICreadorDeElementos {
 	
 	@Override
 	public void prepararUnidad(Unidad u) {
-		if (this.unidades.size() < 4)
+		if (this.unidades.size() < this.maxUnidades)
 			this.unidades.add(u);
 	}
 

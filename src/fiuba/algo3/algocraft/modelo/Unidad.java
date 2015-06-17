@@ -1,21 +1,26 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Queue;
 
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
-import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElemento;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 
 public abstract class Unidad extends Controlable 
 									implements IAtacante {
 
-	protected Queue<Unidad> movimientos; //guardar movimientos
+	protected Queue<Posicion> movimientos; //guardar movimientos
 	
 	protected float suministro;
 	protected int transporte;
 	protected IArma arma;
-
+	
+	public Unidad(){
+		this.movimientos = new LinkedList<Posicion>();
+	}
+	
 	public int vidaActual(){
 		return this.estadoFisico.getVida();
 	}
@@ -85,5 +90,9 @@ public abstract class Unidad extends Controlable
 		}
 		return true;
 	}
+	
+	public void setRuta(Collection<Posicion> hojaDeRuta){
+		this.movimientos = (Queue<Posicion>) hojaDeRuta;
+	};
 	
 }

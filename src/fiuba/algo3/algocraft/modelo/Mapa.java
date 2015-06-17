@@ -133,7 +133,14 @@ public class Mapa {
 			}
 			hojaDeRuta = camino;
 		}
+		e.setRuta(hojaDeRuta);
 		return hojaDeRuta;
+	}
+	
+	public void moverElemento(Controlable e, Posicion posNueva) {
+		Posicion posAnt = e.getPosicion();
+		this.desocuparPosicion(posAnt);
+		this.ubicarElemento(e, posNueva);
 	}
 	
 	public void pasarTurnoMapa(){

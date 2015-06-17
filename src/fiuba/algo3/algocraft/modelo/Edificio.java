@@ -1,5 +1,8 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.util.Collection;
+import java.util.Queue;
+
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
@@ -58,5 +61,8 @@ public abstract class Edificio extends Controlable {
 	public int getPoblacion(){
 		return 0;
 	}
+	
+	public void setRuta(Collection<Posicion> hojaDeRuta){
+	};
 
 }

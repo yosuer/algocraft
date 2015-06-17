@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorNoSePuedeAtacarElemento;
+import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 
 public class Zerg implements IRazaEstado {
 
@@ -17,7 +18,7 @@ public class Zerg implements IRazaEstado {
 
 	@Override
 	public void daniarse(int danio) {
-		if (danio == 0) throw new ErrorNoSePuedeAtacarElemento();
+		if (danio == 0) throw new ErrorObjetivoFueraDelAlcance();
 		this.vida.disminuir(danio);
 	}
 

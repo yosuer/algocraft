@@ -2,13 +2,13 @@ package fiuba.algo3.algocraft.modelo.unidades;
 
 import fiuba.algo3.algocraft.modelo.ArmaSimple;
 import fiuba.algo3.algocraft.modelo.Construyendose;
-import fiuba.algo3.algocraft.modelo.IArma;
 import fiuba.algo3.algocraft.modelo.Terran;
 import fiuba.algo3.algocraft.modelo.Unidad;
 
 public class Marine extends Unidad {
 
 	public Marine() {
+		super();
 		this.transporte = 1;
 		this.vision = 7;
 		this.costoMineral = 50;

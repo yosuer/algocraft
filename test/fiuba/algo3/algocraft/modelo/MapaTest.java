@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -123,9 +124,8 @@ public class MapaTest {
 	public void test09_AlIniciarElMapaSePuedeRecorrerTodasLasPosiciones1(){
 		Mapa mapa = new Mapa();
 		
-		ArrayList<Posicion>camino = new ArrayList<Posicion>();
-		camino = (ArrayList<Posicion>) mapa.getHojaDeRuta(new Posicion(3,3,0), 
-														new Posicion(6,6,0));
+		Collection<Posicion>camino = new ArrayList<Posicion>();
+		camino = mapa.getHojaDeRuta(new Posicion(3,3,0),new Posicion(6,6,0));
 		
 		Assert.assertEquals(4, camino.size());
 		
@@ -142,8 +142,7 @@ public class MapaTest {
 	public void test09_AlIniciarElMapaSePuedeRecorrerTodasLasPosiciones2(){
 		Mapa mapa = new Mapa();
 		
-		ArrayList<Posicion>camino = 
-			(ArrayList<Posicion>) mapa.getHojaDeRuta(new Posicion(95,95,0), new Posicion(80,80,0));
+		Collection<Posicion>camino =mapa.getHojaDeRuta(new Posicion(95,95,0), new Posicion(80,80,0));
 		
 		Assert.assertEquals(16, camino.size());
 	}
