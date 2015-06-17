@@ -57,7 +57,8 @@ public class MineralTest {
 		Assert.assertEquals(mapa.getElemento(3, 2, 0), extractor);
 	}
 	
-	@Test(expected = ErrorNoExisteRecursoEnLaPosicion.class)
+	@Test(expected = ErrorExtractorDeRecursosIncompatible.class)
+	//@Test(expected = ErrorNoExisteRecursoEnLaPosicion.class)
 	public void test05_AUnMineralNoSeLePuedeAsignarUnExtractorMineralTerranDeDistintaPosicion()
 	{
 		Mapa mapa = new Mapa();

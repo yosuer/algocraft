@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.modelo.Mapa;
+import fiuba.algo3.algocraft.modelo.Tierra;
 import fiuba.algo3.algocraft.modelo.edificios.Acceso;
 import fiuba.algo3.algocraft.modelo.edificios.Barraca;
 import fiuba.algo3.algocraft.modelo.edificios.Fabrica;
@@ -38,7 +39,7 @@ public class UnidadesTerrestresTest {
 		mapa.pasarTurnoMapa();
 		mapa.pasarTurnoMapa();
 		mapa.pasarTurnoMapa();
-		Assert.assertNull(mapa.getElemento(1, 2, 0));
+		Assert.assertEquals(mapa.getElemento(1, 2, 0),new Tierra());
 		mapa.pasarTurnoMapa(); //en el cuarto turno se muestra xk tarda 3 turnos
 		mapa.pasarTurnoMapa();
 		Assert.assertNotNull(mapa.getElemento(1, 2, 0));

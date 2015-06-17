@@ -10,6 +10,8 @@ public class GestorDeUbicaciones {
 	
 	private Grafo<Posicion> grafo;
 	private IElemento[][][] elementos;
+	
+	
 	public GestorDeUbicaciones(int ancho, int largo, int alto) {
 		this.grafo = new Grafo<Posicion>();
 		this.ancho = ancho;
@@ -21,22 +23,33 @@ public class GestorDeUbicaciones {
 			for (int y = 1; y <= this.largo; y++){
 				for (int z = 0; z <= this.alto; z++){
 					this.nuevoNodo(new Posicion(x,y,z));
+					this.elementos[x][y][0] = new Tierra();
 				}
 			}
 		}
+		
+//		for (int x = 1; x <= this.ancho; x++){
+//			for (int y = 1; y <= this.largo; y++){
+//					this.elementos[x][y][0] = new Tierra();
+//			}
+//		}
+		
 	}
 	
 	public IElemento getElemento(int x, int y, int z) {
 		return this.elementos[x][y][z];
 	}
+	
 	public boolean estaOcupado(int x, int y, int z) {
 		if (x == 0 || y == 0)
 			return true;
+		if ( z == 0 ) 
+				return ( !elementos[x][y][z].equals(new Tierra()) );
 		return elementos[x][y][z] != null;
 	}
 	
 	public void desocuparPosicion(Posicion pos) {
-		elementos[pos.x()][pos.y()][pos.z()] = null;
+		elementos[pos.x()][pos.y()][pos.z()] = new Tierra();
 		this.nuevoNodo(pos);
 	}
 	
