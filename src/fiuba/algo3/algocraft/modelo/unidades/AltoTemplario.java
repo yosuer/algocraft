@@ -24,8 +24,8 @@ public class AltoTemplario extends Unidad implements ElementoProtoss,IUnidadMagi
 		this.estadoFisico = new Protoss(40,40);
 		this.nivel = 0;
 		this.estado = new Construyendose(this,7);
-		this.energia = new IntRango(200);
-		this.inicializarEnergia();
+		this.energia = new IntRango(0,200,50);
+		//this.inicializarEnergia();
 	}
 
 	@Override
@@ -38,10 +38,10 @@ public class AltoTemplario extends Unidad implements ElementoProtoss,IUnidadMagi
 		this.estadoFisico.regenerarse();
 	}
 
-	@Override
-	public void inicializarEnergia() {
-		this.energia.aumentar(50);		
-	}
+	//@Override
+	//public void inicializarEnergia() {
+		//this.energia.aumentar(50);		
+	//}
 
 	@Override
 	public void cargarEnergia() {
@@ -54,16 +54,21 @@ public class AltoTemplario extends Unidad implements ElementoProtoss,IUnidadMagi
 	}
 	
 	public void lanzarTormentaPsionica() {
-		this.lanzarMagia(new TormentaPsionica());
+		//this.lanzarMagia(new TormentaPsionica());
 	}
 	
 	public void lanzarAlucinacion() {
-		this.lanzarMagia(new Alucinacion());
+		//this.lanzarMagia(new Alucinacion());
 	}
 
-	@Override
-	public void lanzarMagia(Magia magia) {
-		// TODO Auto-generated method stub
+	//@Override
+	//public void lanzarMagia(Magia magia) {
 		
+	//}
+
+	@Override
+	public int energiaActual() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

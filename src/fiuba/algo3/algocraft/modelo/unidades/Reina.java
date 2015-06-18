@@ -22,15 +22,15 @@ public class Reina extends Unidad implements IUnidadMagica {
 		this.estadoFisico = new Zerg(120);
 		this.nivel = 1;
 		this.estado = new Construyendose(this,7);
-		this.energia = new IntRango(200);
-		this.inicializarEnergia();
+		this.energia = new IntRango(0,200,50);
+		//this.inicializarEnergia();
 
 	}
 
-	@Override
-	public void inicializarEnergia() {
-		this.energia.aumentar(50);		
-	}
+	//@Override
+	//public void inicializarEnergia() {
+		//this.energia.aumentar(50);		
+	//}
 
 	@Override
 	public void cargarEnergia() {
@@ -43,17 +43,23 @@ public class Reina extends Unidad implements IUnidadMagica {
 	}
 	
 	public void lanzarRed() {
-		this.lanzarMagia(new Red());
+		//this.lanzarMagia(new Red());
 	}
 	
 	public void lanzarInfestar() {
-		this.lanzarMagia(new Infestar());
+		//this.lanzarMagia(new Infestar());
 	}
 
 	@Override
-	public void lanzarMagia(Magia magia) {
+	public int energiaActual() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	//@Override
+	//public void lanzarMagia(Magia magia) {
 		// TODO Auto-generated method stub
 		
-	}
+	//}
 
 }

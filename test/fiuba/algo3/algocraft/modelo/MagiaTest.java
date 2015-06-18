@@ -48,4 +48,96 @@ public class MagiaTest {
 //		
 //		Assert.assertEquals(0,naveCiencia.energiaActual());
 	}
+	
+	@Test
+	public void testxx_unaNaveCieciaLanzaEMPaUnaUnidadYDichaUnidadPierdeVidaEnCadaTurno()
+	{
+		Mapa mapa = new Mapa();
+		NaveCiencia nave = new NaveCiencia();
+		Marine unMarine = new Marine();
+		
+		//turno jugador 1
+		
+		Assert.assertEquals(nave.energiaActual(), 50);
+		
+		mapa.agregarElemento(7, 8, nave);
+		
+		
+		mapa.pasarTurnoMapa();
+		
+		//turno jugador 2
+		
+		mapa.agregarElemento(10, 10, unMarine);
+		
+		mapa.pasarTurnoMapa(); //turno jugador 1
+		mapa.pasarTurnoMapa(); //turno jugador 2
+		mapa.pasarTurnoMapa(); //turno jugador 1
+		
+		Assert.assertEquals(nave.energiaActual(), 90);
+		
+		nave.lanzarRadiacion(unMarine);
+		
+		Assert.assertEquals(unMarine.vidaActual(),20);
+		Assert.assertEquals(nave.energiaActual(), 15);
+
+		
+		mapa.pasarTurnoMapa();
+		
+		Assert.assertFalse(mapa.estaOcupado(10, 10, 0));
+		Assert.assertEquals(nave.energiaActual(), 25);
+		
+		
+		
+		
+	}
+	
+	@Test
+	public void testyy_unaNaveCieciaLanzaEMPaUnaUnidadYDichaUnidadPierdeVidaEnCadaTurnoYLasUnidadesCercanasTambien()
+	{
+		Mapa mapa = new Mapa();
+		NaveCiencia nave = new NaveCiencia();
+		Marine unMarine = new Marine();
+		Marine otroMarine = new Marine();
+		Zealot unZealot = new Zealot();
+		
+		//turno jugador 1
+		
+		Assert.assertEquals(nave.energiaActual(), 50);
+		
+		mapa.agregarElemento(7, 8, nave);
+		
+		
+		mapa.pasarTurnoMapa();
+		
+		//turno jugador 2
+		
+		mapa.agregarElemento(10, 10, unMarine);
+		mapa.agregarElemento(11, 10, otroMarine);
+		mapa.agregarElemento(11,11,unZealot);
+		
+		mapa.pasarTurnoMapa(); //turno jugador 1
+		mapa.pasarTurnoMapa(); //turno jugador 2
+		mapa.pasarTurnoMapa(); //turno jugador 1
+		
+		Assert.assertEquals(nave.energiaActual(), 90);
+		
+		nave.lanzarRadiacion(unMarine);
+		
+		Assert.assertEquals(unMarine.vidaActual(),20);
+		Assert.assertEquals(otroMarine.vidaActual(),40);
+		Assert.assertEquals(unZealot.vidaActual(),160);
+		Assert.assertEquals(nave.energiaActual(), 15);
+
+		
+		mapa.pasarTurnoMapa();
+		
+		Assert.assertFalse(mapa.estaOcupado(10, 10, 0));
+		Assert.assertEquals(otroMarine.vidaActual(),20);
+		Assert.assertEquals(unZealot.vidaActual(),140);
+		Assert.assertEquals(nave.energiaActual(), 25);
+		
+		
+		
+		
+	}
 }

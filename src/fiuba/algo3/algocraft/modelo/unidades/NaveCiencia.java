@@ -1,8 +1,12 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.ArmaMagicaParaUnaUnidad;
 import fiuba.algo3.algocraft.modelo.Construyendose;
+import fiuba.algo3.algocraft.modelo.Controlable;
+import fiuba.algo3.algocraft.modelo.DaniadoPorRadiacion;
 import fiuba.algo3.algocraft.modelo.IntRango;
 import fiuba.algo3.algocraft.modelo.Magia;
+import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Terran;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.IUnidadMagica;
@@ -12,6 +16,7 @@ import fiuba.algo3.algocraft.modelo.magias.Radiacion;
 public class NaveCiencia extends Unidad implements IUnidadMagica {
 	
 	private IntRango energia;
+	private ArmaMagicaParaUnaUnidad armaDeRadiacion;
 	
 	public NaveCiencia() {
 		this.transporte = 0;
@@ -22,13 +27,8 @@ public class NaveCiencia extends Unidad implements IUnidadMagica {
 		this.nivel = 1;
 		this.estadoFisico = new Terran(200);
 		this.estado = new Construyendose(this,10);
-		this.energia = new IntRango(200);
-		this.inicializarEnergia();
-	}
-	
-	@Override
-	public void inicializarEnergia() {
-		this.energia.aumentar(50);
+		this.energia = new IntRango(0,200,50);
+		this.armaDeRadiacion = new ArmaMagicaParaUnaUnidad(10,10);
 	}
 	
 	@Override
@@ -42,17 +42,21 @@ public class NaveCiencia extends Unidad implements IUnidadMagica {
 	}
 	
 	public void lanzarEMP() {
-		this.lanzarMagia(new EMP());
+		//this.lanzarMagia(new EMP());
 	}
 	
-	public void lanzarRadiacion() {
-		this.lanzarMagia(new Radiacion());
-	}
-	
-	@Override
-	public void lanzarMagia(Magia magia) {
-		// TODO Auto-generated method stub
+	public void lanzarRadiacion(Unidad unaUnidad) {
+		Posicion posObjetivo = ((Controlable)unaUnidad).getPosicion();
+		int distancia = this.mapa.getDistancia(this.posicion, posObjetivo);
 		
+		this.armaDeRadiacion.aplicarMagia(unaUnidad, new Radiacion(),distancia);
+		
+		
+		this.energia.disminuir(75);
 	}
 
+	@Override
+	public int energiaActual() {
+		return this.energia.valor();
+	}
 }

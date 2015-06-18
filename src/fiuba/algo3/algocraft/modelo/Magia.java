@@ -1,7 +1,10 @@
 package fiuba.algo3.algocraft.modelo;
 
-public class Magia {
+public abstract class Magia {
 
 	protected int costoEnergia;
+
+	public abstract void aplicar(Unidad unaUnidad);
+
 	
 }
