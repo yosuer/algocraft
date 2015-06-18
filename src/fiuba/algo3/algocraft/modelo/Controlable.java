@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import ar.uba.fi.algo3.titiritero.Posicionable;
-
-public abstract class Controlable implements IDaniable, IElemento, Posicionable{
+public abstract class Controlable implements IDaniable, IElemento{
 
 	protected Collection<Controlable> edificiosRequeridos;
 	protected Posicion posicion;
