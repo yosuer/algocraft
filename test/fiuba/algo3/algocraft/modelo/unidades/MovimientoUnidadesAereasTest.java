@@ -34,7 +34,7 @@ public class MovimientoUnidadesAereasTest {
 		
 		for (int i=1;i<=3;i++) mapa.pasarTurnoMapa();
 		
-		Assert.assertEquals(mapa.getElemento(1, 1, 1), new Tierra());
+		Assert.assertNull(mapa.getElemento(1, 1, 1));
 		Assert.assertEquals(esp,mapa.getElemento(4, 4, 1));
 		Assert.assertEquals(0, camino.size());
 	}

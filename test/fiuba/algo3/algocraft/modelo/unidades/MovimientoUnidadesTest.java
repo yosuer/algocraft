@@ -79,7 +79,7 @@ public class MovimientoUnidadesTest {
 		
 		mapa.pasarTurnoMapa();
 		
-		Assert.assertEquals(mapa.getElemento(2, 2, 1), new Tierra());
+		Assert.assertNull(mapa.getElemento(2, 2, 1));
 		Assert.assertEquals(espectro, mapa.getElemento(3, 3, 1));
 		Assert.assertEquals(marine, mapa.getElemento(3, 3, 0));
 		Assert.assertEquals(1, camino.size());
