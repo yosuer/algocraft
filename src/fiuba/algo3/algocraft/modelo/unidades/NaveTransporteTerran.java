@@ -7,7 +7,6 @@ import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.ITransportable;
 import fiuba.algo3.algocraft.modelo.ITransporte;
 import fiuba.algo3.algocraft.modelo.IntRango;
-import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Terran;
 import fiuba.algo3.algocraft.modelo.Unidad;
 
@@ -15,6 +14,7 @@ public class NaveTransporteTerran extends Unidad implements ITransporte{
 
 	private Queue<ITransportable> unidadesCargadas;
 	private IntRango capacidad;
+	//private ITransportador transportador;
 	
 	public NaveTransporteTerran() {
 		this.transporte = 0;
