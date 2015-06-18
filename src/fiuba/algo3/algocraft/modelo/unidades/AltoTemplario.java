@@ -16,6 +16,7 @@ public class AltoTemplario extends Unidad implements ElementoProtoss,IUnidadMagi
 	private IntRango energia;
 
 	public AltoTemplario() {
+		super();
 		this.transporte = 2;
 		this.vision = 7;
 		this.costoMineral = 50;

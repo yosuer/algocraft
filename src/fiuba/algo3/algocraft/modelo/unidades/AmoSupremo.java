@@ -10,6 +10,7 @@ public class AmoSupremo extends Unidad {
 	private int poblacion;
 	
 	public AmoSupremo() {
+		super();
 		this.transporte = 8;
 		this.vision = 9;
 		this.costoMineral = 100;

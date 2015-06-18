@@ -45,5 +45,7 @@ public class GestorDeUbicacionesTest {
 		Assert.assertEquals(3, gm.getDistancia(inicio, destino));
 		Assert.assertEquals(3, gm.getDistancia(destino, inicio));
 	}
+	
+
 
 }

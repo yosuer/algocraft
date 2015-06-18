@@ -13,7 +13,9 @@ import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.edificios.Barraca;
+import fiuba.algo3.algocraft.modelo.unidades.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.Marine;
+import fiuba.algo3.algocraft.modelo.unidades.Zealot;
 
 public class MapaTest {
 	
@@ -68,7 +70,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void test05_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorOtroRecurso(){
+	public void test06_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorOtroRecurso(){
 		Mapa mapa = new Mapa();
 		IElemento mineral = new Mineral();
 		IElemento vespeno = new Vespeno();
@@ -82,7 +84,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void test06_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorObstaculoTerrestre(){
+	public void test07_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorObstaculoTerrestre(){
 		Mapa mapa = new Mapa();
 		ObstaculoTerrestre obstaculo = new ObstaculoTerrestre();
 		IElemento vespeno = new Vespeno();
@@ -139,7 +141,7 @@ public class MapaTest {
 	}
 
 	@Test
-	public void test09_AlIniciarElMapaSePuedeRecorrerTodasLasPosiciones2(){
+	public void test10_AlIniciarElMapaSePuedeRecorrerTodasLasPosiciones2(){
 		Mapa mapa = new Mapa();
 		
 		Collection<Posicion>camino =mapa.getHojaDeRuta(new Posicion(95,95,0), new Posicion(80,80,0));
@@ -148,7 +150,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void test09_CaminoMinimoConObstaculosEnElMapa(){
+	public void test11_CaminoMinimoConObstaculosEnElMapa(){
 		Mapa mapa = new Mapa();
 		
 		mapa.agregarElemento(1,9, new ObstaculoTerrestre());
@@ -160,7 +162,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void test10_MoverUnaUnidadDentroDelMapa(){
+	public void test12_MoverUnaUnidadDentroDelMapa(){
 		Mapa mapa = new Mapa();
 		Marine marine = new Marine();
 		mapa.agregarElemento(1, 1, marine);
@@ -177,14 +179,14 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void test11_CantidadDePoblacionInicialEnElMapaEs0(){
+	public void test13_CantidadDePoblacionInicialEnElMapaEs0(){
 		Mapa mapa = new Mapa();
 		
 		Assert.assertEquals(0,0,mapa.getPoblacionTotal());
 	}
 	
 	@Test
-	public void test12_AgregarUnElementoNoPoblacionalNoAumentaLaCapacidadDePoblacion(){
+	public void test14_AgregarUnElementoNoPoblacionalNoAumentaLaCapacidadDePoblacion(){
 		Mapa mapa = new Mapa();
 		Barraca barraca = new Barraca();
 		
@@ -223,6 +225,20 @@ public class MapaTest {
 		Mapa mapa = new Mapa();	
 		mapa.agregarElemento(1,1, new Mineral());
 		Assert.assertEquals(new Posicion(1,2,0),mapa.getPosicionProxima(new Posicion(2,2,0)));
+	}
+	
+	@Test
+	public void test19_ObtenerUnidadesProximasAUnaPosicion(){
+		Mapa mapa = new Mapa();
+		mapa.agregarElemento(5,5, new Marine());
+		mapa.agregarElemento(4,4, new Zealot());
+		mapa.agregarElemento(4,4, new Espectro());
+		mapa.agregarElemento(4,5, new Barraca());
+		mapa.agregarElemento(6,6, new Mineral());
+		
+		List<Unidad> unidades = mapa.getUnidadesProximas(new Posicion(5,5,0), 2);
+		
+		Assert.assertEquals(3,unidades.size());
 	}
 	
 }

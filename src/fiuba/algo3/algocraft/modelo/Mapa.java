@@ -2,6 +2,8 @@ package fiuba.algo3.algocraft.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
 import fiuba.algo3.algocraft.excepciones.ErrorElementoNoEncontrado;
 
 public class Mapa {
@@ -203,5 +205,7 @@ public class Mapa {
 		return this.gestorDeUbicaciones.getDistancia(posInicial,posObjetivo);
 	}
 
-
+	public List<Unidad> getUnidadesProximas(Posicion posicion, int radio){
+		return this.gestorDeUbicaciones.getUnidadesProximas(posicion, radio);		
+	}
 }

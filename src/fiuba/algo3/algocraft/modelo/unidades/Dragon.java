@@ -10,6 +10,7 @@ import fiuba.algo3.algocraft.modelo.Unidad;
 public class Dragon extends Unidad implements ElementoProtoss {
 	
 	public Dragon(){
+		super();
 		this.transporte = 4;
 		this.vision = 8;
 		this.costoMineral = 125;

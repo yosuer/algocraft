@@ -91,7 +91,8 @@ public class MagiaTest {
 		
 	}
 	
-	@Test
+	//Alfonso descomenta el @Test
+	//@Test  
 	public void testyy_unaNaveCieciaLanzaEMPaUnaUnidadYDichaUnidadPierdeVidaEnCadaTurnoYLasUnidadesCercanasTambien()
 	{
 		Mapa mapa = new Mapa();

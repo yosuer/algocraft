@@ -1,6 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,6 +40,7 @@ public class MovimientoUnidadesAereasTest {
 		Assert.assertEquals(0, camino.size());
 	}
 	
+	
 	public void test03_unaUnidadAereaNoObstruyeElCaminoDeUnaUnidadTerrestre(){
 		Mapa mapa = new Mapa();
 		Espectro espectro = new Espectro();
@@ -57,11 +59,20 @@ public class MovimientoUnidadesAereasTest {
 		Mapa mapa = new Mapa();
 		Espectro espectro1 = new Espectro();
 		Espectro espectro2 = new Espectro();
-
 		mapa.agregarElemento(2, 2, espectro1);
 		mapa.agregarElemento(3, 3, espectro2);
+		for(int i=1;i<=8;i++) mapa.pasarTurnoMapa();
 		
-		Collection<Posicion> camino = espectro1.mover(4, 4);
+		List<Posicion> camino = espectro1.mover(4, 4);
+		
+		Assert.assertEquals(espectro1,mapa.getElemento(2, 2, 1));
+		Assert.assertEquals(espectro2,mapa.getElemento(3, 3, 1));
+		//Assert.assertEquals(3, camino.size());
+		System.out.println(camino.get(0));
+		System.out.println(camino.get(1));
+		
+		mapa.pasarTurnoMapa();
+		mapa.pasarTurnoMapa();
 		
 		Assert.assertNull(mapa.getElemento(2, 2, 1));
 		Assert.assertEquals(espectro1,mapa.getElemento(4, 4, 1));

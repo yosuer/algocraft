@@ -1,6 +1,9 @@
 package fiuba.algo3.algocraft.modelo;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
 public class GestorDeUbicaciones {
 
@@ -10,7 +13,6 @@ public class GestorDeUbicaciones {
 	
 	private Grafo<Posicion> grafo;
 	private IElemento[][][] elementos;
-	
 	
 	public GestorDeUbicaciones(int ancho, int largo, int alto) {
 		this.grafo = new Grafo<Posicion>();
@@ -23,17 +25,11 @@ public class GestorDeUbicaciones {
 			for (int y = 1; y <= this.largo; y++){
 				for (int z = 0; z <= this.alto; z++){
 					this.nuevoNodo(new Posicion(x,y,z));
+					this.elementos[x][y][z] = null;
 				}
 				this.elementos[x][y][0] = new Tierra();
 			}
 		}
-		
-//		for (int x = 1; x <= this.ancho; x++){
-//			for (int y = 1; y <= this.largo; y++){
-//					this.elementos[x][y][0] = new Tierra();
-//			}
-//		}
-		
 	}
 	
 	public IElemento getElemento(int x, int y, int z) {
@@ -105,10 +101,31 @@ public class GestorDeUbicaciones {
 		
 		return posAnt;
 	}
+	
+	public List<Unidad> getUnidadesProximas(Posicion pos, int radio) {
+		List<Unidad> unidades = new ArrayList<Unidad>();
+		
+		for (int x=pos.x()-radio; x <=pos.x() + radio; x++){
+			for (int y=pos.y()-radio; y <=pos.y()+radio; y++){
+				for(int z=0; z<=1; z++){
+					try {
+						Unidad u = (Unidad)this.elementos[x][y][z];
+						if (u != null) unidades.add(u);
+					} catch(ClassCastException e1){
+					} catch(ArrayIndexOutOfBoundsException e2){
+					}
+					
+				}
+			}
+		}
+		return unidades;
+	}
 
 	public int getDistancia(Posicion posInicial, Posicion posFinal) {
 		int difX = Math.abs(posInicial.x() - posFinal.x());
 		int difY = Math.abs(posInicial.y() - posFinal.y());
 		return (int) Math.round(Math.sqrt( difX*difX + difY*difY));
 	}
+
+
 }

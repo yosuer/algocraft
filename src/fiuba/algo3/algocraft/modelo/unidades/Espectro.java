@@ -8,6 +8,7 @@ import fiuba.algo3.algocraft.modelo.Unidad;
 public class Espectro extends Unidad {
 
 	public Espectro() {
+		super();
 		this.transporte = 0;
 		this.vision = 7;
 		this.costoMineral = 150;
