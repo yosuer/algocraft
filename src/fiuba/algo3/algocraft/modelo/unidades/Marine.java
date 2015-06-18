@@ -1,11 +1,15 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.excepciones.ErrorCapacidadDeTransporteInsuficiente;
 import fiuba.algo3.algocraft.modelo.ArmaSimple;
 import fiuba.algo3.algocraft.modelo.Construyendose;
+import fiuba.algo3.algocraft.modelo.ITransportable;
+import fiuba.algo3.algocraft.modelo.ITransporte;
+import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Terran;
 import fiuba.algo3.algocraft.modelo.Unidad;
 
-public class Marine extends Unidad {
+public class Marine extends Unidad implements ITransportable{
 
 	public Marine() {
 		super();
@@ -18,6 +22,23 @@ public class Marine extends Unidad {
 		this.estado = new Construyendose(this,3);
 		this.nivel = 0;
 		this.arma = new ArmaSimple(6,6,4,4); //dA dT rAA rAT
+	}
+
+	@Override
+	public void transportardoPor(ITransporte transporte) {
+		if (transporte.capacidadDisponible() < this.transporte) 
+			throw new ErrorCapacidadDeTransporteInsuficiente();
+		this.mapa.desocuparPosicion(this.posicion);
+	}
+
+	@Override
+	public void descargarseEn(int x, int y){
+		this.mapa.ubicarElemento(this, mapa.getPosicionProxima(new Posicion(x,y,nivel)));
+	}
+
+	@Override
+	public int getOcupacion() {
+		return this.transporte;
 	}
 
 }

@@ -42,9 +42,8 @@ public abstract class Unidad extends Controlable
 			Posicion posNueva = this.movimientos.remove(0);
 			mapa.moverElemento(this, posNueva);
 			this.posicion = posNueva;
+			//System.out.println(posNueva);
 		}
-//		if (mapa.estaOcupado(pos.x(), pos.y(), pos.z())) throw new ErrorPosicionOcupada();
-//		this.posicion = pos;
 	}
 	
 	public void agregarseEn(Mapa mapa){

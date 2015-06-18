@@ -23,8 +23,8 @@ public class GestorDeUbicaciones {
 			for (int y = 1; y <= this.largo; y++){
 				for (int z = 0; z <= this.alto; z++){
 					this.nuevoNodo(new Posicion(x,y,z));
-					this.elementos[x][y][0] = new Tierra();
 				}
+				this.elementos[x][y][0] = new Tierra();
 			}
 		}
 		
@@ -49,7 +49,10 @@ public class GestorDeUbicaciones {
 	}
 	
 	public void desocuparPosicion(Posicion pos) {
-		elementos[pos.x()][pos.y()][pos.z()] = new Tierra();
+		if ( pos.z() == 0 ) 
+			elementos[pos.x()][pos.y()][pos.z()] = new Tierra();
+		else 
+			elementos[pos.x()][pos.y()][pos.z()] = null;
 		this.nuevoNodo(pos);
 	}
 	
