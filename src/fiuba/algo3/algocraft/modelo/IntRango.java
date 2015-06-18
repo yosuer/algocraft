@@ -18,10 +18,11 @@ public class IntRango {
 		actual = maximo;
 	}
 	
-	public IntRango(int minimo, int maximo, int inicial){
-		min = minimo;
-		max = maximo;
-		actual = inicial;
+	public IntRango(int minimo, int maximo, int valorActual)
+	{
+		this.min = minimo;
+		this.max = maximo;
+		this.actual = valorActual;
 	}
 	
 	public int valor(){
