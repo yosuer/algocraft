@@ -77,7 +77,7 @@ public class GameLoop implements Runnable{
 				Thread.sleep(this.frecuencia);
 			} catch (InterruptedException e) {
 				// TODO log de exception
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 	}
