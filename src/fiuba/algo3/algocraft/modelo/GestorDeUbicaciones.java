@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+import fiuba.algo3.algocraft.excepciones.ErrorPosicionFueraDeRango;
+
 public class GestorDeUbicaciones {
 
 	private int ancho; //x
@@ -33,7 +35,13 @@ public class GestorDeUbicaciones {
 	}
 	
 	public IElemento getElemento(int x, int y, int z) {
-		return this.elementos[x][y][z];
+		IElemento elemento = null;
+		try{
+			elemento = this.elementos[x][y][z];
+		} catch (ArrayIndexOutOfBoundsException e){
+			throw new ErrorPosicionFueraDeRango();
+		}
+		return elemento;
 	}
 	
 	public boolean estaOcupado(int x, int y, int z) {

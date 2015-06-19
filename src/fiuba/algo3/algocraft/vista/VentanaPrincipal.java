@@ -65,7 +65,7 @@ public class VentanaPrincipal {
 	private void initialize() throws IOException {
 		frame = new JFrame();
 		frame.setForeground(new Color(0, 0, 0));
-		frame.setBounds(120, 5, 1000, 760);
+		frame.setBounds(120, 2, 1000, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -75,7 +75,7 @@ public class VentanaPrincipal {
 				gameLoop.iniciarEjecucion();
 			}
 		});
-		btnIniciar.setBounds(42, 16, 77, 25);
+		btnIniciar.setBounds(20, 10, 85, 25);
 		frame.getContentPane().add(btnIniciar);
 		
 		
@@ -85,13 +85,12 @@ public class VentanaPrincipal {
 				gameLoop.detenerEjecucion();
 			}
 		});
-		btnDetener.setBounds(325, 16, 92, 25);
+		btnDetener.setBounds(20, 45, 85, 25);
 		frame.getContentPane().add(btnDetener);
-		
 		
 		JPanel panel = new SuperficiePanel();
 		panel.setBackground(new Color(0, 0, 0));
-		panel.setBounds(150, 50, 600, 600);
+		panel.setBounds(150, 0, 680, 680);
 		frame.getContentPane().add(panel);
 		
 		Mapa mapa = new Mapa();
@@ -103,29 +102,34 @@ public class VentanaPrincipal {
 		Circulo circulo = new VistaObjetoMultiforma(modelo);
 		this.gameLoop.agregar(circulo);
 		
-//		for (int x=1; x<=20; x++){
-//			for (int y=1; y<=20; y++){
-//				Estatico elemento = (Estatico)mapa.getElemento(x, y, 0);
-//				//modelo2.mutar();
-//				this.gameLoop.agregar(elemento);
-//				Imagen imagen = new VistaIElemento(elemento);
-//				this.gameLoop.agregar(imagen);
-//			}
-//		}
+		for (int x=1; x<=20; x++){
+			for (int y=1; y<=20; y++){
+				Estatico elemento = (Estatico)mapa.getElemento(x, y, 0);
+				this.gameLoop.agregar(elemento);
+				Imagen imagen = new VistaIElemento(elemento);
+				this.gameLoop.agregar(imagen);
+			}
+		}
 		
 
-		ObjetoMultiforma modelo3 = new ObjetoMultiforma();
-		modelo3.inmutar();
-		this.gameLoop.agregar(modelo3);
-		Imagen imagen = new Vista3ObjetoMultiforma(modelo3);
-		this.gameLoop.agregar(imagen);
+////		ObjetoMultiforma modelo3 = new ObjetoMultiforma();
+//		Estatico modelo3 = (Estatico)mapa.getElemento(2, 2, 0);
+//		//modelo3.inmutar();
+//		this.gameLoop.agregar(modelo3);
+////		Imagen imagen = new Vista3ObjetoMultiforma(modelo3);
+//		Imagen imagen = new VistaIElemento(modelo3);
+//		this.gameLoop.agregar(imagen);
+//		
+//		Estatico modelo4 = (Estatico)mapa.getElemento(1, 1, 0);
+//		this.gameLoop.agregar(modelo4);
+//		Imagen imagen4 = new VistaIElemento(modelo4);
+//		this.gameLoop.agregar(imagen4);
 		
 		panel.addMouseListener(new MouseAdapter() {
 					
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				//modelo.moverA(arg0.getX(), arg0.getY());
-					
 			}});
 
 		frame.setFocusable(true);

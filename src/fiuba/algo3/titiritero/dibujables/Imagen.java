@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
@@ -24,7 +25,11 @@ public class Imagen implements ObjetoDibujable {
 	@Override
 	public void dibujar(SuperficieDeDibujo superficieDeDibujo) {
 		Graphics grafico = ((SuperficiePanel)superficieDeDibujo).getBuffer();
-		grafico.drawImage(this.imagen, this.posicionable.getX(), this.posicionable.getY(),null);
+		int tam = 15;
+		int posX = this.posicionable.getX()-1;
+		int posY = this.posicionable.getY()-1;
+		grafico.drawImage(this.imagen, tam*posX+1, tam*posY-1,tam,tam,null);
+										//this.imagen.getHeight(),this.imagen.getWidth(),null);
 	}
 	
 	public ObjetoPosicionable getPosicionable() {

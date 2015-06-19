@@ -3,7 +3,7 @@ package fiuba.algo3.algocraft.modelo;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
-public class ObjetoMultiforma implements ObjetoVivo, ObjetoPosicionable{
+public class ObjetoMultiforma implements ObjetoVivo, ObjetoPosicionable {
 
 	private int estado;
 	private int x;
