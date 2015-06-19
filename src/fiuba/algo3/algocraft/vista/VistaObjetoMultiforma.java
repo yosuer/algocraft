@@ -13,9 +13,9 @@ public class VistaObjetoMultiforma extends Circulo {
 	
 	@Override
 	public Color getColor() {
-		System.out.println("GetColor");	
+		//System.out.println("GetColor");
 		ObjetoMultiforma objeto = (ObjetoMultiforma)this.getPosicionable();
-		System.out.println(objeto.getEstado());
+		//System.out.println(objeto.getEstado());
 		switch (objeto.getEstado()) {
 		case 0:
 			return Color.BLUE;

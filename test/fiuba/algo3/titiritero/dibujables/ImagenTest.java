@@ -13,7 +13,6 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
 public class ImagenTest {
 
-	@Test
 	public void testDibujar() throws IOException {
 		Graphics graphics = Mockito.mock(Graphics.class);
 		SuperficiePanel unaSuperficie = Mockito.mock(SuperficiePanel.class);
