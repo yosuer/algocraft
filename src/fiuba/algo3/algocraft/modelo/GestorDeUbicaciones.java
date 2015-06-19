@@ -27,7 +27,7 @@ public class GestorDeUbicaciones {
 					this.nuevoNodo(new Posicion(x,y,z));
 					this.elementos[x][y][z] = null;
 				}
-				this.elementos[x][y][0] = new Tierra();
+				this.elementos[x][y][0] = new Tierra(new Posicion(x,y,0));
 			}
 		}
 	}
@@ -46,7 +46,7 @@ public class GestorDeUbicaciones {
 	
 	public void desocuparPosicion(Posicion pos) {
 		if ( pos.z() == 0 ) 
-			elementos[pos.x()][pos.y()][pos.z()] = new Tierra();
+			elementos[pos.x()][pos.y()][pos.z()] = new Tierra(pos);
 		else 
 			elementos[pos.x()][pos.y()][pos.z()] = null;
 		this.nuevoNodo(pos);

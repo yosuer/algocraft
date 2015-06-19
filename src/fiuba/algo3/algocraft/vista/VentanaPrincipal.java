@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import fiuba.algo3.algocraft.modelo.Estatico;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.ObjetoMultiforma;
 import fiuba.algo3.algocraft.modelo.Tierra;
@@ -64,7 +65,7 @@ public class VentanaPrincipal {
 	private void initialize() throws IOException {
 		frame = new JFrame();
 		frame.setForeground(new Color(0, 0, 0));
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(120, 5, 1000, 760);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -77,6 +78,7 @@ public class VentanaPrincipal {
 		btnIniciar.setBounds(42, 16, 77, 25);
 		frame.getContentPane().add(btnIniciar);
 		
+		
 		JButton btnDetener = new JButton("Detener");
 		btnDetener.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -86,24 +88,31 @@ public class VentanaPrincipal {
 		btnDetener.setBounds(325, 16, 92, 25);
 		frame.getContentPane().add(btnDetener);
 		
+		
 		JPanel panel = new SuperficiePanel();
 		panel.setBackground(new Color(0, 0, 0));
-		panel.setBounds(42, 53, 375, 187);
+		panel.setBounds(150, 50, 600, 600);
 		frame.getContentPane().add(panel);
 		
 		Mapa mapa = new Mapa();
 		
 		this.gameLoop = new GameLoop((SuperficieDeDibujo) panel);
+		
 		final ObjetoMultiforma modelo = new ObjetoMultiforma();
 		this.gameLoop.agregar(modelo);
 		Circulo circulo = new VistaObjetoMultiforma(modelo);
 		this.gameLoop.agregar(circulo);
 		
-		ObjetoMultiforma modelo2 = (ObjetoMultiforma)mapa.getElemento(5, 5, 0);
-		modelo2.mutar();
-		this.gameLoop.agregar(modelo2);
-		Figura cuadrado = new Vista2ObjetoMultiforma(modelo2);
-		this.gameLoop.agregar(cuadrado);
+//		for (int x=1; x<=20; x++){
+//			for (int y=1; y<=20; y++){
+//				Estatico elemento = (Estatico)mapa.getElemento(x, y, 0);
+//				//modelo2.mutar();
+//				this.gameLoop.agregar(elemento);
+//				Imagen imagen = new VistaIElemento(elemento);
+//				this.gameLoop.agregar(imagen);
+//			}
+//		}
+		
 
 		ObjetoMultiforma modelo3 = new ObjetoMultiforma();
 		modelo3.inmutar();
@@ -115,7 +124,7 @@ public class VentanaPrincipal {
 					
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				modelo.moverA(arg0.getX(), arg0.getY());
+				//modelo.moverA(arg0.getX(), arg0.getY());
 					
 			}});
 

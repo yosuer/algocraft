@@ -1,8 +1,10 @@
 package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
-public abstract class Estatico extends ObjetoMultiforma implements IElemento{
+public abstract class Estatico implements IElemento, ObjetoPosicionable, ObjetoVivo{
 	
 	protected Mapa mapa;
 	protected Posicion posicion;
@@ -34,7 +36,22 @@ public abstract class Estatico extends ObjetoMultiforma implements IElemento{
 		mapa.agregarEstatico(this);
 		this.mapa = mapa;
 	}
+	
+	@Override
+	public int getX() {
+		return this.posicion.x();
+	}
 
+	@Override
+	public int getY() {
+		return this.posicion.y();
+	}
+
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }
