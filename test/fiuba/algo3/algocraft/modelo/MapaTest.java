@@ -13,6 +13,10 @@ import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.edificios.Barraca;
+import fiuba.algo3.algocraft.modelo.natural.Mineral;
+import fiuba.algo3.algocraft.modelo.natural.ObstaculoTerrestre;
+import fiuba.algo3.algocraft.modelo.natural.Tierra;
+import fiuba.algo3.algocraft.modelo.natural.Vespeno;
 import fiuba.algo3.algocraft.modelo.unidades.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.Marine;
 import fiuba.algo3.algocraft.modelo.unidades.Zealot;
@@ -20,17 +24,17 @@ import fiuba.algo3.algocraft.modelo.unidades.Zealot;
 public class MapaTest {
 	
 	@Test
-	public void test01_CrearMapaConTierraDe100X100(){
-		Mapa nuevoMapa = new Mapa();
+	public void test01_CrearMapaConTierraDe30X30(){
+		Mapa nuevoMapa = new Mapa(30, 40);
 		
-		Assert.assertEquals(nuevoMapa.ancho(), 100);
-		Assert.assertEquals(nuevoMapa.largo(), 100);	
+		Assert.assertEquals(nuevoMapa.ancho(), 30);
+		Assert.assertEquals(nuevoMapa.largo(), 40);	
 		Assert.assertEquals(nuevoMapa.alto(), 1);	
 	}
 	
 	@Test
 	public void test02_DefinirMineralesEnUnaPosicionDelMapa(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		IElemento mineral = new Mineral();
 		
 		mapa.agregarElemento(1,1,mineral);
@@ -40,7 +44,7 @@ public class MapaTest {
 	
 	@Test
 	public void test03_DefinirVespenoEnUnaPosicionDelMapa(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		IElemento vespeno = new Vespeno();
 		
 		mapa.agregarElemento(1,1,vespeno);
@@ -50,7 +54,7 @@ public class MapaTest {
 	
 	@Test
 	public void test04_DefinirEspaciosVaciosEnElMapa(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		ObstaculoTerrestre obstaculoTerrestre = 
 									new ObstaculoTerrestre();
 		
@@ -62,7 +66,7 @@ public class MapaTest {
 	
 	@Test(expected = ErrorPosicionOcupada.class)
 	public void test05_AgregarUnRecursoEnUnaPosicionOcupadaLanzaError(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		IElemento vespeno = new Vespeno();
 		IElemento mineral = new Mineral();
 		mapa.agregarElemento(1,1,vespeno);
@@ -71,7 +75,7 @@ public class MapaTest {
 	
 	@Test
 	public void test06_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorOtroRecurso(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		IElemento mineral = new Mineral();
 		IElemento vespeno = new Vespeno();
 		mapa.agregarElemento(1,1,mineral);
@@ -85,7 +89,7 @@ public class MapaTest {
 	
 	@Test
 	public void test07_RecursoNoPuedeEstarEnUnaPosicionDelMapaOcupadaPorObstaculoTerrestre(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		ObstaculoTerrestre obstaculo = new ObstaculoTerrestre();
 		IElemento vespeno = new Vespeno();
 		IElemento mineral = new Mineral();
@@ -103,28 +107,28 @@ public class MapaTest {
 	
 	@Test
 	public void test08_CrearUnMapaConRecursosPredeterminados(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(50, 50);
 		
-		Assert.assertTrue(mapa.getElemento(2,6, 0).getClass() ==	Mineral.class);
-		Assert.assertTrue(mapa.getElemento(2,2, 0).getClass() ==	Mineral.class);
-		Assert.assertTrue(mapa.getElemento(6,2, 0).getClass() ==	Mineral.class);
+		Assert.assertTrue(mapa.getElemento(2,6, 0).nombre() ==	"Mineral");
+		Assert.assertTrue(mapa.getElemento(2,2, 0).nombre() ==	"Mineral");
+		Assert.assertTrue(mapa.getElemento(6,2, 0).nombre() ==	"Mineral");
 		
-		Assert.assertEquals(mapa.getElemento(3,3, 0), new Tierra());
+		Assert.assertEquals(mapa.getElemento(3,3, 0).nombre(), "Tierra");
 
-		Assert.assertTrue(mapa.getElemento(4,6, 0).getClass() == Vespeno.class);
+		Assert.assertTrue(mapa.getElemento(4,6, 0).nombre() == "Vespeno");
 		
-		Assert.assertTrue(mapa.getElemento(99,99,0).getClass() ==	Mineral.class);
-		Assert.assertTrue(mapa.getElemento(95,99,0).getClass() ==	Mineral.class);
-		Assert.assertTrue(mapa.getElemento(99,95,0).getClass() ==	Mineral.class);
+		Assert.assertTrue(mapa.getElemento(45,49,0).nombre() ==	"Mineral");
+		Assert.assertTrue(mapa.getElemento(49,49,0).nombre() ==	"Mineral");
+		Assert.assertTrue(mapa.getElemento(49,45,0).nombre() ==	"Mineral");
 		
-		Assert.assertEquals(mapa.getElemento(97,97,0), new Tierra());
+		Assert.assertEquals(mapa.getElemento(47,47,0).nombre(), "Tierra");
 
-		Assert.assertTrue(mapa.getElemento(95,97,0).getClass() == Vespeno.class);
+		Assert.assertTrue(mapa.getElemento(47,45,0).nombre() == "Vespeno");
 	}
 	
 	@Test
 	public void test09_AlIniciarElMapaSePuedeRecorrerTodasLasPosiciones1(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		
 		Collection<Posicion>camino = new ArrayList<Posicion>();
 		camino = mapa.getHojaDeRuta(new Posicion(3,3,0),new Posicion(6,6,0));
@@ -142,16 +146,18 @@ public class MapaTest {
 
 	@Test
 	public void test10_AlIniciarElMapaSePuedeRecorrerTodasLasPosiciones2(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		
-		Collection<Posicion>camino =mapa.getHojaDeRuta(new Posicion(95,95,0), new Posicion(80,80,0));
+		Collection<Posicion>camino =mapa.getHojaDeRuta(new Posicion(3,3,0), new Posicion(5,5,0));
+		Assert.assertEquals(3, camino.size());
 		
-		Assert.assertEquals(16, camino.size());
+		camino =mapa.getHojaDeRuta(new Posicion(20,20,0), new Posicion(14,14,0));
+		Assert.assertEquals(7, camino.size());
 	}
 	
 	@Test
 	public void test11_CaminoMinimoConObstaculosEnElMapa(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		
 		mapa.agregarElemento(1,9, new ObstaculoTerrestre());
 		mapa.agregarElemento(2,9, new ObstaculoTerrestre());
@@ -163,7 +169,7 @@ public class MapaTest {
 	
 	@Test
 	public void test12_MoverUnaUnidadDentroDelMapa(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Marine marine = new Marine();
 		mapa.agregarElemento(1, 1, marine);
 		for (int i=1;i<=3;i++) mapa.pasarTurnoMapa();
@@ -180,14 +186,14 @@ public class MapaTest {
 	
 	@Test
 	public void test13_CantidadDePoblacionInicialEnElMapaEs0(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		
 		Assert.assertEquals(0,0,mapa.getPoblacionTotal());
 	}
 	
 	@Test
 	public void test14_AgregarUnElementoNoPoblacionalNoAumentaLaCapacidadDePoblacion(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Barraca barraca = new Barraca();
 		
 		mapa.agregarElemento(3, 3, barraca);
@@ -197,7 +203,7 @@ public class MapaTest {
 
 	@Test
 	public void test15_ElMapaComienzaCon200DeMineralY0DeVespeno(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		
 		Assert.assertEquals(200, mapa.getMineralTotal());
 		Assert.assertEquals(0,mapa.getVespenoTotal());
@@ -205,7 +211,7 @@ public class MapaTest {
 	
 	@Test(expected = ErrorRecursosInsuficientes.class)
 	public void test16_IntentarAgregarUnEdificioSinSuficientesLanzaError(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 
 		mapa.agregarElemento(3, 3, new Barraca());
 		mapa.agregarElemento(5, 5, new Barraca());
@@ -213,7 +219,7 @@ public class MapaTest {
 	
 	@Test
 	public void test17_ObtenerUnaPosicionDisponibleProximaAOtra(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.agregarElemento(3, 3, new Mineral());
 		Posicion pos = new Posicion(3,3,0);
 		
@@ -222,14 +228,14 @@ public class MapaTest {
 	
 	@Test
 	public void test18_ObtenerUnaPosicionDisponibleProximaAOtra2Borde(){
-		Mapa mapa = new Mapa();	
+		Mapa mapa = new Mapa(40, 40);	
 		mapa.agregarElemento(1,1, new Mineral());
 		Assert.assertEquals(new Posicion(1,2,0),mapa.getPosicionProxima(new Posicion(2,2,0)));
 	}
 	
 	@Test
 	public void test19_ObtenerUnidadesProximasAUnaPosicion(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.agregarElemento(5,5, new Marine());
 		mapa.agregarElemento(4,4, new Zealot());
 		mapa.agregarElemento(4,4, new Espectro());

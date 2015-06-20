@@ -18,6 +18,7 @@ public class Acceso extends Edificio implements ElementoProtoss,
 	
 	public Acceso() {
 		super();
+		this.nombre = "Acceso";
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
 		this.estadoFisico = new Protoss(500,500);

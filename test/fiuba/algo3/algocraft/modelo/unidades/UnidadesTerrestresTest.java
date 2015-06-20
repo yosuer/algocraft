@@ -4,11 +4,11 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.modelo.Mapa;
-import fiuba.algo3.algocraft.modelo.Tierra;
 import fiuba.algo3.algocraft.modelo.edificios.Acceso;
 import fiuba.algo3.algocraft.modelo.edificios.Barraca;
 import fiuba.algo3.algocraft.modelo.edificios.Fabrica;
 import fiuba.algo3.algocraft.modelo.edificios.ReservaDeReproduccion;
+import fiuba.algo3.algocraft.modelo.natural.Tierra;
 import fiuba.algo3.algocraft.modelo.unidades.Dragon;
 import fiuba.algo3.algocraft.modelo.unidades.Golliat;
 import fiuba.algo3.algocraft.modelo.unidades.Marine;
@@ -19,7 +19,7 @@ public class UnidadesTerrestresTest {
 
 	@Test
 	public void test00_PasarTurnoMarine() {
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		
 		Marine marine = new Marine();
 		mapa.agregarElemento(2, 2, marine);
@@ -29,7 +29,7 @@ public class UnidadesTerrestresTest {
 	
 	@Test
 	public void test01_CrearMarine() {
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.aumentarPoblacion(50);
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(1, 1, barraca);
@@ -51,7 +51,7 @@ public class UnidadesTerrestresTest {
 	
 	@Test
 	public void test03_CrearZealot() {
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.aumentarPoblacion(50);
 		Acceso acceso = new Acceso();
 		mapa.recibirMineral(500);
@@ -75,7 +75,7 @@ public class UnidadesTerrestresTest {
 	
 	@Test
 	public void test04_crearDragon() {
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.aumentarPoblacion(50);
 		mapa.recibirMineral(500);
 		mapa.recibirVespeno(500);
@@ -98,7 +98,7 @@ public class UnidadesTerrestresTest {
 	
 	@Test
 	public void test05_CrearZerling() {
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.aumentarPoblacion(50);
 		ReservaDeReproduccion reserva = new ReservaDeReproduccion();
 		mapa.agregarElemento(1, 1, reserva);
@@ -118,7 +118,7 @@ public class UnidadesTerrestresTest {
 	
 	@Test
 	public void test06_CrearGolliat() {
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.aumentarPoblacion(10);
 		mapa.recibirMineral(1000);
 		mapa.recibirVespeno(1000); //para pruebas aumento directamente
@@ -142,7 +142,7 @@ public class UnidadesTerrestresTest {
 	
 	@Test
 	public void test06_CreacionDeMarineYGoliat() {
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.aumentarPoblacion(10);
 		mapa.recibirMineral(1000);
 		mapa.recibirVespeno(1000); //para pruebas aumento directamente

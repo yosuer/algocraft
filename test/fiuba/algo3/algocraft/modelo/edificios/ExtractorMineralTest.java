@@ -5,12 +5,12 @@ import org.junit.Test;
 
 import fiuba.algo3.algocraft.modelo.ExtractorDeMineral;
 import fiuba.algo3.algocraft.modelo.Mapa;
-import fiuba.algo3.algocraft.modelo.Mineral;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Recurso;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
 import fiuba.algo3.algocraft.modelo.edificios.NexoMineral;
 import fiuba.algo3.algocraft.modelo.edificios.ZergMineral;
+import fiuba.algo3.algocraft.modelo.natural.Mineral;
 
 public class ExtractorMineralTest {
 
@@ -70,7 +70,7 @@ public class ExtractorMineralTest {
 	
 	@Test
 	public void test04_CentroDeMineralConTurnos(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		CentroDeMineral centro = new CentroDeMineral();
 		mapa.agregarElemento(2, 2, centro);
 		Assert.assertEquals(150, mapa.getMineralTotal());
@@ -83,7 +83,7 @@ public class ExtractorMineralTest {
 	
 	@Test
 	public void test05_LaRecoleccionDeRecursosSeReflejaDesdeElMapa(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		CentroDeMineral centro = new CentroDeMineral();
 
 		mapa.agregarElemento(2, 2, centro);
@@ -99,7 +99,7 @@ public class ExtractorMineralTest {
 	
 	@Test
 	public void test05_NexoMineralProtossRecolectaMineralYEntregaMineralAlPasarElTurno(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		NexoMineral nexoMineral = new NexoMineral();
 
 		mapa.agregarElemento(2, 5, nexoMineral);
@@ -114,7 +114,7 @@ public class ExtractorMineralTest {
 	
 	@Test
 	public void test05_ZergMineralRecolectaMineralYEntregaMineralAlPasarElTurno(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		ZergMineral zergMineral = new ZergMineral();
 
 		mapa.agregarElemento(2, 2, zergMineral);

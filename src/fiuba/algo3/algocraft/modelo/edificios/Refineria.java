@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.Terran;
 public class Refineria extends ExtractorDeGasVespeno {
 
 	public Refineria() {
+		this.nombre = "Refineria";
 		this.costoMineral = 100;
 		this.costoVespeno = 0;
 		this.estadoFisico = new Terran(750);

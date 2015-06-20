@@ -1,6 +1,10 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.natural;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.modelo.ExtractorDeGasVespeno;
+import fiuba.algo3.algocraft.modelo.IExtractorDeRecursos;
+import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.Recurso;
 
 public class Vespeno extends Recurso {
 
@@ -8,6 +12,7 @@ public class Vespeno extends Recurso {
 	
 	public Vespeno() {
 		this.reserva = 1000;
+		this.nombre = "Vespeno";
 	}
 
 	@Override

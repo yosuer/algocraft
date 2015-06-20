@@ -9,6 +9,7 @@ public class Espectro extends Unidad {
 
 	public Espectro() {
 		super();
+		this.nombre = "Espectro";
 		this.transporte = 0;
 		this.vision = 7;
 		this.costoMineral = 150;

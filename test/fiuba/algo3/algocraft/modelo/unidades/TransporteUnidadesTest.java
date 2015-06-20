@@ -6,13 +6,13 @@ import org.junit.Test;
 import fiuba.algo3.algocraft.modelo.ITransportable;
 import fiuba.algo3.algocraft.modelo.ITransporte;
 import fiuba.algo3.algocraft.modelo.Mapa;
-import fiuba.algo3.algocraft.modelo.Tierra;
+import fiuba.algo3.algocraft.modelo.natural.Tierra;
 
 public class TransporteUnidadesTest {
 
 	@Test
 	public void test01_NaveDeTransporteTrasladaLaUnidadYSeDesocupaLaPosicionYDescargaEnOtraPosicionLaUnidad(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Marine marine = new Marine();
 		NaveTransporteTerran nave = new NaveTransporteTerran();
 		
@@ -34,7 +34,7 @@ public class TransporteUnidadesTest {
 	
 	@Test
 	public void test02_NaveDeTransporteTraslada2UnidadesYSeDesocupaLaPosicionYDescargaEnOtraPosicionLaUnidad(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Marine marine1 = new Marine();
 		Marine marine2 = new Marine();
 		NaveTransporteTerran nave = new NaveTransporteTerran();

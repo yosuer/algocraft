@@ -20,7 +20,7 @@ public class AmoSupremoTest {
 	
 	@Test
 	public void test02_AgregarUnAmoSupremoAlMapaAumentaPoblacion(){
-		Mapa mapa = new Mapa(); //poblacion inicial es 10
+		Mapa mapa = new Mapa(40, 40); //poblacion inicial es 10
 		AmoSupremo amo = new AmoSupremo();
 		
 		mapa.agregarElemento(1, 1, amo);
@@ -30,7 +30,7 @@ public class AmoSupremoTest {
 	
 	@Test
 	public void test03_EliminarUnAmoSupremoDelMapaDisminuyePoblacion(){
-		Mapa mapa = new Mapa(); //poblacion inicial es 10
+		Mapa mapa = new Mapa(40, 40); //poblacion inicial es 10
 
 		mapa.agregarElemento(1, 1, new AmoSupremo());
 		mapa.agregarElemento(3, 3, new AmoSupremo());

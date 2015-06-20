@@ -5,8 +5,10 @@ import java.util.Collection;
 import java.util.List;
 
 import fiuba.algo3.algocraft.excepciones.ErrorElementoNoEncontrado;
+import fiuba.algo3.algocraft.modelo.natural.Mineral;
+import fiuba.algo3.algocraft.modelo.natural.Vespeno;
 
-public class Mapa {
+public class Mapa implements IMapa {
 	private int ancho; //x
 	private int largo; //y
 	private int alto; //z
@@ -19,9 +21,9 @@ public class Mapa {
 	private Equipo equipoActual;
 	private Equipo equipoSiguiente;
 
-	public Mapa() {
-		this.ancho = 100;
-		this.largo = 100;
+	public Mapa(int ancho, int largo) {
+		this.ancho = ancho;
+		this.largo = largo;
 		this.alto = 1;
 		this.elementosEstaticos = new ArrayList<Estatico>();
 		this.gestorDeUbicaciones = new GestorDeUbicaciones(ancho,largo,alto);
@@ -74,9 +76,9 @@ public class Mapa {
 		this.agregarElemento(4,6,new Vespeno());
 		
 		//Jugador2
-		for (int x=95; x<=99; x++) this.agregarElemento(x, 99, new Mineral());
-		for (int y=95; y<=98; y++) this.agregarElemento(99, y, new Mineral());
-		this.agregarElemento(95,97,new Vespeno());
+		for (int x=ancho-5; x<=ancho-1; x++) this.agregarElemento(x, largo-1, new Mineral());
+		for (int y=largo-5; y<=largo-2; y++) this.agregarElemento(ancho-1, y, new Mineral());
+		this.agregarElemento(ancho-3,largo-5,new Vespeno());
 		
 		this.equipoActual = equipo1;
 		this.equipoSiguiente = equipo2;

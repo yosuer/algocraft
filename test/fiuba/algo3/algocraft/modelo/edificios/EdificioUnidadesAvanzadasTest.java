@@ -45,14 +45,14 @@ public class EdificioUnidadesAvanzadasTest {
 
 	@Test(expected = ErrorAgregandoElementoAlMapa.class)
 	public void test05_NoSePuedeCrearUnaFabricaSinUnaBarracaEnElMapa(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Fabrica fabrica = new Fabrica();
 		mapa.agregarElemento(1, 10, fabrica);
 	}
 	
 	@Test (expected = ErrorRecursosInsuficientes.class)
 	public void test06_NoSePuedeCrearUnaFabricaSinLosRecursosSuficientes(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Barraca barraca = new Barraca();
 		Fabrica fabrica = new Fabrica();
 		
@@ -62,7 +62,7 @@ public class EdificioUnidadesAvanzadasTest {
 	
 	@Test ()
 	public void test07_SePuedeCrearUnaFabricaSoloDespuesDeCrearUnaBarraca(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.recibirMineral(1000);
 		mapa.recibirVespeno(1000); //para pruebas aumento directamente
 		Barraca barraca = new Barraca();

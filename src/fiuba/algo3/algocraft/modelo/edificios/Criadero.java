@@ -13,6 +13,7 @@ public class Criadero extends Edificio implements IElementoCreador{
 	private ICreadorDeElementos creador;
 	
 	public Criadero() {
+		this.nombre = "Criadero";
 		this.costoMineral = 100;
 		this.costoVespeno = 100;
 		this.estadoFisico = new Zerg(1500);

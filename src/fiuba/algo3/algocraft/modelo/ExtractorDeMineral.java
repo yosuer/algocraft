@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.excepciones.ErrorNoExisteRecursoEnLaPosicion;
+import fiuba.algo3.algocraft.modelo.natural.Mineral;
 
 public abstract class ExtractorDeMineral extends Edificio 
 										implements IExtractorDeRecursos{

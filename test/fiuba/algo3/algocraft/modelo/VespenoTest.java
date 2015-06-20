@@ -10,6 +10,7 @@ import fiuba.algo3.algocraft.modelo.edificios.Asimilador;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
 import fiuba.algo3.algocraft.modelo.edificios.Extractor;
 import fiuba.algo3.algocraft.modelo.edificios.Refineria;
+import fiuba.algo3.algocraft.modelo.natural.Vespeno;
 
 public class VespenoTest {
 
@@ -51,7 +52,7 @@ public class VespenoTest {
 	@Test
 	public void test04_SiAUnVespenoSeLeAsignaUnExtractorDeVespenoTerranEnLaMismaPosicionDaOK()
 	{
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Recurso vespeno = new Vespeno();
 		ExtractorDeGasVespeno extractor = new Refineria();
 		
@@ -131,7 +132,7 @@ public class VespenoTest {
 	@Test (expected = ErrorAgregandoElementoAlMapa.class)
 	public void test09_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoProtossDeDistintaPosicion()
 	{
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Recurso vespeno = new Vespeno();
 		ExtractorDeGasVespeno extractor = new Asimilador();
 		
@@ -142,7 +143,7 @@ public class VespenoTest {
 	@Test
 	public void test09B_AUnVespenoNoSeLePuedeAsignarUnExtractorDeVespenoProtossDeDistintaPosicion()
 	{
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Recurso vespeno = new Vespeno();
 		ExtractorDeGasVespeno extractor = new Asimilador();
 		

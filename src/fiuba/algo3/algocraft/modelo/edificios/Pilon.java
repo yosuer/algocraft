@@ -11,6 +11,7 @@ public class Pilon extends Edificio implements ElementoProtoss {
 	private int poblacion;
 	
 	public Pilon() {
+		this.nombre = "Pilon";
 		this.costoMineral = 100;
 		this.costoVespeno = 0;
 		this.estadoFisico = new Protoss(300,300);

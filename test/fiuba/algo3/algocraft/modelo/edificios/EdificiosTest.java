@@ -13,7 +13,7 @@ public class EdificiosTest {
 
 	@Test (expected = ErrorEdificioEnConstruccion.class)
 	public void test01_UnaBarracaNoPuedeCrearUnidadesSiNoTerminoDeConstruirse(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(1, 1, barraca);
 		
@@ -22,7 +22,7 @@ public class EdificiosTest {
 	
 	@Test
 	public void test02_UnaBarracaPuedeCrearUnidadesSiTerminoDeContruirse(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.aumentarPoblacion(10);
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(1, 1, barraca);
@@ -40,7 +40,7 @@ public class EdificiosTest {
 	
 	@Test
 	public void test04_CrearUnPilon(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Pilon pilon = new Pilon();
 		mapa.agregarElemento(1, 1, pilon);
 		
@@ -53,7 +53,7 @@ public class EdificiosTest {
 	
 	@Test
 	public void test05_CrearUnAmoSupremo(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		AmoSupremo amo = new AmoSupremo();
 		mapa.agregarElemento(1, 1, amo);
 		

@@ -9,6 +9,8 @@ import fiuba.algo3.algocraft.modelo.Unidad;
 public class Zealot extends Unidad implements ElementoProtoss {
 	
 	public Zealot() {
+		super();
+		this.nombre = "Zealot";
 		this.transporte = 2;
 		this.vision = 7;
 		this.costoMineral = 100;

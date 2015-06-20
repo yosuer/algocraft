@@ -17,6 +17,7 @@ public class ArchivoTemplario extends Edificio implements ElementoProtoss,
 	
 	public ArchivoTemplario() {
 		super();
+		this.nombre = "ArchivoTemplario";
 		this.costoMineral = 150;
 		this.costoVespeno = 200;
 		this.edificiosRequeridos.add(new PuertoEstelarProtoss());

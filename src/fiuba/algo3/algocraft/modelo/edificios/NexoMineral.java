@@ -9,6 +9,7 @@ public class NexoMineral extends ExtractorDeMineral
 							implements ElementoProtoss {
 
 	public NexoMineral() {
+		this.nombre = "NexoMineral";
 		this.costoMineral = 50;
 		this.costoVespeno = 0;
 		this.estadoFisico = new Protoss(250,250);

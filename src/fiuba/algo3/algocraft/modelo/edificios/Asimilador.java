@@ -9,6 +9,7 @@ public class Asimilador extends ExtractorDeGasVespeno
 							implements ElementoProtoss {
 
 	public Asimilador() {
+		this.nombre = "Asimilador";
 		this.costoMineral = 100;
 		this.costoVespeno = 0;
 		this.estadoFisico = new Protoss(450,450);

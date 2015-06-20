@@ -8,6 +8,8 @@ import fiuba.algo3.algocraft.modelo.Zerg;
 public class Hidralisco extends Unidad {
 
 	public Hidralisco() {
+		super();
+		this.nombre = "Hidralisco";
 		this.transporte = 2;
 		this.vision = 6;
 		this.costoMineral = 75;

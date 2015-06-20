@@ -16,6 +16,7 @@ public class Espiral extends Edificio implements IElementoCreador {
 	
 	public Espiral() {
 		super();
+		this.nombre = "Espiral";
 		this.costoMineral = 150;
 		this.costoVespeno = 150;
 		this.estadoFisico = new Zerg(1300);

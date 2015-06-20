@@ -16,6 +16,7 @@ public class Barraca extends Edificio
 	
 	public Barraca() {
 		super();
+		this.nombre = "Barraca";
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
 		this.estadoFisico = new Terran(1000);

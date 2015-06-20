@@ -9,6 +9,7 @@ import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
 import fiuba.algo3.algocraft.modelo.edificios.NexoMineral;
 import fiuba.algo3.algocraft.modelo.edificios.Refineria;
+import fiuba.algo3.algocraft.modelo.natural.Mineral;
 
 public class MineralTest {
 
@@ -49,7 +50,7 @@ public class MineralTest {
 	@Test
 	public void test04_SiAUnMineralSeLeAsignaUnExtractorMineralTerranEnLaMismaPosicionDaOK()
 	{
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		ExtractorDeMineral extractor = new CentroDeMineral();
 		
 		mapa.agregarElemento(3, 2, extractor);
@@ -61,7 +62,7 @@ public class MineralTest {
 	//@Test(expected = ErrorNoExisteRecursoEnLaPosicion.class)
 	public void test05_AUnMineralNoSeLePuedeAsignarUnExtractorMineralTerranDeDistintaPosicion()
 	{
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Recurso mineral = new Mineral();
 		ExtractorDeMineral extractor = new CentroDeMineral();
 		

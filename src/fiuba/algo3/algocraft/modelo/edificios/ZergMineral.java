@@ -8,6 +8,7 @@ import fiuba.algo3.algocraft.modelo.Zerg;
 public class ZergMineral extends ExtractorDeMineral {
 
 	public ZergMineral() {
+		this.nombre = "ZergMineral";
 		this.costoMineral = 50;
 		this.costoVespeno = 0;
 		this.estadoFisico = new Zerg(500);

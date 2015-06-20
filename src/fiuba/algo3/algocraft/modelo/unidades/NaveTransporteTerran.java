@@ -17,6 +17,8 @@ public class NaveTransporteTerran extends Unidad implements ITransporte{
 	//private ITransportador transportador;
 	
 	public NaveTransporteTerran() {
+		super();
+		this.nombre = "NaveTransporteTerran";
 		this.transporte = 0;
 		this.vision = 8;
 		this.costoMineral = 100;

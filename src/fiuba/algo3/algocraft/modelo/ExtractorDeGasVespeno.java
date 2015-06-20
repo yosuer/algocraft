@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorAgregandoElementoAlMapa;
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.modelo.natural.Vespeno;
 
 public abstract class ExtractorDeGasVespeno extends Edificio 
 											implements IExtractorDeRecursos{

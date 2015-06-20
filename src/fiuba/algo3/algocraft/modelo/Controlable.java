@@ -16,10 +16,15 @@ public abstract class Controlable implements IDaniable, IElemento{
 	protected IEstado estado; //gestorDeVida
 	protected int vision;
 	protected Equipo equipo;
+	protected String nombre;
 	
 	public Controlable(){
 		this.nivel = 0;
 		this.edificiosRequeridos = new ArrayList<Controlable>();
+	}
+	
+	public String nombre(){
+		return this.nombre;
 	}
 	
 	public int getX(){
@@ -83,5 +88,7 @@ public abstract class Controlable implements IDaniable, IElemento{
 	public abstract List<Posicion> mover(int x, int y);
 	
 	public abstract void agregarseEn(Mapa mapa);
+	
+	
 
 }

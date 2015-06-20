@@ -11,7 +11,7 @@ public class GestorDeRecursosTest {
 	
 	@Test
 	public void test01_ValidarRecursoParaCreacionDeUnidades(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.aumentarPoblacion(10);
 		Assert.assertEquals(200,mapa.getMineralTotal());
 		
@@ -28,7 +28,7 @@ public class GestorDeRecursosTest {
 	
 	@Test (expected = ErrorRecursosInsuficientes.class)
 	public void test01_ValidarRecursoParaCreacionDeMarine(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.aumentarPoblacion(10);
 		mapa.agregarElemento(3,3, new Barraca());
 		
@@ -43,7 +43,7 @@ public class GestorDeRecursosTest {
 	
 	@Test (expected = ErrorRecursosInsuficientes.class)
 	public void test02_ValidarRecursoParaCreacionDeZealot(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.agregarElemento(3,3, new Acceso());
 		
 		Acceso acceso = (Acceso) mapa.getElemento(3, 3, 0);

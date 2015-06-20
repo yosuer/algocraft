@@ -15,6 +15,7 @@ public class GuaridaDeHidralisco extends Edificio
 	private ICreadorDeElementos creador;
 	
 	public GuaridaDeHidralisco() {
+		this.nombre = "GuaridaDeHidralisco";
 		this.costoMineral = 150;
 		this.costoVespeno = 100;
 		this.edificiosRequeridos.add(new ReservaDeReproduccion());

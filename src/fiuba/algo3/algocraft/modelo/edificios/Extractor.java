@@ -11,7 +11,6 @@ public class Extractor extends ExtractorDeGasVespeno {
 		this.costoVespeno = 0;
 		this.estadoFisico = new Zerg(600);
 		this.estado = new Construyendose(this,7);
-
 	}
 
 }

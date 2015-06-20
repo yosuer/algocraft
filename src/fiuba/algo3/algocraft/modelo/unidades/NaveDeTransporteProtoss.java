@@ -8,6 +8,8 @@ import fiuba.algo3.algocraft.modelo.Unidad;
 public class NaveDeTransporteProtoss extends Unidad implements ElementoProtoss {
 
 	public NaveDeTransporteProtoss() {
+		super();
+		this.nombre = "NaveTransporteProtoss";
 		this.transporte = 8;
 		this.vision = 8;
 		this.costoMineral = 200;

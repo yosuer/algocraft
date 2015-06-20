@@ -17,6 +17,7 @@ public class Fabrica extends Edificio implements ElementoProtoss,
 	
 	public Fabrica() {
 		super();
+		this.nombre = "Fabrica";
 		this.costoMineral = 200;
 		this.costoVespeno = 100;
 		this.edificiosRequeridos.add(new Barraca());

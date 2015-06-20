@@ -22,7 +22,7 @@ public class EdificioBasePrincipalTest {
 	
 	@Test
 	public void test02_ElTiempoDeConstruccionDeUnCentroDeMandoEs7(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.recibirMineral(1000);
 		mapa.recibirVespeno(1000); //para pruebas aumento directamente
 		
@@ -37,7 +37,7 @@ public class EdificioBasePrincipalTest {
 	
 	@Test
 	public void test03_CrearUnNexo(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Nexo nexo = new Nexo();
 		mapa.recibirMineral(1000);
 		mapa.recibirVespeno(1000); //para pruebas aumento directamente
@@ -58,7 +58,7 @@ public class EdificioBasePrincipalTest {
 	
 	@Test
 	public void test04_CrearUnCriadero(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.recibirMineral(1000);
 		mapa.recibirVespeno(1000); //para pruebas aumento directamente
 		

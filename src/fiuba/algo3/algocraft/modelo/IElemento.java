@@ -12,4 +12,6 @@ public interface IElemento {
 	
 	public void eliminarseDelMapa(Mapa mapa);
 	
+	public String nombre();
+	
 }

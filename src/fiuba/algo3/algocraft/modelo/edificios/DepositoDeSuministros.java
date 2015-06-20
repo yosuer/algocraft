@@ -10,6 +10,7 @@ public class DepositoDeSuministros extends Edificio {
 	private int poblacion = 5;
 	
 	public DepositoDeSuministros() {
+		this.nombre = "DepositoDeSuministros";
 		this.costoMineral = 100;
 		this.costoVespeno = 0;
 		this.estadoFisico = new Terran(500);

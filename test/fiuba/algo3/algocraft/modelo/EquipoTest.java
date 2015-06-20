@@ -17,7 +17,7 @@ public class EquipoTest {
 	@Test
 	public void test02_DefinirElMapaDelEquipo(){
 		Equipo equipo = new Equipo("jug1");
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		
 		equipo.setMapa(mapa);
 	}
@@ -25,7 +25,7 @@ public class EquipoTest {
 	@Test
 	public void test03_AgregarElementoAlEquipo(){
 		Equipo equipo = new Equipo("jug1");
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		equipo.setMapa(mapa);
 		
 		mapa.agregarElemento(1, 1, new Barraca());

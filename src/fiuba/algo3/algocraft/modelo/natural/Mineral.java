@@ -1,6 +1,10 @@
-package fiuba.algo3.algocraft.modelo;
+package fiuba.algo3.algocraft.modelo.natural;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.modelo.ExtractorDeMineral;
+import fiuba.algo3.algocraft.modelo.IExtractorDeRecursos;
+import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.Recurso;
 
 public class Mineral extends Recurso {
 
@@ -8,6 +12,7 @@ public class Mineral extends Recurso {
 	
 	public Mineral() {
 		this.reserva = 200;
+		this.nombre = "Mineral";
 	}
 	
 	@Override

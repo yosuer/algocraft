@@ -17,6 +17,7 @@ public class AltoTemplario extends Unidad implements ElementoProtoss,IUnidadMagi
 
 	public AltoTemplario() {
 		super();
+		this.nombre = "AltoTemplario";
 		this.transporte = 2;
 		this.vision = 7;
 		this.costoMineral = 50;

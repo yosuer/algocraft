@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
-import fiuba.algo3.algocraft.modelo.Tierra;
+import fiuba.algo3.algocraft.modelo.natural.Tierra;
 import fiuba.algo3.algocraft.modelo.unidades.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.Marine;
 
@@ -16,7 +16,7 @@ public class MovimientoUnidadesAereasTest {
 	
 	@Test
 	public void test01_agregarUnidadAereaAlMapa(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Espectro esp = new Espectro();
 		mapa.agregarElemento(3, 3, esp);
 		
@@ -25,7 +25,7 @@ public class MovimientoUnidadesAereasTest {
 	
 	@Test
 	public void test02_moverUnidadAerea(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Espectro esp = new Espectro();
 		mapa.agregarElemento(1, 1, esp);
 		for (int i=1;i<=8;i++) mapa.pasarTurnoMapa();
@@ -42,7 +42,7 @@ public class MovimientoUnidadesAereasTest {
 	
 	
 	public void test03_unaUnidadAereaNoObstruyeElCaminoDeUnaUnidadTerrestre(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Espectro espectro = new Espectro();
 		Marine marine = new Marine();
 		mapa.agregarElemento(2, 2, espectro);
@@ -56,7 +56,7 @@ public class MovimientoUnidadesAereasTest {
 	}
 	
 	public void test03_unaUnidadAereaObstruyeOtraUnidadAerea(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Espectro espectro1 = new Espectro();
 		Espectro espectro2 = new Espectro();
 		mapa.agregarElemento(2, 2, espectro1);
@@ -80,7 +80,7 @@ public class MovimientoUnidadesAereasTest {
 	}
 	
 	public void test04_UnaUnidadAereaSeMueveYOtraUnidadAereaOcupaSuLugar(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Espectro espectro1 = new Espectro();
 		Espectro espectro2 = new Espectro();
 

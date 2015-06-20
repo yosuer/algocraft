@@ -9,6 +9,7 @@ public abstract class Estatico implements IElemento, ObjetoPosicionable, ObjetoV
 	protected Mapa mapa;
 	protected Posicion posicion;
 	protected int nivel = 0;
+	protected String nombre = "";
 	
 	public Estatico(){
 		this.nivel = 0;
@@ -50,7 +51,11 @@ public abstract class Estatico implements IElemento, ObjetoPosicionable, ObjetoV
 	@Override
 	public void vivir() {
 		// TODO Auto-generated method stub
-		
+	}
+	
+	@Override
+	public String nombre(){
+		return this.nombre;
 	}
 	
 	

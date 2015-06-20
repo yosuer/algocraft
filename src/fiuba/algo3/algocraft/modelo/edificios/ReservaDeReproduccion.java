@@ -3,7 +3,6 @@ package fiuba.algo3.algocraft.modelo.edificios;
 import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.CreadorEnCola;
 import fiuba.algo3.algocraft.modelo.Edificio;
-import fiuba.algo3.algocraft.modelo.IArma;
 import fiuba.algo3.algocraft.modelo.ICreadorDeElementos;
 import fiuba.algo3.algocraft.modelo.IElementoCreador;
 import fiuba.algo3.algocraft.modelo.Posicion;
@@ -18,6 +17,7 @@ public class ReservaDeReproduccion extends Edificio
 	
 	public ReservaDeReproduccion() {
 		super();
+		this.nombre = "ReservaDeReproduccion";
 		this.costoMineral = 150;
 		this.costoVespeno = 0;
 		this.estado = new Construyendose(this, 10); //tiempo de construccion

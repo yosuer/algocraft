@@ -13,6 +13,7 @@ public class Marine extends Unidad implements ITransportable{
 
 	public Marine() {
 		super();
+		this.nombre = "Marine";
 		this.transporte = 1;
 		this.vision = 7;
 		this.costoMineral = 50;

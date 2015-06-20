@@ -13,7 +13,7 @@ public class UnidadesAereasTest {
 	
 	@Test
 	public void test00_PasarTurnoEspectro() {
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Espectro espectro = new Espectro();
 		mapa.agregarElemento(2, 2, espectro);
 		
@@ -22,7 +22,7 @@ public class UnidadesAereasTest {
 	
 	@Test
 	public void test01_CrearNavesTerran() {
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.recibirMineral(500);
 		mapa.recibirVespeno(500); //inyecto recursos para pruebas
 		

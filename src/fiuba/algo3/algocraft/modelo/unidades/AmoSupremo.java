@@ -11,6 +11,7 @@ public class AmoSupremo extends Unidad {
 	
 	public AmoSupremo() {
 		super();
+		this.nombre = "AmoSupremo";
 		this.transporte = 8;
 		this.vision = 9;
 		this.costoMineral = 100;

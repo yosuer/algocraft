@@ -25,7 +25,7 @@ public class Imagen implements ObjetoDibujable {
 	@Override
 	public void dibujar(SuperficieDeDibujo superficieDeDibujo) {
 		Graphics grafico = ((SuperficiePanel)superficieDeDibujo).getBuffer();
-		int tam = 15;
+		int tam = 22;
 		int posX = this.posicionable.getX()-1;
 		int posY = this.posicionable.getY()-1;
 		grafico.drawImage(this.imagen, tam*posX+1, tam*posY-1,tam,tam,null);

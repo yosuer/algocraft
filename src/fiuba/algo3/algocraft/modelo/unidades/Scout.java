@@ -9,6 +9,8 @@ import fiuba.algo3.algocraft.modelo.Unidad;
 public class Scout extends Unidad implements ElementoProtoss {
 
 	public Scout() {
+		super();
+		this.nombre = "Scout";
 		this.transporte = 0;
 		this.vision = 7;
 		this.costoMineral = 300;

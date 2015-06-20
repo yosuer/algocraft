@@ -6,9 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.algocraft.modelo.Mapa;
-import fiuba.algo3.algocraft.modelo.ObstaculoTerrestre;
 import fiuba.algo3.algocraft.modelo.Posicion;
-import fiuba.algo3.algocraft.modelo.Tierra;
+import fiuba.algo3.algocraft.modelo.natural.ObstaculoTerrestre;
+import fiuba.algo3.algocraft.modelo.natural.Tierra;
 import fiuba.algo3.algocraft.modelo.unidades.Espectro;
 import fiuba.algo3.algocraft.modelo.unidades.Marine;
 
@@ -16,7 +16,7 @@ public class MovimientoUnidadesTest {
 
 	@Test
 	public void test01_LasUnidadesSeMuevenDeA1PosicionPorTurno(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Marine marine = new Marine();
 		mapa.agregarElemento(3, 3, marine);
 		for (int i=1;i<=4;i++) mapa.pasarTurnoMapa();
@@ -42,7 +42,7 @@ public class MovimientoUnidadesTest {
 	
 	@Test
 	public void test02_MoverUnaUnidadEsquivandoObstaculosTerrestres(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Marine marine = new Marine();
 		ObstaculoTerrestre obs = new ObstaculoTerrestre();
 		
@@ -64,7 +64,7 @@ public class MovimientoUnidadesTest {
 	
 	@Test
 	public void test03_UnaUnidadTerrestreNoObstruyeElCaminoDeUnaUnidadAerea(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Espectro espectro = new Espectro();
 		Marine marine = new Marine();
 		mapa.agregarElemento(2, 2, espectro);

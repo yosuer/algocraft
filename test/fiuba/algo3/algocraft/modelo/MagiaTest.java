@@ -11,7 +11,7 @@ public class MagiaTest {
 
 	@Test
 	public void test01_NaveCienciaLanzaUnEMPyDaniaElEscudoDeLasUnidadesAlrededorDeLaPosicionObjetivo(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Unidad zeratul = new Zealot();
 		Unidad raynor = new Marine();
 		Unidad naveCiencia2 = new NaveCiencia();
@@ -52,7 +52,7 @@ public class MagiaTest {
 	@Test
 	public void testxx_unaNaveCieciaLanzaEMPaUnaUnidadYDichaUnidadPierdeVidaEnCadaTurno()
 	{
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		NaveCiencia nave = new NaveCiencia();
 		Marine unMarine = new Marine();
 		
@@ -95,7 +95,7 @@ public class MagiaTest {
 	//@Test  
 	public void testyy_unaNaveCieciaLanzaEMPaUnaUnidadYDichaUnidadPierdeVidaEnCadaTurnoYLasUnidadesCercanasTambien()
 	{
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		NaveCiencia nave = new NaveCiencia();
 		Marine unMarine = new Marine();
 		Marine otroMarine = new Marine();

@@ -8,6 +8,8 @@ import fiuba.algo3.algocraft.modelo.Unidad;
 public class Golliat extends Unidad {
 
 	public Golliat() {
+		super();
+		this.nombre = "Golliat";
 		this.transporte = 2;
 		this.vision = 8;
 		this.costoMineral = 100;

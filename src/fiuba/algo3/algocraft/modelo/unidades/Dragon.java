@@ -11,6 +11,7 @@ public class Dragon extends Unidad implements ElementoProtoss {
 	
 	public Dragon(){
 		super();
+		this.nombre = "Dragon";
 		this.transporte = 4;
 		this.vision = 8;
 		this.costoMineral = 125;

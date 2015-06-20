@@ -10,6 +10,7 @@ import fiuba.algo3.algocraft.modelo.edificios.Acceso;
 import fiuba.algo3.algocraft.modelo.edificios.Barraca;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
 import fiuba.algo3.algocraft.modelo.edificios.DepositoDeSuministros;
+import fiuba.algo3.algocraft.modelo.natural.Mineral;
 import fiuba.algo3.algocraft.modelo.unidades.AmoSupremo;
 import fiuba.algo3.algocraft.modelo.unidades.Dragon;
 import fiuba.algo3.algocraft.modelo.unidades.Espectro;
@@ -22,7 +23,7 @@ public class AtaquesTest {
 	
 	@Test
 	public void test01_AtaqueEntreUnidadesTerran(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Marine marine = new Marine();
 		Golliat golliat = new Golliat();
 		mapa.agregarElemento(4, 4, marine);
@@ -40,7 +41,7 @@ public class AtaquesTest {
 	
 	@Test
 	public void test02_AtaqueAUnEdificioTerran(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Marine marine = new Marine();
 		DepositoDeSuministros depo = new DepositoDeSuministros();
 		mapa.agregarElemento(6, 6, marine);
@@ -54,7 +55,7 @@ public class AtaquesTest {
 	
 	@Test
 	public void test03_AtaqueAUnidadProtoss(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Golliat golliat = new Golliat();
 		Dragon dragon = new Dragon();
 		mapa.agregarElemento(8, 8, golliat);
@@ -71,7 +72,7 @@ public class AtaquesTest {
 	
 	@Test
 	public void test04_AtaqueAEdificioProtoss(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Espectro espectro = new Espectro();
 		Acceso acceso = new Acceso();
 		mapa.agregarElemento(6, 6, espectro);
@@ -90,7 +91,7 @@ public class AtaquesTest {
 
 	@Test (expected = ErrorObjetivoFueraDelAlcance.class)
 	public void test05_UnZealotNoPuedeAtacarUnaUnidadAerea(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Zealot zealot = new Zealot();
 		Espectro espectro = new Espectro();
 		mapa.agregarElemento(6, 6, espectro);
@@ -101,7 +102,7 @@ public class AtaquesTest {
 	
 	@Test (expected = ErrorObjetivoFueraDelAlcance.class)
 	public void test06_UnZerlingNoPuedeAtacarUnaUnidadAerea(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Zerling zerling = new Zerling();
 		Espectro espectro = new Espectro();
 		mapa.agregarElemento(7, 7, espectro);
@@ -112,7 +113,7 @@ public class AtaquesTest {
 	
 	@Test (expected = ErrorObjetivoFueraDelAlcance.class)
 	public void test07_EspectroNoPuedeAtacarAUnDaniableFueraDelAlcance(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Espectro espectro = new Espectro();
 		Acceso acceso = new Acceso();
 		
@@ -124,7 +125,7 @@ public class AtaquesTest {
 	
 	@Test (expected = ErrorObjetivoFueraDelAlcance.class)
 	public void test08_GolliatNoPuedeAtacarAUnDaniableFueraDelAlcance(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Golliat golliat = new Golliat();
 		Barraca barraca = new Barraca();
 		
@@ -136,7 +137,7 @@ public class AtaquesTest {
 	
 	@Test (expected = ErrorObjetivoFueraDelAlcance.class)
 	public void test09_DragonNoPuedeAtacarAUnDaniableFueraDelAlcance(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Dragon dragon = new Dragon();
 		AmoSupremo amoSupremo = new AmoSupremo();
 		
@@ -148,7 +149,7 @@ public class AtaquesTest {
 	
 	@Test
 	public void test10_RangoDeAlcanceEspectro(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Espectro espectro = new Espectro();
 		Acceso acceso = new Acceso();
 		Marine marine = new Marine();
@@ -174,7 +175,7 @@ public class AtaquesTest {
 	
 	@Test
 	public void test11_RangoDeAlcanceZealot(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Mineral mineral = new Mineral();
 		Espectro espectro = new Espectro();
 		CentroDeMineral centroMineral = new CentroDeMineral();

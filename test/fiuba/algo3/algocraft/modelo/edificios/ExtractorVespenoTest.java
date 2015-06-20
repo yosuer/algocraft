@@ -7,10 +7,10 @@ import fiuba.algo3.algocraft.modelo.ExtractorDeGasVespeno;
 import fiuba.algo3.algocraft.modelo.Mapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Recurso;
-import fiuba.algo3.algocraft.modelo.Vespeno;
 import fiuba.algo3.algocraft.modelo.edificios.Asimilador;
 import fiuba.algo3.algocraft.modelo.edificios.Extractor;
 import fiuba.algo3.algocraft.modelo.edificios.Refineria;
+import fiuba.algo3.algocraft.modelo.natural.Vespeno;
 
 public class ExtractorVespenoTest {
 
@@ -76,7 +76,7 @@ public class ExtractorVespenoTest {
 	
 	@Test
 	public void test05_RefineriaExtraeVespenoPorTurnosDelMapa(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		ExtractorDeGasVespeno refineria = new Refineria();
 		
 		mapa.agregarElemento(4, 6, refineria);

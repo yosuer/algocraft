@@ -14,6 +14,8 @@ public class Reina extends Unidad implements IUnidadMagica {
 	private IntRango energia;
 	
 	public Reina() {
+		super();
+		this.nombre = "Reina";
 		this.transporte = 0;
 		this.vision = 10;
 		this.costoMineral = 100;

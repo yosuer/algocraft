@@ -7,6 +7,7 @@ import fiuba.algo3.algocraft.modelo.Terran;
 public class CentroDeMineral extends ExtractorDeMineral {
 
 	public CentroDeMineral() {
+		this.nombre = "CentroDeMineral";
 		this.costoMineral = 50;
 		this.costoVespeno = 0;
 		this.estadoFisico = new Terran(500);

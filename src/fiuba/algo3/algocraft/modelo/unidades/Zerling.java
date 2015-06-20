@@ -8,6 +8,8 @@ import fiuba.algo3.algocraft.modelo.Zerg;
 public class Zerling extends Unidad {
 
 	public Zerling() {
+		super();
+		this.nombre = "Zerling";
 		this.transporte = 1;
 		this.vision = 5;
 		this.costoMineral = 25;

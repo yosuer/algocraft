@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionFueraDeRango;
+import fiuba.algo3.algocraft.modelo.natural.Tierra;
 
 public class GestorDeUbicaciones {
 

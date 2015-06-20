@@ -10,7 +10,7 @@ public class ProtossTest {
 
 	@Test
 	public void test01_LasUnidadesProtossRegenerarSuEscudoCadaTurno(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Dragon dragon = new Dragon();
 		Marine marine = new Marine();
 		mapa.agregarElemento(1, 1, dragon);

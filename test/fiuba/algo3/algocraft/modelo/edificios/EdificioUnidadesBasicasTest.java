@@ -46,7 +46,7 @@ public class EdificioUnidadesBasicasTest {
 	
 	@Test
 	public void test02_CrearUnaBarracaYAgregarlaAlMapa(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Barraca barraca = new Barraca();
 		
 		mapa.agregarElemento(3,3, barraca);
@@ -56,7 +56,7 @@ public class EdificioUnidadesBasicasTest {
 	
 	@Test
 	public void test02_CrearUnaBarracaYEncolarUnMarineYExpedirMarine(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.aumentarPoblacion(10);
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(3,3, barraca);
@@ -71,7 +71,7 @@ public class EdificioUnidadesBasicasTest {
 	
 	@Test
 	public void test02_CrearUnaBarracaYCrear5Marine(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		mapa.recibirMineral(1000);
 		mapa.aumentarPoblacion(10);
 

@@ -19,6 +19,7 @@ public class PuertoEstelarTerran extends Edificio
 	
 	public PuertoEstelarTerran() {
 		super();
+		this.nombre = "PuertoEstelarTerran";
 		this.costoMineral = 150;
 		this.costoVespeno = 100;
 		this.edificiosRequeridos.add(new Fabrica());

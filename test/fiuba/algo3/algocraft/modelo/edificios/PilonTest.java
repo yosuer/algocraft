@@ -10,7 +10,7 @@ public class PilonTest {
 
 	@Test
 	public void test01_PilonAumentaPoblacionAlConstruirse(){
-		Mapa mapa = new Mapa();
+		Mapa mapa = new Mapa(40, 40);
 		Pilon pilon = new Pilon();
 		
 		mapa.agregarElemento(3, 3, pilon);

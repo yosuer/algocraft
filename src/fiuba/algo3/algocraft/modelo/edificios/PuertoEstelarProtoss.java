@@ -19,6 +19,7 @@ public class PuertoEstelarProtoss extends Edificio
 	
 	public PuertoEstelarProtoss() {
 		super();
+		this.nombre = "PuertoEstelarProtoss";
 		this.costoMineral = 150;
 		this.costoVespeno = 150;
 		this.edificiosRequeridos.add(new Acceso());

@@ -8,6 +8,8 @@ import fiuba.algo3.algocraft.modelo.Zerg;
 public class Mutalisco extends Unidad {
 
 	public Mutalisco() {
+		super();
+		this.nombre = "Mutalisco";
 		this.transporte = 0;
 		this.vision = 7;
 		this.costoMineral = 100;

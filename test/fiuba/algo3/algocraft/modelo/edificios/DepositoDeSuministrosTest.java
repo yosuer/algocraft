@@ -7,8 +7,8 @@ import fiuba.algo3.algocraft.modelo.Controlable;
 import fiuba.algo3.algocraft.modelo.IAtacante;
 import fiuba.algo3.algocraft.modelo.IDaniable;
 import fiuba.algo3.algocraft.modelo.Mapa;
-import fiuba.algo3.algocraft.modelo.Tierra;
 import fiuba.algo3.algocraft.modelo.edificios.DepositoDeSuministros;
+import fiuba.algo3.algocraft.modelo.natural.Tierra;
 import fiuba.algo3.algocraft.modelo.unidades.Golliat;
 
 public class DepositoDeSuministrosTest {
@@ -25,7 +25,7 @@ public class DepositoDeSuministrosTest {
 	
 	@Test
 	public void test02_AgregarUnDepositoDeSuministrosAlMapaAumentaPoblacion(){
-		Mapa mapa = new Mapa(); //poblacion inicial es 10
+		Mapa mapa = new Mapa(40, 40); //poblacion inicial es 10
 		DepositoDeSuministros deposito = new DepositoDeSuministros();
 		mapa.agregarElemento(1, 1, deposito);
 
@@ -34,7 +34,7 @@ public class DepositoDeSuministrosTest {
 	
 	@Test
 	public void test03_EliminarUnDepositoDeSuministrosDelMapaDisminuyePoblacion(){
-		Mapa mapa = new Mapa(); //poblacion inicial es 10
+		Mapa mapa = new Mapa(40, 40); //poblacion inicial es 10
 
 		mapa.agregarElemento(1, 1, new DepositoDeSuministros());
 		mapa.agregarElemento(3, 3, new DepositoDeSuministros());
@@ -47,7 +47,7 @@ public class DepositoDeSuministrosTest {
 	
 	@Test
 	public void test04_DestruirDepositoDeSuministrosDisminuyePoblacion(){
-		Mapa mapa = new Mapa(); //poblacion inicial es 10
+		Mapa mapa = new Mapa(40, 40); //poblacion inicial es 10
 
 		mapa.agregarElemento(3, 3, new DepositoDeSuministros());
 		mapa.agregarElemento(4, 4, new Golliat());

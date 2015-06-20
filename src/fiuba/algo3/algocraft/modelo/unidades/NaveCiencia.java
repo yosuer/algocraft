@@ -19,6 +19,8 @@ public class NaveCiencia extends Unidad implements IUnidadMagica {
 	private ArmaMagicaParaUnaUnidad armaDeRadiacion;
 	
 	public NaveCiencia() {
+		super();
+		this.nombre = "NaveCiencia";
 		this.transporte = 0;
 		this.vision = 10;
 		this.costoMineral = 100;
