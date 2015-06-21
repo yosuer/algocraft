@@ -26,7 +26,13 @@ public class Imagen implements ObjetoDibujable {
 		int tam = 22;
 		int posX = this.posicionable.getX()-1;
 		int posY = this.posicionable.getY()-1;
-		grafico.drawImage(this.imagen, tam*posX+1, tam*posY-1,tam,tam,null);
+		grafico.drawImage(this.imagen, 
+							tam*posX+1,
+							tam*posY-1,
+							tam,
+							tam,
+							null);
+										//tam*posX+1, tam*posY-1,tam,tam,null);
 										//this.imagen.getHeight(),this.imagen.getWidth(),null);
 	}
 	

@@ -4,7 +4,7 @@ import fiuba.algo3.algocraft.modelo.Estatico;
 import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Mapa;
 
-public class ObstaculoTerrestre extends Estatico implements IElemento {
+public class ObstaculoTerrestre extends Estatico {
 	
 	public ObstaculoTerrestre() {
 		this.nombre = "ObstaculoTerrestre";

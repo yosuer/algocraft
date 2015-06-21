@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import fiuba.algo3.algocraft.excepciones.ErrorElementoNoEncontrado;
+import fiuba.algo3.algocraft.modelo.edificios.CentroDeMando;
 import fiuba.algo3.algocraft.modelo.natural.Mineral;
 import fiuba.algo3.algocraft.modelo.natural.Vespeno;
 
@@ -70,6 +71,10 @@ public class Mapa implements IMapa {
 	}
 	
 	public void inicializarMapa() {
+		
+		this.equipoActual = equipo1;
+		this.equipoSiguiente = equipo2;
+		
 		//Jugador1
 		for (int x=3; x<=6; x++) this.agregarElemento(x, 2, new Mineral());	
 		for (int y=2; y<=6; y++) this.agregarElemento(2, y, new Mineral());
@@ -80,9 +85,37 @@ public class Mapa implements IMapa {
 		for (int y=largo-5; y<=largo-2; y++) this.agregarElemento(ancho-1, y, new Mineral());
 		this.agregarElemento(ancho-3,largo-5,new Vespeno());
 		
+		CentroDeMando centro1 = new CentroDeMando();
+		centro1.setPosicion(new Posicion(4,4,0));
+		this.agregarControlable(centro1);
+		
+		this.pasarTurnoMapa();
+		
+		CentroDeMando centro2 = new CentroDeMando();
+		centro2.setPosicion(new Posicion(ancho-4,largo-4,0));
+		this.agregarControlable(centro2);
+		
+		
+
+	}
+	
+	public void iniciar() {
+		
+		CentroDeMando centro1 = new CentroDeMando();
+		centro1.setPosicion(new Posicion(4,4,0));
+		this.agregarControlable(centro1);
+		
+		this.pasarTurnoMapa();
+		
+		CentroDeMando centro2 = new CentroDeMando();
+		centro2.setPosicion(new Posicion(ancho-4,largo-4,0));
+		this.agregarControlable(centro2);
+		
+		
 		this.equipoActual = equipo1;
 		this.equipoSiguiente = equipo2;
 	}
+
 	
 	public void agregarElemento(int x, int y, IElemento elemento) {
 		Posicion pos = new Posicion(x,y,elemento.getNivel());

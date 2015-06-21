@@ -4,37 +4,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class Controlable implements IDaniable, IElemento{
+public abstract class Controlable extends IElemento implements IDaniable {
 
 	protected Collection<Controlable> edificiosRequeridos;
-	protected Posicion posicion;
 	protected int costoMineral;
 	protected int costoVespeno;
-	protected Mapa mapa;
-	protected int nivel;
 	protected IRazaEstado estadoFisico;
 	protected IEstado estado; //gestorDeVida
 	protected int vision;
 	protected Equipo equipo;
-	protected String nombre;
 	
 	public Controlable(){
 		this.nivel = 0;
 		this.edificiosRequeridos = new ArrayList<Controlable>();
 	}
-	
-	public String nombre(){
-		return this.nombre;
-	}
-	
-	public int getX(){
-		return this.posicion.x();
-	}
-	
-	public int getY(){
-		return this.posicion.y();
-	}
-	
+
 	public void estaActivo() {
 		this.estado.estaActivo();
 	}
@@ -49,10 +33,6 @@ public abstract class Controlable implements IDaniable, IElemento{
 	
 	public Posicion getPosicion(){
 		return this.posicion;
-	}
-	
-	public int getNivel() {
-		return this.nivel;
 	}
 	
 	public int getCostoMineral() {

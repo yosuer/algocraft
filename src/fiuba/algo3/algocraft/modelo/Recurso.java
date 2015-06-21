@@ -4,9 +4,6 @@ public abstract class Recurso extends Estatico {
 	
 	protected int reserva;
 
-	public Recurso(){
-	}
-	
 	public abstract int reservaDisponible();
 
 	public abstract int extraer();

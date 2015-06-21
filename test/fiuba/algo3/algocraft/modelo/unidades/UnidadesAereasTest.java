@@ -31,7 +31,7 @@ public class UnidadesAereasTest {
 		for (int i=1; i <=12; i++) mapa.pasarTurnoMapa();
 		
 		Fabrica fabrica = new Fabrica();
-		mapa.agregarElemento(4, 4, fabrica);
+		mapa.agregarElemento(5, 5, fabrica);
 		for (int i=1; i <=12; i++) mapa.pasarTurnoMapa();
 		
 		PuertoEstelarTerran puerto = new PuertoEstelarTerran();

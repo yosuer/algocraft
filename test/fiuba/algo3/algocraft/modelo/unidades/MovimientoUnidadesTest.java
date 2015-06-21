@@ -21,23 +21,22 @@ public class MovimientoUnidadesTest {
 		mapa.agregarElemento(3, 3, marine);
 		for (int i=1;i<=4;i++) mapa.pasarTurnoMapa();
 		
-		Collection<Posicion> caminado = marine.mover(5,5);
+		Collection<Posicion> caminado = marine.mover(5,3);
 		
 		Assert.assertEquals(mapa.getElemento(3,3,0),marine);
 		Assert.assertEquals(2, caminado.size());
 		
 		mapa.pasarTurnoMapa();
 		
-		Assert.assertEquals(mapa.getElemento(3,3,0), new Tierra());
 		Assert.assertEquals(1, caminado.size());
-		Assert.assertEquals(mapa.getElemento(4,4,0),marine);
+		Assert.assertEquals(mapa.getElemento(4,3,0),marine);
 		
 		mapa.pasarTurnoMapa();
 		
 		Assert.assertEquals(mapa.getElemento(3,3,0), new Tierra());
-		Assert.assertEquals(mapa.getElemento(4,4,0), new Tierra());
+		Assert.assertEquals(mapa.getElemento(4,3,0), new Tierra());
 		Assert.assertEquals(0, caminado.size());
-		Assert.assertEquals(mapa.getElemento(5,5,0),marine);
+		Assert.assertEquals(mapa.getElemento(5,3,0),marine);
 	}
 	
 	@Test

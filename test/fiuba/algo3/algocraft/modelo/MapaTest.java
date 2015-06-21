@@ -58,9 +58,9 @@ public class MapaTest {
 		ObstaculoTerrestre obstaculoTerrestre = 
 									new ObstaculoTerrestre();
 		
-		mapa.agregarElemento(4,4,obstaculoTerrestre);
+		mapa.agregarElemento(6,6,obstaculoTerrestre);
 		
-		Assert.assertEquals(mapa.getElemento(4,4,0),obstaculoTerrestre);
+		Assert.assertEquals(mapa.getElemento(6,6,0),obstaculoTerrestre);
 	}
 	
 	
@@ -94,15 +94,15 @@ public class MapaTest {
 		IElemento vespeno = new Vespeno();
 		IElemento mineral = new Mineral();
 		
-		mapa.agregarElemento(4,4,obstaculo);
+		mapa.agregarElemento(5,5,obstaculo);
 		
 		try {
-			mapa.agregarElemento(4,4,vespeno);
-			mapa.agregarElemento(4,4,mineral);
+			mapa.agregarElemento(5,5,vespeno);
+			mapa.agregarElemento(5,5,mineral);
 		} catch (ErrorPosicionOcupada e){
 		}
 		
-		Assert.assertEquals(mapa.getElemento(4,4,0),obstaculo);
+		Assert.assertEquals(mapa.getElemento(5,5,0),obstaculo);
 	}
 	
 	@Test
@@ -131,15 +131,15 @@ public class MapaTest {
 		Mapa mapa = new Mapa(40, 40);
 		
 		Collection<Posicion>camino = new ArrayList<Posicion>();
-		camino = mapa.getHojaDeRuta(new Posicion(3,3,0),new Posicion(6,6,0));
+		camino = mapa.getHojaDeRuta(new Posicion(5,5,0),new Posicion(8,8,0));
 		
 		Assert.assertEquals(4, camino.size());
 		
 		ArrayList<Posicion> caminoEsperado = new ArrayList<Posicion>();
-		caminoEsperado.add(new Posicion(3,3,0));
-		caminoEsperado.add(new Posicion(4,4,0));
 		caminoEsperado.add(new Posicion(5,5,0));
 		caminoEsperado.add(new Posicion(6,6,0));
+		caminoEsperado.add(new Posicion(7,7,0));
+		caminoEsperado.add(new Posicion(8,8,0));
 		
 		Assert.assertEquals(caminoEsperado, camino);
 	}
@@ -148,7 +148,7 @@ public class MapaTest {
 	public void test10_AlIniciarElMapaSePuedeRecorrerTodasLasPosiciones2(){
 		Mapa mapa = new Mapa(40, 40);
 		
-		Collection<Posicion>camino =mapa.getHojaDeRuta(new Posicion(3,3,0), new Posicion(5,5,0));
+		Collection<Posicion>camino =mapa.getHojaDeRuta(new Posicion(5,5,0), new Posicion(7,7,0));
 		Assert.assertEquals(3, camino.size());
 		
 		camino =mapa.getHojaDeRuta(new Posicion(20,20,0), new Posicion(14,14,0));
@@ -237,7 +237,7 @@ public class MapaTest {
 	public void test19_ObtenerUnidadesProximasAUnaPosicion(){
 		Mapa mapa = new Mapa(40, 40);
 		mapa.agregarElemento(5,5, new Marine());
-		mapa.agregarElemento(4,4, new Zealot());
+		mapa.agregarElemento(5,4, new Zealot());
 		mapa.agregarElemento(4,4, new Espectro());
 		mapa.agregarElemento(4,5, new Barraca());
 		mapa.agregarElemento(6,6, new Mineral());
