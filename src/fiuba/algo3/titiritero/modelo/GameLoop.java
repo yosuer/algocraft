@@ -5,14 +5,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class GameLoop implements Runnable{
+public class GameLoop implements Runnable {
 
 	private static final int FRECUENCIA_DEFAULT = 500;
 	private Set<ObjetoVivo> objetosVivos;
 	private Set<ObjetoDibujable> objetosDibujables;
 	private List<ObservadorDeGameLoop> observadores;
+
 	private boolean estaEjecutando;
 	private int frecuencia;
+
 	public int getFrecuencia() {
 		return frecuencia;
 	}
@@ -31,12 +33,12 @@ public class GameLoop implements Runnable{
 
 	private SuperficieDeDibujo superficieDeDibujo;
 	private Thread hilo;
-	
+
 	public GameLoop(int frecuencia, SuperficieDeDibujo superficieDeDibujo) {
 		this.frecuencia = frecuencia;
 		this.superficieDeDibujo = superficieDeDibujo;
 		this.objetosVivos = new HashSet<ObjetoVivo>();
-		this.objetosDibujables= new HashSet<ObjetoDibujable>();
+		this.objetosDibujables = new HashSet<ObjetoDibujable>();
 		this.observadores = new ArrayList<ObservadorDeGameLoop>();
 	}
 
@@ -59,25 +61,25 @@ public class GameLoop implements Runnable{
 	public synchronized void remover(ObjetoDibujable objetoDibujable) {
 		this.objetosDibujables.remove(objetoDibujable);
 	}
-	
+
 	@Override
 	public void run() {
-		while(this.estaEjecutando) {
-			for(ObjetoVivo objetoVivo : this.objetosVivos) {
+		while (this.estaEjecutando) {
+			for (ObjetoVivo objetoVivo : this.objetosVivos) {
 				objetoVivo.vivir();
 			}
-			for(ObjetoDibujable objetoDibujable : this.objetosDibujables) {
+			for (ObjetoDibujable objetoDibujable : this.objetosDibujables) {
 				objetoDibujable.dibujar(this.superficieDeDibujo);
 			}
 			this.superficieDeDibujo.actualizar();
-			for(ObservadorDeGameLoop observador: this.observadores) {
+			for (ObservadorDeGameLoop observador : this.observadores) {
 				observador.notificarCicloFinalizado();
-			}			
+			}
 			try {
 				Thread.sleep(this.frecuencia);
 			} catch (InterruptedException e) {
 				// TODO log de exception
-				//e.printStackTrace();
+				// e.printStackTrace();
 			}
 		}
 	}
@@ -98,10 +100,10 @@ public class GameLoop implements Runnable{
 	}
 
 	public synchronized void agregarObservador(ObservadorDeGameLoop unObservador) {
-		this.observadores.add(unObservador);		
+		this.observadores.add(unObservador);
 	}
 
 	public synchronized void removerObservador(ObservadorDeGameLoop unObservador) {
-		this.observadores.remove(unObservador);		
+		this.observadores.remove(unObservador);
 	}
 }

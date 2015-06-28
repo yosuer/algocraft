@@ -1,7 +1,6 @@
 package fiuba.algo3.titiritero.dibujables;
 
 import java.awt.Graphics;
-
 import java.awt.Image;
 
 import javax.swing.JPanel;
@@ -21,26 +20,27 @@ public class SuperficiePanel extends JPanel implements SuperficieDeDibujo {
 	public void setImagen(Image imagen) {
 		this.imagen = imagen;
 	}
-	
+
 	public void paint(Graphics g) {
-		//System.out.println("repintando");
+		// System.out.println("repintando");
 		g.drawImage(this.imagen, 0, 0, null);
 		this.limpiar();
 	}
-	
+
 	public void actualizar() {
 		this.repaint();
 	}
 
 	private void limpiar() {
-		if(this.imagen == null)
+		if (this.imagen == null)
 			this.imagen = this.createImage(getSize().width, getSize().height);
-		Graphics superficieParaDibujar =  this.imagen.getGraphics();
-		superficieParaDibujar.setColor(this.getBackground());// 
-		superficieParaDibujar.fillRect(0, 0, this.getSize().width, this.getSize().height);
+		Graphics superficieParaDibujar = this.imagen.getGraphics();
+		superficieParaDibujar.setColor(this.getBackground());//
+		superficieParaDibujar.fillRect(0, 0, this.getSize().width,
+				this.getSize().height);
 	}
 
-	public Graphics getBuffer(){
+	public Graphics getBuffer() {
 		return this.imagen.getGraphics();
 	}
 }

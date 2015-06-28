@@ -12,16 +12,8 @@ import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-import fiuba.algo3.algocraft.modelo.Estatico;
 import fiuba.algo3.algocraft.modelo.Mapa;
-import fiuba.algo3.algocraft.modelo.ObjetoMultiforma;
-import fiuba.algo3.algocraft.modelo.natural.Tierra;
-import fiuba.algo3.titiritero.dibujables.Circulo;
-import fiuba.algo3.titiritero.dibujables.Figura;
-import fiuba.algo3.titiritero.dibujables.Imagen;
-import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.titiritero.modelo.GameLoop;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
@@ -60,7 +52,8 @@ public class VentanaPrincipal {
 
 	/**
 	 * Initialize the contents of the frame.
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	private void initialize() throws IOException {
 		frame = new JFrame();
@@ -68,7 +61,7 @@ public class VentanaPrincipal {
 		frame.setBounds(100, 2, 1200, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JButton btnIniciar = new JButton("Iniciar");
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -77,15 +70,14 @@ public class VentanaPrincipal {
 		});
 		btnIniciar.setBounds(20, 10, 85, 25);
 		frame.getContentPane().add(btnIniciar);
-		
-		
+
 		JButton btnDetener = new JButton("Detener");
 		btnDetener.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gameLoop.detenerEjecucion();
 			}
 		});
-		
+
 		btnDetener.setBounds(20, 45, 85, 25);
 		frame.getContentPane().add(btnDetener);
 
@@ -94,44 +86,39 @@ public class VentanaPrincipal {
 		this.gameLoop = new GameLoop((SuperficieDeDibujo) vistaMapa);
 		vistaMapa.setModelo(mapa, this.gameLoop);
 
-		vistaMapa.addMouseListener(new MouseAdapter(){
+		vistaMapa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//modelo.moverA(arg0.getX(), arg0.getY());
+				// modelo.moverA(arg0.getX(), arg0.getY());
 			}
 		});
 		frame.getContentPane().add(vistaMapa);
 
-		
-		
 		frame.setFocusable(true);
 		btnDetener.setFocusable(false);
 		btnIniciar.setFocusable(false);
-				
-		frame.addKeyListener(new KeyListener(
-				) {
-			
+
+		frame.addKeyListener(new KeyListener() {
+
 			@Override
 			public void keyTyped(KeyEvent arg0) {
 				System.out.println("Key pressed");
 			}
-			
+
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void keyPressed(KeyEvent arg0) {
-			
+
 				System.out.println("Ping");
-				
-			}  
-			 	
+
+			}
+
 		});
-		
-		
-		
+
 	}
 }
