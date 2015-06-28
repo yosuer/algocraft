@@ -12,6 +12,7 @@ public abstract class IElemento  implements ObjetoPosicionable, ObjetoVivo{
 	
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;
+		posicion.setElemento(this);
 	}
 	
 	public Posicion getPosicion(){

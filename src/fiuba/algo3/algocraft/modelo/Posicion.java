@@ -3,11 +3,20 @@ package fiuba.algo3.algocraft.modelo;
 public class Posicion {
 
 	private int x,y,z;
+	private IElemento elemento;
 	
 	public Posicion(int x, int y, int z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
+	}
+	
+	public void setElemento(IElemento elemento){
+		this.elemento = elemento;
+	}
+	
+	public IElemento getElemento(){
+		return this.elemento;
 	}
 	
 	public int x() {
