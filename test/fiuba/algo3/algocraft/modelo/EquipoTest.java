@@ -6,30 +6,29 @@ import org.junit.Test;
 import fiuba.algo3.algocraft.modelo.edificios.Barraca;
 
 public class EquipoTest {
-	
+
 	@Test
-	public void test01_CrearEquipoConNombre(){
+	public void test01_CrearEquipoConNombre() {
 		Equipo equipo = new Equipo("algoJug1");
-		
-		Assert.assertEquals("algoJug1",equipo.getNombre());
+
+		Assert.assertEquals("algoJug1", equipo.getNombre());
 	}
-	
+
 	@Test
-	public void test02_DefinirElMapaDelEquipo(){
+	public void test02_DefinirElMapaDelEquipo() {
 		Equipo equipo = new Equipo("jug1");
 		Mapa mapa = new Mapa(40, 40);
-		
+
 		equipo.setMapa(mapa);
 	}
-	
+
 	@Test
-	public void test03_AgregarElementoAlEquipo(){
-		Equipo equipo = new Equipo("jug1");
+	public void test03_AgregarElementoAlEquipo() {
 		Mapa mapa = new Mapa(40, 40);
-		equipo.setMapa(mapa);
-		
 		mapa.agregarElemento(1, 1, new Barraca());
-		
-		Assert.assertEquals(1,equipo.cantidadElementos());
+
+		Equipo equipo = mapa.getEquipo1();
+
+		Assert.assertEquals(1, equipo.cantidadElementos());
 	}
 }

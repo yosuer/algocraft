@@ -6,8 +6,8 @@ import fiuba.algo3.algocraft.modelo.natural.Mineral;
 
 public class VistaMineral extends VistaIElemento {
 
-	public VistaMineral(Mineral mineral)  throws IOException {
-		super(mineral);
+	public VistaMineral(VistaMapa mapa, Mineral mineral) throws IOException {
+		super(mapa, mineral);
 	}
 
 }

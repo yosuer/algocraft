@@ -1,124 +1,93 @@
 package fiuba.algo3.algocraft.vista;
 
-import java.awt.Color;
-import java.awt.EventQueue;
+import java.awt.Container;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
-import fiuba.algo3.algocraft.modelo.Mapa;
-import fiuba.algo3.titiritero.modelo.GameLoop;
-import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
+import fiuba.algo3.algocraft.Juego;
+import fiuba.algo3.algocraft.controlador.Boton;
 
-public class VentanaPrincipal {
+public class VentanaPrincipal extends JFrame implements ActionListener {
 
-	private JFrame frame;
-	private GameLoop gameLoop;
+	private static final long serialVersionUID = -133982114697528815L;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipal window = new VentanaPrincipal();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	private Container contenedor;
+	JLabel labelTitulo = new JLabel("AlgoCraft");
+	JLabel jugador1 = new JLabel("Jugador 1:");
+	JLabel jugador2 = new JLabel("Jugador 2:");
+	JTextField nombreJ1 = new JTextField(15);
+	JTextField nombreJ2 = new JTextField(15);
+	JButton botonIniciarPartida = new Boton("Iniciar", this);
+	JButton botonSalir = new Boton("Salir", this);
+
+	int tamX = 400;
+	int tamY = 250;
+	private Juego juego;
+
+	public VentanaPrincipal(Juego unJuego) {
+		iniciarComponentes();
+		this.juego = unJuego;
+		setTitle("AlgoCraft");
+		setSize(tamX, tamY);
+		this.setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		pack();
 	}
 
-	/**
-	 * Create the application.
-	 */
-	public VentanaPrincipal() {
-		try {
-			initialize();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	private void iniciarComponentes() {
+		contenedor = getContentPane();
+		GridBagLayout gbl = new GridBagLayout();
+		contenedor.setLayout(gbl);
+
+		GridBagConstraints config = new GridBagConstraints();
+		config.insets = new Insets(20, 10, 10, 10);
+
+		config.gridx = 1;
+		config.gridy = 2;
+		contenedor.add(jugador1, config);
+
+		config.gridx = 2;
+		config.gridy = 2;
+		contenedor.add(nombreJ1, config);
+
+		config.gridx = 1;
+		config.gridy = 3;
+		contenedor.add(jugador2, config);
+
+		config.gridx = 2;
+		config.gridy = 3;
+		contenedor.add(nombreJ2, config);
+
+		config.gridx = 1;
+		config.gridy = 5;
+		contenedor.add(botonIniciarPartida, config);
+
+		config.gridx = 2;
+		config.gridy = 5;
+		contenedor.add(botonSalir, config);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getActionCommand() == "Iniciar") {
+			String nombreJug1 = nombreJ1.getText();
+			String nombreJug2 = nombreJ2.getText();
+
+			if (!nombreJug1.equals(nombreJug2)) {
+				juego.agregarJugadores(nombreJ1.getText(), nombreJ2.getText());
+				juego.comenzar();
+			} else {
+				System.out.println("Nombre invalido");
+			}
 		}
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 * 
-	 * @throws IOException
-	 */
-	private void initialize() throws IOException {
-		frame = new JFrame();
-		frame.setForeground(new Color(0, 0, 0));
-		frame.setBounds(100, 2, 1200, 750);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-
-		JButton btnIniciar = new JButton("Iniciar");
-		btnIniciar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				gameLoop.iniciarEjecucion();
-			}
-		});
-		btnIniciar.setBounds(20, 10, 85, 25);
-		frame.getContentPane().add(btnIniciar);
-
-		JButton btnDetener = new JButton("Detener");
-		btnDetener.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				gameLoop.detenerEjecucion();
-			}
-		});
-
-		btnDetener.setBounds(20, 45, 85, 25);
-		frame.getContentPane().add(btnDetener);
-
-		Mapa mapa = new Mapa(30, 30);
-		VistaMapa vistaMapa = new VistaMapa();
-		this.gameLoop = new GameLoop((SuperficieDeDibujo) vistaMapa);
-		vistaMapa.setModelo(mapa, this.gameLoop);
-
-		vistaMapa.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				// modelo.moverA(arg0.getX(), arg0.getY());
-			}
-		});
-		frame.getContentPane().add(vistaMapa);
-
-		frame.setFocusable(true);
-		btnDetener.setFocusable(false);
-		btnIniciar.setFocusable(false);
-
-		frame.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-				System.out.println("Key pressed");
-			}
-
-			@Override
-			public void keyReleased(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-
-				System.out.println("Ping");
-
-			}
-
-		});
-
 	}
 }

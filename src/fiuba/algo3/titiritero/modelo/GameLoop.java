@@ -15,6 +15,9 @@ public class GameLoop implements Runnable {
 	private boolean estaEjecutando;
 	private int frecuencia;
 
+	private SuperficieDeDibujo superficieDeDibujo;
+	private Thread hilo;
+
 	public int getFrecuencia() {
 		return frecuencia;
 	}
@@ -31,9 +34,6 @@ public class GameLoop implements Runnable {
 		return superficieDeDibujo;
 	}
 
-	private SuperficieDeDibujo superficieDeDibujo;
-	private Thread hilo;
-
 	public GameLoop(int frecuencia, SuperficieDeDibujo superficieDeDibujo) {
 		this.frecuencia = frecuencia;
 		this.superficieDeDibujo = superficieDeDibujo;
@@ -44,6 +44,7 @@ public class GameLoop implements Runnable {
 
 	public GameLoop(SuperficieDeDibujo superficieDeDibujo) {
 		this(FRECUENCIA_DEFAULT, superficieDeDibujo);
+		// System.out.println("Superficie agregada");
 	}
 
 	public synchronized void agregar(ObjetoVivo objetoVivo) {
@@ -64,21 +65,30 @@ public class GameLoop implements Runnable {
 
 	@Override
 	public void run() {
+		try {
+			Thread.sleep(2500);
+		} catch (InterruptedException e) {
+			// e.printStackTrace();
+		}
+
 		while (this.estaEjecutando) {
 			for (ObjetoVivo objetoVivo : this.objetosVivos) {
 				objetoVivo.vivir();
 			}
+
 			for (ObjetoDibujable objetoDibujable : this.objetosDibujables) {
 				objetoDibujable.dibujar(this.superficieDeDibujo);
 			}
+
 			this.superficieDeDibujo.actualizar();
+
 			for (ObservadorDeGameLoop observador : this.observadores) {
 				observador.notificarCicloFinalizado();
 			}
+
 			try {
 				Thread.sleep(this.frecuencia);
 			} catch (InterruptedException e) {
-				// TODO log de exception
 				// e.printStackTrace();
 			}
 		}
