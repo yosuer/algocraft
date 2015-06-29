@@ -26,6 +26,11 @@ public class VistaIElemento extends Imagen {
 		elemento = e;
 	}
 
+	public VistaIElemento(IElemento e) {
+		super(getRuta(e), (ObjetoPosicionable) e);
+		elemento = e;
+	}
+
 	public static URL getRuta(IElemento e) {
 		return VistaIElemento.class.getResource("/res/" + e.nombre() + ".png");
 	}

@@ -16,10 +16,14 @@ public class Imagen implements ObjetoDibujable {
 	private BufferedImage imagen;
 	private ObjetoPosicionable posicionable;
 
-	public Imagen(URL imagenUrl, ObjetoPosicionable posicionable)
-			throws IOException {
-		this.posicionable = posicionable;
-		this.imagen = ImageIO.read(imagenUrl);
+	public Imagen(URL imagenUrl, ObjetoPosicionable posicionable) {
+		try {
+			this.posicionable = posicionable;
+			this.imagen = ImageIO.read(imagenUrl);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
