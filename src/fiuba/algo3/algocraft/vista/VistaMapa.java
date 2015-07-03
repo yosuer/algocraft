@@ -2,17 +2,18 @@ package fiuba.algo3.algocraft.vista;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 
+import fiuba.algo3.algocraft.controlador.ControladorMapa;
 import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.IMapa;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.titiritero.modelo.GameLoop;
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 
-public class VistaMapa extends SuperficiePanel {
+public class VistaMapa extends SuperficiePanel implements Observer {
 
 	private IMapa mapa;
 	private IElemento seleccionado;
@@ -25,18 +26,7 @@ public class VistaMapa extends SuperficiePanel {
 		this.mapa = mapa;
 		setSize(new Dimension(880, mapa.largo() * 22));
 		seleccionado = null;
-		addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				int x = e.getX() / 22 + 1;
-				int y = e.getY() / 22 + 1;
-
-				if (x <= mapa.ancho() & y <= mapa.largo()) {
-					seleccionado = mapa.getElemento(x, y, 0);
-					System.out.println("x: " + x + " y: " + y + "  select: "
-							+ seleccionado.nombre());
-				}
-			}
-		});
+		addMouseListener(new ControladorMapa(mapa));
 		setLayout(new GridLayout(mapa.ancho(), mapa.largo()));
 	}
 
@@ -72,5 +62,11 @@ public class VistaMapa extends SuperficiePanel {
 		this.atacar = false;
 		this.construir = true;
 		this.seleccionar = false;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+
 	}
 }
