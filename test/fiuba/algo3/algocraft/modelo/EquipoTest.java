@@ -3,8 +3,6 @@ package fiuba.algo3.algocraft.modelo;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.algocraft.modelo.edificios.Barraca;
-
 public class EquipoTest {
 
 	@Test
@@ -25,9 +23,7 @@ public class EquipoTest {
 	@Test
 	public void test03_AgregarElementoAlEquipo() {
 		Mapa mapa = new Mapa(40, 40);
-		mapa.agregarElemento(1, 1, new Barraca());
-
-		Equipo equipo = mapa.getEquipo1();
+		Equipo equipo = mapa.getEquipoActual();
 
 		Assert.assertEquals(1, equipo.cantidadElementos());
 	}

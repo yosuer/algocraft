@@ -106,12 +106,13 @@ public class Mapa implements IMapa {
 		centro1.setPosicion(new Posicion(4, 4, 0));
 		this.agregarControlable(centro1);
 
-		// this.pasarTurnoMapa();
+		this.pasarTurnoMapa();
 
 		CentroDeMando centro2 = new CentroDeMando();
 		centro2.setPosicion(new Posicion(ancho - 3, largo - 3, 0));
 		this.agregarControlable(centro2);
 
+		this.pasarTurnoMapa();
 	}
 
 	public void agregarElemento(int x, int y, IElemento elemento) {

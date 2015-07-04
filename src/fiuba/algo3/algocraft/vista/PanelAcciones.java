@@ -29,7 +29,6 @@ public class PanelAcciones extends JPanel {
 			this.removeAll();
 			for (JButton b : acciones) {
 				add(b);
-				System.out.println("add boton");
 			}
 			this.repaint();
 		}
