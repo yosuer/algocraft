@@ -2,8 +2,6 @@ package fiuba.algo3.algocraft.vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.Collection;
 
 import javax.swing.JButton;
 
@@ -16,16 +14,13 @@ public class VistaCentroDeMando extends VistaIElemento implements
 	private CentroDeMando centroDeMando;
 	private JButton btnCrearCentroMineral;
 
-	public VistaCentroDeMando(VistaMapa mapa, CentroDeMando e)
-			throws IOException {
-		super(mapa, e);
+	public VistaCentroDeMando(VistaMapa mapa, CentroDeMando e) {
+		super(e);
 		centroDeMando = e;
 		btnCrearCentroMineral = new JButton("CrearCentroMineral");
 		btnCrearCentroMineral.addActionListener(this);
-	}
-
-	public Collection<JButton> getBotones() {
-		return botones;
+		acciones.add(new JButton("centroMineral 1"));
+		acciones.add(new JButton("centroMineral 2"));
 	}
 
 	@Override

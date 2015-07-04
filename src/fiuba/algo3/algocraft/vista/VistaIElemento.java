@@ -1,8 +1,9 @@
 package fiuba.algo3.algocraft.vista;
 
-import java.io.IOException;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import javax.swing.JButton;
@@ -14,21 +15,18 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
 public class VistaIElemento extends Imagen {
 
-	protected VistaMapa mapa;
 	protected IElemento elemento;
 	protected Imagen imagen;
 	protected Posicion posicion;
-	protected Collection<JButton> botones;
+	protected Collection<JButton> acciones;
 
-	public VistaIElemento(VistaMapa mapa, IElemento e) throws IOException {
-		super(getRuta(e), (ObjetoPosicionable) e);
-		this.mapa = mapa;
-		elemento = e;
-	}
+	public static HashMap<String, VistaIElemento> vistasIElementos = new HashMap<String, VistaIElemento>();
 
 	public VistaIElemento(IElemento e) {
 		super(getRuta(e), (ObjetoPosicionable) e);
+		imagen = new Imagen(getRuta(e), (ObjetoPosicionable) e);
 		elemento = e;
+		acciones = new LinkedList<JButton>();
 	}
 
 	public static URL getRuta(IElemento e) {
@@ -36,7 +34,15 @@ public class VistaIElemento extends Imagen {
 	}
 
 	public Collection<JButton> getBotones() {
-		return new LinkedList<JButton>();
+		return acciones;
+	}
+
+	public BufferedImage getBufferedImage() {
+		return imagen.getImage();
+	}
+
+	public IElemento getElemento() {
+		return elemento;
 	}
 
 }

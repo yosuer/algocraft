@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.vista;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -11,12 +10,18 @@ import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.IMapa;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.titiritero.modelo.GameLoop;
-import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
 
 public class VistaMapa extends SuperficiePanel implements Observer {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private IMapa mapa;
-	private IElemento seleccionado;
+	public static IElemento seleccionado;
+	private VistaCasillero[][] casilleros;
+	private int ancho;
+	private int largo;
 
 	private boolean seleccionar = true;
 	private boolean construir = false;
@@ -24,25 +29,22 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 
 	public VistaMapa(final IMapa mapa) {
 		this.mapa = mapa;
-		setSize(new Dimension(880, mapa.largo() * 22));
+		ancho = mapa.ancho();
+		largo = mapa.largo();
+		setSize(new Dimension(ancho * 22, largo * 22));
+		casilleros = new VistaCasillero[ancho + 1][largo + 1];
 		seleccionado = null;
-		addMouseListener(new ControladorMapa(mapa));
+		addMouseListener(new ControladorMapa(this));
 		setLayout(new GridLayout(mapa.ancho(), mapa.largo()));
 	}
 
 	public void agregarEnGameLoop(GameLoop gameLoop) {
-		try {
-			for (int x = 1; x <= mapa.ancho(); x++) {
-				for (int y = 1; y <= mapa.largo(); y++) {
-					IElemento elemento = mapa.getElemento(x, y, 0);
-					gameLoop.agregar(elemento);
-					ObjetoDibujable imagen = new VistaIElemento(this, elemento);
-					gameLoop.agregar(imagen);
-					// add(new VistaCasillero(elemento, x, y));
-				}
+		for (int x = 1; x <= mapa.ancho(); x++) {
+			for (int y = 1; y <= mapa.largo(); y++) {
+				casilleros[x][y] = new VistaCasillero(mapa, x, y);
+				gameLoop.agregar(casilleros[x][y].getVisible().getElemento());
+				gameLoop.agregar(casilleros[x][y]);
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -67,6 +69,17 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
+	}
 
+	public VistaIElemento getVisible(int x, int y) {
+		return casilleros[x][y].getVisible();
+	}
+
+	public VistaCasillero getCasillero(int x, int y) {
+		return casilleros[x][y];
+	}
+
+	public IMapa getModelo() {
+		return this.mapa;
 	}
 }

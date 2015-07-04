@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import fiuba.algo3.algocraft.Juego;
 import fiuba.algo3.algocraft.controlador.Boton;
 
-public class VentanaPrincipal extends JFrame implements ActionListener {
+public class VentanaInicial extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = -133982114697528815L;
 
@@ -32,7 +32,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	int tamY = 250;
 	private Juego juego;
 
-	public VentanaPrincipal(Juego unJuego) {
+	public VentanaInicial(Juego unJuego) {
 		iniciarComponentes();
 		this.juego = unJuego;
 		setTitle("AlgoCraft");

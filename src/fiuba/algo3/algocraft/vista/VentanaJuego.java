@@ -3,10 +3,7 @@ package fiuba.algo3.algocraft.vista;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.util.Collection;
-import java.util.LinkedList;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class VentanaJuego extends JFrame {
@@ -18,15 +15,15 @@ public class VentanaJuego extends JFrame {
 
 	private Container contenedor;
 	private VistaMapa mapa;
-	private PanelAcciones acciones;
+	public static PanelAcciones panelAcciones;
 
 	public VentanaJuego(VistaMapa mapa) {
 		this.mapa = mapa;
 
-		Collection<JButton> botones = new LinkedList<JButton>();
-		botones.add(new JButton("Iniciar"));
-		botones.add(new JButton("Salir"));
-		acciones = new PanelAcciones(botones);
+		// Collection<JButton> botones = new LinkedList<JButton>();
+		// botones.add(new JButton("Iniciar"));
+		// botones.add(new JButton("Salir"));
+		panelAcciones = new PanelAcciones();
 
 		setSize(new Dimension(1200, 750));
 		setLocationRelativeTo(null);
@@ -35,6 +32,6 @@ public class VentanaJuego extends JFrame {
 		contenedor.setLayout(new BorderLayout());
 
 		contenedor.add(mapa, BorderLayout.CENTER);
-		contenedor.add(acciones, BorderLayout.EAST);
+		contenedor.add(panelAcciones, BorderLayout.EAST);
 	}
 }

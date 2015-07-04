@@ -5,18 +5,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import fiuba.algo3.algocraft.modelo.IElemento;
-import fiuba.algo3.algocraft.modelo.IMapa;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
+import fiuba.algo3.algocraft.vista.VentanaJuego;
+import fiuba.algo3.algocraft.vista.VistaCasillero;
+import fiuba.algo3.algocraft.vista.VistaMapa;
 
 public class ControladorMapa extends MouseAdapter {
 
-	private IMapa mapa;
+	private VistaMapa mapa;
 	private Posicion posicion;
-	private IElemento seleccionado;
+	private VistaCasillero seleccionado;
 
-	public ControladorMapa(IMapa mapa) {
+	public ControladorMapa(VistaMapa mapa) {
 		this.mapa = mapa;
 	}
 
@@ -27,7 +28,7 @@ public class ControladorMapa extends MouseAdapter {
 	private class EscuchaBotonConstruirCentroDeMineral implements
 			ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			mapa.agregarElemento(posicion.x(), posicion.y(),
+			mapa.getModelo().agregarElemento(posicion.x(), posicion.y(),
 					new CentroDeMineral());
 		}
 	}
@@ -40,11 +41,13 @@ public class ControladorMapa extends MouseAdapter {
 		int x = e.getX() / 22 + 1;
 		int y = e.getY() / 22 + 1;
 
-		if (x <= mapa.ancho() & y <= mapa.largo()) {
-			seleccionado = mapa.getElemento(x, y, 0);
+		if (x <= mapa.getModelo().ancho() & y <= mapa.getModelo().largo()) {
+			seleccionado = mapa.getCasillero(x, y);
 			System.out.println("x: " + x + " y: " + y + "  select: "
-					+ seleccionado.nombre());
+					+ seleccionado.getVisible().getElemento().nombre());
+			VentanaJuego.panelAcciones.actualizar(seleccionado.getVisible());
 		}
+
 	}
 
 }
