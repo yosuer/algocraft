@@ -22,7 +22,9 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 	private static final long serialVersionUID = 1L;
 
 	public static JTextArea log;
-	private JLabel infoJugador;
+	private JLabel nombreJugador;
+	private JLabel estadoJugador;
+	private JLabel estadoRecursos;
 	private Font fuenteLog;
 	private Font fuenteInfoJug;
 	private IMapa mapa;
@@ -32,20 +34,27 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 
 	public PanelEstado(IMapa mapa) {
 		this.setBackground(Color.BLUE);
-		this.setMaximumSize(new Dimension(40, 200));
+		this.setMaximumSize(new Dimension(30, 20));
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		this.mapa = mapa;
 
-		fuenteInfoJug = new Font("Arial", Font.BOLD, 15);
-		infoJugador = new JLabel();
-		infoJugador.setFont(fuenteInfoJug);
-		setJugadorActual();
-		infoJugador.setHorizontalAlignment(SwingConstants.LEFT);
-		add(infoJugador);
+		fuenteInfoJug = new Font("Verdana", Font.BOLD, 14);
+		nombreJugador = new JLabel();
+		nombreJugador.setFont(fuenteInfoJug);
+		estadoJugador = new JLabel();
+		estadoJugador.setFont(fuenteInfoJug);
+		estadoRecursos = new JLabel();
+		estadoRecursos.setFont(fuenteInfoJug);
+		actualizarInfo();
+		nombreJugador.setHorizontalAlignment(JLabel.LEFT);
+		estadoJugador.setHorizontalAlignment(JLabel.LEFT);
+		add(nombreJugador);
+		add(estadoJugador);
+		add(estadoRecursos);
 
 		fuenteLog = new Font("Verdana", Font.ITALIC, 12);
-		log = new JTextArea(10, 10);
+		log = new JTextArea(10, 15);
 		log.setFont(fuenteLog);
 		log.setForeground(Color.WHITE);
 		log.setEditable(false);
@@ -58,16 +67,20 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 		log.append(texto + newline);
 	}
 
-	public void setJugadorActual() {
+	public void actualizarInfo() {
 		jugador = mapa.getEquipoActual();
-		infoJugador.setText(jugador.getNombre() + "  P: "
-				+ jugador.getPoblacionTotal());
-		infoJugador.setHorizontalAlignment(SwingConstants.LEFT);
+		nombreJugador.setText(jugador.getNombre());
+
+		estadoJugador.setText("|Po: " + jugador.getPoblacionTotal());
+		estadoRecursos.setText("Mi: " + jugador.getMineralTotal() + " |Ve: "
+				+ jugador.getVespenoTotal());
+		nombreJugador.setHorizontalAlignment(SwingConstants.LEFT);
+		estadoJugador.setHorizontalAlignment(SwingConstants.LEFT);
 	}
 
 	@Override
 	public void actualizar() {
-		setJugadorActual();
+		actualizarInfo();
 	}
 
 }
