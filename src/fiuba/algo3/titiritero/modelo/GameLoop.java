@@ -10,6 +10,7 @@ public class GameLoop implements Runnable {
 	private static final int FRECUENCIA_DEFAULT = 500;
 	private Set<ObjetoVivo> objetosVivos;
 	private Set<ObjetoDibujable> objetosDibujables;
+	private Set<ObjetoActualizable> objetosActualizables;
 	private List<ObservadorDeGameLoop> observadores;
 
 	private boolean estaEjecutando;
@@ -40,6 +41,7 @@ public class GameLoop implements Runnable {
 		this.objetosVivos = new HashSet<ObjetoVivo>();
 		this.objetosDibujables = new HashSet<ObjetoDibujable>();
 		this.observadores = new ArrayList<ObservadorDeGameLoop>();
+		this.objetosActualizables = new HashSet<ObjetoActualizable>();
 	}
 
 	public GameLoop(SuperficieDeDibujo superficieDeDibujo) {
@@ -63,6 +65,14 @@ public class GameLoop implements Runnable {
 		this.objetosDibujables.remove(objetoDibujable);
 	}
 
+	public synchronized void agregar(ObjetoActualizable objetoActualizable) {
+		this.objetosActualizables.add(objetoActualizable);
+	}
+
+	public synchronized void remover(ObjetoActualizable objetoActualizable) {
+		this.objetosActualizables.remove(objetoActualizable);
+	}
+
 	@Override
 	public void run() {
 		while (this.estaEjecutando) {
@@ -72,6 +82,10 @@ public class GameLoop implements Runnable {
 
 			for (ObjetoDibujable objetoDibujable : this.objetosDibujables) {
 				objetoDibujable.dibujar(this.superficieDeDibujo);
+			}
+
+			for (ObjetoActualizable objetoActualizable : this.objetosActualizables) {
+				objetoActualizable.actualizar();
 			}
 
 			this.superficieDeDibujo.actualizar();

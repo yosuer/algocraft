@@ -106,7 +106,7 @@ public class Mapa implements IMapa {
 		centro1.setPosicion(new Posicion(4, 4, 0));
 		this.agregarControlable(centro1);
 
-		this.pasarTurnoMapa();
+		// this.pasarTurnoMapa();
 
 		CentroDeMando centro2 = new CentroDeMando();
 		centro2.setPosicion(new Posicion(ancho - 3, largo - 3, 0));
@@ -166,7 +166,7 @@ public class Mapa implements IMapa {
 		this.equipoSiguiente = equipoAux;
 
 		// ////////////////////////////////
-		System.out.println("Paso turno");
+		// System.out.println("Paso turno");
 		// System.out.println("Mineral: " + gestorDeRecursos.getMineralTotal());
 		// System.out.println("Vespeno: " + gestorDeRecursos.getVespenoTotal());
 		// Iterator<IElemento> i = elementosActivos.iterator();
@@ -241,6 +241,11 @@ public class Mapa implements IMapa {
 
 	public List<Unidad> getUnidadesProximas(Posicion posicion, int radio) {
 		return this.gestorDeUbicaciones.getUnidadesProximas(posicion, radio);
+	}
+
+	@Override
+	public Equipo getEquipoActual() {
+		return equipoActual;
 	}
 
 }

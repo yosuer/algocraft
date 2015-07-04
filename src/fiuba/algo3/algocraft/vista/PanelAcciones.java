@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.vista;
 
+import java.awt.Dimension;
 import java.util.Collection;
 
 import javax.swing.BoxLayout;
@@ -16,6 +17,7 @@ public class PanelAcciones extends JPanel {
 
 	public PanelAcciones() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setMaximumSize(new Dimension(20, 70));
 	}
 
 	public void actualizar(VistaIElemento v) {
@@ -29,8 +31,7 @@ public class PanelAcciones extends JPanel {
 				add(b);
 				System.out.println("add boton");
 			}
-			revalidate();
-			repaint();
+			this.repaint();
 		}
 
 	}

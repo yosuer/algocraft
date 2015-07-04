@@ -19,11 +19,11 @@ public class VistaCentroDeMando extends VistaIElemento {
 	public VistaCentroDeMando() {
 		elemento = new CentroDeMando();
 		armarImagen();
-		btnCrearCentroMineral = new BotonCrearEdificio("CrearCentroMineral",
+		btnCrearCentroMineral = new BotonCrearEdificio("CentroMineral",
 				new CrearEdificio(new CentroDeMineral()));
-		btnCrearBarraca = new BotonCrearEdificio("CrearBarraca",
-				new CrearEdificio(new Barraca()));
-		btnCrearDeposito = new BotonCrearEdificio("CrearDeposito",
+		btnCrearBarraca = new BotonCrearEdificio("Barraca", new CrearEdificio(
+				new Barraca()));
+		btnCrearDeposito = new BotonCrearEdificio("Deposito",
 				new CrearEdificio(new DepositoDeSuministros()));
 
 		acciones.add(btnCrearCentroMineral);

@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
+import fiuba.algo3.algocraft.vista.PanelEstado;
 import fiuba.algo3.algocraft.vista.VentanaJuego;
 import fiuba.algo3.algocraft.vista.VistaCasillero;
 import fiuba.algo3.algocraft.vista.VistaMapa;
@@ -50,23 +51,25 @@ public class ControladorMapa extends MouseAdapter {
 
 	public void seleccionar(int x, int y) {
 		seleccionado = mapa.getCasillero(x, y);
-		System.out.println("x: " + x + " y: " + y + "  select: "
-				+ seleccionado.getVisible().getElemento().nombre());
+		PanelEstado.log.append("Select "
+				+ seleccionado.getVisible().getElemento().nombre() + " " + x
+				+ "," + y + PanelEstado.newline);
 		VentanaJuego.panelAcciones.actualizar(seleccionado.getVisible());
-		VistaMapa.seleccionar = true;
-		VistaMapa.atacar = false;
-		VistaMapa.construir = false;
+		act();
 	}
 
 	public void construir(int x, int y) {
-		System.out.println("Sobre  x: " + x + " y: " + y + "  construir: "
-				+ VistaMapa.aConstruir.nombre());
+		PanelEstado.log.append("Const " + VistaMapa.aConstruir.nombre() + " "
+				+ x + "," + y + PanelEstado.newline);
 
 		mapa.getModelo().agregarElemento(x, y, VistaMapa.aConstruir);
 		seleccionado = mapa.getCasillero(x, y);
+		act();
+	}
+
+	private void act() {
 		VistaMapa.seleccionar = true;
 		VistaMapa.atacar = false;
 		VistaMapa.construir = false;
 	}
-
 }

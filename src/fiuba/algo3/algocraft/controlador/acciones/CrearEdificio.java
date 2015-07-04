@@ -9,9 +9,6 @@ import fiuba.algo3.algocraft.vista.VistaMapa;
 public class CrearEdificio implements ActionListener {
 
 	private IElemento edificio;
-	private int x;
-	private int y;
-	private VistaMapa mapa;
 
 	public CrearEdificio(IElemento edificio) {
 		this.edificio = edificio;

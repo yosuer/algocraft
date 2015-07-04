@@ -32,7 +32,7 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 		this.mapa = mapa;
 		ancho = mapa.ancho();
 		largo = mapa.largo();
-		setSize(new Dimension(ancho * 22, largo * 22));
+		setMinimumSize(new Dimension(ancho * 22, largo * 22));
 		casilleros = new VistaCasillero[ancho + 1][largo + 1];
 		seleccionado = null;
 		addMouseListener(new ControladorMapa(this));
@@ -47,24 +47,6 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 				gameLoop.agregar(casilleros[x][y]);
 			}
 		}
-	}
-
-	public void seleccionar() {
-		this.atacar = false;
-		this.construir = false;
-		this.seleccionar = true;
-	}
-
-	public void atacar() {
-		this.atacar = true;
-		this.construir = false;
-		this.seleccionar = false;
-	}
-
-	public void construir() {
-		this.atacar = false;
-		this.construir = true;
-		this.seleccionar = false;
 	}
 
 	@Override

@@ -10,6 +10,7 @@ import fiuba.algo3.algocraft.vista.VistaIElemento;
 import fiuba.algo3.algocraft.vista.VistaMapa;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaBarraca;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaCentroDeMando;
+import fiuba.algo3.algocraft.vista.vistasModelo.VistaCentroDeMineral;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaDepositoDeSuministros;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaMineral;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaTierra;
@@ -19,7 +20,7 @@ import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
 public class Juego {
 
-	private JFrame ventanaJuego;
+	private VentanaJuego ventanaJuego;
 	private JFrame ventanaInicial;
 	private GameLoop gameLoop;
 	private IMapa mapa;
@@ -34,6 +35,8 @@ public class Juego {
 		VistaIElemento.vistasElementos.put("Barraca", new VistaBarraca());
 		VistaIElemento.vistasElementos.put("DepositoDeSuministros",
 				new VistaDepositoDeSuministros());
+		VistaIElemento.vistasElementos.put("CentroDeMineral",
+				new VistaCentroDeMineral());
 
 		initialize();
 	}
@@ -45,6 +48,7 @@ public class Juego {
 		ventanaInicial = new VentanaInicial(this);
 		ventanaJuego = new VentanaJuego(vistaMapa);
 		vistaMapa.agregarEnGameLoop(gameLoop);
+		gameLoop.agregar(ventanaJuego.panelEstado);
 		gameLoop.iniciarEjecucion();
 	}
 

@@ -20,4 +20,6 @@ public interface IMapa {
 
 	public void pasarTurnoMapa();
 
+	public Equipo getEquipoActual();
+
 }
