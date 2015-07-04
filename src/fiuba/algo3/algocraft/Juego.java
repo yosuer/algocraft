@@ -12,6 +12,7 @@ import fiuba.algo3.algocraft.vista.vistasModelo.VistaBarraca;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaCentroDeMando;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaCentroDeMineral;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaDepositoDeSuministros;
+import fiuba.algo3.algocraft.vista.vistasModelo.VistaMarine;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaMineral;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaTierra;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaVespeno;
@@ -37,6 +38,7 @@ public class Juego {
 				new VistaDepositoDeSuministros());
 		VistaIElemento.vistasElementos.put("CentroDeMineral",
 				new VistaCentroDeMineral());
+		VistaIElemento.vistasElementos.put("Marine", new VistaMarine());
 
 		initialize();
 	}

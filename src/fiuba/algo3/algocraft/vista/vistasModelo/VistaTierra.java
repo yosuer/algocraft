@@ -9,5 +9,4 @@ public class VistaTierra extends VistaIElemento {
 		elemento = new Tierra();
 		armarImagen();
 	}
-
 }

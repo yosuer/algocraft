@@ -26,6 +26,10 @@ public abstract class VistaIElemento {
 		imagen = new Imagen(getRuta(), (ObjetoPosicionable) elemento);
 	}
 
+	protected void setModelo(IElemento elemento) {
+		this.elemento = elemento;
+	}
+
 	protected URL getRuta() {
 		return VistaIElemento.class.getResource("/res/" + elemento.nombre()
 				+ ".png");
