@@ -166,7 +166,7 @@ public class Mapa implements IMapa {
 		this.equipoSiguiente = equipoAux;
 
 		// ////////////////////////////////
-		// System.out.println("Poblacion: " + getPoblacionTotal());
+		System.out.println("Paso turno");
 		// System.out.println("Mineral: " + gestorDeRecursos.getMineralTotal());
 		// System.out.println("Vespeno: " + gestorDeRecursos.getVespenoTotal());
 		// Iterator<IElemento> i = elementosActivos.iterator();

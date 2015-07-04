@@ -28,7 +28,7 @@ public class VistaCasillero extends JPanel implements ObjetoDibujable {
 		this.mapa = mapa;
 		// if (elemento.getNivel() == 0)
 		// elementoAereo = new VistaIElemento(mapa.getElemento(x, y, 1));
-		elementoTerrestre = new VistaIElemento(mapa.getElemento(x, y, 0));
+		actualizarElementos();
 	}
 
 	@Override
@@ -46,10 +46,16 @@ public class VistaCasillero extends JPanel implements ObjetoDibujable {
 		} catch (NullPointerException e) {
 			// System.out.println("NullPointer");
 		}
+		actualizarElementos();
 	}
 
 	public VistaIElemento getVisible() {
 		return elementoTerrestre;
+	}
+
+	private void actualizarElementos() {
+		elementoTerrestre = VistaIElemento.vistasElementos.get(mapa
+				.getElemento(x, y, 0).nombre());
 	}
 
 }

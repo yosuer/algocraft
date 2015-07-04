@@ -40,14 +40,33 @@ public class ControladorMapa extends MouseAdapter {
 	public void mousePressed(MouseEvent e) {
 		int x = e.getX() / 22 + 1;
 		int y = e.getY() / 22 + 1;
-
 		if (x <= mapa.getModelo().ancho() & y <= mapa.getModelo().largo()) {
-			seleccionado = mapa.getCasillero(x, y);
-			System.out.println("x: " + x + " y: " + y + "  select: "
-					+ seleccionado.getVisible().getElemento().nombre());
-			VentanaJuego.panelAcciones.actualizar(seleccionado.getVisible());
+			if (VistaMapa.seleccionar)
+				seleccionar(x, y);
+			else if (VistaMapa.construir)
+				construir(x, y);
 		}
+	}
 
+	public void seleccionar(int x, int y) {
+		seleccionado = mapa.getCasillero(x, y);
+		System.out.println("x: " + x + " y: " + y + "  select: "
+				+ seleccionado.getVisible().getElemento().nombre());
+		VentanaJuego.panelAcciones.actualizar(seleccionado.getVisible());
+		VistaMapa.seleccionar = true;
+		VistaMapa.atacar = false;
+		VistaMapa.construir = false;
+	}
+
+	public void construir(int x, int y) {
+		System.out.println("Sobre  x: " + x + " y: " + y + "  construir: "
+				+ VistaMapa.aConstruir.nombre());
+
+		mapa.getModelo().agregarElemento(x, y, VistaMapa.aConstruir);
+		seleccionado = mapa.getCasillero(x, y);
+		VistaMapa.seleccionar = true;
+		VistaMapa.atacar = false;
+		VistaMapa.construir = false;
 	}
 
 }

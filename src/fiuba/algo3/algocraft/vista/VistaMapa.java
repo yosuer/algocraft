@@ -19,13 +19,14 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 	private static final long serialVersionUID = 1L;
 	private IMapa mapa;
 	public static IElemento seleccionado;
+	public static IElemento aConstruir;
 	private VistaCasillero[][] casilleros;
 	private int ancho;
 	private int largo;
 
-	private boolean seleccionar = true;
-	private boolean construir = false;
-	private boolean atacar = false;
+	public static boolean seleccionar = true;
+	public static boolean construir = false;
+	public static boolean atacar = false;
 
 	public VistaMapa(final IMapa mapa) {
 		this.mapa = mapa;

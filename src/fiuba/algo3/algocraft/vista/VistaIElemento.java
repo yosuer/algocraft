@@ -13,24 +13,22 @@ import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.titiritero.dibujables.Imagen;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
-public class VistaIElemento extends Imagen {
+public abstract class VistaIElemento {
 
 	protected IElemento elemento;
 	protected Imagen imagen;
 	protected Posicion posicion;
-	protected Collection<JButton> acciones;
+	protected Collection<JButton> acciones = new LinkedList<JButton>();;
 
-	public static HashMap<String, VistaIElemento> vistasIElementos = new HashMap<String, VistaIElemento>();
+	public static HashMap<String, VistaIElemento> vistasElementos = new HashMap<String, VistaIElemento>();
 
-	public VistaIElemento(IElemento e) {
-		super(getRuta(e), (ObjetoPosicionable) e);
-		imagen = new Imagen(getRuta(e), (ObjetoPosicionable) e);
-		elemento = e;
-		acciones = new LinkedList<JButton>();
+	protected void armarImagen() {
+		imagen = new Imagen(getRuta(), (ObjetoPosicionable) elemento);
 	}
 
-	public static URL getRuta(IElemento e) {
-		return VistaIElemento.class.getResource("/res/" + e.nombre() + ".png");
+	protected URL getRuta() {
+		return VistaIElemento.class.getResource("/res/" + elemento.nombre()
+				+ ".png");
 	}
 
 	public Collection<JButton> getBotones() {

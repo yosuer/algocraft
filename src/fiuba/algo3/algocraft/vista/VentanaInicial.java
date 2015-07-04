@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import fiuba.algo3.algocraft.Juego;
-import fiuba.algo3.algocraft.controlador.Boton;
 
 public class VentanaInicial extends JFrame implements ActionListener {
 
@@ -25,8 +24,8 @@ public class VentanaInicial extends JFrame implements ActionListener {
 	JLabel jugador2 = new JLabel("Jugador 2:");
 	JTextField nombreJ1 = new JTextField(15);
 	JTextField nombreJ2 = new JTextField(15);
-	JButton botonIniciarPartida = new Boton("Iniciar", this);
-	JButton botonSalir = new Boton("Salir", this);
+	JButton botonIniciar = new JButton("Iniciar");
+	JButton botonSalir = new JButton("Salir");
 
 	int tamX = 400;
 	int tamY = 250;
@@ -47,6 +46,9 @@ public class VentanaInicial extends JFrame implements ActionListener {
 		contenedor = getContentPane();
 		GridBagLayout gbl = new GridBagLayout();
 		contenedor.setLayout(gbl);
+
+		botonIniciar.addActionListener(this);
+		botonSalir.addActionListener(this);
 
 		GridBagConstraints config = new GridBagConstraints();
 		config.insets = new Insets(20, 10, 10, 10);
@@ -69,7 +71,7 @@ public class VentanaInicial extends JFrame implements ActionListener {
 
 		config.gridx = 1;
 		config.gridy = 5;
-		contenedor.add(botonIniciarPartida, config);
+		contenedor.add(botonIniciar, config);
 
 		config.gridx = 2;
 		config.gridy = 5;
