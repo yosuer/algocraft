@@ -53,20 +53,51 @@ public class EdificioUnidadesBasicasTest {
 		Mapa mapa = new Mapa(40, 40);
 		mapa.aumentarPoblacion(10);
 		Barraca barraca = new Barraca();
-		mapa.agregarElemento(3, 3, barraca);
+		mapa.agregarElemento(8, 8, barraca);
 		for (int i = 1; i <= 12; i++)
 			mapa.pasarTurnoMapa();
 
 		barraca.crearMarine();
 
-		for (int i = 1; i <= 4; i++)
+		for (int i = 1; i <= 5; i++)
 			mapa.pasarTurnoMapa();
 
-		Assert.assertNotNull(mapa.getElemento(2, 2, 0));
+		Assert.assertEquals("Marine", mapa.getElemento(7, 7, 0).nombre());
+		Assert.assertEquals("Barraca", mapa.getElemento(8, 8, 0).nombre());
 	}
 
 	@Test
 	public void test02_CrearUnaBarracaYCrear5Marine() {
+		Mapa mapa = new Mapa(40, 40);
+		mapa.recibirMineral(1000);
+		mapa.aumentarPoblacion(10);
+
+		Barraca barraca = new Barraca();
+		mapa.agregarElemento(8, 8, barraca);
+		for (int i = 1; i <= 12; i++)
+			mapa.pasarTurnoMapa();
+
+		barraca.crearMarine();
+		barraca.crearMarine();
+		barraca.crearMarine();
+		barraca.crearMarine();
+		barraca.crearMarine();
+
+		Assert.assertEquals(4, barraca.unidadesEnProduccion());
+
+		for (int i = 1; i <= 20; i++)
+			mapa.pasarTurnoMapa();
+
+		Assert.assertEquals(mapa.getElemento(7, 7, 0).nombre(), "Marine");
+		Assert.assertEquals(mapa.getElemento(7, 8, 0).nombre(), "Marine");
+		Assert.assertEquals(mapa.getElemento(7, 9, 0).nombre(), "Marine");
+		Assert.assertEquals(mapa.getElemento(8, 7, 0).nombre(), "Marine");
+
+		Assert.assertEquals(mapa.getElemento(8, 8, 0).nombre(), "Barraca"); // barraca
+	}
+
+	@Test
+	public void test03_CrearUnaBarracaYCrear4MarinesConPosicionesOcupadas() {
 		Mapa mapa = new Mapa(40, 40);
 		mapa.recibirMineral(1000);
 		mapa.aumentarPoblacion(10);
@@ -87,10 +118,11 @@ public class EdificioUnidadesBasicasTest {
 		for (int i = 1; i <= 20; i++)
 			mapa.pasarTurnoMapa();
 
-		Assert.assertEquals(mapa.getElemento(3, 4, 0).nombre(), "Marine");
+		Assert.assertEquals(mapa.getElemento(1, 1, 0).nombre(), "Marine");
 		Assert.assertEquals(mapa.getElemento(4, 3, 0).nombre(), "Marine");
-		Assert.assertNotNull(mapa.getElemento(4, 4, 0));
-		Assert.assertNotNull(mapa.getElemento(1, 1, 0));
+		Assert.assertEquals(mapa.getElemento(3, 4, 0).nombre(), "Marine");
+		Assert.assertEquals(mapa.getElemento(1, 3, 0).nombre(), "Marine");
+
 		Assert.assertEquals(mapa.getElemento(3, 3, 0).nombre(), "Barraca"); // barraca
 	}
 }

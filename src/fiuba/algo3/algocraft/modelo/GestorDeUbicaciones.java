@@ -93,10 +93,8 @@ public class GestorDeUbicaciones {
 		int z = posAnt.z();
 		int n = 1;
 
-		if (!this.estaOcupado(x, y, z)) {
-			System.out.println("ubi no ocupa");
+		if (!this.estaOcupado(x, y, z))
 			return posAnt;
-		}
 
 		while (n < 5) {
 			if (!this.estaOcupado(x - n, y - n, z))
