@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 import fiuba.algo3.algocraft.modelo.Posicion;
+import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
 import fiuba.algo3.algocraft.vista.PanelEstado;
 import fiuba.algo3.algocraft.vista.VentanaJuego;
@@ -46,24 +49,40 @@ public class ControladorMapa extends MouseAdapter {
 				seleccionar(x, y);
 			else if (VistaMapa.construir)
 				construir(x, y);
+			else if (VistaMapa.mover) {
+				mover(x, y);
+			}
 		}
+	}
+
+	private void mover(int x, int y) {
+		VentanaJuego.panelAcciones.limpiar();
+		Unidad unidad = (Unidad) VistaMapa.aMover;
+		unidad.mover(x, y);
+		act();
 	}
 
 	public void seleccionar(int x, int y) {
 		seleccionado = mapa.getCasillero(x, y);
-		PanelEstado.log.append("Select "
-				+ seleccionado.getVisible().getElemento().nombre() + " " + x
-				+ "," + y + PanelEstado.newline);
+		seleccionado.seleccionar();
 		VentanaJuego.panelAcciones.actualizar(seleccionado.getVisible());
 		act();
 	}
 
 	public void construir(int x, int y) {
-		PanelEstado.log.append("Const " + VistaMapa.aConstruir.nombre() + " "
-				+ x + "," + y + PanelEstado.newline);
+		// PanelEstado.log.append("Const " + VistaMapa.aConstruir.nombre() + " "
+		// + x + "," + y + PanelEstado.newline);
+		try {
+			mapa.getModelo().agregarElemento(x, y, VistaMapa.aConstruir);
+		} catch (ErrorExtractorDeRecursosIncompatible e) {
+			PanelEstado.log.append("Error al construir" + PanelEstado.newline);
+		} catch (ErrorRecursosInsuficientes e) {
+			PanelEstado.log.append("Recursos Insuficientes"
+					+ PanelEstado.newline);
+		}
 
-		mapa.getModelo().agregarElemento(x, y, VistaMapa.aConstruir);
-		seleccionado = mapa.getCasillero(x, y);
+		seleccionado = null;
+		VentanaJuego.panelAcciones.limpiar();
 		act();
 	}
 
@@ -72,4 +91,5 @@ public class ControladorMapa extends MouseAdapter {
 		VistaMapa.atacar = false;
 		VistaMapa.construir = false;
 	}
+
 }

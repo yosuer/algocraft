@@ -59,4 +59,8 @@ public class VistaCasillero extends JPanel implements ObjetoDibujable {
 		elementoTerrestre.setModelo(mapa.getElemento(x, y, 0));
 	}
 
+	public void seleccionar() {
+		VistaMapa.aMover = elementoTerrestre.getElemento();
+	}
+
 }

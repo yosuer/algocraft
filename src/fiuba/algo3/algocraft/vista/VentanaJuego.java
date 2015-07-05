@@ -32,7 +32,7 @@ public class VentanaJuego extends JFrame {
 		btnPasarTurno.addActionListener(new PasarTurno(panelMapa.getModelo()));
 		setBackground(Color.red);
 
-		setSize(new Dimension(1200, 650));
+		setSize(new Dimension(1250, 650));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -42,7 +42,7 @@ public class VentanaJuego extends JFrame {
 		contenedor.add(panelEstado, BorderLayout.WEST);
 		contenedor.add(panelMapa, BorderLayout.CENTER);
 		contenedor.add(panelAcciones, BorderLayout.EAST);
-		contenedor.add(btnPasarTurno, BorderLayout.SOUTH);
+		contenedor.add(btnPasarTurno, BorderLayout.NORTH);
 	}
 
 }

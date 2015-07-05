@@ -31,7 +31,7 @@ public abstract class Unidad extends Controlable implements IAtacante {
 
 	public List<Posicion> mover(int x, int y) {
 		List<Posicion> movimientos = (List<Posicion>) this.mapa.getHojaDeRuta(
-				this.posicion, new Posicion(x, y, nivel));
+				posicion, new Posicion(x, y, nivel));
 		movimientos.remove(0);
 		this.movimientos = movimientos;
 		return movimientos;

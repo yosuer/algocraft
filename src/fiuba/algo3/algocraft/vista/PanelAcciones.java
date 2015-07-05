@@ -13,7 +13,6 @@ public class PanelAcciones extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private VistaIElemento elemento;
 
 	public PanelAcciones() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -21,18 +20,20 @@ public class PanelAcciones extends JPanel {
 	}
 
 	public void actualizar(VistaIElemento v) {
-		if (elemento == null
-				|| !v.getElemento().nombre()
-						.equals(elemento.getElemento().nombre())) {
-			this.elemento = v;
-			Collection<JButton> acciones = v.getBotones();
-			this.removeAll();
-			for (JButton b : acciones) {
-				add(b);
-			}
-			this.repaint();
-		}
+		cambiarBotones(v.getBotones());
+	}
 
+	private void cambiarBotones(Collection<JButton> nuevos) {
+		this.removeAll();
+		for (JButton b : nuevos)
+			add(b);
+		this.revalidate();
+		this.repaint();
+	}
+
+	public void limpiar() {
+		this.removeAll();
+		this.repaint();
 	}
 
 }

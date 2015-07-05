@@ -20,6 +20,7 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 	private IMapa mapa;
 	public static IElemento seleccionado;
 	public static IElemento aConstruir;
+	public static IElemento aMover;
 	private VistaCasillero[][] casilleros;
 	private int ancho;
 	private int largo;
@@ -27,6 +28,7 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 	public static boolean seleccionar = true;
 	public static boolean construir = false;
 	public static boolean atacar = false;
+	public static boolean mover = false;
 
 	public VistaMapa(final IMapa mapa) {
 		this.mapa = mapa;

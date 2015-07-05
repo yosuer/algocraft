@@ -28,19 +28,33 @@ public class Juego {
 	private VistaMapa vistaMapa;
 
 	public Juego() {
-		VistaIElemento.vistasElementos.put("Tierra", new VistaTierra());
-		VistaIElemento.vistasElementos.put("Mineral", new VistaMineral());
-		VistaIElemento.vistasElementos.put("Vespeno", new VistaVespeno());
-		VistaIElemento.vistasElementos.put("CentroDeMando",
-				new VistaCentroDeMando());
-		VistaIElemento.vistasElementos.put("Barraca", new VistaBarraca());
-		VistaIElemento.vistasElementos.put("DepositoDeSuministros",
-				new VistaDepositoDeSuministros());
-		VistaIElemento.vistasElementos.put("CentroDeMineral",
-				new VistaCentroDeMineral());
-		VistaIElemento.vistasElementos.put("Marine", new VistaMarine());
+		cargarVistas();
 
 		initialize();
+	}
+
+	private void cargarVistas() {
+		try {
+			VistaIElemento.vistasElementos.put("Tierra", new VistaTierra());
+			VistaIElemento.vistasElementos.put("Mineral", new VistaMineral());
+			VistaIElemento.vistasElementos.put("Vespeno", new VistaVespeno());
+			VistaIElemento.vistasElementos.put("CentroDeMando",
+					VistaCentroDeMando.class.newInstance());
+			VistaIElemento.vistasElementos.put("Barraca",
+					VistaBarraca.class.newInstance());
+			VistaIElemento.vistasElementos.put("DepositoDeSuministros",
+					VistaDepositoDeSuministros.class.newInstance());
+			VistaIElemento.vistasElementos.put("CentroDeMineral",
+					VistaCentroDeMineral.class.newInstance());
+			VistaIElemento.vistasElementos.put("Marine",
+					VistaMarine.class.newInstance());
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void initialize() {

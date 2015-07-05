@@ -8,7 +8,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
 
 import fiuba.algo3.algocraft.modelo.Equipo;
 import fiuba.algo3.algocraft.modelo.IMapa;
@@ -33,49 +32,41 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 	public final static String newline = "\n";
 
 	public PanelEstado(IMapa mapa) {
-		this.setBackground(Color.BLUE);
-		this.setMaximumSize(new Dimension(30, 20));
+		this.setBackground(Color.WHITE);
+		this.setMaximumSize(new Dimension(60, 20));
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		this.mapa = mapa;
 
 		fuenteInfoJug = new Font("Verdana", Font.BOLD, 14);
-		nombreJugador = new JLabel();
+		nombreJugador = new JLabel("", 0);
 		nombreJugador.setFont(fuenteInfoJug);
-		estadoJugador = new JLabel();
+		estadoJugador = new JLabel("", 0);
 		estadoJugador.setFont(fuenteInfoJug);
 		estadoRecursos = new JLabel();
 		estadoRecursos.setFont(fuenteInfoJug);
 		actualizarInfo();
-		nombreJugador.setHorizontalAlignment(JLabel.LEFT);
-		estadoJugador.setHorizontalAlignment(JLabel.LEFT);
+
 		add(nombreJugador);
 		add(estadoJugador);
 		add(estadoRecursos);
 
 		fuenteLog = new Font("Verdana", Font.ITALIC, 12);
-		log = new JTextArea(10, 15);
+		log = new JTextArea(10, 12);
 		log.setFont(fuenteLog);
 		log.setForeground(Color.WHITE);
 		log.setEditable(false);
 		log.setBackground(Color.BLACK);
-		agregarTexto("Inicio log");
 		add(log);
-	}
-
-	public void agregarTexto(String texto) {
-		log.append(texto + newline);
 	}
 
 	public void actualizarInfo() {
 		jugador = mapa.getEquipoActual();
 		nombreJugador.setText(jugador.getNombre());
-
-		estadoJugador.setText("|Po: " + jugador.getPoblacionTotal());
-		estadoRecursos.setText("Mi: " + jugador.getMineralTotal() + " |Ve: "
+		estadoJugador.setText("Poblacion: " + jugador.getPoblacionTotal());
+		estadoRecursos.setText("Min: " + jugador.getMineralTotal() + " | Ves: "
 				+ jugador.getVespenoTotal());
-		nombreJugador.setHorizontalAlignment(SwingConstants.LEFT);
-		estadoJugador.setHorizontalAlignment(SwingConstants.LEFT);
+		// estadoJugador.setHorizontalAlignment(SwingConstants.LEFT);
 	}
 
 	@Override

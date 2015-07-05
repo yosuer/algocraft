@@ -1,22 +1,28 @@
 package fiuba.algo3.algocraft.controlador.acciones;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+import fiuba.algo3.algocraft.controlador.Accion;
 import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.vista.VistaMapa;
 
-public class CrearEdificio implements ActionListener {
-
-	private IElemento edificio;
+public class CrearEdificio extends Accion {
 
 	public CrearEdificio(IElemento edificio) {
-		this.edificio = edificio;
+		this.elemento = edificio;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		VistaMapa.aConstruir = edificio;
+		try {
+			VistaMapa.aConstruir = elemento.getClass().newInstance();
+		} catch (InstantiationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IllegalAccessException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		VistaMapa.seleccionar = false;
 		VistaMapa.construir = true;
 		VistaMapa.atacar = false;
