@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.IMapa;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.titiritero.modelo.ObjetoDibujable;
@@ -49,8 +50,8 @@ public class VistaCasillero extends JPanel implements ObjetoDibujable {
 		actualizarElementos();
 	}
 
-	public VistaIElemento getVisible() {
-		return elementoTerrestre;
+	public IElemento getVisible() {
+		return mapa.getElemento(x, y, 0);
 	}
 
 	private void actualizarElementos() {
@@ -60,7 +61,7 @@ public class VistaCasillero extends JPanel implements ObjetoDibujable {
 	}
 
 	public void seleccionar() {
-		VistaMapa.aMover = elementoTerrestre.getElemento();
+		// VistaMapa.aMover = elementoTerrestre.getElemento();
 	}
 
 }

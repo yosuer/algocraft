@@ -29,7 +29,6 @@ public class Juego {
 
 	public Juego() {
 		cargarVistas();
-
 		initialize();
 	}
 

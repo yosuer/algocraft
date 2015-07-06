@@ -18,9 +18,7 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 	 */
 	private static final long serialVersionUID = 1L;
 	private IMapa mapa;
-	public static IElemento seleccionado;
 	public static IElemento aConstruir;
-	public static IElemento aMover;
 	private VistaCasillero[][] casilleros;
 	private int ancho;
 	private int largo;
@@ -36,7 +34,6 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 		largo = mapa.largo();
 		setMinimumSize(new Dimension(ancho * 22, largo * 22));
 		casilleros = new VistaCasillero[ancho + 1][largo + 1];
-		seleccionado = null;
 		addMouseListener(new ControladorMapa(this));
 		setLayout(new GridLayout(mapa.ancho(), mapa.largo()));
 	}
@@ -45,7 +42,7 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 		for (int x = 1; x <= mapa.ancho(); x++) {
 			for (int y = 1; y <= mapa.largo(); y++) {
 				casilleros[x][y] = new VistaCasillero(mapa, x, y);
-				gameLoop.agregar(casilleros[x][y].getVisible().getElemento());
+				gameLoop.agregar(casilleros[x][y].getVisible());
 				gameLoop.agregar(casilleros[x][y]);
 			}
 		}
@@ -54,10 +51,6 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-	}
-
-	public VistaIElemento getVisible(int x, int y) {
-		return casilleros[x][y].getVisible();
 	}
 
 	public VistaCasillero getCasillero(int x, int y) {

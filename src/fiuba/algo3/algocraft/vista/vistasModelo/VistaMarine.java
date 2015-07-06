@@ -11,19 +11,17 @@ import fiuba.algo3.algocraft.vista.VistaIElemento;
 public class VistaMarine extends VistaIElemento {
 
 	private JButton btnMover;
-	private Mover accion;
 
 	public VistaMarine() {
 		elemento = new Marine();
 		armarImagen();
-		accion = new Mover(this.getElemento());
-		btnMover = new BotonMover("Mover", accion);
+
+		btnMover = new BotonMover("Mover", new Mover());
 		acciones.add(btnMover);
 	}
 
 	protected void setModelo(IElemento elemento) {
 		this.elemento = elemento;
-		accion.setElemento(elemento);
 	}
 
 }

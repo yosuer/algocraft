@@ -7,19 +7,21 @@ import java.awt.event.MouseEvent;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
+import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
 import fiuba.algo3.algocraft.vista.PanelEstado;
 import fiuba.algo3.algocraft.vista.VentanaJuego;
-import fiuba.algo3.algocraft.vista.VistaCasillero;
+import fiuba.algo3.algocraft.vista.VistaIElemento;
 import fiuba.algo3.algocraft.vista.VistaMapa;
 
 public class ControladorMapa extends MouseAdapter {
 
 	private VistaMapa mapa;
 	private Posicion posicion;
-	private VistaCasillero seleccionado;
+	// public static VistaCasillero seleccionado;
+	public static IElemento select;
 
 	public ControladorMapa(VistaMapa mapa) {
 		this.mapa = mapa;
@@ -57,15 +59,17 @@ public class ControladorMapa extends MouseAdapter {
 
 	private void mover(int x, int y) {
 		VentanaJuego.panelAcciones.limpiar();
-		Unidad unidad = (Unidad) VistaMapa.aMover;
+		Unidad unidad = (Unidad) select;
 		unidad.mover(x, y);
+		// VistaMapa.aMover = null;
 		act();
 	}
 
 	public void seleccionar(int x, int y) {
-		seleccionado = mapa.getCasillero(x, y);
-		seleccionado.seleccionar();
-		VentanaJuego.panelAcciones.actualizar(seleccionado.getVisible());
+		select = mapa.getCasillero(x, y).getVisible();
+		VistaIElemento v = VistaIElemento.vistasElementos.get(select.nombre());
+
+		VentanaJuego.panelAcciones.actualizar(v);
 		act();
 	}
 
@@ -81,7 +85,8 @@ public class ControladorMapa extends MouseAdapter {
 					+ PanelEstado.newline);
 		}
 
-		seleccionado = null;
+		select = null;
+		VistaMapa.aConstruir = null;
 		VentanaJuego.panelAcciones.limpiar();
 		act();
 	}
@@ -90,6 +95,7 @@ public class ControladorMapa extends MouseAdapter {
 		VistaMapa.seleccionar = true;
 		VistaMapa.atacar = false;
 		VistaMapa.construir = false;
+		VistaMapa.mover = false;
 	}
 
 }

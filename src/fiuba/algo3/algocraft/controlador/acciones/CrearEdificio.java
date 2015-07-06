@@ -26,6 +26,7 @@ public class CrearEdificio extends Accion {
 		VistaMapa.seleccionar = false;
 		VistaMapa.construir = true;
 		VistaMapa.atacar = false;
+		VistaMapa.mover = false;
 	}
 
 }
