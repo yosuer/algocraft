@@ -2,7 +2,6 @@ package fiuba.algo3.algocraft.vista.vistasModelo;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collection;
 
 import javax.swing.JButton;
 
@@ -36,8 +35,4 @@ public class VistaBarraca extends VistaIElemento implements ActionListener {
 		}
 	}
 
-	@Override
-	protected Collection<JButton> getBotones() {
-		return acciones;
-	}
 }

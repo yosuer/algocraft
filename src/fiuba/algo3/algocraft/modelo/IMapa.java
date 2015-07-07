@@ -8,9 +8,9 @@ public interface IMapa {
 
 	public int alto();
 
-	public void nombreEquipo1(String nombre);
+	public void nombreEquipo1(String nombre, String razaJ1);
 
-	public void nombreEquipo2(String nombre);
+	public void nombreEquipo2(String nombre, String razaJ2);
 
 	public IElemento getElemento(int x, int y, int z);
 

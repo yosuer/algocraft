@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
+import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.modelo.IAtacante;
 import fiuba.algo3.algocraft.modelo.IDaniable;
 import fiuba.algo3.algocraft.modelo.IElemento;
@@ -85,6 +86,9 @@ public class ControladorMapa extends MouseAdapter {
 			PanelEstado.log.append("Error al construir" + PanelEstado.newline);
 		} catch (ErrorRecursosInsuficientes e) {
 			PanelEstado.log.append("Recursos Insuficientes"
+					+ PanelEstado.newline);
+		} catch (NoExistenLosEdificiosrequeridosParaConstruir e) {
+			PanelEstado.log.append("Faltan edificios requeridos"
 					+ PanelEstado.newline);
 		}
 

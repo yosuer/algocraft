@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import fiuba.algo3.algocraft.excepciones.ErrorElementoNoEncontrado;
+import fiuba.algo3.algocraft.modelo.edificios.BasePrincipal;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMando;
 import fiuba.algo3.algocraft.modelo.natural.Mineral;
 import fiuba.algo3.algocraft.modelo.natural.Vespeno;
@@ -47,12 +48,12 @@ public class Mapa implements IMapa {
 		return this.alto;
 	}
 
-	public void nombreEquipo1(String nombre) {
-		this.equipo1.setNombre(nombre);
+	public void nombreEquipo1(String nombre, String razaJ1) {
+		this.equipo1.setNombre(nombre, razaJ1);
 	}
 
-	public void nombreEquipo2(String nombre) {
-		this.equipo2.setNombre(nombre);
+	public void nombreEquipo2(String nombre, String razaJ2) {
+		this.equipo2.setNombre(nombre, razaJ2);
 	}
 
 	public Equipo getEquipo1() {
@@ -102,13 +103,14 @@ public class Mapa implements IMapa {
 			this.agregarElemento(ancho - 1, y, new Mineral());
 		this.agregarElemento(ancho - 3, largo - 5, new Vespeno());
 
-		CentroDeMando centro1 = new CentroDeMando();
+		BasePrincipal centro1 = equipo1.getBasePrincipal();
 		centro1.setPosicion(new Posicion(4, 4, 0));
 		this.agregarControlable(centro1);
 
 		this.pasarTurnoMapa();
 
-		CentroDeMando centro2 = new CentroDeMando();
+		// BasePrincipal centro2 = equipo2.getBasePrincipal();
+		BasePrincipal centro2 = new CentroDeMando();
 		centro2.setPosicion(new Posicion(ancho - 3, largo - 3, 0));
 		this.agregarControlable(centro2);
 

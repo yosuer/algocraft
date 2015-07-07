@@ -2,16 +2,15 @@ package fiuba.algo3.algocraft.modelo.edificios;
 
 import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.CreadorEnCola;
-import fiuba.algo3.algocraft.modelo.Edificio;
 import fiuba.algo3.algocraft.modelo.ICreadorDeElementos;
 import fiuba.algo3.algocraft.modelo.IElementoCreador;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.Zerg;
 
-public class Criadero extends Edificio implements IElementoCreador{
+public class Criadero extends BasePrincipal implements IElementoCreador {
 
 	private ICreadorDeElementos creador;
-	
+
 	public Criadero() {
 		this.nombre = "Criadero";
 		this.costoMineral = 100;
@@ -24,13 +23,13 @@ public class Criadero extends Edificio implements IElementoCreador{
 	@Override
 	public void enviarUnidadAlMapa(Unidad unidad) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void crearUnidad(Unidad unidad) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

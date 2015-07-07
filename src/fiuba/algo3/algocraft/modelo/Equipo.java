@@ -7,6 +7,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import fiuba.algo3.algocraft.excepciones.ErrorCapacidadDePoblacionInsuficiente;
+import fiuba.algo3.algocraft.modelo.edificios.BasePrincipal;
+import fiuba.algo3.algocraft.modelo.edificios.CentroDeMando;
+import fiuba.algo3.algocraft.modelo.edificios.Criadero;
+import fiuba.algo3.algocraft.modelo.edificios.Nexo;
 
 public class Equipo {
 	private Collection<Controlable> elementosActivos;
@@ -15,6 +19,7 @@ public class Equipo {
 	private Mapa mapa;
 	private GestorDeRecursos gestorDeRecursos;
 	private FloatRango poblacionTotal;
+	private BasePrincipal base = new Nexo();
 
 	public Equipo(String nombre) {
 		this.nombre = nombre;
@@ -24,12 +29,27 @@ public class Equipo {
 		this.poblacionTotal = new FloatRango(0, 200, 0);
 	}
 
+	private void setRaza(String raza) {
+		if (raza == "Terran")
+			base = new CentroDeMando();
+		else if (raza == "Protoss")
+			base = new Nexo();
+		else if (raza == "Zerg")
+			base = new Criadero();
+
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
+	public BasePrincipal getBasePrincipal() {
+		return base;
+	}
+
+	public void setNombre(String nombre, String razaJ1) {
 		this.nombre = nombre;
+		setRaza(razaJ1);
 	}
 
 	public void pasarTurno() {

@@ -39,9 +39,10 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 		this.mapa = mapa;
 
 		fuenteInfoJug = new Font("Verdana", Font.BOLD, 14);
-		nombreJugador = new JLabel("", 0);
+
+		nombreJugador = new JLabel("");
 		nombreJugador.setFont(fuenteInfoJug);
-		estadoJugador = new JLabel("", 0);
+		estadoJugador = new JLabel("");
 		estadoJugador.setFont(fuenteInfoJug);
 		estadoRecursos = new JLabel();
 		estadoRecursos.setFont(fuenteInfoJug);
@@ -52,7 +53,7 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 		add(estadoRecursos);
 
 		fuenteLog = new Font("Verdana", Font.ITALIC, 12);
-		log = new JTextArea(10, 12);
+		log = new JTextArea(15, 12);
 		log.setFont(fuenteLog);
 		log.setForeground(Color.WHITE);
 		log.setEditable(false);
@@ -66,7 +67,6 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 		estadoJugador.setText("Poblacion: " + jugador.getPoblacionTotal());
 		estadoRecursos.setText("Min: " + jugador.getMineralTotal() + " | Ves: "
 				+ jugador.getVespenoTotal());
-		// estadoJugador.setHorizontalAlignment(SwingConstants.LEFT);
 	}
 
 	@Override

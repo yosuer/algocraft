@@ -9,11 +9,30 @@ import fiuba.algo3.algocraft.vista.VentanaJuego;
 import fiuba.algo3.algocraft.vista.VistaIElemento;
 import fiuba.algo3.algocraft.vista.VistaMapa;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaBarraca;
-import fiuba.algo3.algocraft.vistaEdificios.*;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaMarine;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaMineral;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaTierra;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaVespeno;
+import fiuba.algo3.algocraft.vistaEdificios.VistaAcceso;
+import fiuba.algo3.algocraft.vistaEdificios.VistaArchivoTemplario;
+import fiuba.algo3.algocraft.vistaEdificios.VistaAsimilador;
+import fiuba.algo3.algocraft.vistaEdificios.VistaCentroDeMando;
+import fiuba.algo3.algocraft.vistaEdificios.VistaCentroDeMineral;
+import fiuba.algo3.algocraft.vistaEdificios.VistaDepositoDeSuministros;
+import fiuba.algo3.algocraft.vistaEdificios.VistaFabrica;
+import fiuba.algo3.algocraft.vistaEdificios.VistaNexo;
+import fiuba.algo3.algocraft.vistaEdificios.VistaNexoMineral;
+import fiuba.algo3.algocraft.vistaEdificios.VistaPilon;
+import fiuba.algo3.algocraft.vistaEdificios.VistaPuertoEstelarProtoss;
+import fiuba.algo3.algocraft.vistaEdificios.VistaPuertoEstelarTerran;
+import fiuba.algo3.algocraft.vistaEdificios.VistaRefineria;
+import fiuba.algo3.algocraft.vistaUnidades.VistaAltoTemplario;
+import fiuba.algo3.algocraft.vistaUnidades.VistaDragon;
+import fiuba.algo3.algocraft.vistaUnidades.VistaEspectro;
+import fiuba.algo3.algocraft.vistaUnidades.VistaGolliat;
+import fiuba.algo3.algocraft.vistaUnidades.VistaNaveCiencia;
+import fiuba.algo3.algocraft.vistaUnidades.VistaScout;
+import fiuba.algo3.algocraft.vistaUnidades.VistaZealot;
 import fiuba.algo3.titiritero.modelo.GameLoop;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
@@ -31,22 +50,46 @@ public class Juego {
 	}
 
 	private void cargarVistas() {
-		try {
-			VistaIElemento.vistasElementos.put("Tierra", new VistaTierra());
-			VistaIElemento.vistasElementos.put("Mineral", new VistaMineral());
-			VistaIElemento.vistasElementos.put("Vespeno", new VistaVespeno());
-			VistaIElemento.vistasElementos.put("CentroDeMando",VistaCentroDeMando.class.newInstance());
-			VistaIElemento.vistasElementos.put("Barraca",VistaBarraca.class.newInstance());
-			VistaIElemento.vistasElementos.put("DepositoDeSuministros",VistaDepositoDeSuministros.class.newInstance());
-			VistaIElemento.vistasElementos.put("CentroDeMineral",VistaCentroDeMineral.class.newInstance());
-			VistaIElemento.vistasElementos.put("Marine",VistaMarine.class.newInstance());
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		// Elementos Naturales
+		VistaIElemento.vistasElementos.put("Tierra", new VistaTierra());
+		VistaIElemento.vistasElementos.put("Mineral", new VistaMineral());
+		VistaIElemento.vistasElementos.put("Vespeno", new VistaVespeno());
+
+		// Terran
+		VistaIElemento.vistasElementos.put("CentroDeMando",
+				new VistaCentroDeMando());
+		VistaIElemento.vistasElementos.put("Barraca", new VistaBarraca());
+		VistaIElemento.vistasElementos.put("DepositoDeSuministros",
+				new VistaDepositoDeSuministros());
+		VistaIElemento.vistasElementos.put("CentroDeMineral",
+				new VistaCentroDeMineral());
+		VistaIElemento.vistasElementos.put("Marine", new VistaMarine());
+		VistaIElemento.vistasElementos.put("Refineria", new VistaRefineria());
+		VistaIElemento.vistasElementos.put("Fabrica", new VistaFabrica());
+		VistaIElemento.vistasElementos.put("Golliat", new VistaGolliat());
+		VistaIElemento.vistasElementos.put("PuertoEstelarTerran",
+				new VistaPuertoEstelarTerran());
+		VistaIElemento.vistasElementos.put("Espectro", new VistaEspectro());
+		VistaIElemento.vistasElementos.put("NaveCiencia",
+				new VistaNaveCiencia());
+
+		// Protoss
+		VistaIElemento.vistasElementos.put("Nexo", new VistaNexo());
+		VistaIElemento.vistasElementos.put("NexoMineral",
+				new VistaNexoMineral());
+		VistaIElemento.vistasElementos.put("Acceso", new VistaAcceso());
+		VistaIElemento.vistasElementos.put("Pilon", new VistaPilon());
+		VistaIElemento.vistasElementos.put("Asimilador", new VistaAsimilador());
+		VistaIElemento.vistasElementos.put("PuertoEstelarProtoss",
+				new VistaPuertoEstelarProtoss());
+		VistaIElemento.vistasElementos.put("ArchivoTemplario",
+				new VistaArchivoTemplario());
+		VistaIElemento.vistasElementos.put("Zealot", new VistaZealot());
+		VistaIElemento.vistasElementos.put("Dragon", new VistaDragon());
+		VistaIElemento.vistasElementos.put("Scout", new VistaScout());
+		VistaIElemento.vistasElementos.put("AltoTemplario",
+				new VistaAltoTemplario());
 	}
 
 	private void initialize() {
@@ -57,6 +100,7 @@ public class Juego {
 		ventanaJuego = new VentanaJuego(vistaMapa);
 		vistaMapa.agregarEnGameLoop(gameLoop);
 		gameLoop.agregar(ventanaJuego.panelEstado);
+		gameLoop.agregar(ventanaJuego.panelVidaSelect);
 		gameLoop.iniciarEjecucion();
 	}
 
@@ -65,8 +109,14 @@ public class Juego {
 		ventanaJuego.setVisible(true);
 	}
 
-	public void agregarJugadores(String jugador1, String jugador2) {
-		mapa.nombreEquipo1(jugador1);
-		mapa.nombreEquipo2(jugador2);
+	public void agregarJugadores(String jugador1, String jugador2,
+			String razaJ1, String razaJ2) {
+		mapa.nombreEquipo1(jugador1, razaJ1);
+		mapa.nombreEquipo2(jugador2, razaJ2);
+	}
+
+	public String[] getRazas() {
+		String[] razas = { "Terran", "Protoss", "Zerg" };
+		return razas;
 	}
 }

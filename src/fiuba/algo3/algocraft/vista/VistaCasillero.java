@@ -43,9 +43,7 @@ public class VistaCasillero extends JPanel implements ObjetoDibujable {
 					.getBuffer();
 			grafico.drawImage(elementoTerrestre.getBufferedImage(), tam * posX,
 					tam * posY, tam, tam, null);
-			// System.out.println("DC " + x + "," + y);
 		} catch (NullPointerException e) {
-			// System.out.println("NullPointer");
 		}
 		actualizarElementos();
 	}
@@ -57,11 +55,6 @@ public class VistaCasillero extends JPanel implements ObjetoDibujable {
 	private void actualizarElementos() {
 		elementoTerrestre = VistaIElemento.vistasElementos.get(mapa
 				.getElemento(x, y, 0).nombre());
-		elementoTerrestre.setModelo(mapa.getElemento(x, y, 0));
-	}
-
-	public void seleccionar() {
-		// VistaMapa.aMover = elementoTerrestre.getElemento();
 	}
 
 }

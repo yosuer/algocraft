@@ -7,11 +7,11 @@ import fiuba.algo3.algocraft.modelo.Protoss;
 public class Nexo extends BasePrincipal implements ElementoProtoss {
 
 	public Nexo() {
-		this.nombre = "Estado";
+		this.nombre = "Nexo";
 		this.costoMineral = 100;
 		this.costoVespeno = 100;
-		this.estadoFisico = new Protoss(750,750);
-		this.estado = new Construyendose(this,9);
+		this.estadoFisico = new Protoss(750, 750);
+		this.estado = new Construyendose(this, 9);
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class Nexo extends BasePrincipal implements ElementoProtoss {
 	public void regenerarse() {
 		this.estadoFisico.regenerarse();
 	}
-	
+
 	@Override
 	public void vaciarEscudo() {
 		this.estadoFisico.daniarse(this.escudoRestante());
