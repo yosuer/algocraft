@@ -6,6 +6,7 @@ import fiuba.algo3.algocraft.modelo.Edificio;
 import fiuba.algo3.algocraft.modelo.ElementoProtoss;
 import fiuba.algo3.algocraft.modelo.ICreadorDeElementos;
 import fiuba.algo3.algocraft.modelo.IElementoCreador;
+import fiuba.algo3.algocraft.modelo.IntRango;
 import fiuba.algo3.algocraft.modelo.Protoss;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.Dragon;
@@ -66,4 +67,10 @@ public class Acceso extends Edificio implements ElementoProtoss,
 		this.creador.expulsarUnidad();
 		this.estadoFisico.regenerarse();
 	}
+	
+	@Override
+	public void vaciarEscudo() {
+		this.estadoFisico.daniarse(this.escudoRestante());
+	}
 }
+

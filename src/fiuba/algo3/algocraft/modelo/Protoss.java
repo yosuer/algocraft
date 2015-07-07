@@ -32,4 +32,14 @@ public class Protoss implements IRazaEstado {
 	public void regenerarse() {
 		this.escudo.aumentar(5);
 	}
+	
+	public void perderEscudo()
+	{
+		this.escudo.disminuir(this.escudo.valor());
+	}
+	
+	public int getEscudoCompleto()
+	{
+		return this.escudo.getMaximo();
+	}
 }

@@ -244,8 +244,7 @@ public class MapaTest {
 		mapa.agregarElemento(4, 5, new Barraca());
 		mapa.agregarElemento(6, 6, new Mineral());
 
-		List<Unidad> unidades = mapa.getUnidadesProximas(new Posicion(5, 5, 0),
-				2);
+		List<Unidad> unidades = mapa.getUnidadesProximas(new Posicion(5, 5, 0),2);
 
 		Assert.assertEquals(3, unidades.size());
 	}

@@ -23,5 +23,10 @@ public class Nexo extends BasePrincipal implements ElementoProtoss {
 	public void regenerarse() {
 		this.estadoFisico.regenerarse();
 	}
+	
+	@Override
+	public void vaciarEscudo() {
+		this.estadoFisico.daniarse(this.escudoRestante());
+	}
 
 }

@@ -5,4 +5,7 @@ public interface ElementoProtoss {
 	public int escudoRestante();
 
 	public void regenerarse();
+	
+	public void vaciarEscudo();
+		
 }

@@ -30,4 +30,9 @@ public class Terran implements IRazaEstado {
 	public void regenerarse() {
 	}
 
+	@Override
+	public int getEscudoCompleto() {
+		return 0;
+	}
+
 }

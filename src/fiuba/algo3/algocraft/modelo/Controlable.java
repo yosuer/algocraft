@@ -27,6 +27,10 @@ public abstract class Controlable extends IElemento implements IDaniable {
 		this.equipo = equipo;
 	}
 	
+	public Equipo getEquipo(){
+		return this.equipo;
+	}
+	
 	public void setPosicion(Posicion posicion){
 		this.posicion = posicion;
 	}

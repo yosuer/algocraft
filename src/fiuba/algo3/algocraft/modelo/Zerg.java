@@ -32,5 +32,11 @@ public class Zerg implements IRazaEstado {
 		this.vida.aumentar(5);
 	}
 
+	@Override
+	public int getEscudoCompleto() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }

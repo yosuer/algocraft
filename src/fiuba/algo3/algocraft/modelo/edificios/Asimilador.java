@@ -25,5 +25,10 @@ public class Asimilador extends ExtractorDeGasVespeno
 	public void regenerarse() {
 		this.estadoFisico.regenerarse();
 	}
+	
+	@Override
+	public void vaciarEscudo() {
+		this.estadoFisico.daniarse(this.escudoRestante());
+	}
 
 }

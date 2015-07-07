@@ -9,9 +9,7 @@ import fiuba.algo3.algocraft.vista.VentanaJuego;
 import fiuba.algo3.algocraft.vista.VistaIElemento;
 import fiuba.algo3.algocraft.vista.VistaMapa;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaBarraca;
-import fiuba.algo3.algocraft.vista.vistasModelo.VistaCentroDeMando;
-import fiuba.algo3.algocraft.vista.vistasModelo.VistaCentroDeMineral;
-import fiuba.algo3.algocraft.vista.vistasModelo.VistaDepositoDeSuministros;
+import fiuba.algo3.algocraft.vistaEdificios.*;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaMarine;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaMineral;
 import fiuba.algo3.algocraft.vista.vistasModelo.VistaTierra;
@@ -37,16 +35,11 @@ public class Juego {
 			VistaIElemento.vistasElementos.put("Tierra", new VistaTierra());
 			VistaIElemento.vistasElementos.put("Mineral", new VistaMineral());
 			VistaIElemento.vistasElementos.put("Vespeno", new VistaVespeno());
-			VistaIElemento.vistasElementos.put("CentroDeMando",
-					VistaCentroDeMando.class.newInstance());
-			VistaIElemento.vistasElementos.put("Barraca",
-					VistaBarraca.class.newInstance());
-			VistaIElemento.vistasElementos.put("DepositoDeSuministros",
-					VistaDepositoDeSuministros.class.newInstance());
-			VistaIElemento.vistasElementos.put("CentroDeMineral",
-					VistaCentroDeMineral.class.newInstance());
-			VistaIElemento.vistasElementos.put("Marine",
-					VistaMarine.class.newInstance());
+			VistaIElemento.vistasElementos.put("CentroDeMando",VistaCentroDeMando.class.newInstance());
+			VistaIElemento.vistasElementos.put("Barraca",VistaBarraca.class.newInstance());
+			VistaIElemento.vistasElementos.put("DepositoDeSuministros",VistaDepositoDeSuministros.class.newInstance());
+			VistaIElemento.vistasElementos.put("CentroDeMineral",VistaCentroDeMineral.class.newInstance());
+			VistaIElemento.vistasElementos.put("Marine",VistaMarine.class.newInstance());
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

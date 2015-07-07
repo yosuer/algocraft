@@ -1,17 +1,22 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.modelo.ArmaMagicaConPosicion;
+import fiuba.algo3.algocraft.modelo.ArmaMagicaParaUnaUnidad;
 import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.IUnidadMagica;
 import fiuba.algo3.algocraft.modelo.IntRango;
-import fiuba.algo3.algocraft.modelo.Magia;
+import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.Zerg;
 import fiuba.algo3.algocraft.modelo.magias.Infestar;
 import fiuba.algo3.algocraft.modelo.magias.Red;
 
+
 public class Reina extends Unidad implements IUnidadMagica {
 
 	private IntRango energia;
+	private ArmaMagicaParaUnaUnidad armaInfestar;
+	private ArmaMagicaConPosicion armaRed;
 	
 	public Reina() {
 		super();
@@ -25,14 +30,12 @@ public class Reina extends Unidad implements IUnidadMagica {
 		this.nivel = 1;
 		this.estado = new Construyendose(this,7);
 		this.energia = new IntRango(0,200,50);
-		//this.inicializarEnergia();
-
+		this.armaInfestar = new ArmaMagicaParaUnaUnidad(10,10);
+		this.armaRed = new ArmaMagicaConPosicion(10,10);
+		this.armaInfestar.setMagia(new Infestar(this));
+		this.armaRed.setMagia(new Red(this));
 	}
-
-	//@Override
-	//public void inicializarEnergia() {
-		//this.energia.aumentar(50);		
-	//}
+	
 
 	@Override
 	public void cargarEnergia() {
@@ -44,24 +47,29 @@ public class Reina extends Unidad implements IUnidadMagica {
 		this.cargarEnergia();
 	}
 	
-	public void lanzarRed() {
-		//this.lanzarMagia(new Red());
+	public void lanzarRed(Posicion pos) {
+		
+		if( this.energia.valor() >=75)
+		{
+			this.armaRed.aplicarMagiaA(pos);
+			this.energia.disminuir(75);
+		}
 	}
 	
-	public void lanzarInfestar() {
-		//this.lanzarMagia(new Infestar());
+	public void lanzarInfestar(Unidad unaUnidad){
+		this.armaInfestar.aplicarMagiaA(unaUnidad);
+		this.energia.disminuir(150);
 	}
 
 	@Override
 	public int energiaActual() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.energia.valor();
 	}
 
-	//@Override
-	//public void lanzarMagia(Magia magia) {
-		// TODO Auto-generated method stub
-		
-	//}
+	@Override
+	public void perderEnergia() {
+		this.energia.disminuir(this.energiaActual());
+	}
+
 
 }

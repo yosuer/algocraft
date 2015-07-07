@@ -64,4 +64,9 @@ public class ArchivoTemplario extends Edificio implements ElementoProtoss,
 		this.regenerarse();
 	}
 
+	@Override
+	public void vaciarEscudo() {
+		this.estadoFisico.daniarse(this.escudoRestante());
+	}
+	
 }

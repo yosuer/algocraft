@@ -32,4 +32,8 @@ public class Zealot extends Unidad implements ElementoProtoss {
 		this.estadoFisico.regenerarse();
 	}
 
+	@Override
+	public void vaciarEscudo() {
+		this.estadoFisico.daniarse(this.escudoRestante());
+	}
 }

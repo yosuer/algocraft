@@ -43,4 +43,14 @@ public class IntRango {
 		actual+=n;
 		if (actual > max) actual = max;
 	}
+	
+	public void setValor(int valorNuevo)
+	{
+		this.actual = valorNuevo;
+	}
+	
+	public int getMaximo()
+	{
+		return this.max;
+	}
 }

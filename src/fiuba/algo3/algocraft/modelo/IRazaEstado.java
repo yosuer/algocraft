@@ -10,4 +10,6 @@ public interface IRazaEstado {
 	
 	public void regenerarse();
 	
+	public int getEscudoCompleto();
+	
 }

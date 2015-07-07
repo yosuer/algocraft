@@ -1,3 +1,4 @@
+
 package fiuba.algo3.algocraft.modelo.edificios;
 
 import fiuba.algo3.algocraft.modelo.Construyendose;
@@ -24,6 +25,11 @@ public class NexoMineral extends ExtractorDeMineral
 	@Override
 	public void regenerarse() {
 		this.estadoFisico.regenerarse();
+	}
+	
+	@Override
+	public void vaciarEscudo() {
+		this.estadoFisico.daniarse(this.escudoRestante());
 	}
 	
 }

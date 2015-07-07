@@ -10,8 +10,7 @@ import fiuba.algo3.algocraft.modelo.Terran;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.Golliat;
 
-public class Fabrica extends Edificio implements ElementoProtoss, 
-												IElementoCreador{
+public class Fabrica extends Edificio implements IElementoCreador{
 
 	private ICreadorDeElementos creador;
 	
@@ -28,16 +27,6 @@ public class Fabrica extends Edificio implements ElementoProtoss,
 	
 	public void crearGolliat() {
 		this.crearUnidad(new Golliat());
-	}
-
-	@Override
-	public int escudoRestante() {
-		return this.estadoFisico.getEscudo();
-	}
-
-	@Override
-	public void regenerarse() {
-		this.estadoFisico.regenerarse();
 	}
 
 	@Override
@@ -61,4 +50,5 @@ public class Fabrica extends Edificio implements ElementoProtoss,
 	public void pasarTurno() {
 		this.estado.pasarTurno();
 	}
+
 }

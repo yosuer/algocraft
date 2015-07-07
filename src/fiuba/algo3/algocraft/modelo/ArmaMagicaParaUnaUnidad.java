@@ -1,10 +1,12 @@
 package fiuba.algo3.algocraft.modelo;
 
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
+import fiuba.algo3.algocraft.modelo.magias.Alucinacion;
 
 public class ArmaMagicaParaUnaUnidad implements IArma {
 
 	private int[] alcances;
+	private MagiaUnidad magia;
 
 	
 	public ArmaMagicaParaUnaUnidad(int alcanceTierra,int alcanceAire)
@@ -13,10 +15,9 @@ public class ArmaMagicaParaUnaUnidad implements IArma {
 		this.alcances[0] = alcanceTierra;
 		this.alcances[1] = alcanceAire;
 	}
-	public void aplicarMagia(Unidad unaUnidad, Magia unaMagia, int distancia)
+	public void aplicarMagiaA(Unidad unaUnidad)
 	{	
-		if (distancia > this.getAlcance(unaUnidad.getNivel())) throw new ErrorObjetivoFueraDelAlcance();
-		unaMagia.aplicar(unaUnidad);
+		this.magia.aplicarA(unaUnidad);
 	}
 	@Override
 	public int getDanio(int nivel) {
@@ -29,6 +30,12 @@ public class ArmaMagicaParaUnaUnidad implements IArma {
 	@Override
 	public void atacar(IDaniable daniable, int distancia) {
 		
+	}
+	public void setMagia(MagiaUnidad unaMagia) {
+		this.magia = unaMagia;
+	}
+	public void setUnidadAAfectar(Unidad unaUnidad) {
+		this.magia.aplicarA(unaUnidad);
 	}
 }
 

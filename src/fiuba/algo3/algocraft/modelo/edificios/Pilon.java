@@ -37,5 +37,10 @@ public class Pilon extends Edificio implements ElementoProtoss {
 		super.agregarseEn(mapa);
 		this.mapa.aumentarPoblacion(poblacion,equipo);
 	}
+	
+	@Override
+	public void vaciarEscudo() {
+		this.estadoFisico.daniarse(this.escudoRestante());
+	}
 
 }

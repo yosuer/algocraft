@@ -46,4 +46,8 @@ public class Dragon extends Unidad implements ElementoProtoss {
 		this.estado = estado;
 	}
 
+	@Override
+	public void vaciarEscudo() {
+		this.estadoFisico.daniarse(this.escudoRestante());
+	}
 }

@@ -8,4 +8,6 @@ public interface IUnidadMagica {
 	
 	public int energiaActual();
 	
+	public void perderEnergia();
+	
 }

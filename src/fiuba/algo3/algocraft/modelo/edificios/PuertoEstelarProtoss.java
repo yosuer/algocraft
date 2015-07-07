@@ -58,5 +58,10 @@ public class PuertoEstelarProtoss extends Edificio
 		this.estado.estaActivo();
 		this.creador.prepararUnidad(unidad);
 	}
+	
+	@Override
+	public void vaciarEscudo() {
+		this.estadoFisico.daniarse(this.escudoRestante());
+	}
 
 }
