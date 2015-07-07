@@ -6,7 +6,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
+import fiuba.algo3.algocraft.modelo.IAtacante;
+import fiuba.algo3.algocraft.modelo.IDaniable;
 import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Unidad;
@@ -51,9 +54,10 @@ public class ControladorMapa extends MouseAdapter {
 				seleccionar(x, y);
 			else if (VistaMapa.construir)
 				construir(x, y);
-			else if (VistaMapa.mover) {
+			else if (VistaMapa.mover)
 				mover(x, y);
-			}
+			else if (VistaMapa.atacar)
+				atacar(x, y);
 		}
 	}
 
@@ -61,7 +65,6 @@ public class ControladorMapa extends MouseAdapter {
 		VentanaJuego.panelAcciones.limpiar();
 		Unidad unidad = (Unidad) select;
 		unidad.mover(x, y);
-		// VistaMapa.aMover = null;
 		act();
 	}
 
@@ -88,6 +91,16 @@ public class ControladorMapa extends MouseAdapter {
 		select = null;
 		VistaMapa.aConstruir = null;
 		VentanaJuego.panelAcciones.limpiar();
+		act();
+	}
+
+	public void atacar(int x, int y) {
+		try {
+			IDaniable obj = (IDaniable) mapa.getModelo().getElemento(x, y, 0);
+			((IAtacante) select).atacar(obj);
+		} catch (ErrorObjetivoFueraDelAlcance e) {
+			PanelEstado.log.append("Fuera de alcance" + PanelEstado.newline);
+		}
 		act();
 	}
 

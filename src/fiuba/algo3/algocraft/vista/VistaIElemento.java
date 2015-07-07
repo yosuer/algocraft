@@ -37,7 +37,7 @@ public abstract class VistaIElemento {
 				+ ".png");
 	}
 
-	public Collection<JButton> getBotones() {
+	protected Collection<JButton> getBotones() {
 		return acciones;
 	}
 

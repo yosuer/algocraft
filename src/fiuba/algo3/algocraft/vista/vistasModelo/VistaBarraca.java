@@ -2,6 +2,7 @@ package fiuba.algo3.algocraft.vista.vistasModelo;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collection;
 
 import javax.swing.JButton;
 
@@ -28,11 +29,15 @@ public class VistaBarraca extends VistaIElemento implements ActionListener {
 		try {
 			((Barraca) ControladorMapa.select).crearMarine();
 		} catch (ErrorEdificioEnConstruccion e) {
-			PanelEstado.log.append("Edificio construyendose "
+			PanelEstado.log.append("Edificio construyendose"
 					+ PanelEstado.newline);
 		} catch (ErrorCapacidadDePoblacionInsuficiente e) {
-			PanelEstado.log
-					.append("Casas insuficientes " + PanelEstado.newline);
+			PanelEstado.log.append("Casas insuficientes" + PanelEstado.newline);
 		}
+	}
+
+	@Override
+	protected Collection<JButton> getBotones() {
+		return acciones;
 	}
 }
