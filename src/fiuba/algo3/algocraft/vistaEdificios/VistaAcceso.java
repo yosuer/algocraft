@@ -13,7 +13,7 @@ import fiuba.algo3.algocraft.vista.VistaIElemento;
 public class VistaAcceso extends VistaIElemento implements ActionListener {
 
 	private JButton btnCrearZealot = new JButton("Crear Zealot");
-	private JButton btnCrearDragon = new JButton("Crear Draon");
+	private JButton btnCrearDragon = new JButton("Crear Dragon");
 	
 	public VistaAcceso() {
 		this.elemento = new Acceso();
