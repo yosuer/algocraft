@@ -3,7 +3,6 @@ package fiuba.algo3.algocraft.vista;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -23,7 +22,7 @@ public class VentanaJuego extends JFrame {
 	public PanelEstado panelEstado;
 	public JButton btnPasarTurno;
 	public PanelVidaSelect panelVidaSelect;
-	public JPanel panelIzquierdo;
+	// public JPanel panelIzquierdo;
 	public JPanel panelInferior;
 	public Log log;
 
@@ -34,14 +33,15 @@ public class VentanaJuego extends JFrame {
 		panelVidaSelect = new PanelVidaSelect(ControladorMapa.select);
 		log = new Log();
 
-		panelIzquierdo = new JPanel();
-		panelIzquierdo.setLayout(new FlowLayout());
-		panelIzquierdo.add(panelEstado);
+		// panelIzquierdo = new JPanel();
+		// panelIzquierdo.setLayout(new FlowLayout());
+		// panelIzquierdo.add(panelEstado);
 
 		panelInferior = new JPanel();
 		panelInferior.setLayout(new BoxLayout(panelInferior, BoxLayout.Y_AXIS));
 		panelInferior.add(log);
 		panelInferior.add(panelVidaSelect);
+		panelInferior.add(panelEstado);
 
 		btnPasarTurno = new JButton("PasarTurno");
 		btnPasarTurno.setMaximumSize(new Dimension(20, 25));
@@ -54,7 +54,7 @@ public class VentanaJuego extends JFrame {
 
 		contenedor = getContentPane();
 		contenedor.setLayout(new BorderLayout());
-		contenedor.add(panelIzquierdo, BorderLayout.WEST);
+		// contenedor.add(panelIzquierdo, BorderLayout.WEST);
 		contenedor.add(panelMapa, BorderLayout.CENTER);
 		contenedor.add(panelAcciones, BorderLayout.EAST);
 		contenedor.add(btnPasarTurno, BorderLayout.NORTH);
