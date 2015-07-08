@@ -9,6 +9,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
+import fiuba.algo3.algocraft.modelo.Controlable;
 import fiuba.algo3.algocraft.modelo.IAtacante;
 import fiuba.algo3.algocraft.modelo.IDaniable;
 import fiuba.algo3.algocraft.modelo.IElemento;
@@ -17,15 +18,20 @@ import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
 import fiuba.algo3.algocraft.vista.PanelEstado;
 import fiuba.algo3.algocraft.vista.VentanaJuego;
-import fiuba.algo3.algocraft.vista.VistaIElemento;
+import fiuba.algo3.algocraft.vista.VistaCasillero;
 import fiuba.algo3.algocraft.vista.VistaMapa;
 
 public class ControladorMapa extends MouseAdapter {
 
 	private VistaMapa mapa;
 	private Posicion posicion;
-	// public static VistaCasillero seleccionado;
 	public static IElemento select;
+	public static IElemento aConstruir;
+
+	public static boolean seleccionar = true;
+	public static boolean construir = false;
+	public static boolean atacar = false;
+	public static boolean mover = false;
 
 	public ControladorMapa(VistaMapa mapa) {
 		this.mapa = mapa;
@@ -51,13 +57,13 @@ public class ControladorMapa extends MouseAdapter {
 		int x = e.getX() / 22 + 1;
 		int y = e.getY() / 22 + 1;
 		if (x <= mapa.getModelo().ancho() & y <= mapa.getModelo().largo()) {
-			if (VistaMapa.seleccionar)
+			if (seleccionar)
 				seleccionar(x, y);
-			else if (VistaMapa.construir)
+			else if (construir)
 				construir(x, y);
-			else if (VistaMapa.mover)
+			else if (mover)
 				mover(x, y);
-			else if (VistaMapa.atacar)
+			else if (atacar)
 				atacar(x, y);
 		}
 	}
@@ -70,18 +76,24 @@ public class ControladorMapa extends MouseAdapter {
 	}
 
 	public void seleccionar(int x, int y) {
-		select = mapa.getCasillero(x, y).getVisible();
-		VistaIElemento v = VistaIElemento.vistasElementos.get(select.nombre());
+		VistaCasillero casillero = mapa.getCasillero(x, y);
+		select = casillero.getVisible();
 
-		VentanaJuego.panelAcciones.actualizar(v);
+		try {
+			if (mapa.getModelo().getEquipoActual() == ((Controlable) select)
+					.getEquipo())
+				VentanaJuego.panelAcciones.actualizar(casillero
+						.getVistaElementoActual());
+		} catch (ClassCastException e) {
+			VentanaJuego.panelAcciones.limpiar();
+		}
 		act();
 	}
 
 	public void construir(int x, int y) {
-		// PanelEstado.log.append("Const " + VistaMapa.aConstruir.nombre() + " "
-		// + x + "," + y + PanelEstado.newline);
+
 		try {
-			mapa.getModelo().agregarElemento(x, y, VistaMapa.aConstruir);
+			mapa.getModelo().agregarElemento(x, y, aConstruir);
 		} catch (ErrorExtractorDeRecursosIncompatible e) {
 			PanelEstado.log.append("Error al construir" + PanelEstado.newline);
 		} catch (ErrorRecursosInsuficientes e) {
@@ -93,7 +105,7 @@ public class ControladorMapa extends MouseAdapter {
 		}
 
 		select = null;
-		VistaMapa.aConstruir = null;
+		aConstruir = null;
 		VentanaJuego.panelAcciones.limpiar();
 		act();
 	}
@@ -109,10 +121,10 @@ public class ControladorMapa extends MouseAdapter {
 	}
 
 	private void act() {
-		VistaMapa.seleccionar = true;
-		VistaMapa.atacar = false;
-		VistaMapa.construir = false;
-		VistaMapa.mover = false;
+		seleccionar = true;
+		atacar = false;
+		construir = false;
+		mover = false;
 	}
 
 }

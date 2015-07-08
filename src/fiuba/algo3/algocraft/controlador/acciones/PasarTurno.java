@@ -3,15 +3,12 @@ package fiuba.algo3.algocraft.controlador.acciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import fiuba.algo3.algocraft.controlador.ControladorMapa;
 import fiuba.algo3.algocraft.modelo.IMapa;
 import fiuba.algo3.algocraft.vista.VentanaJuego;
-import fiuba.algo3.algocraft.vista.VistaMapa;
 
 public class PasarTurno implements ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private IMapa mapa;
 
@@ -21,10 +18,12 @@ public class PasarTurno implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		VistaMapa.aConstruir = null;
-		VistaMapa.seleccionar = true;
-		VistaMapa.atacar = false;
-		VistaMapa.construir = false;
+		ControladorMapa.aConstruir = null;
+
+		ControladorMapa.seleccionar = true;
+		ControladorMapa.atacar = false;
+		ControladorMapa.construir = false;
+		ControladorMapa.mover = false;
 		// /limpiar acciones
 		VentanaJuego.panelAcciones.limpiar();
 		mapa.pasarTurnoMapa();

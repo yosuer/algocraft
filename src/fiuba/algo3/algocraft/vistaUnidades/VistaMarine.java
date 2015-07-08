@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.vista.vistasModelo;
+package fiuba.algo3.algocraft.vistaUnidades;
 
 import fiuba.algo3.algocraft.modelo.unidades.Marine;
 import fiuba.algo3.algocraft.vista.VistaUnidad;

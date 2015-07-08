@@ -38,7 +38,7 @@ public class PanelVidaSelect extends JPanel implements ObjetoActualizable {
 	@Override
 	public void actualizar() {
 		try {
-			this.elemento = (Controlable) ControladorMapa.select;
+			elemento = (Controlable) ControladorMapa.select;
 			datosElemento.setText(elemento.nombre() + "  |  "
 					+ elemento.vidaActual() + "  |  Posicion: "
 					+ elemento.getPosicion());

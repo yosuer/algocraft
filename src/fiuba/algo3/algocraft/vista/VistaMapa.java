@@ -2,31 +2,23 @@ package fiuba.algo3.algocraft.vista;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.Observable;
-import java.util.Observer;
 
 import fiuba.algo3.algocraft.controlador.ControladorMapa;
-import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.IMapa;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.titiritero.modelo.GameLoop;
 
-public class VistaMapa extends SuperficiePanel implements Observer {
+public class VistaMapa extends SuperficiePanel {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private IMapa mapa;
-	public static IElemento aConstruir;
+
 	private VistaCasillero[][] casilleros;
 	private int ancho;
 	private int largo;
-
-	public static boolean seleccionar = true;
-	public static boolean construir = false;
-	public static boolean atacar = false;
-	public static boolean mover = false;
 
 	public VistaMapa(final IMapa mapa) {
 		this.mapa = mapa;
@@ -42,15 +34,9 @@ public class VistaMapa extends SuperficiePanel implements Observer {
 		for (int x = 1; x <= mapa.ancho(); x++) {
 			for (int y = 1; y <= mapa.largo(); y++) {
 				casilleros[x][y] = new VistaCasillero(mapa, x, y);
-				gameLoop.agregar(casilleros[x][y].getVisible());
 				gameLoop.agregar(casilleros[x][y]);
 			}
 		}
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 	}
 
 	public VistaCasillero getCasillero(int x, int y) {

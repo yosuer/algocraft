@@ -131,6 +131,8 @@ public class Mapa implements IMapa {
 	public void agregarControlable(Controlable elemento) {
 		this.equipoActual.agregarElemento(elemento);
 		this.ubicarElemento(elemento, elemento.getPosicion());
+		// System.out.println("creado " + elemento.nombre() + " en "
+		// + elemento.getPosicion());
 	}
 
 	public void agregarEstatico(Estatico elemento) {

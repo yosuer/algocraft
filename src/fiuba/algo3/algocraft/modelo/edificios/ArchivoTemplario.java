@@ -11,18 +11,18 @@ import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.unidades.AltoTemplario;
 
 public class ArchivoTemplario extends Edificio implements ElementoProtoss,
-														IElementoCreador{
+		IElementoCreador {
 
 	private ICreadorDeElementos creador;
-	
+
 	public ArchivoTemplario() {
 		super();
 		this.nombre = "ArchivoTemplario";
 		this.costoMineral = 150;
 		this.costoVespeno = 200;
-		this.edificiosRequeridos.add(new PuertoEstelarProtoss());
-		this.estado = new Construyendose(this, 9); //tiempo de construccion
-		this.estadoFisico = new Protoss(500,500);
+		this.edificiosRequeridos.add(new Acceso());
+		this.estado = new Construyendose(this, 9); // tiempo de construccion
+		this.estadoFisico = new Protoss(500, 500);
 		this.creador = new CreadorEnCola(this);
 	}
 
@@ -49,17 +49,17 @@ public class ArchivoTemplario extends Edificio implements ElementoProtoss,
 	@Override
 	public void crearUnidad(Unidad unidad) {
 		this.estado.estaActivo();
-		this.mapa.gastarRecursos(unidad.getCostoMineral(), unidad.getCostoVespeno());
+		this.mapa.gastarRecursos(unidad.getCostoMineral(),
+				unidad.getCostoVespeno());
 		this.creador.prepararUnidad(unidad);
 	}
-	
 
 	@Override
 	public void pasarTurno() {
 		this.estado.pasarTurno();
 	}
-	
-	public void ejecutarAcciones(){
+
+	public void ejecutarAcciones() {
 		this.creador.expulsarUnidad();
 		this.regenerarse();
 	}
@@ -68,5 +68,5 @@ public class ArchivoTemplario extends Edificio implements ElementoProtoss,
 	public void vaciarEscudo() {
 		this.estadoFisico.daniarse(this.escudoRestante());
 	}
-	
+
 }

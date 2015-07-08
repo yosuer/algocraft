@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.vista.vistasModelo;
+package fiuba.algo3.algocraft.vistaEdificios;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,12 +14,14 @@ import fiuba.algo3.algocraft.vista.VistaIElemento;
 
 public class VistaBarraca extends VistaIElemento implements ActionListener {
 
-	public JButton btnCrearMarine = new JButton("CrearMarine");
+	public JButton btnCrearMarine = new JButton("Marine");
 
 	public VistaBarraca() {
 		elemento = new Barraca();
 		armarImagen();
+
 		btnCrearMarine.addActionListener(this);
+
 		acciones.add(btnCrearMarine);
 	}
 

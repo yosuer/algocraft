@@ -20,22 +20,22 @@ public class VistaAcceso extends VistaIElemento implements ActionListener {
 	public VistaAcceso() {
 		this.elemento = new Acceso();
 		armarImagen();
+
 		this.btnCrearDragon.addActionListener(this);
 		this.btnCrearZealot.addActionListener(this);
 
 		this.acciones.add(this.btnCrearZealot);
 		this.acciones.add(this.btnCrearDragon);
-
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent evento) {
+	public void actionPerformed(ActionEvent event) {
 
 		try {
-			if (evento.getActionCommand() == "Zealot")
+			if (event.getActionCommand() == "Zealot")
 				((Acceso) ControladorMapa.select).crearZealot();
 
-			if (evento.getActionCommand() == "Dragon")
+			if (event.getActionCommand() == "Dragon")
 				((Acceso) ControladorMapa.select).crearDragon();
 
 		} catch (ErrorEdificioEnConstruccion e) {

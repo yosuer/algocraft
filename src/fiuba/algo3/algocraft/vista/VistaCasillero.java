@@ -20,16 +20,14 @@ public class VistaCasillero extends JPanel implements ObjetoDibujable {
 	private int y;
 	private IMapa mapa;
 
-	VistaIElemento elementoAereo;
-	VistaIElemento elementoTerrestre;
+	private VistaIElemento vistaActual;
+	private IElemento elementoActual;
 
 	public VistaCasillero(IMapa mapa, int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.mapa = mapa;
-		// if (elemento.getNivel() == 0)
-		// elementoAereo = new VistaIElemento(mapa.getElemento(x, y, 1));
-		actualizarElementos();
+		actualizar();
 	}
 
 	@Override
@@ -41,20 +39,28 @@ public class VistaCasillero extends JPanel implements ObjetoDibujable {
 
 			Graphics grafico = ((SuperficiePanel) superficieDeDibujo)
 					.getBuffer();
-			grafico.drawImage(elementoTerrestre.getBufferedImage(), tam * posX,
-					tam * posY, tam, tam, null);
+			grafico.drawImage(vistaActual.getBufferedImage(), tam * posX, tam
+					* posY, tam, tam, null);
 		} catch (NullPointerException e) {
 		}
-		actualizarElementos();
+		actualizar();
 	}
 
 	public IElemento getVisible() {
-		return mapa.getElemento(x, y, 0);
+		return elementoActual;
 	}
 
-	private void actualizarElementos() {
-		elementoTerrestre = VistaIElemento.vistasElementos.get(mapa
-				.getElemento(x, y, 0).nombre());
+	public VistaIElemento getVistaElementoActual() {
+		return vistaActual;
+	}
+
+	private void actualizar() {
+		elementoActual = mapa.getElemento(x, y, 1);
+		if (elementoActual == null)
+			elementoActual = mapa.getElemento(x, y, 0);
+
+		vistaActual = VistaIElemento.vistasElementos.get(elementoActual
+				.nombre());
 	}
 
 }

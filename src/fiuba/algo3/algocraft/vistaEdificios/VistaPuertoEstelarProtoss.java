@@ -2,41 +2,52 @@ package fiuba.algo3.algocraft.vistaEdificios;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.JButton;
 
-import fiuba.algo3.algocraft.modelo.IElemento;
+import fiuba.algo3.algocraft.controlador.ControladorMapa;
+import fiuba.algo3.algocraft.excepciones.ErrorCapacidadDePoblacionInsuficiente;
+import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 import fiuba.algo3.algocraft.modelo.edificios.PuertoEstelarProtoss;
+import fiuba.algo3.algocraft.vista.PanelEstado;
 import fiuba.algo3.algocraft.vista.VistaIElemento;
 
-public class VistaPuertoEstelarProtoss extends VistaIElemento implements ActionListener {
+public class VistaPuertoEstelarProtoss extends VistaIElemento implements
+		ActionListener {
 
-	JButton btnCrearNaveDeTransporte = new JButton("Crear Nave De Transporte");
-	JButton btnCrearScout = new JButton("Crear Scout");
-	
-	public VistaPuertoEstelarProtoss(){
-		this.elemento = new PuertoEstelarProtoss();
-		this.armarImagen();
-		
-		this.btnCrearNaveDeTransporte.addActionListener(this);
-		this.btnCrearScout.addActionListener(this);
-		
-		this.acciones.add(btnCrearNaveDeTransporte);
-		this.acciones.add(btnCrearScout);
-		
+	private JButton btnCrearNaveDeTransporte = new JButton("NaveDeTransporte");
+	private JButton btnCrearScout = new JButton("Scout");
+
+	public VistaPuertoEstelarProtoss() {
+		elemento = new PuertoEstelarProtoss();
+		armarImagen();
+
+		btnCrearNaveDeTransporte.addActionListener(this);
+		btnCrearScout.addActionListener(this);
+
+		acciones.add(btnCrearNaveDeTransporte);
+		acciones.add(btnCrearScout);
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		if ( e.getSource() == this.btnCrearNaveDeTransporte)
-		{
-			((PuertoEstelarProtoss) this.elemento).crearNaveDeTransporteProtoss();
-		}
-		else
-		{
-			((PuertoEstelarProtoss) this.elemento).crearScout();
+	public void actionPerformed(ActionEvent event) {
+
+		try {
+			if (event.getActionCommand() == "NaveDeTransporte")
+				((PuertoEstelarProtoss) ControladorMapa.select)
+						.crearNaveDeTransporteProtoss();
+			if (event.getActionCommand() == "Scout")
+				((PuertoEstelarProtoss) ControladorMapa.select).crearScout();
+
+		} catch (ErrorEdificioEnConstruccion e) {
+			PanelEstado.log.append("Edificio construyendose"
+					+ PanelEstado.newline);
+		} catch (ErrorCapacidadDePoblacionInsuficiente e) {
+			PanelEstado.log.append("Casas insuficientes" + PanelEstado.newline);
+		} catch (ErrorRecursosInsuficientes e) {
+			PanelEstado.log.append("Recursos insuficientes"
+					+ PanelEstado.newline);
 		}
 	}
 
