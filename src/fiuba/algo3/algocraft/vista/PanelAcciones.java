@@ -9,9 +9,6 @@ import javax.swing.JPanel;
 
 public class PanelAcciones extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public PanelAcciones() {
@@ -27,7 +24,6 @@ public class PanelAcciones extends JPanel {
 		this.removeAll();
 		for (JButton b : nuevos)
 			add(b);
-		this.revalidate();
 		this.repaint();
 	}
 

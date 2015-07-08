@@ -1,4 +1,4 @@
-package fiuba.algo3.algocraft.vista.vistasModelo;
+package fiuba.algo3.algocraft.vistaNaturales;
 
 import java.util.Collection;
 

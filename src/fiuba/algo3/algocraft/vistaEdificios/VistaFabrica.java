@@ -10,7 +10,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorCapacidadDePoblacionInsuficiente;
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 import fiuba.algo3.algocraft.modelo.edificios.Fabrica;
-import fiuba.algo3.algocraft.vista.PanelEstado;
+import fiuba.algo3.algocraft.vista.Log;
 import fiuba.algo3.algocraft.vista.VistaIElemento;
 
 public class VistaFabrica extends VistaIElemento implements ActionListener {
@@ -21,6 +21,7 @@ public class VistaFabrica extends VistaIElemento implements ActionListener {
 		this.elemento = new Fabrica();
 		this.armarImagen();
 		this.btnCrearGolliat.addActionListener(this);
+
 		this.acciones.add(btnCrearGolliat);
 	}
 
@@ -28,14 +29,13 @@ public class VistaFabrica extends VistaIElemento implements ActionListener {
 	public void actionPerformed(ActionEvent ev) {
 		try {
 			((Fabrica) ControladorMapa.select).crearGolliat();
+
 		} catch (ErrorEdificioEnConstruccion e) {
-			PanelEstado.log.append("Edificio construyendose"
-					+ PanelEstado.newline);
+			Log.loguear("Edificio construyendose");
 		} catch (ErrorCapacidadDePoblacionInsuficiente e) {
-			PanelEstado.log.append("Casas insuficientes" + PanelEstado.newline);
+			Log.loguear("Casas insuficientes");
 		} catch (ErrorRecursosInsuficientes e) {
-			PanelEstado.log.append("Recursos Insuficientes"
-					+ PanelEstado.newline);
+			Log.loguear("Recursos insuficientes");
 		}
 	}
 

@@ -8,8 +8,9 @@ import javax.swing.JButton;
 import fiuba.algo3.algocraft.controlador.ControladorMapa;
 import fiuba.algo3.algocraft.excepciones.ErrorCapacidadDePoblacionInsuficiente;
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
+import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 import fiuba.algo3.algocraft.modelo.edificios.Barraca;
-import fiuba.algo3.algocraft.vista.PanelEstado;
+import fiuba.algo3.algocraft.vista.Log;
 import fiuba.algo3.algocraft.vista.VistaIElemento;
 
 public class VistaBarraca extends VistaIElemento implements ActionListener {
@@ -29,11 +30,13 @@ public class VistaBarraca extends VistaIElemento implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		try {
 			((Barraca) ControladorMapa.select).crearMarine();
+
 		} catch (ErrorEdificioEnConstruccion e) {
-			PanelEstado.log.append("Edificio construyendose"
-					+ PanelEstado.newline);
+			Log.loguear("Edificio construyendose");
 		} catch (ErrorCapacidadDePoblacionInsuficiente e) {
-			PanelEstado.log.append("Casas insuficientes" + PanelEstado.newline);
+			Log.loguear("Casas insuficientes");
+		} catch (ErrorRecursosInsuficientes e) {
+			Log.loguear("Recursos insuficientes");
 		}
 	}
 

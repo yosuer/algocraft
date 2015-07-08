@@ -19,6 +19,7 @@ public class PasarTurno implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ControladorMapa.aConstruir = null;
+		ControladorMapa.select = null;
 
 		ControladorMapa.seleccionar = true;
 		ControladorMapa.atacar = false;

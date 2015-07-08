@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,21 +25,21 @@ public class VentanaJuego extends JFrame {
 	public PanelVidaSelect panelVidaSelect;
 	public JPanel panelIzquierdo;
 	public JPanel panelInferior;
-	public LineaLog log;
+	public Log log;
 
 	public VentanaJuego(VistaMapa mapa) {
 		panelMapa = mapa;
 		panelAcciones = new PanelAcciones();
 		panelEstado = new PanelEstado(panelMapa.getModelo());
 		panelVidaSelect = new PanelVidaSelect(ControladorMapa.select);
-		log = new LineaLog();
+		log = new Log();
 
 		panelIzquierdo = new JPanel();
 		panelIzquierdo.setLayout(new FlowLayout());
 		panelIzquierdo.add(panelEstado);
 
 		panelInferior = new JPanel();
-		panelInferior.setLayout(new FlowLayout());
+		panelInferior.setLayout(new BoxLayout(panelInferior, BoxLayout.Y_AXIS));
 		panelInferior.add(log);
 		panelInferior.add(panelVidaSelect);
 

@@ -1,10 +1,8 @@
 package fiuba.algo3.algocraft.vista;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -23,8 +21,7 @@ public class PanelVidaSelect extends JPanel implements ObjetoActualizable {
 
 	public PanelVidaSelect(IElemento elemento) {
 		this.setBackground(Color.RED);
-		this.setMaximumSize(new Dimension(60, 20));
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
 		fuenteLabel = new Font("Verdana", Font.BOLD, 15);
 		datosElemento = new JLabel("_");
 		datosElemento.setFont(fuenteLabel);
@@ -45,6 +42,7 @@ public class PanelVidaSelect extends JPanel implements ObjetoActualizable {
 		} catch (ClassCastException e) {
 			datosElemento.setText("_");
 		} catch (NullPointerException e) {
+			datosElemento.setText("_");
 		}
 
 	}

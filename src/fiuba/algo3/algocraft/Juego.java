@@ -8,9 +8,6 @@ import fiuba.algo3.algocraft.vista.VentanaInicial;
 import fiuba.algo3.algocraft.vista.VentanaJuego;
 import fiuba.algo3.algocraft.vista.VistaIElemento;
 import fiuba.algo3.algocraft.vista.VistaMapa;
-import fiuba.algo3.algocraft.vista.vistasModelo.VistaMineral;
-import fiuba.algo3.algocraft.vista.vistasModelo.VistaTierra;
-import fiuba.algo3.algocraft.vista.vistasModelo.VistaVespeno;
 import fiuba.algo3.algocraft.vistaEdificios.VistaAcceso;
 import fiuba.algo3.algocraft.vistaEdificios.VistaArchivoTemplario;
 import fiuba.algo3.algocraft.vistaEdificios.VistaAsimilador;
@@ -25,6 +22,10 @@ import fiuba.algo3.algocraft.vistaEdificios.VistaPilon;
 import fiuba.algo3.algocraft.vistaEdificios.VistaPuertoEstelarProtoss;
 import fiuba.algo3.algocraft.vistaEdificios.VistaPuertoEstelarTerran;
 import fiuba.algo3.algocraft.vistaEdificios.VistaRefineria;
+import fiuba.algo3.algocraft.vistaNaturales.VistaMineral;
+import fiuba.algo3.algocraft.vistaNaturales.VistaObstaculoTerrestre;
+import fiuba.algo3.algocraft.vistaNaturales.VistaTierra;
+import fiuba.algo3.algocraft.vistaNaturales.VistaVespeno;
 import fiuba.algo3.algocraft.vistaUnidades.VistaAltoTemplario;
 import fiuba.algo3.algocraft.vistaUnidades.VistaDragon;
 import fiuba.algo3.algocraft.vistaUnidades.VistaEspectro;
@@ -55,6 +56,8 @@ public class Juego {
 		VistaIElemento.vistasElementos.put("Tierra", new VistaTierra());
 		VistaIElemento.vistasElementos.put("Mineral", new VistaMineral());
 		VistaIElemento.vistasElementos.put("Vespeno", new VistaVespeno());
+		VistaIElemento.vistasElementos.put("ObstaculoTerrestre",
+				new VistaObstaculoTerrestre());
 
 		// Terran
 		VistaIElemento.vistasElementos.put("CentroDeMando",

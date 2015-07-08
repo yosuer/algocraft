@@ -7,7 +7,6 @@ import java.awt.Font;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 import fiuba.algo3.algocraft.modelo.Equipo;
 import fiuba.algo3.algocraft.modelo.IMapa;
@@ -20,16 +19,12 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static JTextArea log;
 	private JLabel nombreJugador;
 	private JLabel estadoJugador;
 	private JLabel estadoRecursos;
-	private Font fuenteLog;
 	private Font fuenteInfoJug;
 	private IMapa mapa;
 	private Equipo jugador;
-
-	public final static String newline = "\n";
 
 	public PanelEstado(IMapa mapa) {
 		this.setBackground(Color.WHITE);
@@ -52,13 +47,6 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 		add(estadoJugador);
 		add(estadoRecursos);
 
-		fuenteLog = new Font("Verdana", Font.ITALIC, 12);
-		log = new JTextArea(15, 12);
-		log.setFont(fuenteLog);
-		log.setForeground(Color.WHITE);
-		log.setEditable(false);
-		log.setBackground(Color.BLACK);
-		add(log);
 	}
 
 	public void actualizarInfo() {

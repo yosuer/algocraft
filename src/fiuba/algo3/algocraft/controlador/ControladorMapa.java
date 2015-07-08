@@ -16,7 +16,7 @@ import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
-import fiuba.algo3.algocraft.vista.PanelEstado;
+import fiuba.algo3.algocraft.vista.Log;
 import fiuba.algo3.algocraft.vista.VentanaJuego;
 import fiuba.algo3.algocraft.vista.VistaCasillero;
 import fiuba.algo3.algocraft.vista.VistaMapa;
@@ -54,6 +54,7 @@ public class ControladorMapa extends MouseAdapter {
 	}
 
 	public void mousePressed(MouseEvent e) {
+		Log.limpiar();
 		int x = e.getX() / 22 + 1;
 		int y = e.getY() / 22 + 1;
 		if (x <= mapa.getModelo().ancho() & y <= mapa.getModelo().largo()) {
@@ -95,17 +96,15 @@ public class ControladorMapa extends MouseAdapter {
 		try {
 			mapa.getModelo().agregarElemento(x, y, aConstruir);
 		} catch (ErrorExtractorDeRecursosIncompatible e) {
-			PanelEstado.log.append("Error al construir" + PanelEstado.newline);
+			Log.loguear("Error al construir");
 		} catch (ErrorRecursosInsuficientes e) {
-			PanelEstado.log.append("Recursos Insuficientes"
-					+ PanelEstado.newline);
+			Log.loguear("Recursos Insuficientes");
 		} catch (NoExistenLosEdificiosrequeridosParaConstruir e) {
-			PanelEstado.log.append("Faltan edificios requeridos"
-					+ PanelEstado.newline);
+			Log.loguear("Faltan edificios requeridos");
 		}
 
-		select = null;
 		aConstruir = null;
+		select = null;
 		VentanaJuego.panelAcciones.limpiar();
 		act();
 	}
@@ -115,7 +114,7 @@ public class ControladorMapa extends MouseAdapter {
 			IDaniable obj = (IDaniable) mapa.getModelo().getElemento(x, y, 0);
 			((IAtacante) select).atacar(obj);
 		} catch (ErrorObjetivoFueraDelAlcance e) {
-			PanelEstado.log.append("Fuera de alcance" + PanelEstado.newline);
+			Log.loguear("Fuera de alcance");
 		}
 		act();
 	}

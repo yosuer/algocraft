@@ -1,16 +1,16 @@
-package fiuba.algo3.algocraft.vista.vistasModelo;
+package fiuba.algo3.algocraft.vistaNaturales;
 
 import java.util.Collection;
 
 import javax.swing.JButton;
 
-import fiuba.algo3.algocraft.modelo.natural.Tierra;
+import fiuba.algo3.algocraft.modelo.natural.Mineral;
 import fiuba.algo3.algocraft.vista.VistaIElemento;
 
-public class VistaTierra extends VistaIElemento {
+public class VistaMineral extends VistaIElemento {
 
-	public VistaTierra() {
-		elemento = new Tierra();
+	public VistaMineral() {
+		elemento = new Mineral();
 		armarImagen();
 	}
 
@@ -18,4 +18,5 @@ public class VistaTierra extends VistaIElemento {
 	protected Collection<JButton> getBotones() {
 		return acciones;
 	}
+
 }

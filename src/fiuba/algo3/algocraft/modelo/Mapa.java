@@ -8,6 +8,7 @@ import fiuba.algo3.algocraft.excepciones.ErrorElementoNoEncontrado;
 import fiuba.algo3.algocraft.modelo.edificios.BasePrincipal;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMando;
 import fiuba.algo3.algocraft.modelo.natural.Mineral;
+import fiuba.algo3.algocraft.modelo.natural.ObstaculoTerrestre;
 import fiuba.algo3.algocraft.modelo.natural.Vespeno;
 
 public class Mapa implements IMapa {
@@ -88,6 +89,12 @@ public class Mapa implements IMapa {
 
 		this.equipoActual = equipo1;
 		this.equipoSiguiente = equipo2;
+
+		for (int y = 1; y <= 12; y++)
+			this.agregarElemento(15, y, new ObstaculoTerrestre());
+
+		for (int x = 1; x <= 12; x++)
+			this.agregarElemento(x, 15, new ObstaculoTerrestre());
 
 		// Jugador1
 		for (int x = 3; x <= 6; x++)
