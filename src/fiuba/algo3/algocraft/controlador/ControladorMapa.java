@@ -13,11 +13,13 @@ import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaCons
 import fiuba.algo3.algocraft.modelo.Controlable;
 import fiuba.algo3.algocraft.modelo.IAtacante;
 import fiuba.algo3.algocraft.modelo.IDaniable;
+import fiuba.algo3.algocraft.modelo.IUnidadMagica;
 import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
 import fiuba.algo3.algocraft.vista.Log;
+import fiuba.algo3.algocraft.vista.PanelEstado;
 import fiuba.algo3.algocraft.vista.VentanaJuego;
 import fiuba.algo3.algocraft.vista.VistaCasillero;
 import fiuba.algo3.algocraft.vista.VistaMapa;
@@ -34,6 +36,8 @@ public class ControladorMapa extends MouseAdapter {
 	public static boolean construir = false;
 	public static boolean atacar = false;
 	public static boolean mover = false;
+	public static boolean lanzarMagiaAUnidad = false;
+	public static boolean lanzarMagiaAPosicion = false;
 	public static Accion accion = null;
 
 	public ControladorMapa(VistaMapa mapa) {
@@ -72,6 +76,10 @@ public class ControladorMapa extends MouseAdapter {
 				mover(x, y);
 			else if (atacar)
 				atacar(x, y);
+			else if(lanzarMagiaAUnidad)
+				lanzarMagiaUnidad(x, y);
+			else if(lanzarMagiaAPosicion)
+				lanzarMagiaAPosicion(x, y);
 		}
 	}
 
@@ -126,12 +134,36 @@ public class ControladorMapa extends MouseAdapter {
 		}
 		act();
 	}
+	
+	public void lanzarMagiaUnidad(int x, int y)
+	{
+		try {
+			Unidad obj = (Unidad) mapa.getModelo().getElemento(x, y, 0);
+			((IUnidadMagica) select).lanzarMagiaAUnidad(obj);
+		} catch (ErrorObjetivoFueraDelAlcance e) {
+			Log.loguear("Fuera de alcance");
+		}
+		act();
+	}
+	
+	public void lanzarMagiaAPosicion(int x, int y)
+	{
+		try {
+			Posicion pos = new Posicion(x,y,0);
+			((IUnidadMagica) select).lanzarMagiaAPosicion(pos);
+		} catch (ErrorObjetivoFueraDelAlcance e) {
+			Log.loguear("Fuera de alcance");
+		}
+		act();
+	}
 
 	private void act() {
 		seleccionar = true;
 		atacar = false;
 		construir = false;
 		mover = false;
+		lanzarMagiaAUnidad = false;
+		lanzarMagiaAPosicion = false;
 	}
 
 }
