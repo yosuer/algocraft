@@ -3,10 +3,12 @@ package fiuba.algo3.algocraft.modelo;
 import java.util.LinkedList;
 import java.util.List;
 
+import fiuba.algo3.algocraft.excepciones.ErrorCapacidadDeTransporteInsuficiente;
 import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 
-public abstract class Unidad extends Controlable implements IAtacante {
+public abstract class Unidad extends Controlable implements IAtacante,
+		ITransportable {
 
 	protected List<Posicion> movimientos; // guardar movimientos
 	protected float suministro;
@@ -114,7 +116,25 @@ public abstract class Unidad extends Controlable implements IAtacante {
 
 	public IRazaEstado getEstado() {
 		return this.estadoFisico;
+	}
 
+	@Override
+	public void transportardoPor(ITransporte transporte) {
+		if (transporte.capacidadDisponible() < this.transporte)
+			throw new ErrorCapacidadDeTransporteInsuficiente();
+		this.mapa.desocuparPosicion(this.posicion);
+	}
+
+	@Override
+	public void descargarseEn(int x, int y) {
+		this.mapa.ubicarElemento(this,
+				mapa.getPosicionProxima(new Posicion(x, y, nivel)));
+		this.posicion = new Posicion(x, y, nivel);
+	}
+
+	@Override
+	public int getOcupacion() {
+		return this.transporte;
 	}
 
 }

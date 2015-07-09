@@ -7,6 +7,8 @@ public class VistaNaveTransporteProtoss extends VistaUnidadTransporte {
 	public VistaNaveTransporteProtoss() {
 		super();
 		elemento = new NaveDeTransporteProtoss();
+		btnTransportar.addActionListener(this);
+		btnDescargar.addActionListener(this);
 		armarImagen();
 	}
 

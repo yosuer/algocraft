@@ -1,20 +1,19 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
-import java.util.Queue;
-
 import fiuba.algo3.algocraft.modelo.Construyendose;
 import fiuba.algo3.algocraft.modelo.ElementoProtoss;
 import fiuba.algo3.algocraft.modelo.ITransportable;
+import fiuba.algo3.algocraft.modelo.ITransportador;
 import fiuba.algo3.algocraft.modelo.ITransporte;
 import fiuba.algo3.algocraft.modelo.IntRango;
 import fiuba.algo3.algocraft.modelo.Protoss;
+import fiuba.algo3.algocraft.modelo.TransportadorSimple;
 import fiuba.algo3.algocraft.modelo.Unidad;
 
 public class NaveDeTransporteProtoss extends Unidad implements ElementoProtoss,
 		ITransporte {
 
-	private Queue<ITransportable> unidadesCargadas;
-	private IntRango capacidad;
+	private ITransportador transportador;
 
 	public NaveDeTransporteProtoss() {
 		super();
@@ -27,7 +26,8 @@ public class NaveDeTransporteProtoss extends Unidad implements ElementoProtoss,
 		this.estadoFisico = new Protoss(80, 60);
 		this.estado = new Construyendose(this, 8);
 		this.nivel = 1;
-		this.capacidad = new IntRango(0, 7, 7);
+		this.transportador = new TransportadorSimple(this,
+				new IntRango(0, 7, 7));
 	}
 
 	@Override
@@ -47,34 +47,26 @@ public class NaveDeTransporteProtoss extends Unidad implements ElementoProtoss,
 
 	@Override
 	public void transportar(ITransportable elemento) {
-		elemento.transportardoPor(this);
-		unidadesCargadas.add(elemento);
-		this.capacidad.disminuir(elemento.getOcupacion());
+		transportador.transportar(elemento);
 	}
 
 	@Override
 	public void descargar() {
-		int cantUnidades = unidadesCargadas.size();
-		for (int i = 1; i <= cantUnidades; i++)
-			expulsarUnTransportable(posicion.x(), posicion.y());
+		transportador.descargar(posicion.x(), posicion.y());
 	}
 
 	@Override
 	public void descargar(int x, int y) {
-		int cantUnidades = unidadesCargadas.size();
-		for (int i = 1; i <= cantUnidades; i++)
-			expulsarUnTransportable(x, y);
+		transportador.descargar(x, y);
 	}
 
 	@Override
 	public int capacidadDisponible() {
-		return this.capacidad.valor();
+		return transportador.capacidadDisponible();
 	}
 
 	@Override
 	public void expulsarUnTransportable(int x, int y) {
-		ITransportable t = unidadesCargadas.remove();
-		t.descargarseEn(x, y);
-		this.capacidad.aumentar(t.getOcupacion());
+		transportador.expulsarUnTransportable(x, y);
 	}
 }

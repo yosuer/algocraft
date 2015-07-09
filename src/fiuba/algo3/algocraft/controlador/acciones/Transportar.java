@@ -3,7 +3,6 @@ package fiuba.algo3.algocraft.controlador.acciones;
 import java.awt.event.ActionEvent;
 
 import fiuba.algo3.algocraft.controlador.Accion;
-import fiuba.algo3.algocraft.controlador.ControladorMapa;
 import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.ITransportable;
 import fiuba.algo3.algocraft.modelo.ITransporte;
@@ -30,7 +29,5 @@ public class Transportar extends Accion {
 		} catch (ClassCastException e) {
 			Log.loguear("No se puede transportar la unidad");
 		}
-		ControladorMapa.accion = null;
 	}
-
 }

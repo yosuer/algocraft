@@ -18,13 +18,16 @@ public class VistaPuertoEstelarTerran extends VistaIElemento implements
 
 	private JButton btnCrearNaveCiencia = new JButton("NaveCiencia");
 	private JButton btnCrearNaveTransporte = new JButton("NaveTransporte");
+	private JButton btnCrearEspectro = new JButton("Espectro");
 
 	public VistaPuertoEstelarTerran() {
 		elemento = new PuertoEstelarTerran();
 		armarImagen();
 		btnCrearNaveCiencia.addActionListener(this);
 		btnCrearNaveTransporte.addActionListener(this);
+		btnCrearEspectro.addActionListener(this);
 
+		acciones.add(btnCrearEspectro);
 		acciones.add(btnCrearNaveCiencia);
 		acciones.add(btnCrearNaveTransporte);
 	}
@@ -40,6 +43,9 @@ public class VistaPuertoEstelarTerran extends VistaIElemento implements
 			if (event.getActionCommand() == "NaveTransporte")
 				((PuertoEstelarTerran) ControladorMapa.select)
 						.crearNaveDeTransporteTerran();
+
+			if (event.getActionCommand() == "Espectro")
+				((PuertoEstelarTerran) ControladorMapa.select).crearEspectro();
 
 		} catch (ErrorEdificioEnConstruccion e) {
 			Log.loguear("Edificio construyendose");

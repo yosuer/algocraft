@@ -8,6 +8,8 @@ public class VistaNaveTransporteTerran extends VistaUnidadTransporte {
 	public VistaNaveTransporteTerran() {
 		super();
 		elemento = new NaveTransporteTerran();
+		btnTransportar.addActionListener(this);
+		btnDescargar.addActionListener(this);
 		armarImagen();
 	}
 

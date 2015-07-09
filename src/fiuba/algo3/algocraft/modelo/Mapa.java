@@ -90,25 +90,43 @@ public class Mapa implements IMapa {
 		this.equipoActual = equipo1;
 		this.equipoSiguiente = equipo2;
 
-		for (int y = 1; y <= 12; y++)
-			this.agregarElemento(15, y, new ObstaculoTerrestre());
+		for (int y = 1; y <= 10; y++)
+			this.agregarElemento(13, y, new ObstaculoTerrestre());
+		for (int x = 1; x <= 10; x++)
+			this.agregarElemento(x, 13, new ObstaculoTerrestre());
 
-		for (int x = 1; x <= 12; x++)
-			this.agregarElemento(x, 15, new ObstaculoTerrestre());
-
-		// Jugador1
+		// Recursos Superior Izquierda
 		for (int x = 3; x <= 6; x++)
 			this.agregarElemento(x, 2, new Mineral());
 		for (int y = 2; y <= 6; y++)
 			this.agregarElemento(2, y, new Mineral());
 		this.agregarElemento(4, 6, new Vespeno());
 
-		// Jugador2
+		// Recursos Superior Derecha
+		for (int x = ancho - 5; x <= ancho - 1; x++)
+			this.agregarElemento(x, 2, new Mineral());
+		for (int y = 3; y <= 6; y++)
+			this.agregarElemento(ancho - 1, y, new Mineral());
+		this.agregarElemento(ancho - 3, 6, new Vespeno());
+
+		// Recursos Inferior Izquierda
+		for (int x = 2; x <= 6; x++)
+			this.agregarElemento(x, largo - 1, new Mineral());
+		for (int y = largo - 5; y <= largo - 2; y++)
+			this.agregarElemento(2, y, new Mineral());
+		this.agregarElemento(4, largo - 5, new Vespeno());
+
+		// Recursos Inferior Derecha
 		for (int x = ancho - 5; x <= ancho - 1; x++)
 			this.agregarElemento(x, largo - 1, new Mineral());
 		for (int y = largo - 5; y <= largo - 2; y++)
 			this.agregarElemento(ancho - 1, y, new Mineral());
 		this.agregarElemento(ancho - 3, largo - 5, new Vespeno());
+
+		for (int y = largo - 9; y <= largo; y++)
+			this.agregarElemento(ancho - 12, y, new ObstaculoTerrestre());
+		for (int x = ancho - 9; x <= ancho; x++)
+			this.agregarElemento(x, largo - 12, new ObstaculoTerrestre());
 
 		BasePrincipal centro1 = equipo1.getBasePrincipal();
 		centro1.setPosicion(new Posicion(4, 4, 0));
@@ -176,15 +194,6 @@ public class Mapa implements IMapa {
 		equipoAux = this.equipoActual;
 		this.equipoActual = this.equipoSiguiente;
 		this.equipoSiguiente = equipoAux;
-
-		// ////////////////////////////////
-		// System.out.println("Paso turno");
-		// System.out.println("Mineral: " + gestorDeRecursos.getMineralTotal());
-		// System.out.println("Vespeno: " + gestorDeRecursos.getVespenoTotal());
-		// Iterator<IElemento> i = elementosActivos.iterator();
-		// while (i.hasNext()) {
-		// System.out.print(i.next().getClass().getSimpleName() + " / ");
-		// } System.out.println();
 	}
 
 	public void encolarUnidad(Unidad u) {

@@ -21,8 +21,7 @@ public abstract class VistaUnidadTransporte extends VistaIElemento implements
 	JButton btnDescargar = new Boton("Descargar");
 
 	public VistaUnidadTransporte() {
-		btnTransportar.addActionListener(this);
-		btnDescargar.addActionListener(this);
+
 		acciones.add(btnMover);
 		acciones.add(btnTransportar);
 		acciones.add(btnDescargar);

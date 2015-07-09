@@ -69,6 +69,44 @@ public class TransporteUnidadesTest {
 	}
 
 	@Test
+	public void test02_GolliatNaveDeTransporteTraslada2UnidadesYSeDesocupaLaPosicionYDescargaEnOtraPosicionLaUnidad() {
+		Mapa mapa = new Mapa(40, 40);
+		Golliat golliat1 = new Golliat();
+		Golliat golliat2 = new Golliat();
+		NaveTransporteTerran nave = new NaveTransporteTerran();
+
+		mapa.agregarElemento(5, 5, golliat1);
+		mapa.agregarElemento(5, 6, golliat2);
+		mapa.agregarElemento(6, 6, nave);
+
+		for (int i = 1; i <= 8; i++)
+			mapa.pasarTurnoMapa();
+
+		Assert.assertEquals(mapa.getElemento(5, 5, 0), golliat1);
+		Assert.assertEquals(mapa.getElemento(5, 6, 0), golliat2);
+		Assert.assertEquals(mapa.getElemento(6, 6, 1), nave);
+
+		nave.transportar(golliat1);
+		nave.transportar(golliat2);
+
+		nave.mover(8, 8);
+
+		mapa.pasarTurnoMapa();
+		mapa.pasarTurnoMapa();
+		mapa.pasarTurnoMapa();
+		mapa.pasarTurnoMapa();
+
+		nave.descargar();
+
+		Assert.assertEquals(mapa.getElemento(5, 5, 0), new Tierra());
+		Assert.assertEquals(mapa.getElemento(5, 6, 0), new Tierra());
+		Assert.assertNull(mapa.getElemento(6, 6, 1));
+		Assert.assertEquals(mapa.getElemento(8, 8, 0), golliat1);
+		Assert.assertEquals(mapa.getElemento(7, 7, 0), golliat2);
+		Assert.assertEquals(mapa.getElemento(8, 8, 1), nave);
+	}
+
+	@Test
 	public void test03_NaveDeTransporteTraslada2UnidadesYSeDesocupaLaPosicionYDescargaEnOtraPosicionLaUnidad() {
 		Mapa mapa = new Mapa(40, 40);
 		Marine marine1 = new Marine();
