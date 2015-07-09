@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.excepciones.ErrorCargaDeEnergiaInsuficiente;
+import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.modelo.ArmaMagicaConPosicion;
 import fiuba.algo3.algocraft.modelo.ArmaMagicaParaUnaUnidad;
 import fiuba.algo3.algocraft.modelo.Construyendose;
@@ -47,19 +49,20 @@ public class Reina extends Unidad implements IUnidadMagica {
 		this.cargarEnergia();
 	}
 	
-	public void lanzarRed(Posicion pos) {
-		
-		if( this.energia.valor() >=75)
-		{
-			this.armaRed.aplicarMagiaA(pos);
-			this.energia.disminuir(75);
-		}
-	}
+//	public void lanzarRed(Posicion pos) {
+//		
+//		if( this.energia.valor() >=75)
+//		{
+//			this.armaRed.aplicarMagiaA(pos);
+//			this.energia.disminuir(75);
+//		}
+//	}
 	
-	public void lanzarInfestar(Unidad unaUnidad){
-		this.armaInfestar.aplicarMagiaA(unaUnidad);
-		this.energia.disminuir(150);
-	}
+//	public void lanzarInfestar(Unidad unaUnidad){
+//		if()
+//		this.armaInfestar.aplicarMagiaA(unaUnidad);
+//		this.energia.disminuir(150);
+//	}
 
 	@Override
 	public int energiaActual() {
@@ -69,6 +72,43 @@ public class Reina extends Unidad implements IUnidadMagica {
 	@Override
 	public void perderEnergia() {
 		this.energia.disminuir(this.energiaActual());
+	}
+
+
+	@Override
+	public void lanzarMagiaAUnidad(Unidad unidad) {
+		
+		if( this.energia.valor() >= 150 )
+		{
+			Posicion posObjetivo = unidad.getPosicion();
+			int distancia = this.mapa.getDistancia(this.posicion, posObjetivo);
+			if (distancia > this.armaInfestar.getAlcance(unidad.getNivel())) throw new ErrorObjetivoFueraDelAlcance();
+			
+			this.armaInfestar.aplicarMagiaA(unidad);
+			this.energia.disminuir(150);
+		}
+		else
+		{
+			throw new ErrorCargaDeEnergiaInsuficiente();
+		}
+	}
+
+
+	@Override
+	public void lanzarMagiaAPosicion(Posicion posicion) {
+		if( this.energia.valor() >=75)
+			{
+				int distancia = this.mapa.getDistancia(this.posicion, posicion);
+				if (distancia > this.armaRed.getAlcance(0)) throw new ErrorObjetivoFueraDelAlcance();
+		
+			
+				this.armaRed.aplicarMagiaA(posicion);
+				this.energia.disminuir(75);
+			}
+		else
+		{
+			throw new ErrorCargaDeEnergiaInsuficiente();
+		}
 	}
 
 

@@ -95,10 +95,8 @@ public class Juego {
 		VistaIElemento.vistasElementos.put("Zealot", new VistaZealot());
 		VistaIElemento.vistasElementos.put("Dragon", new VistaDragon());
 		VistaIElemento.vistasElementos.put("Scout", new VistaScout());
-		VistaIElemento.vistasElementos.put("AltoTemplario",
-				new VistaAltoTemplario());
-		VistaIElemento.vistasElementos.put("NaveTransporteProtoss",
-				new VistaNaveTransporteProtoss());
+		VistaIElemento.vistasElementos.put("AltoTemplario",new VistaAltoTemplario());
+		VistaIElemento.vistasElementos.put("NaveTransporteProtoss",new VistaNaveTransporteProtoss());
 	}
 
 	private void initialize() {

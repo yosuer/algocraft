@@ -1,5 +1,6 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.excepciones.ErrorCargaDeEnergiaInsuficiente;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.modelo.ArmaMagicaConPosicion;
 import fiuba.algo3.algocraft.modelo.ArmaMagicaParaUnaUnidad;
@@ -46,26 +47,41 @@ public class NaveCiencia extends Unidad implements IUnidadMagica {
 		super.pasarTurno();
 		this.cargarEnergia();
 	}
-	
-	public void lanzarEMP(Posicion pos) {
-		int distancia = this.mapa.getDistancia(this.posicion, pos);
-		if (distancia > this.misilEMP.getAlcance(0)) throw new ErrorObjetivoFueraDelAlcance();
-		
-		this.misilEMP.aplicarMagiaA(pos);
-		
-		this.energia.disminuir(100);
-	}
-	
-	public void lanzarRadiacion(Unidad unaUnidad) {
-		Posicion posObjetivo = unaUnidad.getPosicion();
-		int distancia = this.mapa.getDistancia(this.posicion, posObjetivo);
-		if (distancia > this.armaDeRadiacion.getAlcance(unaUnidad.getNivel())) throw new ErrorObjetivoFueraDelAlcance();
-		
-		this.armaDeRadiacion.aplicarMagiaA(unaUnidad);
-		
-		
-		this.energia.disminuir(75);
-	}
+//	
+//	public void lanzarEMP(Posicion pos) {
+//		
+//		if( this.energia.valor() >100 )
+//		{
+//			int distancia = this.mapa.getDistancia(this.posicion, pos);
+//			if (distancia > this.misilEMP.getAlcance(0)) throw new ErrorObjetivoFueraDelAlcance();
+//		
+//			this.misilEMP.aplicarMagiaA(pos);
+//		
+//			this.energia.disminuir(100);
+//		}
+//		else
+//		{
+//			
+//		}
+//	}
+//	
+//	public void lanzarRadiacion(Unidad unaUnidad) {
+//		
+//		if(this.energia.valor() >= 75)
+//		{
+//			Posicion posObjetivo = unaUnidad.getPosicion();
+//			int distancia = this.mapa.getDistancia(this.posicion, posObjetivo);
+//			if (distancia > this.armaDeRadiacion.getAlcance(unaUnidad.getNivel())) throw new ErrorObjetivoFueraDelAlcance();
+//		
+//			this.armaDeRadiacion.aplicarMagiaA(unaUnidad);
+//		
+//			this.energia.disminuir(75);
+//		}
+//		else
+//		{
+//			
+//		}
+//	}
 
 	@Override
 	public int energiaActual() {
@@ -75,5 +91,42 @@ public class NaveCiencia extends Unidad implements IUnidadMagica {
 	@Override
 	public void perderEnergia() {
 		this.energia.disminuir(1000);
+	}
+
+	@Override
+	public void lanzarMagiaAUnidad(Unidad unidad) {
+		
+		if(this.energia.valor() >= 75)
+		{
+			Posicion posObjetivo = unidad.getPosicion();
+			int distancia = this.mapa.getDistancia(this.posicion, posObjetivo);
+			if (distancia > this.armaDeRadiacion.getAlcance(unidad.getNivel())) throw new ErrorObjetivoFueraDelAlcance();
+		
+			this.armaDeRadiacion.aplicarMagiaA(unidad);
+		
+			this.energia.disminuir(75);
+		}
+		else
+		{
+			throw new ErrorCargaDeEnergiaInsuficiente();
+		}
+	}
+
+	@Override
+	public void lanzarMagiaAPosicion(Posicion posicion) {
+		
+		if( this.energia.valor() >=100 )
+		{
+			int distancia = this.mapa.getDistancia(this.posicion, posicion);
+			if (distancia > this.misilEMP.getAlcance(0)) throw new ErrorObjetivoFueraDelAlcance();
+		
+			this.misilEMP.aplicarMagiaA(posicion);
+		
+			this.energia.disminuir(100);
+		}
+		else
+		{
+			throw new ErrorCargaDeEnergiaInsuficiente();
+		}
 	}
 }

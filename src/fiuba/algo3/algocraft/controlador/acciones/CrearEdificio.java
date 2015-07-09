@@ -27,6 +27,8 @@ public class CrearEdificio extends Accion {
 		ControladorMapa.construir = true;
 		ControladorMapa.atacar = false;
 		ControladorMapa.mover = false;
+		ControladorMapa.lanzarMagiaAUnidad = false;
+		ControladorMapa.lanzarMagiaAPosicion = false;
 	}
 
 }

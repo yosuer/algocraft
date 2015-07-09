@@ -16,8 +16,8 @@ public class AlucinacionUnidad extends Unidad implements ElementoProtoss {
 		this.vision = unidad.getVision();
 		this.estadoFisico = new RazaAlucinacion(unidad.getEstado().getEscudoCompleto());
 		this.nivel = unidad.getNivel();
+		this.nombre = unidad.nombre();
 	}
-	
 	@Override
 	public int vidaActual() {
 		return this.estadoFisico.getEscudo();

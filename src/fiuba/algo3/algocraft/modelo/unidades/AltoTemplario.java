@@ -1,5 +1,7 @@
 package fiuba.algo3.algocraft.modelo.unidades;
 
+import fiuba.algo3.algocraft.excepciones.ErrorCargaDeEnergiaInsuficiente;
+import fiuba.algo3.algocraft.excepciones.ErrorEdificioEnConstruccion;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.modelo.ArmaMagicaConPosicion;
 import fiuba.algo3.algocraft.modelo.ArmaMagicaParaUnaUnidad;
@@ -66,25 +68,39 @@ public class AltoTemplario extends Unidad implements ElementoProtoss,IUnidadMagi
 		}
 	}
 	
-	public void lanzarTormentaPsionica(Posicion pos) {
-		int distancia = this.mapa.getDistancia(this.posicion, pos);
-		if (distancia > this.armaTormentaPsionica.getAlcance(0)) throw new ErrorObjetivoFueraDelAlcance();
-		
-		this.armaTormentaPsionica.aplicarMagiaA(pos);
-		this.tormentaUsos++;
-		
-		this.energia.disminuir(75);
-	}
-	
-	public void lanzarAlucinacion(Unidad unaUnidad) {
-		Posicion pos = unaUnidad.getPosicion();
-		int distancia = this.mapa.getDistancia(this.posicion, pos);
-		if (distancia > this.armaAlucinacion.getAlcance(0)) throw new ErrorObjetivoFueraDelAlcance();
-		
-		this.armaAlucinacion.setUnidadAAfectar(unaUnidad);
-		
-		this.energia.disminuir(100);
-	}
+//	public void lanzarTormentaPsionica(Posicion pos) {
+//		if(this.energia.valor() >= 75)
+//		{
+//			int distancia = this.mapa.getDistancia(this.posicion, pos);
+//			if (distancia > this.armaTormentaPsionica.getAlcance(0)) throw new ErrorObjetivoFueraDelAlcance();
+//		
+//			this.armaTormentaPsionica.aplicarMagiaA(pos);
+//			this.tormentaUsos++;
+//		
+//			this.energia.disminuir(75);
+//		}
+//		else
+//		{
+//			
+//		}
+//	}
+//	
+//	public void lanzarAlucinacion(Unidad unaUnidad) {
+//		if(this.energia.valor() >= 100)
+//		{
+//			Posicion pos = unaUnidad.getPosicion();
+//			int distancia = this.mapa.getDistancia(this.posicion, pos);
+//			if (distancia > this.armaAlucinacion.getAlcance(0)) throw new ErrorObjetivoFueraDelAlcance();
+//		
+//			this.armaAlucinacion.setUnidadAAfectar(unaUnidad);
+//		
+//			this.energia.disminuir(100);
+//		}
+//		else
+//		{
+//			
+//		}
+//	}
 
 	@Override
 	public int energiaActual() {
@@ -99,5 +115,43 @@ public class AltoTemplario extends Unidad implements ElementoProtoss,IUnidadMagi
 	@Override
 	public void vaciarEscudo() {
 		this.estadoFisico.daniarse(this.escudoRestante());
+	}
+
+
+	@Override
+	public void lanzarMagiaAUnidad(Unidad unidad) {
+		if(this.energia.valor() >= 100)
+		{
+			Posicion pos = unidad.getPosicion();
+			int distancia = this.mapa.getDistancia(this.posicion, pos);
+			if (distancia > this.armaAlucinacion.getAlcance(0)) throw new ErrorObjetivoFueraDelAlcance();
+		
+			this.armaAlucinacion.setUnidadAAfectar(unidad);
+			
+			this.energia.disminuir(100);
+		}
+		else
+		{
+			throw new ErrorCargaDeEnergiaInsuficiente();
+		}
+	}
+
+
+	@Override
+	public void lanzarMagiaAPosicion(Posicion posicion) {
+		if(this.energia.valor() >= 75)
+		{
+			int distancia = this.mapa.getDistancia(this.posicion, posicion);
+			if (distancia > this.armaTormentaPsionica.getAlcance(0)) throw new ErrorObjetivoFueraDelAlcance();
+		
+			this.armaTormentaPsionica.aplicarMagiaA(posicion);
+			this.tormentaUsos++;
+		
+			this.energia.disminuir(75);
+		}
+		else
+		{
+			throw new ErrorCargaDeEnergiaInsuficiente();
+		}
 	}
 }

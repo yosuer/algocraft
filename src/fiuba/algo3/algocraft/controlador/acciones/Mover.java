@@ -16,6 +16,8 @@ public class Mover extends Accion {
 		ControladorMapa.construir = false;
 		ControladorMapa.atacar = false;
 		ControladorMapa.mover = true;
+		ControladorMapa.lanzarMagiaAUnidad = false;
+		ControladorMapa.lanzarMagiaAPosicion = false;
 	}
 
 }

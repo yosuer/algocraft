@@ -10,4 +10,8 @@ public interface IUnidadMagica {
 	
 	public void perderEnergia();
 	
+	public void lanzarMagiaAUnidad(Unidad unidad);
+	
+	public void lanzarMagiaAPosicion(Posicion Posicion);
+	
 }

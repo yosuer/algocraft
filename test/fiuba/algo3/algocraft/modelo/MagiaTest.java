@@ -53,7 +53,9 @@ public class MagiaTest {
 		
 		Assert.assertEquals(110,naveCiencia.energiaActual());	
 		
-		naveCiencia.lanzarEMP(new Posicion(9,9,0));
+//		naveCiencia.lanzarEMP(new Posicion(9,9,0));
+		
+		naveCiencia.lanzarMagiaAPosicion(new Posicion(9,9,0));
 		
 		Assert.assertEquals(100, zeratul.vidaActual());
 		Assert.assertEquals(150, scout.vidaActual());
@@ -89,7 +91,9 @@ public class MagiaTest {
 		
 		Assert.assertEquals(nave.energiaActual(), 90);
 		
-		nave.lanzarRadiacion(unMarine);
+//		nave.lanzarRadiacion(unMarine);
+		
+		nave.lanzarMagiaAUnidad(unMarine);
 		
 		Assert.assertEquals(unMarine.vidaActual(),20);
 		Assert.assertEquals(nave.energiaActual(), 15);
@@ -135,7 +139,9 @@ public class MagiaTest {
 		
 		Assert.assertEquals(nave.energiaActual(), 90);
 		
-		nave.lanzarRadiacion(unMarine);
+//		nave.lanzarRadiacion(unMarine);
+		
+		nave.lanzarMagiaAUnidad(unMarine);
 		
 		Assert.assertEquals(unMarine.vidaActual(),20);
 		Assert.assertEquals(otroMarine.vidaActual(),40);
@@ -184,8 +190,10 @@ public class MagiaTest {
 		
 		Assert.assertEquals(unaReina.energiaActual(), 170);
 		
-		unaReina.lanzarInfestar(unMarine);
-				
+//		unaReina.lanzarInfestar(unMarine);
+		
+		unaReina.lanzarMagiaAUnidad(unMarine);
+		
 		Assert.assertTrue(mapa.estaOcupado(14,14,0));
 		Assert.assertTrue(mapa.estaOcupado(13,13,0));
 		Assert.assertEquals(unaReina.energiaActual(), 20);
@@ -217,7 +225,9 @@ public class MagiaTest {
 		
 		Assert.assertEquals(altoTemplario.energiaActual(), 110);
 		
-		altoTemplario.lanzarAlucinacion(unZealot);
+//		altoTemplario.lanzarAlucinacion(unZealot);
+		
+		altoTemplario.lanzarMagiaAUnidad(unZealot);;
 		
 		Assert.assertEquals(altoTemplario.energiaActual(), 10);
 		Assert.assertTrue(mapa.estaOcupado(10,11,0));
@@ -273,7 +283,9 @@ public class MagiaTest {
 		
 		Assert.assertEquals(altoTemplario.energiaActual(), 110);
 		
-		altoTemplario.lanzarTormentaPsionica(new Posicion(11,11,0));
+//		altoTemplario.lanzarTormentaPsionica(new Posicion(11,11,0));
+		
+		altoTemplario.lanzarMagiaAPosicion(new Posicion(11,11,0));
 		
 		Assert.assertFalse(mapa.estaOcupado(10,10,0));
 		Assert.assertFalse(mapa.estaOcupado(11,10,0));
@@ -312,7 +324,9 @@ public class MagiaTest {
 		
 		Assert.assertEquals(altoTemplario.energiaActual(), 110);
 		
-		altoTemplario.lanzarAlucinacion(unZealot);
+//		altoTemplario.lanzarAlucinacion(unZealot);
+		
+		altoTemplario.lanzarMagiaAUnidad(unZealot);
 		
 		Assert.assertEquals(altoTemplario.energiaActual(), 10);
 		Assert.assertTrue(mapa.estaOcupado(10,11,0));
@@ -354,7 +368,9 @@ public class MagiaTest {
 		Assert.assertEquals(reina.energiaActual(), 100);
 		Assert.assertTrue(mapa.estaOcupado(10, 10, 0));
 		
-		reina.lanzarRed(new Posicion(11,11,0));
+//		reina.lanzarRed(new Posicion(11,11,0));
+		
+		reina.lanzarMagiaAPosicion(new Posicion(11,11,0));
 		
 		Assert.assertEquals(reina.energiaActual(),25);
 		
@@ -391,7 +407,9 @@ public class MagiaTest {
 		Assert.assertEquals(reina.energiaActual(), 100);
 		Assert.assertTrue(mapa.estaOcupado(10, 10, 0));
 		
-		reina.lanzarRed(new Posicion(11,11,0));
+//		reina.lanzarRed(new Posicion(11,11,0));
+		
+		reina.lanzarMagiaAPosicion(new Posicion(11,11,0));
 		
 		Assert.assertEquals(reina.energiaActual(),25);
 		

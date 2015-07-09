@@ -26,6 +26,8 @@ public class PasarTurno implements ActionListener {
 		ControladorMapa.atacar = false;
 		ControladorMapa.construir = false;
 		ControladorMapa.mover = false;
+		ControladorMapa.lanzarMagiaAUnidad = false;
+		ControladorMapa.lanzarMagiaAPosicion = false;
 		// /limpiar acciones
 		VentanaJuego.panelAcciones.limpiar();
 		mapa.pasarTurnoMapa();
