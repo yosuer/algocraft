@@ -18,6 +18,7 @@ import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
+import fiuba.algo3.algocraft.modelo.unidades.AltoTemplario;
 import fiuba.algo3.algocraft.vista.Log;
 import fiuba.algo3.algocraft.vista.PanelEstado;
 import fiuba.algo3.algocraft.vista.VentanaJuego;
@@ -136,7 +137,7 @@ public class ControladorMapa extends MouseAdapter {
 	}
 	
 	public void lanzarMagiaUnidad(int x, int y)
-	{
+	{		
 		try {
 			Unidad obj = (Unidad) mapa.getModelo().getElemento(x, y, 0);
 			((IUnidadMagica) select).lanzarMagiaAUnidad(obj);

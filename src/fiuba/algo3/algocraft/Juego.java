@@ -27,6 +27,7 @@ import fiuba.algo3.algocraft.vistaNaturales.VistaObstaculoTerrestre;
 import fiuba.algo3.algocraft.vistaNaturales.VistaTierra;
 import fiuba.algo3.algocraft.vistaNaturales.VistaVespeno;
 import fiuba.algo3.algocraft.vistaUnidades.VistaAltoTemplario;
+import fiuba.algo3.algocraft.vistaUnidades.VistaAlucinacionUnidad;
 import fiuba.algo3.algocraft.vistaUnidades.VistaDragon;
 import fiuba.algo3.algocraft.vistaUnidades.VistaEspectro;
 import fiuba.algo3.algocraft.vistaUnidades.VistaGolliat;
@@ -97,6 +98,7 @@ public class Juego {
 		VistaIElemento.vistasElementos.put("Scout", new VistaScout());
 		VistaIElemento.vistasElementos.put("AltoTemplario",new VistaAltoTemplario());
 		VistaIElemento.vistasElementos.put("NaveTransporteProtoss",new VistaNaveTransporteProtoss());
+		VistaIElemento.vistasElementos.put("", new VistaAlucinacionUnidad());
 	}
 
 	private void initialize() {

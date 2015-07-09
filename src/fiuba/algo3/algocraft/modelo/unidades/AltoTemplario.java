@@ -124,7 +124,7 @@ public class AltoTemplario extends Unidad implements ElementoProtoss,IUnidadMagi
 		{
 			Posicion pos = unidad.getPosicion();
 			int distancia = this.mapa.getDistancia(this.posicion, pos);
-			if (distancia > this.armaAlucinacion.getAlcance(0)) throw new ErrorObjetivoFueraDelAlcance();
+			if (distancia > this.armaAlucinacion.getAlcance(unidad.getNivel())) throw new ErrorObjetivoFueraDelAlcance();
 		
 			this.armaAlucinacion.setUnidadAAfectar(unidad);
 			
