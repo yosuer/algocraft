@@ -56,9 +56,10 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 		estadoRecursos.setText("Min: " + jugador.getMineralTotal() + " | Ves: "
 				+ jugador.getVespenoTotal());
 
-		infoJuego.setText(jugador.getNombre() + " / "
-				+ jugador.getPoblacionTotal() + " / "
-				+ jugador.getMineralTotal());
+		infoJuego.setText("Jugador: " + jugador.getNombre() + " / Poblacion: "
+				+ jugador.getPoblacionTotal() + " / Mineral: "
+				+ jugador.getMineralTotal() + " - Vespeno: "
+				+ jugador.getVespenoTotal());
 	}
 
 	@Override

@@ -1,28 +1,13 @@
 package fiuba.algo3.algocraft.vistaUnidades;
 
-import java.io.IOException;
-
-import javax.swing.JButton;
-
-import fiuba.algo3.algocraft.controlador.BotonMover;
-import fiuba.algo3.algocraft.controlador.acciones.Mover;
-import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.unidades.AltoTemplario;
-import fiuba.algo3.algocraft.vista.VistaIElemento;
+import fiuba.algo3.algocraft.vista.VistaUnidad;
 
-public class VistaAltoTemplario extends VistaIElemento {
-	
-	JButton btnMover;
+public class VistaAltoTemplario extends VistaUnidad {
 
-	public VistaAltoTemplario(){
-		this.elemento = new AltoTemplario();
-		this.armarImagen();
-		
-		this.btnMover = new BotonMover("Mover", new Mover());
-		this.acciones.add(btnMover);
+	public VistaAltoTemplario() {
+		elemento = new AltoTemplario();
+		armarImagen();
 	}
 
-	protected void setModelo(IElemento elemento) {
-		this.elemento = elemento;
-	}
 }

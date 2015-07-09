@@ -14,4 +14,9 @@ public class Boton extends JButton {
 		this.setAlignmentX(CENTER_ALIGNMENT);
 		this.addActionListener(controlador);
 	}
+
+	public Boton(String label) {
+		super(label);
+		this.setAlignmentX(CENTER_ALIGNMENT);
+	}
 }

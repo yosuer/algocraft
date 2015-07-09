@@ -2,7 +2,7 @@ package fiuba.algo3.algocraft.vistaEdificios;
 
 import javax.swing.JButton;
 
-import fiuba.algo3.algocraft.controlador.BotonCrearEdificio;
+import fiuba.algo3.algocraft.controlador.Boton;
 import fiuba.algo3.algocraft.controlador.acciones.CrearEdificio;
 import fiuba.algo3.algocraft.modelo.edificios.Barraca;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMando;
@@ -25,20 +25,19 @@ public class VistaCentroDeMando extends VistaIElemento {
 	public VistaCentroDeMando() {
 		this.elemento = new CentroDeMando();
 		this.armarImagen();
-		this.btnCrearCentroMineral = new BotonCrearEdificio("CentroMineral",
+		this.btnCrearCentroMineral = new Boton("CentroMineral",
 				new CrearEdificio(new CentroDeMineral()));
-		this.btnCrearRefineria = new BotonCrearEdificio("Refineria",
-				new CrearEdificio(new Refineria()));
-		this.btnCrearBarraca = new BotonCrearEdificio("Barraca", new CrearEdificio(
+		this.btnCrearRefineria = new Boton("Refineria", new CrearEdificio(
+				new Refineria()));
+		this.btnCrearBarraca = new Boton("Barraca", new CrearEdificio(
 				new Barraca()));
-		this.btnCrearDeposito = new BotonCrearEdificio("Deposito",
-				new CrearEdificio(new DepositoDeSuministros()));
-		this.btnCrearFabrica = new BotonCrearEdificio("Fabrica",new CrearEdificio(
+		this.btnCrearDeposito = new Boton("Deposito", new CrearEdificio(
+				new DepositoDeSuministros()));
+		this.btnCrearFabrica = new Boton("Fabrica", new CrearEdificio(
 				new Fabrica()));
-		this.btnCrearPuertoEstelar = new BotonCrearEdificio("Puerto Estelar",
+		this.btnCrearPuertoEstelar = new Boton("Puerto Estelar",
 				new CrearEdificio(new PuertoEstelarTerran()));
-		
-		
+
 		this.acciones.add(btnCrearCentroMineral);
 		this.acciones.add(btnCrearRefineria);
 		this.acciones.add(btnCrearBarraca);

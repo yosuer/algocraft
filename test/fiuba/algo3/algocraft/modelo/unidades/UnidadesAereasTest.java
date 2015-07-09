@@ -27,6 +27,7 @@ public class UnidadesAereasTest {
 		Mapa mapa = new Mapa(40, 40);
 		mapa.recibirMineral(500);
 		mapa.recibirVespeno(500); // inyecto recursos para pruebas
+		mapa.aumentarPoblacion(10);
 
 		Barraca barraca = new Barraca();
 		mapa.agregarElemento(5, 5, barraca);
@@ -65,6 +66,7 @@ public class UnidadesAereasTest {
 		Mapa mapa = new Mapa(40, 40);
 		mapa.recibirMineral(500);
 		mapa.recibirVespeno(500); // inyecto recursos para pruebas
+		mapa.aumentarPoblacion(10);
 
 		Acceso acceso = new Acceso();
 		mapa.agregarElemento(5, 5, acceso);

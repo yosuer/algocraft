@@ -56,6 +56,7 @@ public class PuertoEstelarProtoss extends Edificio implements ElementoProtoss,
 		this.estado.estaActivo();
 		this.mapa.gastarRecursos(unidad.getCostoMineral(),
 				unidad.getCostoVespeno());
+		this.mapa.consumirPoblacion(unidad.getSuministro());
 		this.creador.prepararUnidad(unidad);
 	}
 

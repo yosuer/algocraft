@@ -6,7 +6,7 @@ import fiuba.algo3.algocraft.vista.VistaUnidad;
 public class VistaEspectro extends VistaUnidad {
 
 	public VistaEspectro() {
-		this.elemento = new Espectro();
-		this.armarImagen();
+		elemento = new Espectro();
+		armarImagen();
 	}
 }

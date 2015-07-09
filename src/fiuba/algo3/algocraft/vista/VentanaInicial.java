@@ -65,8 +65,8 @@ public class VentanaInicial extends JFrame implements ActionListener {
 		config.gridy = 2;
 		contenedor.add(nombreJ1, config);
 
-		config.gridx = 3;
-		config.gridy = 2;
+		// config.gridx = 3;
+		// config.gridy = 2;
 		// contenedor.add(razaJug1, config);
 
 		config.gridx = 1;
@@ -77,8 +77,8 @@ public class VentanaInicial extends JFrame implements ActionListener {
 		config.gridy = 3;
 		contenedor.add(nombreJ2, config);
 
-		config.gridx = 3;
-		config.gridy = 3;
+		// config.gridx = 3;
+		// config.gridy = 3;
 		// contenedor.add(razaJug2, config);
 
 		config.gridx = 1;

@@ -6,8 +6,8 @@ import fiuba.algo3.algocraft.vista.VistaUnidad;
 public class VistaGolliat extends VistaUnidad {
 
 	public VistaGolliat() {
-		this.elemento = new Golliat();
-		this.armarImagen();
+		elemento = new Golliat();
+		armarImagen();
 	}
 
 }

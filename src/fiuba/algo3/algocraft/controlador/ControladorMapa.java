@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
+import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.modelo.Controlable;
@@ -25,6 +26,7 @@ public class ControladorMapa extends MouseAdapter {
 
 	private VistaMapa mapa;
 	private Posicion posicion;
+
 	public static IElemento select;
 	public static IElemento aConstruir;
 
@@ -32,6 +34,7 @@ public class ControladorMapa extends MouseAdapter {
 	public static boolean construir = false;
 	public static boolean atacar = false;
 	public static boolean mover = false;
+	public static Accion accion = null;
 
 	public ControladorMapa(VistaMapa mapa) {
 		this.mapa = mapa;
@@ -58,7 +61,10 @@ public class ControladorMapa extends MouseAdapter {
 		int x = e.getX() / 22 + 1;
 		int y = e.getY() / 22 + 1;
 		if (x <= mapa.getModelo().ancho() & y <= mapa.getModelo().largo()) {
-			if (seleccionar)
+
+			if (accion != null)
+				accion.ejecutar(mapa.getCasillero(x, y));
+			else if (seleccionar)
 				seleccionar(x, y);
 			else if (construir)
 				construir(x, y);
@@ -101,6 +107,8 @@ public class ControladorMapa extends MouseAdapter {
 			Log.loguear("Recursos Insuficientes");
 		} catch (NoExistenLosEdificiosrequeridosParaConstruir e) {
 			Log.loguear("Faltan edificios requeridos");
+		} catch (ErrorPosicionOcupada e) {
+			Log.loguear("Posicion Ocupada");
 		}
 
 		aConstruir = null;

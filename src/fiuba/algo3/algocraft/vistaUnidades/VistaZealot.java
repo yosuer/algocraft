@@ -6,8 +6,8 @@ import fiuba.algo3.algocraft.vista.VistaUnidad;
 public class VistaZealot extends VistaUnidad {
 
 	public VistaZealot() {
-		this.elemento = new Zealot();
-		this.armarImagen();
+		elemento = new Zealot();
+		armarImagen();
 	}
 
 }

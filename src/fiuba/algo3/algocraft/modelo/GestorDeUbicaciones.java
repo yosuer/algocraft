@@ -49,6 +49,7 @@ public class GestorDeUbicaciones {
 			return true;
 		if (z == 0)
 			return (!elementos[x][y][z].equals(new Tierra()));
+
 		return elementos[x][y][z] != null;
 	}
 

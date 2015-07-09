@@ -20,6 +20,7 @@ public class PasarTurno implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		ControladorMapa.aConstruir = null;
 		ControladorMapa.select = null;
+		ControladorMapa.accion = null;
 
 		ControladorMapa.seleccionar = true;
 		ControladorMapa.atacar = false;

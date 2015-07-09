@@ -32,6 +32,8 @@ import fiuba.algo3.algocraft.vistaUnidades.VistaEspectro;
 import fiuba.algo3.algocraft.vistaUnidades.VistaGolliat;
 import fiuba.algo3.algocraft.vistaUnidades.VistaMarine;
 import fiuba.algo3.algocraft.vistaUnidades.VistaNaveCiencia;
+import fiuba.algo3.algocraft.vistaUnidades.VistaNaveTransporteProtoss;
+import fiuba.algo3.algocraft.vistaUnidades.VistaNaveTransporteTerran;
 import fiuba.algo3.algocraft.vistaUnidades.VistaScout;
 import fiuba.algo3.algocraft.vistaUnidades.VistaZealot;
 import fiuba.algo3.titiritero.modelo.GameLoop;
@@ -76,6 +78,8 @@ public class Juego {
 		VistaIElemento.vistasElementos.put("Espectro", new VistaEspectro());
 		VistaIElemento.vistasElementos.put("NaveCiencia",
 				new VistaNaveCiencia());
+		VistaIElemento.vistasElementos.put("NaveTransporteTerran",
+				new VistaNaveTransporteTerran());
 
 		// Protoss
 		VistaIElemento.vistasElementos.put("Nexo", new VistaNexo());
@@ -93,10 +97,12 @@ public class Juego {
 		VistaIElemento.vistasElementos.put("Scout", new VistaScout());
 		VistaIElemento.vistasElementos.put("AltoTemplario",
 				new VistaAltoTemplario());
+		VistaIElemento.vistasElementos.put("NaveTransporteProtoss",
+				new VistaNaveTransporteProtoss());
 	}
 
 	private void initialize() {
-		mapa = new Mapa(40, 25);
+		mapa = new Mapa(50, 25);
 		vistaMapa = new VistaMapa(mapa);
 		gameLoop = new GameLoop((SuperficieDeDibujo) vistaMapa);
 		ventanaInicial = new VentanaInicial(this);
