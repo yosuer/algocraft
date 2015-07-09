@@ -9,5 +9,4 @@ public class VistaAmoSupremo extends VistaUnidad {
 		elemento = new AmoSupremo();
 		armarImagen();
 	}
-
 }

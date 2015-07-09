@@ -9,5 +9,4 @@ public class VistaScout extends VistaUnidad {
 		elemento = new Scout();
 		armarImagen();
 	}
-
 }

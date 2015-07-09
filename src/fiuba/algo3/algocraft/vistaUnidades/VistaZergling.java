@@ -9,5 +9,4 @@ public class VistaZergling extends VistaUnidad {
 		this.elemento = new Zerling();
 		this.armarImagen();
 	}
-
 }
