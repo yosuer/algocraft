@@ -14,9 +14,6 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 
 	private static final long serialVersionUID = 1L;
 
-	private JLabel nombreJugador;
-	private JLabel estadoJugador;
-	private JLabel estadoRecursos;
 	private JLabel infoJuego;
 	private Font fuenteInfoJug;
 	private IMapa mapa;
@@ -31,12 +28,6 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 		infoJuego = new JLabel("_");
 		infoJuego.setFont(fuenteInfoJug);
 
-		nombreJugador = new JLabel("");
-		nombreJugador.setFont(fuenteInfoJug);
-		estadoJugador = new JLabel("");
-		estadoJugador.setFont(fuenteInfoJug);
-		estadoRecursos = new JLabel();
-		estadoRecursos.setFont(fuenteInfoJug);
 		actualizarInfo();
 
 		add(infoJuego);
@@ -45,15 +36,11 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 
 	public void actualizarInfo() {
 		jugador = mapa.getEquipoActual();
-		nombreJugador.setText(jugador.getNombre());
-		estadoJugador.setText("Poblacion: " + jugador.getPoblacionTotal());
-		estadoRecursos.setText("Min: " + jugador.getMineralTotal() + " | Ves: "
-				+ jugador.getVespenoTotal());
-
-		infoJuego.setText("Jugador: " + jugador.getNombre() + " / Poblacion: "
-				+ jugador.getPoblacionTotal() + " / Mineral: "
-				+ jugador.getMineralTotal() + " - Vespeno: "
-				+ jugador.getVespenoTotal() + "  /  Unidades: "
+		infoJuego.setText("Jugador: " + jugador.getNombre()
+				+ "  |  Poblacion: " + jugador.getPoblacionTotal() + "/"
+				+ jugador.getPoblacionDisponible() + "  |  Mineral: "
+				+ jugador.getMineralTotal() + "/Vespeno: "
+				+ jugador.getVespenoTotal() + "  |  Unidades: "
 				+ jugador.cantidadElementos());
 	}
 

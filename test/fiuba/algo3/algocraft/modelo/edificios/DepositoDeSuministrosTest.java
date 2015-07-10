@@ -28,6 +28,11 @@ public class DepositoDeSuministrosTest {
 		DepositoDeSuministros deposito = new DepositoDeSuministros();
 		mapa.agregarElemento(1, 1, deposito);
 
+		Assert.assertEquals(0.0, mapa.getPoblacionTotal(), 0.0);
+
+		for (int i = 1; i <= 6; i++)
+			mapa.pasarTurnoMapa();
+
 		Assert.assertEquals(5.0, mapa.getPoblacionTotal(), 0.0);
 	}
 
@@ -37,6 +42,8 @@ public class DepositoDeSuministrosTest {
 
 		mapa.agregarElemento(1, 1, new DepositoDeSuministros());
 		mapa.agregarElemento(3, 3, new DepositoDeSuministros());
+		for (int i = 1; i <= 6; i++)
+			mapa.pasarTurnoMapa();
 		Assert.assertEquals(10.0, mapa.getPoblacionTotal(), 0.0);
 
 		mapa.getElemento(1, 1, 0).eliminarseDelMapa(mapa);

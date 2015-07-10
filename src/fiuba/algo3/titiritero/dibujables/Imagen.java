@@ -18,7 +18,6 @@ public class Imagen {
 			this.posicionable = posicionable;
 			this.imagen = ImageIO.read(imagenUrl);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

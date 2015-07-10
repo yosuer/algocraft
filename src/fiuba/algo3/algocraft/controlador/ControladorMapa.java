@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
+import fiuba.algo3.algocraft.excepciones.ErrorNoExisteCaminoPosible;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
@@ -85,7 +86,12 @@ public class ControladorMapa extends MouseAdapter {
 	private void mover(int x, int y) {
 		VentanaJuego.panelAcciones.limpiar();
 		Unidad unidad = (Unidad) select;
-		unidad.mover(x, y);
+		try {
+			unidad.mover(x, y);
+		} catch (ErrorNoExisteCaminoPosible e) {
+			Log.loguear("No existe camino posible");
+		}
+
 		act();
 	}
 

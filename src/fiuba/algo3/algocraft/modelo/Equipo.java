@@ -19,6 +19,7 @@ public class Equipo {
 	private Mapa mapa;
 	private GestorDeRecursos gestorDeRecursos;
 	private FloatRango poblacionTotal;
+	private FloatRango poblacionDisponible;
 	private BasePrincipal base;
 
 	public Equipo(String nombre) {
@@ -27,6 +28,7 @@ public class Equipo {
 		this.unidadesPreparadas = new LinkedList<Unidad>();
 		this.gestorDeRecursos = new GestorDeRecursos();
 		this.poblacionTotal = new FloatRango(0, 200, 0);
+		this.poblacionDisponible = new FloatRango(0, 200, 0);
 	}
 
 	private void setRaza(String raza) {
@@ -107,10 +109,12 @@ public class Equipo {
 
 	public void aumentarPoblacion(float suministro) {
 		this.poblacionTotal.aumentar(suministro);
+		this.poblacionDisponible.aumentar(suministro);
 	}
 
 	public void restarPoblacion(float suministro) {
 		this.poblacionTotal.disminuir(suministro);
+		this.poblacionDisponible.disminuir(suministro);
 	}
 
 	public void consumirPoblacion(float suministro) {
@@ -127,4 +131,7 @@ public class Equipo {
 		return this.poblacionTotal.val();
 	}
 
+	public double getPoblacionDisponible() {
+		return this.poblacionDisponible.val();
+	}
 }

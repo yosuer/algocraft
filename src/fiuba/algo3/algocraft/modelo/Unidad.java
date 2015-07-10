@@ -47,7 +47,6 @@ public abstract class Unidad extends Controlable implements IAtacante,
 			Posicion posNueva = this.movimientos.remove(0);
 			mapa.moverElemento(this, posNueva);
 			this.posicion = posNueva;
-			// System.out.println(posNueva);
 		}
 	}
 

@@ -28,7 +28,6 @@ public class HojaSprites {
 
 			imagen.getRGB(0, 0, ancho, alto, pixeles, 0, ancho);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

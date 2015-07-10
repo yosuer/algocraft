@@ -63,6 +63,50 @@ public class MovimientoUnidadesTest {
 	}
 
 	@Test
+	public void test02_MoverUnaUnidadEsquivandoVariosObstaculosTerrestres() {
+		Mapa mapa = new Mapa(40, 40);
+		Marine marine = new Marine();
+
+		mapa.agregarElemento(12, 1, marine);
+		for (int i = 1; i <= 5; i++)
+			mapa.pasarTurnoMapa();
+
+		Assert.assertEquals(mapa.getElemento(12, 1, 0), marine);
+
+		Assert.assertEquals(mapa.getElemento(13, 1, 0),
+				new ObstaculoTerrestre());
+		Assert.assertEquals(mapa.getElemento(13, 2, 0),
+				new ObstaculoTerrestre());
+		Assert.assertEquals(mapa.getElemento(13, 3, 0),
+				new ObstaculoTerrestre());
+		Assert.assertEquals(mapa.getElemento(13, 4, 0),
+				new ObstaculoTerrestre());
+		Assert.assertEquals(mapa.getElemento(13, 5, 0),
+				new ObstaculoTerrestre());
+
+		Collection<Posicion> caminado = marine.mover(14, 1);
+		Assert.assertTrue(caminado.size() > 15);
+		// System.out.println(caminado.size());
+		// System.out.println(caminado);
+		for (int i = 1; i <= 25; i++)
+			mapa.pasarTurnoMapa();
+
+		Assert.assertEquals(mapa.getElemento(11, 2, 0), new Tierra());
+		Assert.assertEquals(mapa.getElemento(14, 1, 0), marine);
+
+		caminado = marine.mover(12, 1);
+		// System.out.println(caminado.size());
+		Assert.assertTrue(caminado.size() > 15);
+
+		// System.out.println(caminado);
+		for (int i = 1; i <= 25; i++)
+			mapa.pasarTurnoMapa();
+
+		Assert.assertEquals(mapa.getElemento(15, 1, 0), new Tierra());
+		Assert.assertEquals(mapa.getElemento(12, 1, 0), marine);
+	}
+
+	@Test
 	public void test03_UnaUnidadTerrestreNoObstruyeElCaminoDeUnaUnidadAerea() {
 		Mapa mapa = new Mapa(40, 40);
 		Espectro espectro = new Espectro();

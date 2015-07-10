@@ -15,15 +15,6 @@ public class Tierra extends Estatico {
 		this.nombre = "Tierra";
 	}
 
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null)
-			return false;
-
-		return (o.getClass() == this.getClass());
-	}
-
 	@Override
 	public void eliminarseDelMapa(Mapa mapa) {
 		// TODO Auto-generated method stub

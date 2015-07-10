@@ -17,10 +17,8 @@ public class CrearEdificio extends Accion {
 		try {
 			ControladorMapa.aConstruir = elemento.getClass().newInstance();
 		} catch (InstantiationException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IllegalAccessException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		ControladorMapa.seleccionar = false;

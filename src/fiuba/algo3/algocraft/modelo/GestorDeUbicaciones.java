@@ -75,17 +75,31 @@ public class GestorDeUbicaciones {
 		int x = pos.x();
 		int y = pos.y();
 		int z = pos.z();
+		try {
+			if (!estaOcupado(x - 1, y - 1, z))
+				grafo.arista(pos.toString(), (x - 1) + "," + (y - 1) + "," + z);
+			if (!estaOcupado(x - 1, y, z))
+				grafo.arista(pos.toString(), (x - 1) + "," + y + "," + z);
+			if (!estaOcupado(x - 1, y + 1, z))
+				grafo.arista(pos.toString(), (x - 1) + "," + (y + 1) + "," + z);
 
-		grafo.arista(pos.toString(), (x - 1) + "," + (y - 1) + "," + z);
-		grafo.arista(pos.toString(), (x - 1) + "," + y + "," + z);
-		grafo.arista(pos.toString(), (x - 1) + "," + (y + 1) + "," + z);
+			if (!estaOcupado(x, y - 1, z))
+				grafo.arista(pos.toString(), x + "," + (y - 1) + "," + z);
+			if (!estaOcupado(x, y + 1, z))
+				grafo.arista(pos.toString(), x + "," + (y + 1) + "," + z);
 
-		grafo.arista(pos.toString(), x + "," + (y - 1) + "," + z);
-		grafo.arista(pos.toString(), x + "," + (y + 1) + "," + z);
+			if (!estaOcupado(x + 1, y - 1, z))
+				grafo.arista(pos.toString(), (x + 1) + "," + (y - 1) + "," + z);
+			if (!estaOcupado(x + 1, y, z))
+				grafo.arista(pos.toString(), (x + 1) + "," + y + "," + z);
+			if (!estaOcupado(x + 1, y + 1, z))
+				grafo.arista(pos.toString(), (x + 1) + "," + (y + 1) + "," + z);
 
-		grafo.arista(pos.toString(), (x + 1) + "," + (y - 1) + "," + z);
-		grafo.arista(pos.toString(), (x + 1) + "," + y + "," + z);
-		grafo.arista(pos.toString(), (x + 1) + "," + (y + 1) + "," + z);
+		} catch (ArrayIndexOutOfBoundsException e) {
+
+		} catch (NullPointerException e) {
+
+		}
 	}
 
 	public Posicion getPosicionProxima(Posicion posAnt) {

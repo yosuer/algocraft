@@ -56,7 +56,6 @@ public class Mapa implements IMapa {
 		this.agregarControlable(centro1);
 
 		this.pasarTurnoMapa();
-
 	}
 
 	public void nombreEquipo2(String nombre, String razaJ2) {
