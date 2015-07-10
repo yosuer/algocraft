@@ -5,11 +5,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import fiuba.algo3.algocraft.excepciones.ErrorCargaDeEnergiaInsuficiente;
 import fiuba.algo3.algocraft.excepciones.ErrorExtractorDeRecursosIncompatible;
-import fiuba.algo3.algocraft.excepciones.ErrorNoExisteCaminoPosible;
 import fiuba.algo3.algocraft.excepciones.ErrorObjetivoFueraDelAlcance;
 import fiuba.algo3.algocraft.excepciones.ErrorPosicionOcupada;
 import fiuba.algo3.algocraft.excepciones.ErrorRecursosInsuficientes;
+import fiuba.algo3.algocraft.excepciones.ErrorUnidadInmovilizada;
 import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaConstruir;
 import fiuba.algo3.algocraft.modelo.Controlable;
 import fiuba.algo3.algocraft.modelo.IAtacante;
@@ -86,12 +87,7 @@ public class ControladorMapa extends MouseAdapter {
 	private void mover(int x, int y) {
 		VentanaJuego.panelAcciones.limpiar();
 		Unidad unidad = (Unidad) select;
-		try {
-			unidad.mover(x, y);
-		} catch (ErrorNoExisteCaminoPosible e) {
-			Log.loguear("No existe camino posible");
-		}
-
+		unidad.mover(x, y);
 		act();
 	}
 
@@ -149,8 +145,13 @@ public class ControladorMapa extends MouseAdapter {
 		try {
 			Unidad obj = (Unidad) mapa.getModelo().getElemento(x, y, 0);
 			((IUnidadMagica) select).lanzarMagiaAUnidad(obj);
-		} catch (ErrorObjetivoFueraDelAlcance e) {
+		} 
+		catch (ErrorObjetivoFueraDelAlcance e) {
 			Log.loguear("Fuera de alcance");
+		}
+		catch (ErrorCargaDeEnergiaInsuficiente e)
+		{
+			Log.loguear("Carga de la unidad insuficiente para lanzar magia");
 		}
 		act();
 	}
@@ -159,8 +160,17 @@ public class ControladorMapa extends MouseAdapter {
 		try {
 			Posicion pos = new Posicion(x, y, 0);
 			((IUnidadMagica) select).lanzarMagiaAPosicion(pos);
-		} catch (ErrorObjetivoFueraDelAlcance e) {
+		} 
+		catch (ErrorObjetivoFueraDelAlcance e) {
 			Log.loguear("Fuera de alcance");
+		}
+		catch (ErrorCargaDeEnergiaInsuficiente e)
+		{
+			Log.loguear("Carga de la unidad insuficiente para lanzar magia");
+		}
+		catch (ErrorUnidadInmovilizada e)
+		{
+			Log.loguear("La unidad se encuentra inmovilizada por red");
 		}
 		act();
 	}
