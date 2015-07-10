@@ -25,6 +25,7 @@ public class VistaCentroDeMando extends VistaIElemento {
 	public VistaCentroDeMando() {
 		this.elemento = new CentroDeMando();
 		this.armarImagen();
+
 		this.btnCrearCentroMineral = new Boton("CentroMineral",
 				new CrearEdificio(new CentroDeMineral()));
 		this.btnCrearRefineria = new Boton("Refineria", new CrearEdificio(

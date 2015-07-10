@@ -19,7 +19,7 @@ public class Equipo {
 	private Mapa mapa;
 	private GestorDeRecursos gestorDeRecursos;
 	private FloatRango poblacionTotal;
-	private BasePrincipal base = new Nexo();
+	private BasePrincipal base;
 
 	public Equipo(String nombre) {
 		this.nombre = nombre;

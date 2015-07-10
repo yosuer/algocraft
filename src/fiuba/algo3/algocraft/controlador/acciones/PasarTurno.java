@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import fiuba.algo3.algocraft.controlador.ControladorMapa;
 import fiuba.algo3.algocraft.modelo.IMapa;
+import fiuba.algo3.algocraft.vista.Log;
 import fiuba.algo3.algocraft.vista.VentanaJuego;
 
 public class PasarTurno implements ActionListener {
@@ -30,6 +31,7 @@ public class PasarTurno implements ActionListener {
 		ControladorMapa.lanzarMagiaAPosicion = false;
 		// /limpiar acciones
 		VentanaJuego.panelAcciones.limpiar();
+		Log.limpiar();
 		mapa.pasarTurnoMapa();
 	}
 }

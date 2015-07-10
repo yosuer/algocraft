@@ -24,9 +24,6 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 
 	public PanelEstado(IMapa mapa) {
 		this.setBackground(Color.WHITE);
-		// this.setMaximumSize(new Dimension(60, 20));
-		// setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
 		this.mapa = mapa;
 
 		fuenteInfoJug = new Font("Verdana", Font.BOLD, 14);
@@ -42,9 +39,6 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 		estadoRecursos.setFont(fuenteInfoJug);
 		actualizarInfo();
 
-		// add(nombreJugador);
-		// add(estadoJugador);
-		// add(estadoRecursos);
 		add(infoJuego);
 
 	}
@@ -59,12 +53,22 @@ public class PanelEstado extends JPanel implements ObjetoActualizable {
 		infoJuego.setText("Jugador: " + jugador.getNombre() + " / Poblacion: "
 				+ jugador.getPoblacionTotal() + " / Mineral: "
 				+ jugador.getMineralTotal() + " - Vespeno: "
-				+ jugador.getVespenoTotal());
+				+ jugador.getVespenoTotal() + "  /  Unidades: "
+				+ jugador.cantidadElementos());
 	}
 
 	@Override
 	public void actualizar() {
 		actualizarInfo();
+		verificarFin();
+	}
+
+	private void verificarFin() {
+		if (jugador.cantidadElementos() == 0) {
+			new VentanaFinJuego(jugador);
+
+		}
+
 	}
 
 }

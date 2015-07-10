@@ -32,7 +32,9 @@ public class VentanaJuego extends JFrame {
 	public JPanel panelSuperior;
 
 	public VentanaJuego(VistaMapa mapa) {
+		super();
 		panelMapa = mapa;
+		setTitle("Algo-Craft");
 		panelAcciones = new PanelAcciones();
 		panelEstado = new PanelEstado(panelMapa.getModelo());
 		panelVidaSelect = new PanelVidaSelect(ControladorMapa.select);
@@ -53,7 +55,7 @@ public class VentanaJuego extends JFrame {
 		panelSuperior.add(panelEstado);
 		panelSuperior.add(btnPasarTurno);
 
-		setSize(new Dimension(1250, 700));
+		setSize(new Dimension(1150, 700));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);

@@ -25,6 +25,6 @@ public class EquipoTest {
 		Mapa mapa = new Mapa(40, 40);
 		Equipo equipo = mapa.getEquipoActual();
 
-		Assert.assertEquals(1, equipo.cantidadElementos());
+		Assert.assertEquals(0, equipo.cantidadElementos());
 	}
 }

@@ -4,7 +4,7 @@ import javax.swing.JButton;
 
 import fiuba.algo3.algocraft.controlador.Boton;
 import fiuba.algo3.algocraft.controlador.acciones.CrearEdificio;
-import fiuba.algo3.algocraft.modelo.edificios.CentroDeMando;
+import fiuba.algo3.algocraft.modelo.edificios.Criadero;
 import fiuba.algo3.algocraft.modelo.edificios.Espiral;
 import fiuba.algo3.algocraft.modelo.edificios.Extractor;
 import fiuba.algo3.algocraft.modelo.edificios.GuaridaDeHidralisco;
@@ -21,16 +21,15 @@ public class VistaCriadero extends VistaIElemento {
 	private JButton btnCrearEspiral;
 
 	public VistaCriadero() {
-		this.elemento = new CentroDeMando();
+		this.elemento = new Criadero();
 		this.armarImagen();
 		this.btnCrearZergMineral = new Boton("ZergMineral", new CrearEdificio(
 				new ZergMineral()));
 		this.btnCrearExtractor = new Boton("Extractor", new CrearEdificio(
 				new Extractor()));
-		this.btnCrearReservaDeReproduccion = new Boton(
-				"Reserva de Reproduccion", new CrearEdificio(
-						new ReservaDeReproduccion()));
-		this.btnCrearGuaridaDeHidralisco = new Boton("Guarida de Hidralisco",
+		this.btnCrearReservaDeReproduccion = new Boton("ReservaReproduccion",
+				new CrearEdificio(new ReservaDeReproduccion()));
+		this.btnCrearGuaridaDeHidralisco = new Boton("GuaridaHidralisco",
 				new CrearEdificio(new GuaridaDeHidralisco()));
 		this.btnCrearEspiral = new Boton("Espiral", new CrearEdificio(
 				new Espiral()));

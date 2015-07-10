@@ -6,7 +6,6 @@ import java.util.List;
 
 import fiuba.algo3.algocraft.excepciones.ErrorElementoNoEncontrado;
 import fiuba.algo3.algocraft.modelo.edificios.BasePrincipal;
-import fiuba.algo3.algocraft.modelo.edificios.CentroDeMando;
 import fiuba.algo3.algocraft.modelo.natural.Mineral;
 import fiuba.algo3.algocraft.modelo.natural.ObstaculoTerrestre;
 import fiuba.algo3.algocraft.modelo.natural.Vespeno;
@@ -51,10 +50,23 @@ public class Mapa implements IMapa {
 
 	public void nombreEquipo1(String nombre, String razaJ1) {
 		this.equipo1.setNombre(nombre, razaJ1);
+
+		BasePrincipal centro1 = equipo1.getBasePrincipal();
+		centro1.setPosicion(new Posicion(4, 4, 0));
+		this.agregarControlable(centro1);
+
+		this.pasarTurnoMapa();
+
 	}
 
 	public void nombreEquipo2(String nombre, String razaJ2) {
 		this.equipo2.setNombre(nombre, razaJ2);
+
+		BasePrincipal centro2 = equipo2.getBasePrincipal();
+		centro2.setPosicion(new Posicion(ancho - 3, largo - 3, 0));
+		this.agregarControlable(centro2);
+
+		this.pasarTurnoMapa();
 	}
 
 	public Equipo getEquipo1() {
@@ -127,19 +139,6 @@ public class Mapa implements IMapa {
 			this.agregarElemento(ancho - 12, y, new ObstaculoTerrestre());
 		for (int x = ancho - 9; x <= ancho; x++)
 			this.agregarElemento(x, largo - 12, new ObstaculoTerrestre());
-
-		BasePrincipal centro1 = equipo1.getBasePrincipal();
-		centro1.setPosicion(new Posicion(4, 4, 0));
-		this.agregarControlable(centro1);
-
-		this.pasarTurnoMapa();
-
-		// BasePrincipal centro2 = equipo2.getBasePrincipal();
-		BasePrincipal centro2 = new CentroDeMando();
-		centro2.setPosicion(new Posicion(ancho - 3, largo - 3, 0));
-		this.agregarControlable(centro2);
-
-		this.pasarTurnoMapa();
 	}
 
 	public void agregarElemento(int x, int y, IElemento elemento) {
@@ -156,8 +155,6 @@ public class Mapa implements IMapa {
 	public void agregarControlable(Controlable elemento) {
 		this.equipoActual.agregarElemento(elemento);
 		this.ubicarElemento(elemento, elemento.getPosicion());
-		// System.out.println("creado " + elemento.nombre() + " en "
-		// + elemento.getPosicion());
 	}
 
 	public void agregarEstatico(Estatico elemento) {

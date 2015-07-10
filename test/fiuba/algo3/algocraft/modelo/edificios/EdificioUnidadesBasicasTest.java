@@ -121,7 +121,7 @@ public class EdificioUnidadesBasicasTest {
 		Assert.assertEquals(mapa.getElemento(1, 1, 0).nombre(), "Marine");
 		Assert.assertEquals(mapa.getElemento(4, 3, 0).nombre(), "Marine");
 		Assert.assertEquals(mapa.getElemento(3, 4, 0).nombre(), "Marine");
-		Assert.assertEquals(mapa.getElemento(1, 3, 0).nombre(), "Marine");
+		Assert.assertEquals(mapa.getElemento(4, 4, 0).nombre(), "Marine");
 
 		Assert.assertEquals(mapa.getElemento(3, 3, 0).nombre(), "Barraca"); // barraca
 	}

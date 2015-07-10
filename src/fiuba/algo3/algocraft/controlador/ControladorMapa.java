@@ -13,14 +13,12 @@ import fiuba.algo3.algocraft.excepciones.NoExistenLosEdificiosrequeridosParaCons
 import fiuba.algo3.algocraft.modelo.Controlable;
 import fiuba.algo3.algocraft.modelo.IAtacante;
 import fiuba.algo3.algocraft.modelo.IDaniable;
-import fiuba.algo3.algocraft.modelo.IUnidadMagica;
 import fiuba.algo3.algocraft.modelo.IElemento;
+import fiuba.algo3.algocraft.modelo.IUnidadMagica;
 import fiuba.algo3.algocraft.modelo.Posicion;
 import fiuba.algo3.algocraft.modelo.Unidad;
 import fiuba.algo3.algocraft.modelo.edificios.CentroDeMineral;
-import fiuba.algo3.algocraft.modelo.unidades.AltoTemplario;
 import fiuba.algo3.algocraft.vista.Log;
-import fiuba.algo3.algocraft.vista.PanelEstado;
 import fiuba.algo3.algocraft.vista.VentanaJuego;
 import fiuba.algo3.algocraft.vista.VistaCasillero;
 import fiuba.algo3.algocraft.vista.VistaMapa;
@@ -77,9 +75,9 @@ public class ControladorMapa extends MouseAdapter {
 				mover(x, y);
 			else if (atacar)
 				atacar(x, y);
-			else if(lanzarMagiaAUnidad)
+			else if (lanzarMagiaAUnidad)
 				lanzarMagiaUnidad(x, y);
-			else if(lanzarMagiaAPosicion)
+			else if (lanzarMagiaAPosicion)
 				lanzarMagiaAPosicion(x, y);
 		}
 	}
@@ -92,6 +90,7 @@ public class ControladorMapa extends MouseAdapter {
 	}
 
 	public void seleccionar(int x, int y) {
+
 		VistaCasillero casillero = mapa.getCasillero(x, y);
 		select = casillero.getVisible();
 
@@ -100,6 +99,8 @@ public class ControladorMapa extends MouseAdapter {
 					.getEquipo())
 				VentanaJuego.panelAcciones.actualizar(casillero
 						.getVistaElementoActual());
+			else
+				VentanaJuego.panelAcciones.limpiar();
 		} catch (ClassCastException e) {
 			VentanaJuego.panelAcciones.limpiar();
 		}
@@ -132,12 +133,13 @@ public class ControladorMapa extends MouseAdapter {
 			((IAtacante) select).atacar(obj);
 		} catch (ErrorObjetivoFueraDelAlcance e) {
 			Log.loguear("Fuera de alcance");
+		} catch (ClassCastException e) {
+			Log.loguear("No se puede la unidad");
 		}
 		act();
 	}
-	
-	public void lanzarMagiaUnidad(int x, int y)
-	{		
+
+	public void lanzarMagiaUnidad(int x, int y) {
 		try {
 			Unidad obj = (Unidad) mapa.getModelo().getElemento(x, y, 0);
 			((IUnidadMagica) select).lanzarMagiaAUnidad(obj);
@@ -146,11 +148,10 @@ public class ControladorMapa extends MouseAdapter {
 		}
 		act();
 	}
-	
-	public void lanzarMagiaAPosicion(int x, int y)
-	{
+
+	public void lanzarMagiaAPosicion(int x, int y) {
 		try {
-			Posicion pos = new Posicion(x,y,0);
+			Posicion pos = new Posicion(x, y, 0);
 			((IUnidadMagica) select).lanzarMagiaAPosicion(pos);
 		} catch (ErrorObjetivoFueraDelAlcance e) {
 			Log.loguear("Fuera de alcance");

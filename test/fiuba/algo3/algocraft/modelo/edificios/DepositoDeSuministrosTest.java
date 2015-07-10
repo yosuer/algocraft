@@ -49,9 +49,9 @@ public class DepositoDeSuministrosTest {
 		Mapa mapa = new Mapa(40, 40); // poblacion inicial es 10
 
 		mapa.agregarElemento(3, 3, new DepositoDeSuministros());
-		mapa.agregarElemento(4, 4, new Golliat());
+		mapa.agregarElemento(5, 5, new Golliat());
 
-		IAtacante golliat = (IAtacante) mapa.getElemento(3, 4, 0);
+		IAtacante golliat = (IAtacante) mapa.getElemento(5, 5, 0);
 
 		golliat.atacar((IDaniable) mapa.getElemento(3, 3, 0));
 

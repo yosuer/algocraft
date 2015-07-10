@@ -14,29 +14,40 @@ import fiuba.algo3.algocraft.vistaEdificios.VistaAsimilador;
 import fiuba.algo3.algocraft.vistaEdificios.VistaBarraca;
 import fiuba.algo3.algocraft.vistaEdificios.VistaCentroDeMando;
 import fiuba.algo3.algocraft.vistaEdificios.VistaCentroDeMineral;
+import fiuba.algo3.algocraft.vistaEdificios.VistaCriadero;
 import fiuba.algo3.algocraft.vistaEdificios.VistaDepositoDeSuministros;
+import fiuba.algo3.algocraft.vistaEdificios.VistaEspiral;
+import fiuba.algo3.algocraft.vistaEdificios.VistaExtractor;
 import fiuba.algo3.algocraft.vistaEdificios.VistaFabrica;
+import fiuba.algo3.algocraft.vistaEdificios.VistaGuaridaDeHidralisco;
 import fiuba.algo3.algocraft.vistaEdificios.VistaNexo;
 import fiuba.algo3.algocraft.vistaEdificios.VistaNexoMineral;
 import fiuba.algo3.algocraft.vistaEdificios.VistaPilon;
 import fiuba.algo3.algocraft.vistaEdificios.VistaPuertoEstelarProtoss;
 import fiuba.algo3.algocraft.vistaEdificios.VistaPuertoEstelarTerran;
 import fiuba.algo3.algocraft.vistaEdificios.VistaRefineria;
+import fiuba.algo3.algocraft.vistaEdificios.VistaReservaDeReproduccion;
+import fiuba.algo3.algocraft.vistaEdificios.VistaZergMineral;
 import fiuba.algo3.algocraft.vistaNaturales.VistaMineral;
 import fiuba.algo3.algocraft.vistaNaturales.VistaObstaculoTerrestre;
 import fiuba.algo3.algocraft.vistaNaturales.VistaTierra;
 import fiuba.algo3.algocraft.vistaNaturales.VistaVespeno;
 import fiuba.algo3.algocraft.vistaUnidades.VistaAltoTemplario;
 import fiuba.algo3.algocraft.vistaUnidades.VistaAlucinacionUnidad;
+import fiuba.algo3.algocraft.vistaUnidades.VistaAmoSupremo;
 import fiuba.algo3.algocraft.vistaUnidades.VistaDragon;
 import fiuba.algo3.algocraft.vistaUnidades.VistaEspectro;
 import fiuba.algo3.algocraft.vistaUnidades.VistaGolliat;
+import fiuba.algo3.algocraft.vistaUnidades.VistaHidralisco;
 import fiuba.algo3.algocraft.vistaUnidades.VistaMarine;
+import fiuba.algo3.algocraft.vistaUnidades.VistaMutalisco;
 import fiuba.algo3.algocraft.vistaUnidades.VistaNaveCiencia;
 import fiuba.algo3.algocraft.vistaUnidades.VistaNaveTransporteProtoss;
 import fiuba.algo3.algocraft.vistaUnidades.VistaNaveTransporteTerran;
+import fiuba.algo3.algocraft.vistaUnidades.VistaReina;
 import fiuba.algo3.algocraft.vistaUnidades.VistaScout;
 import fiuba.algo3.algocraft.vistaUnidades.VistaZealot;
+import fiuba.algo3.algocraft.vistaUnidades.VistaZerling;
 import fiuba.algo3.titiritero.modelo.GameLoop;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
@@ -101,23 +112,39 @@ public class Juego {
 		VistaIElemento.vistasElementos.put("NaveTransporteProtoss",
 				new VistaNaveTransporteProtoss());
 		VistaIElemento.vistasElementos.put("", new VistaAlucinacionUnidad());
-		VistaIElemento.vistasElementos.put("", new VistaAlucinacionUnidad());
-		VistaIElemento.vistasElementos.put("", new VistaAlucinacionUnidad());
+
+		// Zerg
+		VistaIElemento.vistasElementos.put("Criadero", new VistaCriadero());
+		VistaIElemento.vistasElementos.put("AmoSupremo", new VistaAmoSupremo());
+		VistaIElemento.vistasElementos.put("ReservaDeReproduccion",
+				new VistaReservaDeReproduccion());
+		VistaIElemento.vistasElementos.put("GuaridaDeHidralisco",
+				new VistaGuaridaDeHidralisco());
+		VistaIElemento.vistasElementos.put("Extractor", new VistaExtractor());
+		VistaIElemento.vistasElementos.put("Espiral", new VistaEspiral());
+		VistaIElemento.vistasElementos.put("ZergMineral",
+				new VistaZergMineral());
+		VistaIElemento.vistasElementos.put("Zerling", new VistaZerling());
+		VistaIElemento.vistasElementos.put("Hidralisco", new VistaHidralisco());
+		VistaIElemento.vistasElementos.put("Mutalisco", new VistaMutalisco());
+		VistaIElemento.vistasElementos.put("Reina", new VistaReina());
 	}
 
 	private void initialize() {
-		mapa = new Mapa(50, 25);
-		vistaMapa = new VistaMapa(mapa);
-		gameLoop = new GameLoop((SuperficieDeDibujo) vistaMapa);
+
 		ventanaInicial = new VentanaInicial(this);
+		mapa = new Mapa(45, 25);
+		vistaMapa = new VistaMapa(mapa);
+
+	}
+
+	public void comenzar() {
+		gameLoop = new GameLoop((SuperficieDeDibujo) vistaMapa);
 		ventanaJuego = new VentanaJuego(vistaMapa);
 		vistaMapa.agregarEnGameLoop(gameLoop);
 		gameLoop.agregar(ventanaJuego.panelEstado);
 		gameLoop.agregar(ventanaJuego.panelVidaSelect);
 		gameLoop.iniciarEjecucion();
-	}
-
-	public void comenzar() {
 		ventanaInicial.dispose();
 		ventanaJuego.setVisible(true);
 	}

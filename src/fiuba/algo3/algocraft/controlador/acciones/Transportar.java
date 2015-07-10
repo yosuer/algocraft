@@ -3,6 +3,7 @@ package fiuba.algo3.algocraft.controlador.acciones;
 import java.awt.event.ActionEvent;
 
 import fiuba.algo3.algocraft.controlador.Accion;
+import fiuba.algo3.algocraft.excepciones.ErrorCapacidadDeTransporteInsuficiente;
 import fiuba.algo3.algocraft.modelo.IElemento;
 import fiuba.algo3.algocraft.modelo.ITransportable;
 import fiuba.algo3.algocraft.modelo.ITransporte;
@@ -27,6 +28,8 @@ public class Transportar extends Accion {
 			accionador.transportar(unidad);
 
 		} catch (ClassCastException e) {
+			Log.loguear("No se puede transportar la unidad");
+		} catch (ErrorCapacidadDeTransporteInsuficiente e) {
 			Log.loguear("No se puede transportar la unidad");
 		}
 	}
